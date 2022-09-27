@@ -15,12 +15,19 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+img{
+  object-fit: cover;
+  object-position: 0 30%;
 }
+
+/* ----------- Loading ------------- */
+@import url("./loading.css");
+
+/* ----------- Products ------------- */
+@import url("./product.css");
+
+/* ----------- Profile ------------- */
+@import url("./profile.css");
+
+/* ----------- Products Manager ------------- */
+@import url("./products_manager.css");
