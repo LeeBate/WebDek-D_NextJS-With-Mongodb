@@ -8,14 +8,25 @@ import {useRouter} from 'next/router'
 const ProductsManager = () => {
     const initialState = {
         title: '',
-        price: 0,
-        inStock: 0,
-        description: '',
-        content: '',
+        en: '',
+        brand: '',
+        modelName: '',
+        room: '',
+        manager: '',
+        detailCapability: '',
+        detailRestrictions: '',
+        price1: 0,
+        price2: 0,
+        price3: 0,
+        price4: 0,
+        price5: 0,
         category: ''
     }
+    
     const [product, setProduct] = useState(initialState)
-    const {title, price, inStock, description, content, category} = product
+    const {title, en, brand, modelName, room, manager,
+        detailCapability, detailRestrictions, price1, price2,
+        price3, price4, price5, category} = product
 
     const [images, setImages] = useState([])
 
@@ -57,7 +68,7 @@ const ProductsManager = () => {
         return dispatch({type: 'NOTIFY', payload: {error: 'Files does not exist.'}})
 
         files.forEach(file => {
-            if(file.size > 1024 * 1024)
+            if(file.size > 2024 * 2024)
             return err = 'The largest image size is 1mb'
 
             if(file.type !== 'image/jpeg' && file.type !== 'image/png')
@@ -87,7 +98,9 @@ const ProductsManager = () => {
         if(auth.user.role !== 'admin') 
         return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}})
 
-        if(!title || !price || !inStock || !description || !content || category === 'all' || images.length === 0)
+        if(!title|| !en || !brand || !modelName || !room || !manager||
+            !detailCapability || !detailRestrictions || !price1 || !price2 ||
+            !price3 || !price4 || !price5 || category === 'all' || images.length === 0)
         return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}})
 
     
@@ -108,7 +121,7 @@ const ProductsManager = () => {
         }
 
         return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-        
+        console.log(res)
     }
 
     return(
@@ -120,32 +133,68 @@ const ProductsManager = () => {
                 <div className="col-md-6">
                     
                     <input type="text" name="title" value={title}
-                    placeholder="Title" className="d-block my-4 w-100 p-2"
+                    placeholder="ชื่ออุปกรณ์ภาษาไทย" className="d-block my-2 w-100 p-2 text-gray-300"
                     onChange={handleChangeInput} />
 
-                    <div className="row">
-                        <div className="col-sm-6">
-                            <label htmlFor="price">Price</label>
-                            <input type="number" name="price" value={price}
-                            placeholder="Price" className="d-block w-100 p-2"
-                            onChange={handleChangeInput} />
-                        </div>
+                    <input type="text" name="en" value={en}
+                    placeholder="ชื่ออุปกรณ์ภาษาอังกฤษ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    onChange={handleChangeInput} />
 
-                        <div className="col-sm-6">
-                            <label htmlFor="price">In Stock</label>
-                            <input type="number" name="inStock" value={inStock}
-                            placeholder="inStock" className="d-block w-100 p-2"
-                            onChange={handleChangeInput} />
+                    <input type="text" name="room" value={room}
+                    placeholder="ชื่อห้องปฎิบัติการ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    onChange={handleChangeInput} />
+
+                    <input type="text" name="manager" value={manager}
+                    placeholder="ชื่อผู้ดูแลเครื่องมือ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    onChange={handleChangeInput} />
+                    
+                    <div className="row gap-2">
+                    <div className="col-sm">
+                            <input type="text" name="modelName" placeholder="ยี่ห้อ" value={modelName} 
+                            className="d-block my w-100 p-2 text-gray-300" onChange={handleChangeInput}/>
+                    </div>
+                    <div className="col-sm">
+                            <input type="text" name="brand" placeholder="รุ่น" value={brand} 
+                            className="d-block my w-100 p-2 text-gray-300" onChange={handleChangeInput}/>
+                    </div>
+                    </div>
+                    
+                    <textarea name="detailCapability" id="detailCapability" cols="30" rows="4"
+                    placeholder="ความสามารถของเครื่องมือ" className="d-block my-4 w-100 p-2" 
+                    value={detailCapability} onChange={handleChangeInput} />
+
+                    <textarea name="detailRestrictions" id="detailRestrictions" cols="30" rows="6"
+                    placeholder="ข้อจำกัดของเครื่องมือ" className="d-block my-4 w-100 p-2" 
+                    value={detailRestrictions} onChange={handleChangeInput} />
+
+                <label >อัตราค่าบริการ : บาท/ตัวอย่าง</label>
+                    <div className="row g-5">
+                        <div className="col-sm">
+                        <label htmlFor="price1">อัตรา 1 (100%)</label>
+                            <input type="number" name="price1" value={price1} 
+                            className="form-control" onChange={handleChangeInput}/>
+                        </div>
+                        <div className="col-sm">
+                        <label htmlFor="price2">อัตรา 2 (75%)</label>
+                            <input type="number" name="price2" value={price2} 
+                            className="form-control" onChange={handleChangeInput}/>
+                        </div>
+                        <div className="col-sm">
+                        <label htmlFor="price3">อัตรา 3 (50%)</label>
+                            <input type="number" name="price3" value={price3} 
+                            className="form-control" onChange={handleChangeInput}/>
+                        </div>
+                        <div className="col-sm">
+                        <label htmlFor="price3">อัตรา 4 (นักวิจัย)</label>
+                            <input type="number" name="price4" value={price4} 
+                            className="form-control" onChange={handleChangeInput}/>
+                        </div>
+                        <div className="col-sm">
+                        <label htmlFor="price5">อัตรา 5 (บัณฑิต)</label>
+                            <input type="number" name="price5" value={price5} 
+                            className="form-control" onChange={handleChangeInput}/>
                         </div>
                     </div>
-
-                    <textarea name="description" id="description" cols="30" rows="4"
-                    placeholder="Description" onChange={handleChangeInput}
-                    className="d-block my-4 w-100 p-2" value={description} />
-
-                    <textarea name="content" id="content" cols="30" rows="6"
-                    placeholder="Content" onChange={handleChangeInput}
-                    className="d-block my-4 w-100 p-2" value={content} />
 
                     <div className="input-group-prepend px-0 my-2">
                         <select name="category" id="category" value={category}

@@ -39,19 +39,24 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Authentication is not valid.'})
 
         const {id} = req.query
-        const {title, price, inStock, description, content, category, images} = req.body
+        const {title,en, brand, modelName, room, manager,
+            detailCapability, detailRestrictions, price1, price2,
+            price3, price4, price5, category, images} = req.body
 
-        if(!title || !price || !inStock || !description || !content || category === 'all' || images.length === 0)
+        if(!title || !en  || !brand || !modelName || !room || !manager||
+            !detailCapability || !detailRestrictions || !price1 || !price2 ||
+            !price3 || !price4 || !price5 || category === 'all' || images.length === 0)
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Products.findOneAndUpdate({_id: id}, {
-            title: title.toLowerCase(), price, inStock, description, content, category, images
+            title : title.toLowerCase(),en, brand, modelName, room, manager, detailCapability, detailRestrictions, price1, price2, price3, price4, price5, category, images
         })
 
         res.json({msg: 'Success! Updated a product'})
     } catch (err) {
         return res.status(500).json({err: err.message})
-    }
+        
+    }console.log(err)
 }
 
 const deleteProduct = async(req, res) => {

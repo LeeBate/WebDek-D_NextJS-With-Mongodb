@@ -41,26 +41,25 @@ const DetailProduct = (props) => {
 
             <div className="col-md-6 mt-3">
                 <h2 className="text-uppercase">{product.title}</h2>
-                <h5 className="text-danger">${product.price}</h5>
+                <h2 className="text-uppercase">{product.en}</h2>
+                <h5 className="text-danger">${product.price1}{product.price2}{product.price3}</h5>
 
-                <div className="row mx-0 d-flex justify-content-between">
-                    {
-                        product.inStock > 0
-                        ? <h6 className="text-danger">In Stock: {product.inStock}</h6>
-                        : <h6 className="text-danger">Out Stock</h6>
-                    }
-
-                    <h6 className="text-danger">Sold: {product.sold}</h6>
-                </div>
-
-                <div className="my-2">{product.description}</div>
+                <div className="my-2">{product.detailCapability}</div>
                 <div className="my-2">
-                    {product.content}
+                    {product.detailRestrictions}
                 </div>
 
                 <button type="button" className="btn btn-dark d-block my-3 px-5"
+                >
+                    จอง
+                </button>
+                <button type="button" className="btn btn-dark d-block my-3 px-5"
                 onClick={() => dispatch(addToCart(product, cart))} >
-                    Buy
+                    จ่าย
+                </button>
+                <button type="button" className="btn btn-dark d-block my-3 px-5"
+                 >
+                    คำนวณอัตราค่าบริการ
                 </button>
 
             </div>

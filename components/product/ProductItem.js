@@ -46,7 +46,7 @@ const ProductItem = ({product, handleCheck}) => {
             </>
         )
     }
-
+console.log(product)
     return(
         <div className="card" style={{ width: '18rem' }}>
             {
@@ -61,19 +61,19 @@ const ProductItem = ({product, handleCheck}) => {
                 <h5 className="card-title text-capitalize" title={product.title}>
                     {product.title}
                 </h5>
+                <h5 className="card-title text-capitalize" title={product.en}>
+                    {product.en}
+                </h5>
+                <h6 className="text-danger">${product.price1}</h6>
 
-                <div className="row justify-content-between mx-0">
-                    <h6 className="text-danger">${product.price}</h6>
-                    {
-                        product.inStock > 0
-                        ? <h6 className="text-danger">In Stock: {product.inStock}</h6>
-                        : <h6 className="text-danger">Out Stock</h6>
-                    }
-                </div>
-
-                <p className="card-text" title={product.description}>
-                    {product.description}
+                <p className="card-text" title={product.brand}>
+                    {product.brand}
                 </p>
+                <p className="card-text" title={product.modelName}>
+                    {product.modelName}
+                </p>
+                <p>{product.room}</p>
+                
                     
                 <div className="row justify-content-between mx-0">
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}

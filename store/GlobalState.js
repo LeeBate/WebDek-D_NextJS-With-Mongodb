@@ -41,13 +41,13 @@ export const DataProvider = ({children}) => {
     },[])
 
     useEffect(() => {
-        const __next__cart01__devat = JSON.parse(localStorage.getItem('__next__cart01__devat'))
+        const ShowAddCart = JSON.parse(localStorage.getItem('ShowAddCart'))
 
-        if(__next__cart01__devat) dispatch({ type: 'ADD_CART', payload: __next__cart01__devat })
+        if(ShowAddCart) dispatch({ type: 'ADD_CART', payload: ShowAddCart })
     }, [])
 
     useEffect(() => {
-        localStorage.setItem('__next__cart01__devat', JSON.stringify(cart))
+        localStorage.setItem('ShowAddCart', JSON.stringify(cart))
     }, [cart])
 
     useEffect(() => {
