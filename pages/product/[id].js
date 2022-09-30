@@ -42,13 +42,32 @@ const DetailProduct = (props) => {
             <div className="col-md-6 mt-3">
                 <h2 className="text-uppercase">{product.title}</h2>
                 <h2 className="text-uppercase">{product.en}</h2>
-                        {product.nameRate.map((e, r) => (
-                        <h1 key={r} >
-                        {e.ListName}
-                        {e.price1}
-                        {e.price2}
-                        {e.price3}</h1>
-                    ))}
+                      
+                        
+
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                <th scope="col">ลำดับ</th>
+                                <th scope="col">รายการ</th>
+                                <th scope="col">อัตรา1(100%)</th>
+                                <th scope="col">อัตรา2(75%)</th>
+                                <th scope="col">อัตรา3(50%)</th>
+                                <th scope="col">อัตรา4(นักวิจัย)</th>
+                                <th scope="col">อัตรา5(บัณฑิต)</th>
+                              
+                                </tr>
+                            </thead>
+                            <tbody > 
+                            {
+                        product.nameRate.map((obj, i) => <Tr {...obj} key={i} />)
+                             }
+                            </tbody>
+                            </table>
+
+
+
+                
 
                 <div className="my-2">{product.detailCapability}</div>
                 <div className="my-2">
@@ -84,3 +103,39 @@ export async function getServerSideProps({params: {id}}) {
 
 
 export default DetailProduct
+
+
+function Tr({idx, ListName, price1, price2, price3, price4, price5 }){
+
+   
+let i = 1  
+
+    return (
+        <tr className="bg-gray-50 text-center">
+        <td className="px-16 py-2 flex flex-row items-center">
+            <span className="text-center ml-2 font-semibold">{}</span>
+        </td>
+        <td >
+            <span>{ListName || "Unknown"}</span>
+        </td>
+        <td >
+            <span>{price1 || "-"}</span>
+        </td>
+        <td >
+            <span>{price2 || "-"}</span>
+        </td>
+        <td >
+        <span>{price3 || "-"}</span>
+        </td>
+         <td >
+        <span>{price4 || "-"}</span>
+        </td>
+        <td >
+        <span>{price5 || "-"}</span>
+        </td>
+     
+     
+    </tr>
+    )
+    i = i+1
+}
