@@ -42,7 +42,13 @@ const DetailProduct = (props) => {
             <div className="col-md-6 mt-3">
                 <h2 className="text-uppercase">{product.title}</h2>
                 <h2 className="text-uppercase">{product.en}</h2>
-                <h5 className="text-danger">${product.price1}{product.price2}{product.price3}</h5>
+                        {product.nameRate.map((e, r) => (
+                        <h1 key={r} >
+                        {e.ListName}
+                        {e.price1}
+                        {e.price2}
+                        {e.price3}</h1>
+                    ))}
 
                 <div className="my-2">{product.detailCapability}</div>
                 <div className="my-2">

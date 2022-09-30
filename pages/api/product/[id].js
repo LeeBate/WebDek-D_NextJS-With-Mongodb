@@ -40,16 +40,14 @@ const updateProduct = async (req, res) => {
 
         const {id} = req.query
         const {title,en, brand, modelName, room, manager,
-            detailCapability, detailRestrictions, price1, price2,
-            price3, price4, price5, category, images} = req.body
+            detailCapability, detailRestrictions, category, images, nameRate} = req.body
 
         if(!title || !en  || !brand || !modelName || !room || !manager||
-            !detailCapability || !detailRestrictions || !price1 || !price2 ||
-            !price3 || !price4 || !price5 || category === 'all' || images.length === 0)
+            !detailCapability || !detailRestrictions || category === 'all' || images.length === 0 || nameRate.length === 0)
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Products.findOneAndUpdate({_id: id}, {
-            title : title.toLowerCase(),en, brand, modelName, room, manager, detailCapability, detailRestrictions, price1, price2, price3, price4, price5, category, images
+            title : title.toLowerCase(),en, brand, modelName, room, manager, detailCapability, detailRestrictions, category, images, nameRate
         })
 
         res.json({msg: 'Success! Updated a product'})

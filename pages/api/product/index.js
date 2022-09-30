@@ -78,18 +78,16 @@ const createProduct = async (req, res) => {
         if(result.role !== 'admin') return res.status(400).json({err: 'Authentication is not valid.'})
 
         const {title, en, brand, modelName, room, manager,
-            detailCapability, detailRestrictions, price1, price2,
-            price3, price4, price5, category, images} = req.body
+            detailCapability, detailRestrictions, category, images, nameRate} = req.body
 
         if(!title || !en || !brand || !modelName || !room || !manager||
-            !detailCapability || !detailRestrictions || !price1 || !price2 ||
-            !price3 || !price4 || !price5 || category === 'all' || images.length === 0)
-        return res.status(400).json({err: 'Please add all the fields.'})
+            !detailCapability || !detailRestrictions  || category === 'all' || images.length === 0 || nameRate.length === 0)
+        return res.status(400).json({err: 'Please add all the fields22.'})
 
 
         const newProduct = new Products({
             title : title,en, brand, modelName, room, manager, detailCapability, 
-            detailRestrictions, price1, price2, price3, price4, price5, category, images
+            detailRestrictions, category, images, nameRate
         })
         console.log(newProduct)
         await newProduct.save()

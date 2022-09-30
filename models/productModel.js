@@ -1,24 +1,6 @@
 import mongoose from 'mongoose'
 
 const productSchema = new mongoose.Schema({
-    // title: {
-    //     type: String,
-    //     required: true,
-    //     trim: true
-    // },
-    // price: {
-    //     type: Number,
-    //     required: true,
-    //     trim: true
-    // },
-    // description: {
-    //     type: String,
-    //     required: true
-    // },
-    // content: {
-    //     type: String,
-    //     required: true
-    // },
     images: {
         type: Array,
         required: true
@@ -31,14 +13,6 @@ const productSchema = new mongoose.Schema({
         type: Boolean,
         default: false
     },
-    // inStock: {
-    //     type: Number,
-    //     default: 0
-    // },
-    // sold: {
-    //     type: Number,
-    //     default: 0
-    // },
     title: {
         type: String,
         required: true,
@@ -79,31 +53,11 @@ const productSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
-    price1: {
-        type: Number,
-        required: true,
-        trim: true
+    nameRate: {
+        type: Array,
+        required: true
     },
-    price2: {
-        type: Number,
-        required: true,
-        trim: true
-    },
-    price3: {
-        type: Number,
-        required: true,
-        trim: true
-    },
-    price4: {
-        type: Number,
-        required: true,
-        trim: true
-    },
-    price5: {
-        type: Number,
-        required: true,
-        trim: true
-    },
+    
 }, {
     timestamps: true
 })

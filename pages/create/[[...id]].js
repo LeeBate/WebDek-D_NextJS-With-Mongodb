@@ -4,6 +4,7 @@ import {DataContext} from '../../store/GlobalState'
 import {imageUpload} from '../../utils/imageUpload'
 import {postData, getData, putData} from '../../utils/fetchData'
 import {useRouter} from 'next/router'
+import { v4 as uuidv4 } from 'uuid';
 
 const ProductsManager = () => {
     const initialState = {
@@ -15,20 +16,15 @@ const ProductsManager = () => {
         manager: '',
         detailCapability: '',
         detailRestrictions: '',
-        price1: 0,
-        price2: 0,
-        price3: 0,
-        price4: 0,
-        price5: 0,
         category: ''
     }
     
     const [product, setProduct] = useState(initialState)
     const {title, en, brand, modelName, room, manager,
-        detailCapability, detailRestrictions, price1, price2,
-        price3, price4, price5, category} = product
+        detailCapability, detailRestrictions, category} = product
 
     const [images, setImages] = useState([])
+    const [nameRate, setnameRate] = useState([])
 
     const {state, dispatch} = useContext(DataContext)
     const {categories, auth} = state
@@ -43,11 +39,13 @@ const ProductsManager = () => {
             getData(`product/${id}`).then(res => {
                 setProduct(res.product)
                 setImages(res.product.images)
+                setnameRate(res.product.nameRate)
             })
         }else{
             setOnEdit(false)
             setProduct(initialState)
             setImages([])
+            setnameRate([])
         }
     },[id])
 
@@ -99,9 +97,8 @@ const ProductsManager = () => {
         return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}})
 
         if(!title|| !en || !brand || !modelName || !room || !manager||
-            !detailCapability || !detailRestrictions || !price1 || !price2 ||
-            !price3 || !price4 || !price5 || category === 'all' || images.length === 0)
-        return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields.'}})
+            !detailCapability || !detailRestrictions || category === 'all' || images.length === 0)
+        return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields111.'}})
 
     
         dispatch({type: 'NOTIFY', payload: {loading: true}})
@@ -113,24 +110,50 @@ const ProductsManager = () => {
 
         let res;
         if(onEdit){
-            res = await putData(`product/${id}`, {...product, images: [...imgOldURL, ...media]}, auth.token)
+            res = await putData(`product/${id}`, {...product, nameRate:[...inputFields], images: [...imgOldURL, ...media]}, auth.token)
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
         }else{
-            res = await postData('product', {...product, images: [...imgOldURL, ...media]}, auth.token)
+            res = await postData('product', {...product, nameRate:[...inputFields],images: [...imgOldURL, ...media]}, auth.token)
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
         }
 
         return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-        console.log(res)
+        
     }
+
+    const [inputFields, setInputFields] = useState([
+        { idx: uuidv4(), ListName: '', price1: '',price2: '',price3: '',price4: '',price5: '', },
+      ]);
+    
+        const handleChangeInput2 = (idx, event) => {
+            
+            const newInputFields = inputFields.map(i => {
+              if(idx === i.idx) {
+                
+                i[event.target.name] = event.target.value
+             
+              }
+              return i;
+            })
+            setInputFields(newInputFields);
+        }
+        const handleAddFields = () => {
+            setInputFields([...inputFields, {idx: uuidv4(), ListName: '', price1: '',price2: '',price3: '',price4: '',price5: '', }])
+          }
+    
+          const handleRemoveFields = idx => {
+            const values  = [...inputFields];
+            values.splice(values.findIndex(value => value.idx === idx), 1);
+            setInputFields(values);
+          }
 
     return(
         <div className="products_manager">
             <Head>
                 <title>Products Manager</title>
             </Head>
-            <form className="row" onSubmit={handleSubmit}>
-                <div className="col-md-6">
+            <form className="col" onSubmit={handleSubmit}>
+                <div className="col-md-9">
                     
                     <input type="text" name="title" value={title}
                     placeholder="ชื่ออุปกรณ์ภาษาไทย" className="d-block my-2 w-100 p-2 text-gray-300"
@@ -168,33 +191,53 @@ const ProductsManager = () => {
                     value={detailRestrictions} onChange={handleChangeInput} />
 
                 <label >อัตราค่าบริการ : บาท/ตัวอย่าง</label>
-                    <div className="row g-5">
-                        <div className="col-sm">
-                        <label htmlFor="price1">อัตรา 1 (100%)</label>
-                            <input type="number" name="price1" value={price1} 
-                            className="form-control" onChange={handleChangeInput}/>
+                { inputFields.map(inputField => (
+                        <div key={inputField.idx} className="row g-8">
+
+                <div className='col-md'>
+                <input type="text"  name="ListName" 
+                                    placeholder="Name" className="d-block my-4 w-100 p-2"
+                                    value={inputField.ListName}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                </div>
+                <div className='col-sm'>
+                <input type="number" min="0" name="price1" 
+                                    placeholder="price1" className="d-block my-4 w-100 p-2"
+                                    value={inputField.Name}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                </div>
+                <div className='col-sm'>
+                <input type="number" min="0" name="price2" 
+                                    placeholder="price2" className="d-block my-4 w-100 p-2"
+                                    value={inputField.Name}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                </div>
+                <div className='col-sm'>
+                <input type="number" min="0" name="price3" 
+                                    placeholder="price3" className="d-block my-4 w-100 p-2"
+                                    value={inputField.Name}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                </div>
+                <div className='col-sm'>
+                <input type="number" min="0" name="price4" 
+                                    placeholder="price4" className="d-block my-4 w-100 p-2"
+                                    value={inputField.Name}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                </div>
+                <div className='col-sm'>
+                <input type="number" min="0" name="price5" 
+                                    placeholder="price5" className="d-block my-4 w-100 p-2"
+                                    value={inputField.Name}
+                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+
+                    </div>   
+                    <div className='flex flex-col'> 
+                            <button className='btn btn-danger mx-3 ' disabled={inputFields.length === 1} onClick={() => handleRemoveFields(inputField.idx)}>
+                            ลบช่อง
+                            </button>
                         </div>
-                        <div className="col-sm">
-                        <label htmlFor="price2">อัตรา 2 (75%)</label>
-                            <input type="number" name="price2" value={price2} 
-                            className="form-control" onChange={handleChangeInput}/>
                         </div>
-                        <div className="col-sm">
-                        <label htmlFor="price3">อัตรา 3 (50%)</label>
-                            <input type="number" name="price3" value={price3} 
-                            className="form-control" onChange={handleChangeInput}/>
-                        </div>
-                        <div className="col-sm">
-                        <label htmlFor="price3">อัตรา 4 (นักวิจัย)</label>
-                            <input type="number" name="price4" value={price4} 
-                            className="form-control" onChange={handleChangeInput}/>
-                        </div>
-                        <div className="col-sm">
-                        <label htmlFor="price5">อัตรา 5 (บัณฑิต)</label>
-                            <input type="number" name="price5" value={price5} 
-                            className="form-control" onChange={handleChangeInput}/>
-                        </div>
-                    </div>
+                        )) }     
 
                     <div className="input-group-prepend px-0 my-2">
                         <select name="category" id="category" value={category}
@@ -246,7 +289,9 @@ const ProductsManager = () => {
 
                
             </form>
-
+            <button className='btn btn-info mx-3 ' onClick={handleAddFields}>
+            เพิ่มช่อง
+            </button>
             
         </div>
     )
