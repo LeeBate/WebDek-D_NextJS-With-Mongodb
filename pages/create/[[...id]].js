@@ -24,7 +24,6 @@ const ProductsManager = () => {
         detailCapability, detailRestrictions, category} = product
 
     const [images, setImages] = useState([])
-    const [nameRate, setnameRate] = useState([])
 
     const {state, dispatch} = useContext(DataContext)
     const {categories, auth} = state
@@ -39,13 +38,13 @@ const ProductsManager = () => {
             getData(`product/${id}`).then(res => {
                 setProduct(res.product)
                 setImages(res.product.images)
-                setnameRate(res.product.nameRate)
+                setInputFields(res.product.nameRate)
             })
         }else{
             setOnEdit(false)
             setProduct(initialState)
             setImages([])
-            setnameRate([])
+            setInputFields([])
         }
     },[id])
 
@@ -125,11 +124,10 @@ const ProductsManager = () => {
         { idx: uuidv4(), ListName: '', price1: '',price2: '',price3: '',price4: '',price5: '', },
       ]);
     
-        const handleChangeInput2 = (idx, event) => {
+        const handleChangeInput2 = async(idx, event) => {
             
             const newInputFields = inputFields.map(i => {
               if(idx === i.idx) {
-                
                 i[event.target.name] = event.target.value
              
               }
@@ -203,31 +201,31 @@ const ProductsManager = () => {
                 <div className='col-sm'>
                 <input type="number" min="0" name="price1" 
                                     placeholder="price1" className="d-block my-4 w-100 p-2"
-                                    value={inputField.Name}
+                                    value={inputField.price1}
                                     onChange={event => handleChangeInput2(inputField.idx, event)} />
                 </div>
                 <div className='col-sm'>
                 <input type="number" min="0" name="price2" 
                                     placeholder="price2" className="d-block my-4 w-100 p-2"
-                                    value={inputField.Name}
+                                    value={inputField.price2}
                                     onChange={event => handleChangeInput2(inputField.idx, event)} />
                 </div>
                 <div className='col-sm'>
                 <input type="number" min="0" name="price3" 
                                     placeholder="price3" className="d-block my-4 w-100 p-2"
-                                    value={inputField.Name}
+                                    value={inputField.price3}
                                     onChange={event => handleChangeInput2(inputField.idx, event)} />
                 </div>
                 <div className='col-sm'>
                 <input type="number" min="0" name="price4" 
                                     placeholder="price4" className="d-block my-4 w-100 p-2"
-                                    value={inputField.Name}
+                                    value={inputField.price4}
                                     onChange={event => handleChangeInput2(inputField.idx, event)} />
                 </div>
                 <div className='col-sm'>
                 <input type="number" min="0" name="price5" 
                                     placeholder="price5" className="d-block my-4 w-100 p-2"
-                                    value={inputField.Name}
+                                    value={inputField.price5}
                                     onChange={event => handleChangeInput2(inputField.idx, event)} />
 
                     </div>   

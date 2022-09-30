@@ -43,8 +43,6 @@ const DetailProduct = (props) => {
                 <h2 className="text-uppercase">{product.title}</h2>
                 <h2 className="text-uppercase">{product.en}</h2>
                       
-                        
-
                         <table class="table table-bordered">
                             <thead>
                                 <tr>
@@ -64,10 +62,6 @@ const DetailProduct = (props) => {
                              }
                             </tbody>
                             </table>
-
-
-
-                
 
                 <div className="my-2">{product.detailCapability}</div>
                 <div className="my-2">

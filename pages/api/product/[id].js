@@ -47,14 +47,14 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Products.findOneAndUpdate({_id: id}, {
-            title : title.toLowerCase(),en, brand, modelName, room, manager, detailCapability, detailRestrictions, category, images, nameRate
+            en : en.toLowerCase(),title, brand, modelName, room, manager, detailCapability, detailRestrictions, category, images, nameRate
         })
 
         res.json({msg: 'Success! Updated a product'})
     } catch (err) {
         return res.status(500).json({err: err.message})
         
-    }console.log(err)
+    }
 }
 
 const deleteProduct = async(req, res) => {
