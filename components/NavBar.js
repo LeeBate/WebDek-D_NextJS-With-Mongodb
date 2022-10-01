@@ -70,6 +70,7 @@ function NavBar() {
 
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            
             <Link  href="/">
                 {/* <a className="navbar-brand">CALLLAB</a> */}
                 <Image src="/CALLLAB.png" alt="logo" width={150} height={70} />
@@ -77,28 +78,31 @@ function NavBar() {
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul className="navbar-nav p-1">
-                    <li className="nav-item">
-                        {/* <Link href="/cart">
-                            <a className={"nav-link" + isActive('/cart')}>
-                                <i className="fas fa-shopping-cart position-relative" aria-hidden="true">
-                                    <span className="position-absolute"
-                                    style={{
-                                        padding: '3px 6px',
-                                        background: '#ed143dc2',
-                                        borderRadius: '50%',
-                                        top: '-10px',
-                                        right: '-10px',
-                                        color: 'white',
-                                        fontSize: '14px'
-                                    }}>
-                                        {cart.length}
-                                    </span>
-                                </i> Cart
-                            </a>
-                        </Link> */}
-                    </li>
+                <ul className="navbar-nav ">
                     {
                         Object.keys(auth).length === 0 
                         ? <li className="nav-item">
@@ -112,6 +116,7 @@ function NavBar() {
                     }
                 </ul>
             </div>
+            
         </nav>
     )
 }
