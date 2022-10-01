@@ -25,7 +25,7 @@ const DetailProduct = (props) => {
             <div className="flex flex-row">
                 <div className='basis-4/10 ml-3'>
                 <img src={ product.images[tab].url } alt={ product.images[tab].url }
-                className="d-block img-thumbnail rounded mt-4 ml-3 max-w-screen-sm max-h-96" />
+                className="d-block img-thumbnail rounded mt-4 ml-3 max-w-xl max-h-fit" />
 
                 <div className="row mx-0" style={{cursor: 'pointer'}} >
 

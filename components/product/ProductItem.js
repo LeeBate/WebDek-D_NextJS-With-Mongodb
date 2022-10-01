@@ -64,7 +64,7 @@ const ProductItem = ({product, handleCheck}) => {
                     {product.title}
                 </h5>
                     
-                <div className="row justify-content-between mx-0">
+                <div className="row justify-content-between mx-0 ">
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
                 </div>
             </div>
