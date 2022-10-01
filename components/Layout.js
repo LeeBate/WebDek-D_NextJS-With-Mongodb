@@ -5,11 +5,11 @@ import Modal from './Modal'
 
 function Layout({children}) {
     return (
-        <div className="container-xxl">
+        <div >
             <NavBar />
             <Notify />
             <Modal />
-            {children}
+            <div className="container-fluid">{children}</div>
         </div>
     )
 }

@@ -22,11 +22,11 @@
     left: 0;
     width: 100%;
     height: 50%;
-    background: #fff8;
+    background: rgba(187, 186, 186, 0.574);
     text-align: center;
     font-weight: 400;
-    color: rgb(255, 140, 45);
-    transition: 0.3 ease-in-out;
+    color: rgba(66, 235, 190, 0.819);
+    transition: 0.8 ease-in-out;
 }
 
 .profile_page .avatar:hover span{

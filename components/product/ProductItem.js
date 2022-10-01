@@ -46,7 +46,6 @@ const ProductItem = ({product, handleCheck}) => {
             </>
         )
     }
-console.log(product)
     return(
         <div className="card" style={{ width: '18rem' }}>
             {

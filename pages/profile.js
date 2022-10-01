@@ -89,7 +89,7 @@ const Profile = () => {
     return( 
         <div className="profile_page">
             <Head>
-                <title>Profile</title>
+                <title>โปรไฟล์</title>
             </Head>
 
             <section className="row text-secondary my-3">
@@ -103,43 +103,43 @@ const Profile = () => {
                         alt="avatar" />
                         <span>
                             <i className="fas fa-camera"></i>
-                            <p>Change</p>
+                            <p>เปลี่ยน</p>
                             <input type="file" name="file" id="file_up"
                             accept="image/*" onChange={changeAvatar} />
                         </span>
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name">ชื่อ</label>
                         <input type="text" name="name" value={name} className="form-control"
-                        placeholder="Your name" onChange={handleChange} />
+                        placeholder="ชื่อของคุณ" onChange={handleChange} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">Email</label>
-                        <input type="text" name="email" defaultValue={auth.user.email} 
+                        <label htmlFor="email">อีเมล์</label>
+                        <input type="text" name="อีมเล์" defaultValue={auth.user.email} 
                         className="form-control" disabled={true} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="password">New Password</label>
+                        <label htmlFor="password">รหัสผ่านใหม่</label>
                         <input type="password" name="password" value={password} className="form-control"
-                        placeholder="Your new password" onChange={handleChange} />
+                        placeholder="รหัสผ่านใหม่ของคุณ" onChange={handleChange} />
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="cf_password">Confirm New Password</label>
+                        <label htmlFor="cf_password">ยืนยันรหัสผ่าน</label>
                         <input type="password" name="cf_password" value={cf_password} className="form-control"
-                        placeholder="Confirm new password" onChange={handleChange} />
+                        placeholder="ยืนยันรหัสผ่าน" onChange={handleChange} />
                     </div>
 
                     <button className="btn btn-info" disabled={notify.loading}
                     onClick={handleUpdateProfile}>
-                        Update
+                        อัปเดตโปรไฟล์
                     </button>
                 </div>
 
-                <div className="col-md-8">
+                {/* <div className="col-md-8">
                     <h3 className="text-uppercase">Orders</h3>
 
                     <div className="my-3 table-responsive">
@@ -190,7 +190,7 @@ const Profile = () => {
 
                         </table>
                     </div>
-                </div>
+                </div> */}
             </section>
         </div>
     )

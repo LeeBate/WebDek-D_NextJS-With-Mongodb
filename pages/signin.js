@@ -50,26 +50,26 @@ const Signin = () => {
     return(
       <div>
         <Head>
-          <title>Sign in Page</title>
+          <title>เข้าสู่ระบบ</title>
         </Head>
 
         <form className="mx-auto my-4" style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="exampleInputEmail1">Email address</label>
+            <label htmlFor="exampleInputEmail1">อีเมล์</label>
             <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
             name="email" value={email} onChange={handleChangeInput} />
-            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+            <small id="emailHelp" className="form-text text-muted">เราจะไม่แชร์อีเมลของคุณกับคนอื่นเด็ดขาด</small>
           </div>
           <div className="form-group">
-            <label htmlFor="exampleInputPassword1">Password</label>
+            <label htmlFor="exampleInputPassword1">รหัสผ่าน</label>
             <input type="password" className="form-control" id="exampleInputPassword1"
             name="password" value={password} onChange={handleChangeInput} />
           </div>
           
-          <button type="submit" className="btn btn-dark w-100">Login</button>
+          <button type="submit" className="btn btn-dark w-100   ">เข้าสู่ระบบ</button>
 
           <p className="my-2">
-            You don't have an account? <Link href="/register"><a style={{color: 'crimson'}}>Register Now</a></Link>
+            ถ้าคุณยังไม่มีบัญชี? <Link href="/register"><a style={{color: 'crimson'}}>สมัครที่นี้</a></Link>
           </p>
         </form>
       </div>

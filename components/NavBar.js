@@ -5,6 +5,8 @@ import {DataContext} from '../store/GlobalState'
 import Cookie from 'js-cookie'
 import Image from 'next/image'
 
+
+
 function NavBar() {
     const router = useRouter()
     const {state, dispatch} = useContext(DataContext)
@@ -31,7 +33,7 @@ function NavBar() {
         return(
             <>
             <Link href="/users">
-                <a className="dropdown-item">Users</a>
+                <a className="dropdown-item">ผู้ใช้</a>
             </Link>
             <Link href="/create">
                 <a className="dropdown-item">Products</a>
@@ -56,20 +58,21 @@ function NavBar() {
 
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <Link href="/profile">
-                        <a className="dropdown-item">Profile</a>
+                        <a className="dropdown-item">โปรไฟล์</a>
                     </Link>
                     {
                         auth.user.role === 'admin' && adminRouter()
                     }
                     <div className="dropdown-divider"></div>
-                    <button className="dropdown-item" onClick={handleLogout}>Logout</button>
+                    <button className="dropdown-item" onClick={handleLogout}>ออกระบบ</button>
                 </div>
+
             </li>
         )
     }
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary ">
             
             <Link  href="/">
                 {/* <a className="navbar-brand">CALLLAB</a> */}
@@ -80,18 +83,18 @@ function NavBar() {
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>
+            <li class="nav-item">
+            <a className='text-red-500' aria-current="page" href="/machinery">เครื่องมือวิทยาศาสตร์</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">บริการวิเคราะห์ทดสอบ</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">ติดตามผลการวิเคราะห์ทดสอบ</a>
+            </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown link
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-current="page" >
+            เกี่ยวกับเรา
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="#">Action</a></li>
