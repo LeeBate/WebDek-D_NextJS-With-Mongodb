@@ -44,17 +44,17 @@ const Categories = () => {
     return(
         <div className="col-md-6 mx-auto my-3">
             <Head>
-                <title>Categories</title>
+                <title>หมวดหมู่</title>
             </Head>
 
             <div className="input-group mb-3">
                 <input type="text" className="form-control"
-                placeholder="Add a new category" value={name}
+                placeholder="เพิ่มหมวดหมู่" value={name}
                 onChange={e => setName(e.target.value)} />
 
                 <button className="btn btn-secondary ml-1"
                 onClick={createCategory}>
-                    {id ? "Update": "Create"}
+                    {id ? "อัปเดตหมวดหมู่": "สร้างหมวดหมู่"}
                 </button>
             </div>
 

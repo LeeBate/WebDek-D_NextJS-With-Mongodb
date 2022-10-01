@@ -38,6 +38,11 @@ const productSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    roomen: {
+        type: String,
+        required: true,
+        trim: true
+    },
     manager: {
         type: String,
         required: true,

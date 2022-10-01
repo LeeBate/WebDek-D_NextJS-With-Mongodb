@@ -13,6 +13,7 @@ const ProductsManager = () => {
         brand: '',
         modelName: '',
         room: '',
+        roomen: '',
         manager: '',
         detailCapability: '',
         detailRestrictions: '',
@@ -20,7 +21,7 @@ const ProductsManager = () => {
     }
     
     const [product, setProduct] = useState(initialState)
-    const {title, en, brand, modelName, room, manager,
+    const {title, en, brand, modelName, room,roomen, manager,
         detailCapability, detailRestrictions, category} = product
 
     const [images, setImages] = useState([])
@@ -44,7 +45,7 @@ const ProductsManager = () => {
             setOnEdit(false)
             setProduct(initialState)
             setImages([])
-            setInputFields([])
+            
         }
     },[id])
 
@@ -95,7 +96,7 @@ const ProductsManager = () => {
         if(auth.user.role !== 'admin') 
         return dispatch({type: 'NOTIFY', payload: {error: 'Authentication is not valid.'}})
 
-        if(!title|| !en || !brand || !modelName || !room || !manager||
+        if(!title|| !en || !brand || !modelName || !room ||!roomen || !manager||
             !detailCapability || !detailRestrictions || category === 'all' || images.length === 0)
         return dispatch({type: 'NOTIFY', payload: {error: 'Please add all the fields111.'}})
 
@@ -148,85 +149,95 @@ const ProductsManager = () => {
     return(
         <div className="products_manager">
             <Head>
-                <title>Products Manager</title>
+                <title>การจัดการเครื่องมือ</title>
             </Head>
             <form className="col" onSubmit={handleSubmit}>
                 <div className="col-md-9">
                     
                     <input type="text" name="title" value={title}
-                    placeholder="ชื่ออุปกรณ์ภาษาไทย" className="d-block my-2 w-100 p-2 text-gray-300"
+                    placeholder="ชื่อเครื่องมือ (ภาษาไทย)" className=" w-[100%] h-[50px] my-2 p-2 border-cyan-500 border-2"
                     onChange={handleChangeInput} />
 
                     <input type="text" name="en" value={en}
-                    placeholder="ชื่ออุปกรณ์ภาษาอังกฤษ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    placeholder="ชื่อเครื่องมือ (ภาษาอังกฤษ)" className="text-capitalize d-block my-2 w-100 p-2 "
                     onChange={handleChangeInput} />
 
                     <input type="text" name="room" value={room}
-                    placeholder="ชื่อห้องปฎิบัติการ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    placeholder="ชื่อห้องปฎิบัติการ (ภาษาไทย)" className="d-block my-2 w-100 p-2 "
+                    onChange={handleChangeInput} />
+
+                    <input type="text" name="roomen" value={roomen}
+                    placeholder="ชื่อห้องปฎิบัติการ (ภาษาอังกฤษ)" className="d-block my-2 w-100 p-2 "
                     onChange={handleChangeInput} />
 
                     <input type="text" name="manager" value={manager}
-                    placeholder="ชื่อผู้ดูแลเครื่องมือ" className="d-block my-2 w-100 p-2 text-gray-300"
+                    placeholder="ชื่อผู้ดูแลเครื่องมือ" className="d-block my-2 w-100 p-2 "
                     onChange={handleChangeInput} />
                     
                     <div className="row gap-2">
                     <div className="col-sm">
                             <input type="text" name="modelName" placeholder="ยี่ห้อ" value={modelName} 
-                            className="d-block my w-100 p-2 text-gray-300" onChange={handleChangeInput}/>
+                            className="d-block my w-100 p-2 " onChange={handleChangeInput}/>
                     </div>
                     <div className="col-sm">
                             <input type="text" name="brand" placeholder="รุ่น" value={brand} 
-                            className="d-block my w-100 p-2 text-gray-300" onChange={handleChangeInput}/>
+                            className="d-block my w-100 p-2 " onChange={handleChangeInput}/>
                     </div>
                     </div>
                     
-                    <textarea name="detailCapability" id="detailCapability" cols="30" rows="4"
-                    placeholder="ความสามารถของเครื่องมือ" className="d-block my-4 w-100 p-2" 
+                    <div className='row gap-2'>
+                     <textarea name="detailCapability" id="detailCapability" cols="30" rows="4"
+                    placeholder="ความสามารถของเครื่องมือ" className="col-sm-6 my-2 p-2 border-cyan-500 border-2" 
                     value={detailCapability} onChange={handleChangeInput} />
 
                     <textarea name="detailRestrictions" id="detailRestrictions" cols="30" rows="6"
-                    placeholder="ข้อจำกัดของเครื่องมือ" className="d-block my-4 w-100 p-2" 
+                    placeholder="ข้อจำกัดของเครื่องมือ" className="col my-2 p-2 border-cyan-500 border-2"
                     value={detailRestrictions} onChange={handleChangeInput} />
 
+                    </div>
+                    
                 <label >อัตราค่าบริการ : บาท/ตัวอย่าง</label>
-                { inputFields.map(inputField => (
-                        <div key={inputField.idx} className="row g-8">
+                            <button className='btn btn-info mx-3 ' onClick={handleAddFields}>
+                                เพิ่มช่อง
+                            </button>
+                        { inputFields.map(inputField => (
+                                <div key={inputField.idx} className="row g-8">
 
-                <div className='col-md'>
-                <input type="text"  name="ListName" 
-                                    placeholder="Name" className="d-block my-4 w-100 p-2"
-                                    value={inputField.ListName}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
-                </div>
-                <div className='col-sm'>
-                <input type="number" min="0" name="price1" 
-                                    placeholder="price1" className="d-block my-4 w-100 p-2"
-                                    value={inputField.price1}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
-                </div>
-                <div className='col-sm'>
-                <input type="number" min="0" name="price2" 
-                                    placeholder="price2" className="d-block my-4 w-100 p-2"
-                                    value={inputField.price2}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
-                </div>
-                <div className='col-sm'>
-                <input type="number" min="0" name="price3" 
-                                    placeholder="price3" className="d-block my-4 w-100 p-2"
-                                    value={inputField.price3}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
-                </div>
-                <div className='col-sm'>
-                <input type="number" min="0" name="price4" 
-                                    placeholder="price4" className="d-block my-4 w-100 p-2"
-                                    value={inputField.price4}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
-                </div>
-                <div className='col-sm'>
-                <input type="number" min="0" name="price5" 
-                                    placeholder="price5" className="d-block my-4 w-100 p-2"
-                                    value={inputField.price5}
-                                    onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        <div className='col-md'>
+                        <input type="text"  name="ListName" 
+                                            placeholder="ชื่อรายการ" className="d-block my-4 w-100 p-2"
+                                            value={inputField.ListName}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        </div>
+                        <div className='col-sm'>
+                        <input type="number" min="0" name="price1" 
+                                            placeholder="อัตราที่ 1" className="d-block my-4 w-100 p-2"
+                                            value={inputField.price1}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        </div>
+                        <div className='col-sm'>
+                        <input type="number" min="0" name="price2" 
+                                            placeholder="อัตราที่ 2" className="d-block my-4 w-100 p-2"
+                                            value={inputField.price2}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        </div>
+                        <div className='col-sm'>
+                        <input type="number" min="0" name="price3" 
+                                            placeholder="อัตราที่ 3" className="d-block my-4 w-100 p-2"
+                                            value={inputField.price3}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        </div>
+                        <div className='col-sm'>
+                        <input type="number" min="0" name="price4" 
+                                            placeholder="อัตราที่ 4" className="d-block my-4 w-100 p-2"
+                                            value={inputField.price4}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
+                        </div>
+                        <div className='col-sm'>
+                        <input type="number" min="0" name="price5" 
+                                            placeholder="อัตราที่ 5" className="d-block my-4 w-100 p-2"
+                                            value={inputField.price5}
+                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
 
                     </div>   
                     <div className='flex flex-col'> 
@@ -240,7 +251,7 @@ const ProductsManager = () => {
                     <div className="input-group-prepend px-0 my-2">
                         <select name="category" id="category" value={category}
                         onChange={handleChangeInput} className="custom-select text-capitalize">
-                            <option value="all">All Products</option>
+                            <option value="all">งานเครื่องมือทั้งหมด</option>
                             {
                                 categories.map(item => (
                                     <option key={item._id} value={item._id}>
@@ -281,11 +292,7 @@ const ProductsManager = () => {
                             ))
                         }
                     </div>
-                        
-
                 </div>
-
-               
             </form>
             <button className='btn btn-info mx-3 ' onClick={handleAddFields}>
             เพิ่มช่อง

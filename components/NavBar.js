@@ -25,7 +25,7 @@ function NavBar() {
         Cookie.remove('refreshtoken', {path: 'api/auth/accessToken'})
         localStorage.removeItem('firstLogin')
         dispatch({ type: 'AUTH', payload: {} })
-        dispatch({ type: 'NOTIFY', payload: {success: 'Logged out!'} })
+        dispatch({ type: 'NOTIFY', payload: {success: 'ออกจากระบบ!'} })
         return router.push('/')
     }
 
@@ -33,13 +33,13 @@ function NavBar() {
         return(
             <>
             <Link href="/users">
-                <a className="dropdown-item">ผู้ใช้</a>
+                <a className="dropdown-item">จัดการผู้ใช้</a>
             </Link>
             <Link href="/create">
-                <a className="dropdown-item">Products</a>
+                <a className="dropdown-item">จัดการเครื่องมือ</a>
             </Link>
             <Link href="/categories">
-                <a className="dropdown-item">Categories</a>
+                <a className="dropdown-item">จัดการหมวดหมู่</a>
             </Link>
             </>
         )

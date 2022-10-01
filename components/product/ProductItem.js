@@ -47,7 +47,7 @@ const ProductItem = ({product, handleCheck}) => {
         )
     }
     return(
-        <div className="card" style={{ width: '18rem' }}>
+        <div className="card bg-sky-100/75" style={{ width: '18rem' }}>
             {
                 auth.user && auth.user.role === 'admin' &&
                 <input type="checkbox" checked={product.checked}
@@ -57,28 +57,22 @@ const ProductItem = ({product, handleCheck}) => {
             }
             <img className="card-img-top" src={product.images[0].url} alt={product.images[0].url} />
             <div className="card-body">
+                <h5 className="font-bold text-xl mb-2 text-capitalize" title={product.en}>
+                    {product.en}
+                </h5>
                 <h5 className="card-title text-capitalize" title={product.title}>
                     {product.title}
                 </h5>
-                <h5 className="card-title text-capitalize" title={product.en}>
-                    {product.en}
-                </h5>
-                <h6 className="text-danger">${product.price1}</h6>
-
-                <p className="card-text" title={product.brand}>
-                    {product.brand}
-                </p>
-                <p className="card-text" title={product.modelName}>
-                    {product.modelName}
-                </p>
-                <p>{product.room}</p>
-                
                     
                 <div className="row justify-content-between mx-0">
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
                 </div>
             </div>
         </div>
+    
+        
+
+        
     )
 }
 

@@ -22,53 +22,79 @@ const DetailProduct = (props) => {
                 <title>Detail Product</title>
             </Head>
 
-            <div className="col-md-6">
+            <div className="flex flex-row">
+                <div className='basis-4/10 ml-3'>
                 <img src={ product.images[tab].url } alt={ product.images[tab].url }
-                className="d-block img-thumbnail rounded mt-4 w-100"
-                style={{height: '350px'}} />
+                className="d-block img-thumbnail rounded mt-4 ml-3 max-w-screen-sm max-h-96" />
 
                 <div className="row mx-0" style={{cursor: 'pointer'}} >
 
                     {product.images.map((img, index) => (
                         <img key={index} src={img.url} alt={img.url}
-                        className={`img-thumbnail rounded ${isActive(index)}`}
+                        className={`img-thumbnail rounded ml-3 ${isActive(index)}`}
                         style={{height: '80px', width: '20%'}}
                         onClick={() => setTab(index)} />
                     ))}
-
+                    </div>
                 </div>
-            </div>
+            
 
-            <div className="col-md-6 mt-3">
-                <h2 className="text-uppercase">{product.title}</h2>
-                <h2 className="text-uppercase">{product.en}</h2>
-                      
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                <th scope="col">ลำดับ</th>
-                                <th scope="col">รายการ</th>
-                                <th scope="col">อัตรา1(100%)</th>
-                                <th scope="col">อัตรา2(75%)</th>
-                                <th scope="col">อัตรา3(50%)</th>
-                                <th scope="col">อัตรา4(นักวิจัย)</th>
-                                <th scope="col">อัตรา5(บัณฑิต)</th>
-                              
-                                </tr>
-                            </thead>
-                            <tbody > 
-                            {
-                        product.nameRate.map((obj, i) => <Tr {...obj} key={i} />)
-                             }
-                            </tbody>
-                            </table>
-
+            <div className="basis-6/10 mx-5 my-4">
+                <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
+                <h2 className="text font-light text-xl ">{product.title}</h2>
+                        
                 <div className="my-2">{product.detailCapability}</div>
                 <div className="my-2">
                     {product.detailRestrictions}
                 </div>
+                <br/>
+                
+                <table class="table table-bordered">
+                            <thead>
+                                <tr className='text-center'>
+                                <th >ลำดับ</th>
+                                <th >รายการ</th>
+                                <th >อัตรา1<br/>(100%)</th>
+                                <th >อัตรา2<br/>(75%)</th>
+                                <th >อัตรา3<br/>(50%)</th>
+                                <th >อัตรา4<br/>(นักวิจัย)</th>
+                                <th >อัตรา5<br/>(บัณฑิต)</th>
 
-                <button type="button" className="btn btn-dark d-block my-3 px-5"
+                                </tr>
+                            </thead>
+                            <tbody > 
+                            {
+                        product.nameRate.map((obj, i) => (
+                            <tr key={i} className="bg-gray-50 text-center">
+                                  <td >
+                                <span>{i+1 || "-"}</span>
+                            </td>
+                            <td >
+                                <span>{obj.ListName ||  "Unknown"}</span>
+                            </td>
+                            <td >
+                                <span>{obj.price1 ||  "-"}</span>
+                            </td>
+                            <td >
+                                <span>{obj.price2 ||  "-"}</span>
+                            </td>
+                            <td >
+                            <span>{obj.price3 ||  "-"}</span>
+                            </td>
+                             <td >
+                            <span>{obj.price4 ||  "-"}</span>
+                            </td>
+                            <td >
+                            <span>{obj.price5 || "-"}</span>
+                            </td>
+
+                        </tr>
+                            ) )}
+
+                            </tbody>
+                            </table>
+
+                <button type="button" className="my-3 px-10 bg-white border-2 rounded border-green-800  text-green-800 hover:bg-red-500 hover:text-black hover:border-red-500 "
                 >
                     จอง
                 </button>
@@ -82,6 +108,7 @@ const DetailProduct = (props) => {
                 </button>
 
             </div>
+        </div>
         </div>
     )
 }
@@ -97,42 +124,3 @@ export async function getServerSideProps({params: {id}}) {
 
 
 export default DetailProduct
-
-
-function Tr({idx, ListName, price1, price2, price3, price4, price5 }){
-
-   
-let i = 1  
-
-    return (
-        <tr className="bg-gray-50 text-center">
-        <td className="px-16 py-2 flex flex-row items-center">
-            <span className="text-center ml-2 font-semibold">{}</span>
-        </td>
-        <td>
-            <span></span>
-        </td>
-        <td >
-            <span>{ListName || "Unknown"}</span>
-        </td>
-        <td >
-            <span>{price1 || "-"}</span>
-        </td>
-        <td >
-            <span>{price2 || "-"}</span>
-        </td>
-        <td >
-        <span>{price3 || "-"}</span>
-        </td>
-         <td >
-        <span>{price4 || "-"}</span>
-        </td>
-        <td >
-        <span>{price5 || "-"}</span>
-        </td>
-     
-     
-    </tr>
-    )
-    i = i+1
-}
