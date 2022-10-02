@@ -197,9 +197,7 @@ const ProductsManager = () => {
                     </div>
                     
                 <label >อัตราค่าบริการ : บาท/ตัวอย่าง</label>
-                            <button className='btn btn-info mx-3 ' onClick={handleAddFields}>
-                                เพิ่มช่อง
-                            </button>
+                           
                         { inputFields.map(inputField => (
                                 <div key={inputField.idx} className="row g-8">
 

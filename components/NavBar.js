@@ -38,6 +38,9 @@ function NavBar() {
             <Link href="/create">
                 <a className="dropdown-item">จัดการเครื่องมือ</a>
             </Link>
+            <Link href="/createInfo">
+                <a className="dropdown-item">จัดการข่าวสาร</a>
+            </Link>
             <Link href="/categories">
                 <a className="dropdown-item">จัดการหมวดหมู่</a>
             </Link>
