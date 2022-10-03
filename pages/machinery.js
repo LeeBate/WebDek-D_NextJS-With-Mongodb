@@ -8,6 +8,7 @@ import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
+
 const machinery = (props) => {
   const [products, setProducts] = useState(props.products)
   
@@ -101,6 +102,9 @@ const machinery = (props) => {
         </button>
       }
     
+
+
+
     </div>
   )
 }

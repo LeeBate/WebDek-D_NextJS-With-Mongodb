@@ -3,17 +3,13 @@ import { useState, useContext, useEffect } from 'react'
 import {DataContext} from '../store/GlobalState'
 
 import { getData } from '../utils/fetchData'
-import ProductItem from '../components/product/ProductItem'
+import SlideItem from '../components/product/SlideItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import SwiperCore, { Autoplay } from "swiper";
 
-const index = (props) => {
+
+const machinery = (props) => {
   const [products, setProducts] = useState(props.products)
   
   const [isCheck, setIsCheck] = useState(false)
@@ -52,7 +48,7 @@ const index = (props) => {
             data: '', 
             id: product._id, 
             title: 'Delete all selected products?', 
-            type: 'DELETE_PRODUCT'
+            type: 'DELETE_SLIDE'
           })
       }
     })
@@ -64,53 +60,55 @@ const index = (props) => {
     setPage(page + 1)
     filterSearch({router, page: page + 1})
   }
-  SwiperCore.use([Autoplay]);
+
   return(
-    <center className=" " >
+    <div className="home_page">
       <Head>
         <title>เครื่องมือวิทยาศาสตร์</title>
       </Head>
 
-      {/* <Filter state={state} /> */}
+      <Filter state={state} />
 
-      {/* {
+      {
         auth.user && auth.user.role === 'admin' &&
         <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
           <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
           style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+
+          <button className="btn btn-danger ml-2"
+          data-toggle="modal" data-target="#exampleModal"
+          onClick={handleDeleteAll}>
+            DELETE ALL
+          </button>
         </div>
       }
-      <div className="products"> */}
- 
-      <Swiper
-    spaceBetween={20}
-    navigation={true}
-    
-    pagination={{ clickable: true }}
-    loop={true}
-    slidesPerView={1}
-    onSlideChange={() => console.log("slide change")}
-    autoplay={{
-      delay: 2000,
-    }}>
 
+      <div className="products">
         {
-         
-           products.map((product,index) => ( 
-            <>
-             <SwiperSlide key={index}  >
-            <Link href={"/"}><a><Image src={product.images[0].url}  width={1000} height={600}  /></a></Link>   
-            
-            
-            </SwiperSlide>
-            </>))
+          products.length === 0 
+          ? <h2>No Products</h2>
+
+          : products.map(product => (
+            <SlideItem key={product._id} product={product} handleCheck={handleCheck} />
+          ))
         }
-          </Swiper>
-      </center>
+      </div>
       
-   
+      {
+        props.result < page * 6 ? ""
+        : <button className="btn btn-outline-info d-block mx-auto mb-4"
+        onClick={handleLoadmore}>
+          Load more
+        </button>
+      }
+    
+
+
+
+    </div>
   )
 }
+
 
 export async function getServerSideProps({query}) {
   const page = query.page || 1
@@ -119,7 +117,7 @@ export async function getServerSideProps({query}) {
   const search = query.search || 'all'
 
   const res = await getData(
-    `slideimage?limit=${page * 100}&category=${category}&sort=${sort}&title=${search}`
+    `slideimage?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
   )
   // server side rendering
   return {
@@ -130,6 +128,6 @@ export async function getServerSideProps({query}) {
   }
 }
 
-export default index
+export default machinery
 
 
