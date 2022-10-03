@@ -1,5 +1,5 @@
 import connectDB from '../../../utils/connectDB'
-import Informdata from '../../../models/infoModel'
+import  Products  from '../../../models/SlideImg'
 import auth from '../../../middleware/auth'
 
 connectDB()
@@ -22,9 +22,9 @@ const getProduct = async (req, res) => {
     try {
         const { id } = req.query;
 
-        const product = await Informdata.findById(id)
+        const product = await Products.findById(id)
         if(!product) return res.status(400).json({err: 'This product does not exist.'})
-        
+
         res.json({ product })
 
     } catch (err) {
@@ -39,49 +39,34 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Authentication is not valid.'})
 
         const {id} = req.query
-        const {title,images,description} = req.body
+        const {title,en, brand, modelName, room,roomen, manager,
+            detailCapability, detailRestrictions, category, images, nameRate} = req.body
 
-        if(!title || images.length === 0 || !description)
+        if(!title || !en  || !brand || !modelName || !room ||!roomen || !manager||
+            !detailCapability || !detailRestrictions || category === 'all' || images.length === 0 || nameRate.length === 0)
         return res.status(400).json({err: 'Please add all the fields.'})
 
-        await Informdata.findOneAndUpdate({_id: id}, {
-             title: title, images, description
+        await Products.findOneAndUpdate({_id: id}, {
+            en : en.toLowerCase(),title, brand, modelName, room,roomen, manager, detailCapability, detailRestrictions, category, images, nameRate
         })
 
         res.json({msg: 'Success! Updated a product'})
     } catch (err) {
         return res.status(500).json({err: err.message})
-        
-    }
-}
 
-const deleteInform = async(req, res) => {
-    try {
-        const result = await auth(req, res)
-        
-        if(result.role !== 'admin') 
-        return res.status(400).json({err: 'Authentication is not valid.'})
-
-        const {id} = req.query
-        
-        await Informdata.findByIdAndDelete(id)
-        res.json({msg: 'Deleted a product.'})
-
-    } catch (err) {
-        return res.status(500).json({err: err.message})
     }
 }
 
 const deleteProduct = async(req, res) => {
     try {
         const result = await auth(req, res)
-        
+
         if(result.role !== 'admin') 
         return res.status(400).json({err: 'Authentication is not valid.'})
 
         const {id} = req.query
 
-        await Informdata.findByIdAndDelete(id)
+        await Products.findByIdAndDelete(id)
         res.json({msg: 'Deleted a product.'})
 
     } catch (err) {

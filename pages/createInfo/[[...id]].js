@@ -130,7 +130,7 @@ const NewsManager = () => {
                     </div>
 
                     <button type="submit" className="btn btn-info my-2 px-4">
-                        {onEdit ? 'Update': 'Create'}
+                        {onEdit ? 'แก้ไข': 'สร้าง'}
                     </button>
 
                 </div>

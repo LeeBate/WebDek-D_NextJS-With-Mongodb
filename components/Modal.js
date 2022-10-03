@@ -39,7 +39,28 @@ const Modal = () => {
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
             return router.push('/machinery')
         })
+    }    
+    
+    const deleteProduct1 = (item) => {
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
+        deleteData(`productNews/${item.id}`, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+            dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+            return router.push('/Inform')
+        })
+    } 
+
+    const deleteSlide = (item) => {
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
+        deleteData(`slideimage/${item.id}`, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+            dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+            return router.push('/manageslide')
+        })
     }
+
 
     const handleSubmit = () => {
         if(modal.length !== 0){
@@ -53,6 +74,10 @@ const Modal = () => {
                 if(item.type === 'ADD_CATEGORIES') deleteCategories(item)
         
                 if(item.type === 'DELETE_PRODUCT') deleteProduct(item)
+
+                if(item.type === 'DELETE_PRODUCTS') deleteProduct1(item)
+
+                if(item.type === 'DELETE_SLIDE') deleteSlide(item)
         
                 dispatch({ type: 'ADD_MODAL', payload: [] })
             }
@@ -72,11 +97,11 @@ const Modal = () => {
                     </button>
                 </div>
                 <div className="modal-body">
-                    Do you want to delete this item?
+                    ต้องการลบข้อมูลใช่ไหม?
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleSubmit}>Yes</button>
-                    <button type="button" className="btn btn-primary" data-dismiss="modal">Cancel</button>
+                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleSubmit}>ยืนยัน</button>
+                    <button type="button" className="btn btn-primary" data-dismiss="modal">ยกเลิก</button>
                 </div>
                 </div>
             </div>

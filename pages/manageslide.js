@@ -3,14 +3,15 @@ import { useState, useContext, useEffect } from 'react'
 import {DataContext} from '../store/GlobalState'
 
 import { getData } from '../utils/fetchData'
-import ProductItem from '../components/product/ProductItem'
+import SlideItem from '../components/product/SlideItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
+
 const machinery = (props) => {
   const [products, setProducts] = useState(props.products)
-  
+
   const [isCheck, setIsCheck] = useState(false)
   const [page, setPage] = useState(1)
   const router = useRouter()
@@ -46,8 +47,8 @@ const machinery = (props) => {
           deleteArr.push({
             data: '', 
             id: product._id, 
-            title: 'ลบ?', 
-            type: 'DELETE_PRODUCT'
+            title: 'Delete all selected products?', 
+            type: 'DELETE_SLIDE'
           })
       }
     })
@@ -88,11 +89,11 @@ const machinery = (props) => {
           ? <h2>No Products</h2>
 
           : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+            <SlideItem key={product._id} product={product} handleCheck={handleCheck} />
           ))
         }
       </div>
-      
+
       {
         props.result < page * 6 ? ""
         : <button className="btn btn-outline-info d-block mx-auto mb-4"
@@ -100,7 +101,10 @@ const machinery = (props) => {
           Load more
         </button>
       }
-    
+
+
+
+
     </div>
   )
 }
@@ -113,7 +117,7 @@ export async function getServerSideProps({query}) {
   const search = query.search || 'all'
 
   const res = await getData(
-    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    `slideimage?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
   )
   // server side rendering
   return {
@@ -125,5 +129,3 @@ export async function getServerSideProps({query}) {
 }
 
 export default machinery
-
-

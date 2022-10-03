@@ -35,6 +35,9 @@ function NavBar() {
             <Link href="/users">
                 <a className="dropdown-item">จัดการผู้ใช้</a>
             </Link>
+            <Link href="/createslide">
+                <a className="dropdown-item">จัดการสไลด์บาร์</a>
+            </Link>
             <Link href="/create">
                 <a className="dropdown-item">จัดการเครื่องมือ</a>
             </Link>
@@ -42,7 +45,7 @@ function NavBar() {
                 <a className="dropdown-item">จัดการข่าวสาร</a>
             </Link>
             <Link href="/categories">
-                <a className="dropdown-item">จัดการหมวดหมู่</a>
+                <a className="dropdown-item">จัดการหมวดหมู่เครื่องมือ</a>
             </Link>
             </>
         )
@@ -94,6 +97,9 @@ function NavBar() {
             </li>
             <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="#">ติดตามผลการวิเคราะห์ทดสอบ</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/Inform">ข่าวสาร</a>
             </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-current="page" >

@@ -3,12 +3,12 @@ import { useState, useContext, useEffect } from 'react'
 import {DataContext} from '../store/GlobalState'
 
 import { getData } from '../utils/fetchData'
-import ProductItem from '../components/product/ProductItem'
+import InformItem from '../components/product/InformItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
-const machinery = (props) => {
+const Inform = (props) => {
   const [products, setProducts] = useState(props.products)
   
   const [isCheck, setIsCheck] = useState(false)
@@ -46,8 +46,8 @@ const machinery = (props) => {
           deleteArr.push({
             data: '', 
             id: product._id, 
-            title: 'ลบ?', 
-            type: 'DELETE_PRODUCT'
+            title: 'ลบทั้งหมด', 
+            type: 'DELETE_PRODUCTS'
           })
       }
     })
@@ -63,10 +63,10 @@ const machinery = (props) => {
   return(
     <div className="home_page">
       <Head>
-        <title>เครื่องมือวิทยาศาสตร์</title>
+        <title>ข่าวสาร</title>
       </Head>
-
-      <Filter state={state} />
+      <h1>ข่าวประชาสัมพันธ์</h1>
+      {/* <Filter state={state} /> */}
 
       {
         auth.user && auth.user.role === 'admin' &&
@@ -88,7 +88,7 @@ const machinery = (props) => {
           ? <h2>No Products</h2>
 
           : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+            <InformItem key={product._id} product={product} handleCheck={handleCheck} />
           ))
         }
       </div>
@@ -113,7 +113,7 @@ export async function getServerSideProps({query}) {
   const search = query.search || 'all'
 
   const res = await getData(
-    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    `productNews?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
   )
   // server side rendering
   return {
@@ -124,6 +124,6 @@ export async function getServerSideProps({query}) {
   }
 }
 
-export default machinery
+export default Inform
 
 

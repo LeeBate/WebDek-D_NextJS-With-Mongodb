@@ -8,5 +8,9 @@ module.exports = {
       "CLOUD_UPDATE_PRESET": "my-uploads",
       "CLOUD_NAME": "dvktk1a8x",
       "CLOUD_API": "https://api.cloudinary.com/v1_1/dvktk1a8x/image/upload"
+    },
+    images: {
+      domains: ['www.borntodev.com'],
+      domains: ['res.cloudinary.com'],
+    },
   }
-}
