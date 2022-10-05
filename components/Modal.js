@@ -3,7 +3,7 @@ import { DataContext } from '../store/GlobalState'
 import { deleteItem } from '../store/Actions'
 import { deleteData } from '../utils/fetchData'
 import {useRouter} from 'next/router'
-
+import Swal from "sweetalert2"
 
 const Modal = () => {
     const {state, dispatch} = useContext(DataContext)
@@ -21,7 +21,7 @@ const Modal = () => {
         })
     }
 
-    const deleteCategories = (item) => {
+    const  deleteCategories =   (item) => {
         deleteData(`categories/${item.id}`, auth.token)
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
@@ -84,6 +84,43 @@ const Modal = () => {
         }
     }
 
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: 'btn btn-success',
+          cancelButton: 'btn btn-danger'
+        },
+        buttonsStyling: false
+      })
+
+    //   swalWithBootstrapButtons.fire({
+    //     title: 'Are you sure?',
+    //     text: "You won't be able to revert this!",
+    //     icon: 'warning',
+    //     showCancelButton: true,
+    //     confirmButtonText: 'Yes, delete it!',
+    //     cancelButtonText: 'No, cancel!',
+    //     reverseButtons: true
+    //   }).then((result) => {
+    //     if (result.isConfirmed) {
+    //         handleSubmit()
+    //       swalWithBootstrapButtons.fire(
+    //         'Deleted!',
+    //         'Your file has been deleted.',
+    //         'success'
+    //       )
+    //     } else if (
+    //       /* Read more about handling dismissals below */
+    //       result.dismiss === Swal.DismissReason.cancel
+    //     ) {
+    //       swalWithBootstrapButtons.fire(
+    //         'Cancelled',
+    //         'Your imaginary file is safe :)',
+    //         'error'
+    //       )
+    //     }
+    //   })
+
+
     return(
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
@@ -100,12 +137,15 @@ const Modal = () => {
                     ต้องการลบข้อมูลใช่ไหม?
                 </div>
                 <div className="modal-footer">
-                    <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={handleSubmit}>ยืนยัน</button>
-                    <button type="button" className="btn btn-primary" data-dismiss="modal">ยกเลิก</button>
+                    <button type="button" className="bg-green-500 hover:bg-green-400 px-4 text-white py-2 rounded-3xl" data-dismiss="modal" onClick={handleSubmit}>ยืนยัน</button>
+                    <button type="button" className="bg-red-500 hover:bg-red-400 px-4 text-white py-2 rounded-3xl" data-dismiss="modal">ยกเลิก</button>
                 </div>
                 </div>
             </div>
         </div>
+
+
+
     )
 }
 

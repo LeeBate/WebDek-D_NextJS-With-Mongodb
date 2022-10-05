@@ -5,12 +5,13 @@ import valid from '../utils/valid'
 import {DataContext} from '../store/GlobalState'
 import {postData} from '../utils/fetchData'
 import { useRouter } from 'next/router'
+import Cookie from 'js-cookie'
 
 
 const Register = () => {
-  const initialState = { name: '', email: '', password: '', cf_password: '' }
+  const initialState = { name: '', email: '', password: '', cf_password: '',avatar:'https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png' }
   const [userData, setUserData] = useState(initialState)
-  const { name, email, password, cf_password } = userData
+  const { name, email, password, cf_password, avatar } = userData
 
   const {state, dispatch} = useContext(DataContext)
   const { auth } = state
@@ -34,7 +35,24 @@ const Register = () => {
     
     if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
 
-    return dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+
+   
+      dispatch({ type: 'AUTH', payload: {
+      token: res.access_token,
+      user: res.user
+    }})
+    
+
+    Cookie.set('refreshtoken', res.refresh_token, {
+      path: 'api/auth/accessToken',
+      expires: 7
+    })
+
+    localStorage.setItem('firstLogin', true)
+    
+return dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+
+
   }
 
   useEffect(() => {
@@ -67,14 +85,16 @@ const Register = () => {
             name="password" value={password} onChange={handleChangeInput} />
           </div>
 
+          <input type="text" hidden value={avatar} name="avatar" ></input>
+
           <div className="form-group">
             <label htmlFor="exampleInputPassword2">ยืนยันรหัสผ่าน</label>
             <input type="password" className="form-control" id="exampleInputPassword2"
-            name="cf_password" value={cf_password} onChange={handleChangeInput} />
+            name="cf_password" value={cf_password}   onChange={handleChangeInput} />
           </div>
-          <Link href="/index">
+         
             <button type="submit" className="btn btn-dark w-100">สมัครสมาชิก</button>
-          </Link>
+         
           
 
           <p className="my-2">

@@ -1,16 +1,16 @@
-import React, { useContext } from 'react'
+import { useState } from 'react'
+import React, { useContext  } from 'react'
 import Link from 'next/link'
 import {useRouter} from 'next/router'
 import {DataContext} from '../store/GlobalState'
 import Cookie from 'js-cookie'
 import Image from 'next/image'
 
-
-
 function NavBar() {
     const router = useRouter()
     const {state, dispatch} = useContext(DataContext)
     const { auth, cart } = state
+
 
 
     const isActive = (r) => {
@@ -57,9 +57,12 @@ function NavBar() {
                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src={auth.user.avatar} alt={auth.user.avatar} 
                     style={{
-                        borderRadius: '50%', width: '30px', height: '30px',
-                        transform: 'translateY(-3px)', marginRight: '3px'
-                    }} /> {auth.user.name}
+                        borderRadius: '50%', width: '50px', height: '50px',
+                        transform: 'translateY(-3px)', marginLeft: '30px'
+                    }} />
+                    
+                    {auth.user.name}
+                    
                 </a>
 
                 <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -76,46 +79,30 @@ function NavBar() {
             </li>
         )
     }
+    
 
-    return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary ">
-            
-            <Link  href="/">
-                {/* <a className="navbar-brand">CALLLAB</a> */}
-                <Image src="/CALLLAB.png" alt="logo" width={150} height={70} />
-            </Link>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-            <li class="nav-item">
-            <a className='text-red-500' aria-current="page" href="/machinery">เครื่องมือวิทยาศาสตร์</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">บริการวิเคราะห์ทดสอบ</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">ติดตามผลการวิเคราะห์ทดสอบ</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/Inform">ข่าวสาร</a>
-            </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-current="page" >
-            เกี่ยวกับเรา
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-            <div className="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
-                <ul className="navbar-nav ">
-                    {
+    return(
+        
+	<div class="bg-indigo-900 bg-opacity-100 shadow">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-1">
+      <Link  href="/" >
+            <Image src="/images/CALLLAB.png" alt="logo" width={150} height={100} className="cursor-pointer " />
+      </Link>
+
+        <div class="hidden sm:flex sm:items-center">
+          <a href="/machinery" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">เครื่องมือวิทยาศาสตร์</a>
+          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">บริการวิเคราะห์ทดสอบ</a>
+          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">ติดตามผลการวิเคราะห์ทดสอบ</a>
+          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">เกี่ยวกับเรา</a>
+          
+          <Link href={"/"}><a><Image src={"/images/en.png"} className="rounded px-2" width={26} height={26}/></a></Link>
+          <Link href={"/"}><a><Image src={"/images/th.png"} className="rounded" width={30} height={30}/></a></Link>
+        </div>
+
+        <div class="hidden sm:flex sm:items-center">
+        <ul className="text-gray-50 text-sm font-semibold ">
+                     {
                         Object.keys(auth).length === 0 
                         ? <li className="nav-item">
                             <Link href="/signin">
@@ -127,9 +114,12 @@ function NavBar() {
                         : loggedRouter()
                     }
                 </ul>
-            </div>
-            
-        </nav>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
     )
 }
 

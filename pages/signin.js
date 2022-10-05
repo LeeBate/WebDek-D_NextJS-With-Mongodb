@@ -33,8 +33,9 @@ const Signin = () => {
     dispatch({ type: 'AUTH', payload: {
       token: res.access_token,
       user: res.user
+      
     }})
-
+console.log(res.user)
     Cookie.set('refreshtoken', res.refresh_token, {
       path: 'api/auth/accessToken',
       expires: 7

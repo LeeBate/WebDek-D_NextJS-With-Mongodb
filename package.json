@@ -9,7 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.7.0",
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.8",
     "bcrypt": "^5.0.0",
+    "emailjs": "^4.0.1",
     "js-cookie": "^2.2.1",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.10.14",
@@ -17,6 +22,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-responsive-carousel": "^3.2.23",
+    "sweetalert2": "^11.4.37",
     "swiper": "^8.4.2",
     "uuid": "^9.0.0"
   },

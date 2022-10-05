@@ -1,20 +1,35 @@
-const Toast = ({msg, handleShow, bgColor}) => {
-    return(
-        <div className={`toast show position-fixed text-light ${bgColor}`}
-        style={{ top: '5px', right: '5px', zIndex: 9, minWidth: '280px' }} >
+import {useContext} from 'react'
+import {DataContext} from '../store/GlobalState'
+import Swal from "sweetalert2"
+const Toast = ({msg, handleShow, bgColor}) => { 
 
-            <div className={`toast-header ${bgColor} text-light`}>
-                <strong className="mr-auto text-light">{msg.title}</strong>
+const {state, dispatch} = useContext(DataContext)
 
-                <button type="button" className="ml-2 mb-1 close text-light" 
-                data-dismiss="toast" style={{ outline: 'none'}} 
-                onClick={handleShow}>x</button>
-            </div>
-
-            <div className="toast-body">{msg.msg}</div>
-
-        </div>
-    )
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.addEventListener('mouseenter', Swal.stopTimer)
+              toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+          })
+          if(true)
+          Toast.fire({
+            icon: bgColor=="bg-danger" ?'error':'success',
+            title: msg.title+" :  "+msg.msg
+          }).then(()=>{
+            dispatch({ type: 'NOTIFY', payload: {} })
+          });
+    
+    return(<div>
+       
+          
+        
+    
+    </div>)
 }
 
 export default Toast
