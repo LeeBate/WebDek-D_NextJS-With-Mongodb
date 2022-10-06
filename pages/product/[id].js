@@ -17,17 +17,21 @@ const DetailProduct = (props) => {
     }
 
     return(
+        <div>
         <div className="row detail_page">
             <Head>
                 <title>Detail Product</title>
             </Head>
-
-            <div className="flex flex-row">
+            <div className="text-capitalize font-bold text-3xl mx-[80px] my-5">
+            <h1>{product.en}</h1>
+            <h2 className="text font-light text-xl ">{product.title}</h2>
+            </div>
+            <div className="flex flex-row bg-indigo-100 mx-24 rounded-xl">
                 <div className='basis-4/10 ml-3'>
                 <img src={ product.images[tab].url } alt={ product.images[tab].url }
-                className="d-block img-thumbnail rounded mt-4 ml-3 max-w-xl max-h-fit" />
+                className="d-block img-thumbnail rounded-xl mt-4 ml-3 max-w-xl max-h-fit" />
 
-                <div className="row mx-0" style={{cursor: 'pointer'}} >
+                <div className="row mx-0 mb-4 mt-3" style={{cursor: 'pointer'}} >
 
                     {product.images.map((img, index) => (
                         <img key={index} src={img.url} alt={img.url}
@@ -40,16 +44,49 @@ const DetailProduct = (props) => {
             
 
             <div className="basis-6/10 mx-5 my-4">
-                <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
-                <h2 className="text font-light text-xl ">{product.title}</h2>
-                        
-                <div className="my-2">{product.detailCapability}</div>
-                <div className="my-2">
-                    {product.detailRestrictions}
+                {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
+                <h2 className="text font-light text-xl ">{product.title}</h2> */}
+                <div className="flex flex-col">
+                    <div className="flex flex-row">
+                        <p className="my-2 font-bold">ยี่ห้อ : </p><p className="my-2 ml-[8px]">{product.brand}</p>
+                    </div>
+                    <div className="flex flex-row">
+                        <p className="my-2 font-bold">รุ่น : </p><p className="my-2 ml-[8px]">{product.modelName}</p>
+                    </div>
                 </div>
-                <br/>
+                <div className="flex flex-col">
+                <div className="flex flex-row">
+                <p className="my-2 font-bold">ห้องปฏิบัติการ (ภาษาไทย) : </p><p className="my-2 ml-[8px]">{product.room}</p>
+                </div>
+                <div className="flex flex-row">
+                <p className="my-2 font-bold">ห้องปฏิบัติการ (ภาษาอังกฤษ) : </p><p className="my-2 ml-[8px]">{product.roomen}</p>
+                </div>
+                <div className="flex flex-row">
+                <p className="my-2 font-bold">ผู้ดูแลเครื่องมือ : </p><p className="my-2 ml-[8px]">{product.manager}</p>
+                </div>
+                <p className="my-2 font-bold">รายละเอียดเครื่องมือ :</p>
                 
-                <table class="table table-bordered">
+                </div>
+                <div className="grid gap-4 grid-cols-2 grid-flow-col">
+                    <div>
+                <p className="font-semibold">ความสามารถของเครื่องมือ</p>
+                <p>{product.detailCapability}</p>
+                    </div>
+                    <div>
+                <p className="font-semibold">ข้อจำกัดของเครื่องมือ</p> 
+                <p>{product.detailRestrictions}</p>
+                    </div>
+                </div>
+               
+                <br/>
+            </div>
+            
+        </div>
+        <div className="text-2xl mx-24 mt-14 mb-2">
+            <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
+        </div>
+        <div className="flex items-center w-full mx-24">
+        <table class="table table-bordered">
                             <thead>
                                 <tr className='text-center'>
                                 <th >ลำดับ</th>
@@ -92,22 +129,23 @@ const DetailProduct = (props) => {
                             ) )}
 
                             </tbody>
-                            </table>
-
-                <button type="button" className="my-3 px-10 bg-white border-2 rounded border-green-800  text-green-800 hover:bg-red-500 hover:text-black hover:border-red-500 "
-                >
-                    จอง
+                            </table>     
+            </div> 
+        </div>
+        <div className="flex mb-5  justify-between items-center">
+            
+             <p className="ml-[80px]">หมายเหตุ : เฉพาะเจ้าหน้าที่ทดสอบ ติดต่อสอบถามโดยตรงกับเจ้าหน้าที่</p>
+             <div className="mr-[72px]">
+                <button type="button" className="px-4 py-2 rounded-xl bg-indigo-900 text-white border-2 mr-2 ml-[265px]">
+                ติดต่อขอรับบริการ
                 </button>
-                <button type="button" className="btn btn-dark d-block my-3 px-5"
-                onClick={() => dispatch(addToCart(product, cart))} >
-                    จ่าย
+                <button type="button" className="px-4 py-2 rounded-xl bg-green-700 text-white border-2 mr-2">
+                จองเข้าใช้เครื่องมือ
                 </button>
-                <button type="button" className="btn btn-dark d-block my-3 px-5"
-                 >
-                    คำนวณอัตราค่าบริการ
-                </button>
-
-            </div>
+                <button type="button" className="px-4 py-2 rounded-xl bg-gray-400 text-white border-2 mr-2">
+                รายการโปรด
+             </button>
+             </div>
         </div>
         </div>
     )

@@ -129,8 +129,8 @@ const NewsManager = () => {
                     value={description} onChange={handleChangeInput} />
                     </div>
 
-                    <button type="submit" className="btn btn-info my-2 px-4">
-                        {onEdit ? 'แก้ไข': 'สร้าง'}
+                    <button type="submit" className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded">
+                        {onEdit ? 'อัปเดต': 'สร้าง'}
                     </button>
 
                 </div>

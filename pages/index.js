@@ -67,7 +67,7 @@ const index = (props) => {
   return(
     <center className=" " >
       <Head>
-        <title>เครื่องมือวิทยาศาสตร์</title>
+        <title>Index</title>
       </Head>
 
       {/* <Filter state={state} /> */}
@@ -97,11 +97,13 @@ const index = (props) => {
 
            products.map((product,index) => ( 
             <>
+            <div >
              <SwiperSlide key={index}  >
-            <Link href={"/"}><a><Image src={product.images[0].url}  width={1000} height={600}  /></a></Link>   
+            <Link href={"/"}><a><Image src={product.images[0].url}  width={800} height={400} className="pt-5" /></a></Link>   
 
 
             </SwiperSlide>
+            </div>
             </>))
         }
           </Swiper>

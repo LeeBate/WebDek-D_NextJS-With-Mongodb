@@ -154,7 +154,7 @@ const SlideManager = () => {
                 <title>การจัดการเครื่องมือ</title>
             </Head>
             <form className="col" onSubmit={handleSubmit}>
-                <div className=" flex flex-col  ">
+                <div className=" col-md-9  ">
 
                     <input type="text" name="title" value={title}
                     placeholder="ชื่อเครื่องมือ (ภาษาไทย)" className=" w-[100%] h-[50px] my-2 p-2 border-cyan-500 border-2"
@@ -258,7 +258,7 @@ const SlideManager = () => {
                     </div> */}
 
 
-<div className="col-md-6 my-4">
+                <div className="col-md-6 my-4">
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
                             <span className="input-group-text">Upload</span>
@@ -291,8 +291,8 @@ const SlideManager = () => {
 
 
 
-                    <button type="submit" className="px-5 py-2 bg-green-500 text-white rounded-full hover:border-2 w-[9rem] hover:text-green-500 hover:border-green-500 hover:bg-red-50">
-                        {onEdit ? 'Update': 'Create'}
+                    <button type="submit" className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded">
+                        {onEdit ? 'อัพเดต': 'สร้าง'}
                     </button>
 
                 </div>

@@ -68,7 +68,7 @@ const index = (props) => {
   return(
     <center className=" " >
       <Head>
-        <title>เครื่องมือวิทยาศาสตร์</title>
+        <title>หน้าแรก</title>
       </Head>
 
       {/* <Filter state={state} /> */}
@@ -83,15 +83,15 @@ const index = (props) => {
       <div className="products"> */}
 
       <Swiper
-    spaceBetween={20}
-    navigation={true}
+          spaceBetween={20}
+          navigation={true}
 
-    pagination={{ clickable: true }}
-    loop={true}
-    slidesPerView={1}
-    onSlideChange={() => console.log("slide change")}
-    autoplay={{
-      delay: 2000,
+          pagination={{ clickable: true }}
+          loop={true}
+          slidesPerView={1}
+          onSlideChange={() => console.log("slide change")}
+          autoplay={{
+            delay: 2000,
     }}>
 
         {

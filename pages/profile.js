@@ -91,9 +91,9 @@ const Profile = () => {
             <Head>
                 <title>โปรไฟล์</title>
             </Head>
-
-            <section className=" flex items-center justify-center   row text-secondary my-3 ">
-                <div className="col-md-4">
+            
+            <section className=" flex items-center justify-center row text-secondary my-3">
+                <div className="col-md-3">
                     <h3 className="text-center text-uppercase">
                         {auth.user.role === 'user' ? 'User Profile' : 'Admin Profile'}
                     </h3>
@@ -109,7 +109,7 @@ const Profile = () => {
                         </span>
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group ">
                         <label htmlFor="name">ชื่อ</label>
                         <input type="text" name="name" value={name} className="form-control"
                         placeholder="ชื่อของคุณ" onChange={handleChange} />
@@ -133,7 +133,7 @@ const Profile = () => {
                         placeholder="ยืนยันรหัสผ่าน" onChange={handleChange} />
                     </div>
 
-                    <button className="btn btn-info" disabled={notify.loading}
+                    <button className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded" disabled={notify.loading}
                     onClick={handleUpdateProfile}>
                         อัปเดตโปรไฟล์
                     </button>
@@ -192,6 +192,7 @@ const Profile = () => {
                     </div>
                 </div> */}
             </section>
+            
         </div>
     )
 }

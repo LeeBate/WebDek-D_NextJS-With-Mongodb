@@ -83,24 +83,27 @@ function NavBar() {
 
     return(
         
-	<div class="bg-indigo-900 bg-opacity-100 shadow">
-    <div class="container mx-auto px-4">
-      <div class="flex items-center justify-between py-1">
+	<div className="bg-indigo-900 bg-opacity-100 shadow">
+    <div className="container mx-auto px-4">
+      <div className="flex items-center justify-between py-1">
       <Link  href="/" >
             <Image src="/images/CALLLAB.png" alt="logo" width={150} height={100} className="cursor-pointer " />
       </Link>
 
-        <div class="hidden sm:flex sm:items-center">
-          <a href="/machinery" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">เครื่องมือวิทยาศาสตร์</a>
-          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">บริการวิเคราะห์ทดสอบ</a>
-          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">ติดตามผลการวิเคราะห์ทดสอบ</a>
-          <a href="#" class="text-white text-xl font-semibold hover:text-purple-600 mr-4">เกี่ยวกับเรา</a>
+        <div className="hidden sm:flex sm:items-center">
+          <a href="/machinery" className="text-white text-xl font-semibold hover:text-purple-600 mr-4">เครื่องมือวิทยาศาสตร์</a>
+          <a href="#" className="text-white text-xl font-semibold hover:text-purple-600 mr-4">บริการวิเคราะห์ทดสอบ</a>
+          <a href="#" className="text-white text-xl font-semibold hover:text-purple-600 mr-4">ติดตามผลการวิเคราะห์ทดสอบ</a>
+          <a href="/Inform" className="text-white text-xl font-semibold hover:text-purple-600 mr-4">เกี่ยวกับเรา</a>
+          <a href="/contactemail" className="text-white text-xl font-semibold hover:text-purple-600 mr-4">ติดต่อเรา</a>
+          <div className="divide-x-2 ">
           
-          <Link href={"/"}><a><Image src={"/images/en.png"} className="rounded px-2" width={26} height={26}/></a></Link>
+          <Link href={"/"}><a><Image src={"/images/en.png"} className="rounded " width={26} height={26}/></a></Link> 
           <Link href={"/"}><a><Image src={"/images/th.png"} className="rounded" width={30} height={30}/></a></Link>
+          </div>
         </div>
 
-        <div class="hidden sm:flex sm:items-center">
+        <div className="hidden sm:flex sm:items-center">
         <ul className="text-gray-50 text-sm font-semibold ">
                      {
                         Object.keys(auth).length === 0 

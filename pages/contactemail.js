@@ -90,28 +90,63 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
 
 
   return (
-  <center>
-    <div className='flex flex-col  text-3xl font-bold mt-5'>ติดต่อ</div>
+  //   <center>
+  //   <div className='flex flex-col  text-3xl font-bold mt-5'>ติดต่อ</div>
 
-    <form method='post' onSubmit={sendEmail2}  >
-    <p>
-      <label htmlFor="title" className='mx-5'>เรื่องติดต่อ</label>
-      <input className='border-2 border-black'  type="text" name='title'placeholder='เรื่องติดต่อ' ></input>
-    </p>
-     <p>
-      <label  htmlFor="name" className='mx-5'>ชื่อ-สกุลผู้ติดต่อ</label>
-      <input className='border-2 border-black' type="text" name='name' placeholder='ชื่อ-สกุลผู้ติดต่อ'></input>
-    </p>
-    <p>
-      <label  htmlFor="email" className='mx-5'>อีเมล์</label>
-      <input  className='border-2 border-black' type="text" name='email'placeholder='อีเมล์'></input>
-    </p>
-    <p>
-      <label htmlFor="detail" className='mx-5'>รายละเอียด</label>
-      <textarea  className='border-2 border-black'  type="text" name='detail'placeholder='รายละเอียด'></textarea>
-    </p>
-  <button className='px-3 py-2 bg-blue-500 rounded-md hover:bg-blue-400 text-white' type='submit'>submit</button>
-    </form>
+  //   <form method='post' onSubmit={sendEmail2}  >
+  //   <p>
+  //     <label htmlFor="title" className='mx-5'>เรื่องติดต่อ</label>
+  //     <input className='border-2 border-black'  type="text" name='title'placeholder='เรื่องติดต่อ' ></input>
+  //   </p>
+  //    <p>
+  //     <label  htmlFor="name" className='mx-5'>ชื่อ-สกุลผู้ติดต่อ</label>
+  //     <input className='border-2 border-black' type="text" name='name' placeholder='ชื่อ-สกุลผู้ติดต่อ'></input>
+  //   </p>
+  //   <p>
+  //     <label  htmlFor="email" className='mx-5'>อีเมล์</label>
+  //     <input  className='border-2 border-black' type="text" name='email'placeholder='อีเมล์'></input>
+  //   </p>
+  //   <p>
+  //     <label htmlFor="detail" className='mx-5'>รายละเอียด</label>
+  //     <textarea  className='border-2 border-black'  type="text" name='detail'placeholder='รายละเอียด'></textarea>
+  //   </p>
+  // <button className='px-3 py-2 bg-blue-500 rounded-md hover:bg-blue-400 text-white' type='submit'>submit</button>
+  //   </form>
 
-  </center>)
+  // </center>
+
+  <section className="bg-white">
+  <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">ติดต่อเรา</h2>
+      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">หากไม่ดูเป็นการรบกวนกูจะชวนเธอมารักกัน</p>
+      <form method='post' onSubmit={sendEmail2}  className="space-y-8">
+          <div>
+              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">เรื่องติดต่อ</label>
+              <input type="text" name='title' className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 " placeholder="เรื่อง..." required/>
+          </div>
+          <div>
+              <label for="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">อีเมล์ของคุณ</label>
+              <input type="email"  name='email'
+              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 " placeholder="Suranaree@g.sut.ac.th" required/>
+          </div>
+          <div>
+              <label for="subject" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">ชื่อ-นามสกุลของคุณ</label>
+              <input type="text" name='name'  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 " placeholder="นายเทคโน สุรนารี" required/>
+          </div>
+          <div className="sm:col-span-2">
+              <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">รายละเอียดที่ต้องการติดต่อ</label>
+              <textarea  rows="6" name='detail' className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 " placeholder="เขียนรายละเอียด..." required></textarea>
+          </div>
+          <button type="submit" className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
+              block w-full p-2.5 " >ส่งข้อมูล</button>
+      </form>
+  </div>
+</section>
+  )
 }

@@ -65,7 +65,7 @@ const Inform = (props) => {
       <Head>
         <title>ข่าวสาร</title>
       </Head>
-      <h1>ข่าวประชาสัมพันธ์</h1>
+      <h1 className="flex justify-center items-center mt-10 font-bold text-4xl">ข่าวประชาสัมพันธ์</h1>
       {/* <Filter state={state} /> */}
 
       {
@@ -77,7 +77,7 @@ const Inform = (props) => {
           <button className="btn btn-danger ml-2"
           data-toggle="modal" data-target="#exampleModal"
           onClick={handleDeleteAll}>
-            DELETE ALL
+            ลบข้อมูลทั้งหมด
           </button>
         </div>
       }
@@ -85,7 +85,7 @@ const Inform = (props) => {
       <div className="products">
         {
           products.length === 0 
-          ? <h2>No Products</h2>
+          ? <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
 
           : products.map(product => (
             <InformItem key={product._id} product={product} handleCheck={handleCheck} />
@@ -97,7 +97,7 @@ const Inform = (props) => {
         props.result < page * 6 ? ""
         : <button className="btn btn-outline-info d-block mx-auto mb-4"
         onClick={handleLoadmore}>
-          Load more
+          อ่านเพิ่มเติม
         </button>
       }
     
