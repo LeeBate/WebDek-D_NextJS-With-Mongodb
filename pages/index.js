@@ -106,7 +106,7 @@ const index = (props) => {
             </div>
             </>))
         }
-          </Swiper>
+      </Swiper>
       </center>
 
 
@@ -132,5 +132,4 @@ export async function getServerSideProps({query}) {
 }
 
 export default index
-
 

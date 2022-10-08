@@ -56,7 +56,6 @@ function NavBar() {
             <li className="nav-item dropdown">
                 <a className="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <img src={auth.user.avatar} alt={auth.user.avatar} 
-                    className="justify-items-center"
                     style={{
                         borderRadius: '50%', width: '50px', height: '50px',
                         transform: 'translateY(-3px)', marginLeft: '30px'
@@ -154,10 +153,10 @@ function NavBar() {
                   </Link>
                 </li>
                 <li className="text-white hover:underline">
-                <ul className="text-white hover:underline">
-                    <a className="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <a className="text-white text-xl font-semibold">เกี่ยวกับเรา</a>
-                    </a>
+                
+                    <div className="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a className="text-white ">เกี่ยวกับเรา</a>
+                    </div>
                     
                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                     <Link href="/Inform">
@@ -169,25 +168,24 @@ function NavBar() {
                     <Link href="/contactemail">
                         <a className="dropdown-item">ติดต่อเรา</a>
                     </Link>
-                    
                     </div>
-                </ul>
+                
                 </li>
                 
                 <div className="hidden md:block text-white">|</div>
-                <li className="text-white hover:underline">
-                {
-                        Object.keys(auth).length === 0 
-                        ? <li className="nav-item">
-                            <Link href="/signin">
-                                <a className={"nav-link" + isActive('/signin')}>
-                                    <i className="fas fa-user" aria-hidden="true"></i> เข้าสู่ระบบ
-                                </a>
-                            </Link>
-                        </li>
-                        : loggedRouter()
-                    }
-                </li>
+                  <ul className="text-white hover:underline">
+                  {
+                          Object.keys(auth).length === 0 
+                          ? <li className="nav-item">
+                              <Link href="/signin">
+                                  <a className={"nav-link" + isActive('/signin')}>
+                                      <i className="fas fa-user" aria-hidden="true"></i> เข้าสู่ระบบ
+                                  </a>
+                              </Link>
+                          </li>
+                          : loggedRouter()
+                      }
+                  </ul>
                 <Link href={"/"}><a><Image src={"/images/en.png"} className="rounded" width={26} height={26}/></a></Link>
                 <Link href={"/"}><a><Image src={"/images/th.png"} className="rounded" width={30} height={30}/></a></Link>
 
