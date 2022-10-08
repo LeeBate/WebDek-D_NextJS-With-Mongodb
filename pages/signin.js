@@ -28,7 +28,7 @@ const Signin = () => {
     const res = await postData('auth/login', userData)
     
     if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
-    dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+    dispatch({ type: 'NOTIFY', payload: {} })
 
     dispatch({ type: 'AUTH', payload: {
       token: res.access_token,

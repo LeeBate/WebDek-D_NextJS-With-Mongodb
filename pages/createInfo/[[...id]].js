@@ -63,15 +63,15 @@ const NewsManager = () => {
             return err = 'Image format is incorrect.'
 
             num += 1;
-            if(num <= 5) newImages.push(file)
+            if(num <= 1) newImages.push(file)
             return newImages;
         })
 
         if(err) dispatch({type: 'NOTIFY', payload: {error: err}})
 
         const imgCount = images.length
-        if(imgCount + newImages.length > 5)
-        return dispatch({type: 'NOTIFY', payload: {error: 'Select up to 5 images.'}})
+        if(imgCount + newImages.length > 1)
+        return dispatch({type: 'NOTIFY', payload: {error: 'อัพโหลดได้ครั้งละ 1 รูปภาพ'}})
         setImages([...images, ...newImages])
     }
 
@@ -112,42 +112,39 @@ const NewsManager = () => {
 
     
     return(
-        <div className="products_manager">
+        <div>
+            <div className="products_manager">
             <Head>
-                <title>การจัดการเครื่องมือ</title>
+                <title>การจัดการข่าวสาร</title>
             </Head>
-            <form className="col" onSubmit={handleSubmit}>
-                <div className="col-md-9">
-                    
-                    <input type="text" name="title" value={title}
-                    placeholder="ชื่อเครื่องมือ (ภาษาไทย)" className=" w-[100%] h-[50px] my-2 p-2 border-cyan-500 border-2"
-                    onChange={handleChangeInput} />
-                    
-                    <div className='row gap-2'>
-                     <textarea name="description" id="description" cols="30" rows="4"
-                    placeholder="ความสามารถของเครื่องมือ" className="col-sm-6 my-2 p-2 border-cyan-500 border-2" 
-                    value={description} onChange={handleChangeInput} />
-                    </div>
-
-                    <button type="submit" className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded">
-                        {onEdit ? 'อัปเดต': 'สร้าง'}
-                    </button>
-
-                </div>
-
-                <div className="col-md-6 my-4">
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Upload</span>
-                        </div>
-                        <div className="custom-file border rounded">
-                            <input type="file" className="custom-file-input"
-                            onChange={handleUploadInput} multiple accept="image/*" />
-                        </div>
-
-                    </div> 
-
-                    <div className="row img-up mx-0">
+            <section className="bg-white">
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">เพิ่มข้อมูลข่าวสาร</h2>
+      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">ไม่รู้จะใส่อะไร เผื่ออยากใส่</p>
+      <form method='post' onSubmit={handleSubmit}  className="space-y-8">
+          <div>
+              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">หัวเรื่อง</label>
+              <input type="text" name='title' className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "onChange={handleChangeInput} placeholder="กรอกหัวเรื่อง . . . " required/>
+          </div>
+          
+          <div className="sm:col-span-2">
+              <label for="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">เนื้อหา</label>
+              <textarea  rows="6" name='description' className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 " placeholder="กรอกเนื้อหา . . ." required value={description} onChange={handleChangeInput}></textarea>
+          </div>
+          
+<div class="flex justify-center items-center w-full" hidden={images.length > 0 ? true:false}>
+    <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="flex flex-col justify-center items-center pt-5 pb-6">
+            <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">คลิกเพื่ออัพโหลด</span> หรือลากและวาง</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">รองรับ PNG หรือ JPG (สูงสุด. 2024x2024px)</p>
+        </div>
+        <input id="dropzone-file" type="file" class="hidden"onChange={handleUploadInput} accept="image/*"/>
+    </label>
+</div> 
+<div className="row img-up mx-0">
                         {
                             images.map((img, index) => (
                                 <div key={index} className="file_img my-1">
@@ -159,9 +156,12 @@ const NewsManager = () => {
                             ))
                         }
                     </div>
-                </div>
-            </form>
-          
+          <button type="submit" className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
+              block w-full p-2.5 " >{onEdit ? 'อัพเดต': 'สร้าง'}</button>
+      </form>
+  </div>
+</section>
+        </div>
             
         </div>
     )

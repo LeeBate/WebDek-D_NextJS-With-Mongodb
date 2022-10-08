@@ -34,9 +34,7 @@ const Register = () => {
     const res = await postData('auth/register', userData)
     
     if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
-
-
-   
+ 
       dispatch({ type: 'AUTH', payload: {
       token: res.access_token,
       user: res.user
@@ -50,7 +48,7 @@ const Register = () => {
 
     localStorage.setItem('firstLogin', true)
     
-return dispatch({ type: 'NOTIFY', payload: {success: res.msg} })
+return dispatch({ type: 'NOTIFY', payload: {} })
 
 
   }

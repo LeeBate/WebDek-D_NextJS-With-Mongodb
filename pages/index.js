@@ -65,7 +65,7 @@ const index = (props) => {
   }
   SwiperCore.use([Autoplay]);
   return(
-    <center className=" " >
+    <center  >
       <Head>
         <title>Index</title>
       </Head>
@@ -99,7 +99,7 @@ const index = (props) => {
             <>
             <div >
              <SwiperSlide key={index}  >
-            <Link href={"/"}><a><Image src={product.images[0].url}  width={800} height={400} className="pt-5" /></a></Link>   
+            <Link href={"/"}><a><Image src={product.images[0].url}  width={800} height={400} className="mt-80" /></a></Link>   
 
 
             </SwiperSlide>

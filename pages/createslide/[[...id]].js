@@ -73,15 +73,15 @@ const SlideManager = () => {
             return err = 'Image format is incorrect.'
 
             num += 1;
-            if(num <= 5) newImages.push(file)
+            if(num <= 1) newImages.push(file)
             return newImages;
         })
 
         if(err) dispatch({type: 'NOTIFY', payload: {error: err}})
 
         const imgCount = images.length
-        if(imgCount + newImages.length > 5)
-        return dispatch({type: 'NOTIFY', payload: {error: 'Select up to 5 images.'}})
+        if(imgCount + newImages.length > 1)
+        return dispatch({type: 'NOTIFY', payload: {error: 'อัพโหลดได้ครั้งละ 1 รูปภาพ'}})
         setImages([...images, ...newImages])
     }
 
@@ -153,124 +153,29 @@ const SlideManager = () => {
             <Head>
                 <title>การจัดการเครื่องมือ</title>
             </Head>
-            <form className="col" onSubmit={handleSubmit}>
-                <div className=" col-md-9  ">
-
-                    <input type="text" name="title" value={title}
-                    placeholder="ชื่อเครื่องมือ (ภาษาไทย)" className=" w-[100%] h-[50px] my-2 p-2 border-cyan-500 border-2"
-                    onChange={handleChangeInput} />
-
-                    {/* <input type="text" name="en" value={en}
-                    placeholder="ชื่อเครื่องมือ (ภาษาอังกฤษ)" className="text-capitalize d-block my-2 w-100 p-2 "
-                    onChange={handleChangeInput} />
-                    <input type="text" name="room" value={room}
-                    placeholder="ชื่อห้องปฎิบัติการ (ภาษาไทย)" className="d-block my-2 w-100 p-2 "
-                    onChange={handleChangeInput} />
-                    <input type="text" name="roomen" value={roomen}
-                    placeholder="ชื่อห้องปฎิบัติการ (ภาษาอังกฤษ)" className="d-block my-2 w-100 p-2 "
-                    onChange={handleChangeInput} />
-                    <input type="text" name="manager" value={manager}
-                    placeholder="ชื่อผู้ดูแลเครื่องมือ" className="d-block my-2 w-100 p-2 "
-                    onChange={handleChangeInput} />
-                    
-                    <div className="row gap-2">
-                    <div className="col-sm">
-                            <input type="text" name="modelName" placeholder="ยี่ห้อ" value={modelName} 
-                            className="d-block my w-100 p-2 " onChange={handleChangeInput}/>
-                    </div>
-                    <div className="col-sm">
-                            <input type="text" name="brand" placeholder="รุ่น" value={brand} 
-                            className="d-block my w-100 p-2 " onChange={handleChangeInput}/>
-                    </div>
-                    </div> */}
-
-                    {/* <div className='row gap-2'>
-                     <textarea name="detailCapability" id="detailCapability" cols="30" rows="4"
-                    placeholder="ความสามารถของเครื่องมือ" className="col-sm-6 my-2 p-2 border-cyan-500 border-2" 
-                    value={detailCapability} onChange={handleChangeInput} />
-                    <textarea name="detailRestrictions" id="detailRestrictions" cols="30" rows="6"
-                    placeholder="ข้อจำกัดของเครื่องมือ" className="col my-2 p-2 border-cyan-500 border-2"
-                    value={detailRestrictions} onChange={handleChangeInput} />
-                    </div> */}
-{/*                     
-                <label >อัตราค่าบริการ : บาท/ตัวอย่าง</label>
-                            <button className='btn btn-info mx-3 ' onClick={handleAddFields}>
-                                เพิ่มช่อง
-                            </button>
-                        { inputFields.map(inputField => (
-                                <div key={inputField.idx} className="row g-8">
-                        <div className='col-md'>
-                        <input type="text"  name="ListName" 
-                                            placeholder="ชื่อรายการ" className="d-block my-4 w-100 p-2"
-                                            value={inputField.ListName}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                        </div>
-                        <div className='col-sm'>
-                        <input type="number" min="0" name="price1" 
-                                            placeholder="อัตราที่ 1" className="d-block my-4 w-100 p-2"
-                                            value={inputField.price1}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                        </div>
-                        <div className='col-sm'>
-                        <input type="number" min="0" name="price2" 
-                                            placeholder="อัตราที่ 2" className="d-block my-4 w-100 p-2"
-                                            value={inputField.price2}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                        </div>
-                        <div className='col-sm'>
-                        <input type="number" min="0" name="price3" 
-                                            placeholder="อัตราที่ 3" className="d-block my-4 w-100 p-2"
-                                            value={inputField.price3}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                        </div>
-                        <div className='col-sm'>
-                        <input type="number" min="0" name="price4" 
-                                            placeholder="อัตราที่ 4" className="d-block my-4 w-100 p-2"
-                                            value={inputField.price4}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                        </div>
-                        <div className='col-sm'>
-                        <input type="number" min="0" name="price5" 
-                                            placeholder="อัตราที่ 5" className="d-block my-4 w-100 p-2"
-                                            value={inputField.price5}
-                                            onChange={event => handleChangeInput2(inputField.idx, event)} />
-                    </div>   
-                    <div className='flex flex-col'> 
-                            <button className='btn btn-danger mx-3 ' disabled={inputFields.length === 1} onClick={() => handleRemoveFields(inputField.idx)}>
-                            ลบช่อง
-                            </button>
-                        </div>
-                        </div>
-                        )) }      */}
-
-                    {/* <div className="input-group-prepend px-0 my-2">
-                        <select name="category" id="category" value={category}
-                        onChange={handleChangeInput} className="custom-select text-capitalize">
-                            <option value="all">งานเครื่องมือทั้งหมด</option>
-                            {
-                                categories.map(item => (
-                                    <option key={item._id} value={item._id}>
-                                        {item.name}
-                                    </option>
-                                ))
-                            }
-                        </select>
-                    </div> */}
-
-
-                <div className="col-md-6 my-4">
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">Upload</span>
-                        </div>
-                        <div className="custom-file border rounded">
-                            <input type="file" className="custom-file-input"
-                            onChange={handleUploadInput} multiple accept="image/*" />
-                        </div>
-
-                    </div> 
-
-                    <div className="row img-up mx-0">
+            <section className="bg-white">
+        <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+      <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">อัพโหลดสไลด์</h2>
+      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">ไม่รู้จะใส่อะไร เผื่ออยากใส่</p>
+      <form method='post' onSubmit={handleSubmit}  className="space-y-8">
+          <div>
+              <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">ไม่รู้จะใส่อะไร เผื่ออยากใส่</label>
+              <input type="text" name='title' className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "onChange={handleChangeInput} placeholder="ชื่อสไลด์ . . . " required/>
+          </div>
+          
+<div class="flex justify-center items-center w-full" hidden={images.length > 0 ? true:false}>
+    <label for="dropzone-file" class="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+        <div class="flex flex-col justify-center items-center pt-5 pb-6">
+            <svg aria-hidden="true" class="mb-3 w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path></svg>
+            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">คลิกเพื่ออัพโหลด</span> หรือลากและวาง</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400">รองรับ PNG หรือ JPG (สูงสุด. 2024x2024px)</p>
+        </div>
+        <input id="dropzone-file" type="file" class="hidden"onChange={handleUploadInput} accept="image/*"/>
+    </label>
+</div> 
+<div className="row img-up mx-0">
                         {
                             images.map((img, index) => (
                                 <div key={index} className="file_img my-1">
@@ -282,26 +187,12 @@ const SlideManager = () => {
                             ))
                         }
                     </div>
-                </div>
-
-
-
-
-
-
-
-
-                    <button type="submit" className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded">
-                        {onEdit ? 'อัพเดต': 'สร้าง'}
-                    </button>
-
-                </div>
-
-
-            </form>
-
+          <button type="submit" className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
+              block w-full p-2.5 " >{onEdit ? 'อัพเดต': 'สร้าง'}</button>
+      </form>
+  </div>
+</section>
         </div>
     )
 }
-
 export default SlideManager

@@ -55,7 +55,7 @@ const ProductItem = ({product, handleCheck}) => {
             }
             <img className="card-img-top" src={product.images[0].url} alt={product.images[0].url} />
             <div className="card-body">
-                <h5 className="font-bold text-xl mb-2 text-capitalize" title={product.en}>
+                <h5 className="card-title font-bold text-xl mb-2 text-capitalize" title={product.en}>
                     {product.en}
                 </h5>
                 <h5 className="card-title text-capitalize" title={product.title}>
@@ -67,10 +67,7 @@ const ProductItem = ({product, handleCheck}) => {
                 </div>
             </div>
         </div>
-    
-        
 
-        
     )
 }
 

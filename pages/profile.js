@@ -93,8 +93,8 @@ const Profile = () => {
             </Head>
             
             <section className=" flex items-center justify-center row text-secondary my-3">
-                <div className="col-md-3">
-                    <h3 className="text-center text-uppercase">
+                <div className="col-md-3 mt-2">
+                    <h3 className="text-center text-uppercase text-3xl">
                         {auth.user.role === 'user' ? 'User Profile' : 'Admin Profile'}
                     </h3>
 
@@ -133,7 +133,7 @@ const Profile = () => {
                         placeholder="ยืนยันรหัสผ่าน" onChange={handleChange} />
                     </div>
 
-                    <button className="bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded" disabled={notify.loading}
+                    <button className="w-full bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded" disabled={notify.loading}
                     onClick={handleUpdateProfile}>
                         อัปเดตโปรไฟล์
                     </button>
