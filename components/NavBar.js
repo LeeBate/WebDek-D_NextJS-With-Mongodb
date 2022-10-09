@@ -154,8 +154,8 @@ function NavBar() {
                 </li>
                 <li className="text-white hover:underline">
                 
-                    <div className="nav-link dropdown-toggle " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <a className="text-white ">เกี่ยวกับเรา</a>
+                    <div className="nav-link dropdown-toggle  " href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a className="text-white cursor-pointer no-underline">เกี่ยวกับเรา</a>
                     </div>
                     
                     <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
@@ -169,6 +169,7 @@ function NavBar() {
                         <a className="dropdown-item">ติดต่อเรา</a>
                     </Link>
                     </div>
+                   
                 
                 </li>
                 
@@ -194,7 +195,7 @@ function NavBar() {
           </div>
         </div>
       </nav>
-      <div className="flex justify-center items-center mt-3">
+      <div className="flex justify-center items-center ">
       </div>
     </div>
 

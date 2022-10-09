@@ -9,7 +9,7 @@ function Layout({children}) {
             <NavBar />
             <Notify />
             <Modal />
-            <div className="container-fluid">{children}</div>
+            <div className="">{children}</div>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import Head from 'next/head'
+
 import { useState, useContext, useEffect } from 'react'
 import {DataContext} from '../store/GlobalState'
 import { getData } from '../utils/fetchData'
@@ -59,13 +60,23 @@ const index = (props) => {
     dispatch({type: 'ADD_MODAL', payload: deleteArr})
   }
 
+
+
   const handleLoadmore = () => {
     setPage(page + 1)
     filterSearch({router, page: page + 1})
   }
   SwiperCore.use([Autoplay]);
   return(
-    <center  >
+    <div className='p-0 m-0'  >
+     
+     <video autoPlay loop muted className="-z-0 m-0  absolute   object-cover h-screen w-screen xl:h-auto">
+            <source
+              src="./intro.mp4"
+              type="video/mp4"
+            />
+          </video>
+
       <Head>
         <title>Index</title>
       </Head>
@@ -107,7 +118,7 @@ const index = (props) => {
             </>))
         }
       </Swiper>
-      </center>
+      </div>
 
 
   )
