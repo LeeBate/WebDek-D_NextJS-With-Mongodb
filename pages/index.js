@@ -67,19 +67,29 @@ const index = (props) => {
     filterSearch({router, page: page + 1})
   }
   SwiperCore.use([Autoplay]);
-  return(
-    <div className='p-0 m-0'  >
-     
-     <video autoPlay loop muted className="-z-0 m-0  absolute   object-cover h-screen w-screen xl:h-auto">
+  return(<div>
+    <Head>
+        <title>Index</title>
+      </Head>
+      <section>
+      <div className='flex justify-center  p-50  opacity-100 '>
+  <div className='flex text-center items-center absolute  w-[72rem] mt-96 h-900'>
+<h1 className='text-5xl font-bold text-white '>ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
+มหาวิทยาลัยเทคโนโลยีสุรนารี</h1>
+</div>
+</div>
+</section>
+  <section> 
+    <div  >
+    
+     <video autoPlay loop muted className=" object-cover  w-screen h-[890px] ">
             <source
               src="./intro.mp4"
               type="video/mp4"
             />
           </video>
-
-      <Head>
-        <title>Index</title>
-      </Head>
+        
+      
 
       {/* <Filter state={state} /> */}
 
@@ -92,16 +102,29 @@ const index = (props) => {
       }
       <div className="products"> */}
 
-      <Swiper
+    
+      </div>
+
+</section>
+
+
+
+
+
+<section className='  p-20'>
+  <center>
+<Swiper
     spaceBetween={20}
     navigation={true}
-
+speed={700}
     pagination={{ clickable: true }}
     loop={true}
+   effect={'fade'}
     slidesPerView={1}
     onSlideChange={() => console.log("slide change")}
     autoplay={{
       delay: 2000,
+    
     }}>
 
         {
@@ -117,11 +140,10 @@ const index = (props) => {
             </div>
             </>))
         }
-      </Swiper>
-      </div>
-
-
-  )
+    </Swiper>
+  </center>
+</section>
+  </div>)
 }
 
 export async function getServerSideProps({query}) {
@@ -143,4 +165,3 @@ export async function getServerSideProps({query}) {
 }
 
 export default index
-
