@@ -8,10 +8,11 @@ function Layout({children}) {
     return (
         <div >
             <NavBar />
+            <div className="container">
             <Notify />
             <Modal />
             <div className="">{children}</div>
-            <Footer/>
+            </div>
         </div>
     )
 }

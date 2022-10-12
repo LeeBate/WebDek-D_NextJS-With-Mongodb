@@ -21,13 +21,13 @@ const DetailInform = (props) => {
             <Head>
                 <title>Detail Inform</title>
             </Head>
-
+            <div className="ml-11 mt-10"><h2 className="text font-bold text-2xl ">{product.title}</h2></div>
             <div className="flex flex-row">
-                <div className='basis-4/10 ml-3'>
+                <div className='basis-4/10 ml-3 mb-5'>
                 <img src={ product.images[tab].url } alt={ product.images[tab].url }
-                className="d-block img-thumbnail rounded mt-4 ml-3 max-w-xl max-h-fit" />
+                className="d-block img-thumbnail rounded mt-4 ml-4 max-w-xl max-h-fit" />
 
-                <div className="row mx-0" style={{cursor: 'pointer'}} >
+                <div className="row mx-0 mt-3 ml-2 " style={{cursor: 'pointer'}} >
 
                     {product.images.map((img, index) => (
                         <img key={index} src={img.url} alt={img.url}
@@ -38,17 +38,9 @@ const DetailInform = (props) => {
                     </div>
                 </div>
             
-
             <div className="basis-6/10 mx-5 my-4">
-                <h2 className="text font-light text-xl ">{product.title}</h2>
-                        
+    
                 <div className="my-2">{product.description}</div>
-
-                
-
-
-
-
             </div>
         </div>
         </div>

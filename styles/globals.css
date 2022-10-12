@@ -58,6 +58,9 @@ img{
 /* ----------- Products ------------- */
 @import url("./product.css");
 
+/* ----------- Products ------------- */
+@import url("./InformIndex.css");
+
 /* ----------- Profile ------------- */
 @import url("./profile.css");
 

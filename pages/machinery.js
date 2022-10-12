@@ -7,6 +7,7 @@ import ProductItem from '../components/product/ProductItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
+import Footer from '../components/footer'
 
 const machinery = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -77,7 +78,7 @@ const machinery = (props) => {
           <button className="btn btn-danger ml-2"
           data-toggle="modal" data-target="#exampleModal"
           onClick={handleDeleteAll}>
-            DELETE ALL
+            ลบข้อมูลทั้งหมด
           </button>
         </div>
       }
@@ -85,7 +86,7 @@ const machinery = (props) => {
       <div className="products">
         {
           products.length === 0 
-          ? <h2>No Products</h2>
+          ? <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
 
           : products.map(product => (
             <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
@@ -100,8 +101,11 @@ const machinery = (props) => {
           Load more
         </button>
       }
-    
+    <section>
+      <Footer/>
+    </section>
     </div>
+    
   )
 }
 

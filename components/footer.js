@@ -1,8 +1,12 @@
-import { ImFacebook, ImTwitter, ImYoutube } from "react-icons/im";
+
 import Link from 'next/link'
 import Newslatter from "./_child/newslatter";
+import { useContext } from 'react'
+import { DataContext } from '../store/GlobalState'
 
 export default function footer() {
+  const { state, dispatch } = useContext(DataContext)
+    const { cart, auth } = state
 
   const bg = {
     backgroundImage : "url('/images/footer.png')",
@@ -12,8 +16,11 @@ export default function footer() {
 
   return (
     <footer className="bg-gray-500" style={bg}>
-      <Newslatter></Newslatter>
       
+      
+      <div className="row justify-content-between mx-0 ">
+        {!auth.user || auth.user.role !== "admin" ? <Newslatter></Newslatter> : <></>}
+      </div>
 
     </footer>
   )

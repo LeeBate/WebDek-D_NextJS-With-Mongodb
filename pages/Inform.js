@@ -66,7 +66,7 @@ const Inform = (props) => {
         <title>ข่าวสาร</title>
       </Head>
       <h1 className="flex justify-center items-center font-bold text-4xl">ข่าวประชาสัมพันธ์</h1>
-      {/* <Filter state={state} /> */}
+      <Filter state={state} />
 
       {
         auth.user && auth.user.role === 'admin' &&
