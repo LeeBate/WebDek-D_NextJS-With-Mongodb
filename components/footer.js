@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 import Newslatter from "./_child/newslatter";
 import { useContext } from 'react'
@@ -15,12 +14,11 @@ export default function footer() {
   }
 
   return (
-    <footer className="bg-gray-500" style={bg}>
-      
-      
-      <div className="row justify-content-between mx-0 ">
+    <footer className="w-full h-full">
+
+
+
         {!auth.user || auth.user.role !== "admin" ? <Newslatter></Newslatter> : <></>}
-      </div>
 
     </footer>
   )

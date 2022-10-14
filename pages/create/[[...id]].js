@@ -5,6 +5,11 @@ import {imageUpload} from '../../utils/imageUpload'
 import {postData, getData, putData} from '../../utils/fetchData'
 import {useRouter} from 'next/router'
 import { v4 as uuidv4 } from 'uuid';
+import FullLayout from "../../src/layouts/FullLayout";
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../../src/theme/theme";
+
+
 
 const ProductsManager = () => {
     const initialState = {
@@ -147,7 +152,10 @@ const ProductsManager = () => {
           }
 
     return(
-        <div className="products_manager">
+        <>
+        <ThemeProvider theme={theme}> 
+            <FullLayout> 
+            <div className="products_manager">
             <Head>
                 <title>การจัดการเครื่องมือ</title>
             </Head>
@@ -344,6 +352,10 @@ const ProductsManager = () => {
   </div>
 </section>
         </div>
+            </FullLayout> 
+        </ThemeProvider>
+        
+        </>
     )
 }
 

@@ -26,27 +26,33 @@ const Signin = () => {
     e.preventDefault()
     dispatch({ type: 'NOTIFY', payload: {loading: true} })
     const res = await postData('auth/login', userData)
-    
+   
     if(res.err) return dispatch({ type: 'NOTIFY', payload: {error: res.err} })
     dispatch({ type: 'NOTIFY', payload: {} })
-
     dispatch({ type: 'AUTH', payload: {
       token: res.access_token,
       user: res.user
-      
     }})
-console.log(res.user)
     Cookie.set('refreshtoken', res.refresh_token, {
       path: 'api/auth/accessToken',
       expires: 7
     })
 
     localStorage.setItem('firstLogin', true)
+    if(res.user.role === 'admin') {
+      return router.push('/Admin')
+    }else{
+      return router.push('/')
+    }
+
+    
   }
 
   useEffect(() => {
-    if(Object.keys(auth).length !== 0) router.push("/")
+    // if(Object.keys(auth) === 'admin') router.push("/")
+    if(Object.keys(auth) === 'admin') router.push("/Admin")
   }, [auth])
+
 
     return(
       <div>

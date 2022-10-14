@@ -75,7 +75,6 @@ function NavBar() {
                     <div className="dropdown-divider"></div>
                     <button className="dropdown-item" onClick={handleLogout}>ออกระบบ</button>
                 </div>
-
             </li>
         )
     }

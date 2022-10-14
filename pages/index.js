@@ -126,20 +126,15 @@ const index = (props) => {
             }}
           >
             {products.map((product, index) => (
-              <>
-                <div>
                   <SwiperSlide key={index}>
-                      <a>
                         <Image
                           src={product.images[0].url}
+                          alt={product.images[0].url}
                           width={800}
                           height={400}
                           className="mt-80"
                         />
-                      </a>
                   </SwiperSlide>
-                </div>
-              </>
             ))}
           </Swiper>
         </center>
