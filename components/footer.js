@@ -15,9 +15,6 @@ export default function footer() {
 
   return (
     <footer className="w-full h-full">
-
-
-
         {!auth.user || auth.user.role !== "admin" ? <Newslatter></Newslatter> : <></>}
 
     </footer>

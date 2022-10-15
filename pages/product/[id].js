@@ -86,7 +86,7 @@ const DetailProduct = (props) => {
             <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>
         <div className="flex items-center w-full mx-24">
-        <table class="table table-bordered">
+        <table className="table table-bordered">
                             <thead>
                                 <tr className='text-center'>
                                 <th >ลำดับ</th>

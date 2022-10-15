@@ -15,23 +15,16 @@ import {
 } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
+import Cookie from 'js-cookie'
+import {useRouter} from 'next/router'
 const ProfileDD = () => {
-  const initialSate = {
-    avatar: "",
-    name: "",
-    password: "",
-    cf_password: "",
-  };
-  const [data, setData] = useState(initialSate);
-  const { avatar, name, password, cf_password } = data;
-  const { state, dispatch } = useContext(DataContext);
-  const { auth, notify} = state;
+
+  const router = useRouter()
+  const {state, dispatch} = useContext(DataContext)
+  const {auth} = state
+console.log(state)
 
   const [anchorEl4, setAnchorEl4] = React.useState(null);
-
-    useEffect(() => {
-    if (auth.user) setData({ ...data, name: auth.user.name });
-  }, [auth.user]);
 
   const handleClick4 = (event) => {
     setAnchorEl4(event.currentTarget);
@@ -40,6 +33,14 @@ const ProfileDD = () => {
   const handleClose4 = () => {
     setAnchorEl4(null);
   };
+
+  const handleLogout = () => {
+    Cookie.remove('refreshtoken', {path: 'api/auth/accessToken'})
+    localStorage.removeItem('firstLogin')
+    dispatch({ type: 'AUTH', payload: {} })
+    // dispatch({ type: 'NOTIFY', payload: {success: 'ออกจากระบบ!'} })
+    return router.push('/')
+}
   return (
     <>
       <Button
@@ -50,9 +51,9 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          <Image
-            src={userimg}
-            alt={userimg}
+          <img
+            src={auth.user.avatar}
+            alt={auth.user.avatar}
             width="30"
             height="30"
             className="roundedCircle"
@@ -81,7 +82,7 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              Julia
+              {auth.user.name}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
@@ -102,7 +103,7 @@ const ProfileDD = () => {
         <Box>
           <Box p={2} pt={0}>
             <List
-              component="nav"
+              component="nav1"
               aria-label="secondary mailbox folder"
               onClick={handleClose4}
             >
@@ -122,11 +123,9 @@ const ProfileDD = () => {
           </Box>
           <Divider />
           <Box p={2}>
-            <Link to="/">
-              <Button fullWidth variant="contained" color="primary">
+              <Button onClick={handleLogout} className="w-full bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" fullWidth variant="contained" color="primary">
                 Logout
               </Button>
-            </Link>
           </Box>
         </Box>
       </Menu>

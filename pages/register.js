@@ -62,7 +62,12 @@ return dispatch({ type: 'NOTIFY', payload: {} })
         <Head>
           <title>สมัครสมาชิก</title>
         </Head>
-
+        <style jsx global>{`
+        footer {
+          display: none;
+        }
+        
+      `}</style>
         <form className="mx-auto my-4" style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">ชื่อ</label>

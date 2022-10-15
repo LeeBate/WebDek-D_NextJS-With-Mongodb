@@ -8,13 +8,22 @@ import ProductPerfomance from "../../src/components/dashboard/ProductPerfomance"
 import FullLayout from "../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
+import index from "..";
+import { getData } from "../../utils/fetchData";
 
 
 export default function Index() {
   return (
     
     <ThemeProvider theme={theme}> 
+    
      <FullLayout> 
+     <style jsx global>{`
+        Nav {
+          display: none;
+        }
+        
+      `}</style>
      <Head>
         <title>Dashboard</title>
     </Head>
@@ -36,4 +45,4 @@ export default function Index() {
     </FullLayout> 
      </ThemeProvider>
   );
-}
+      }

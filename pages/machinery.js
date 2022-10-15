@@ -7,7 +7,7 @@ import ProductItem from '../components/product/ProductItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
-import Footer from '../components/footer'
+
 
 const machinery = (props) => {
   const [products, setProducts] = useState(props.products)
@@ -66,7 +66,7 @@ const machinery = (props) => {
       <Head>
         <title>เครื่องมือวิทยาศาสตร์</title>
       </Head>
-
+      
       <Filter state={state} />
 
       {
@@ -101,9 +101,6 @@ const machinery = (props) => {
           Load more
         </button>
       }
-    <section>
-      <Footer/>
-    </section>
     </div>
     
   )

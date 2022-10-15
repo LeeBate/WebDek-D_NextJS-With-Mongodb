@@ -17,12 +17,12 @@ const Menuitems = [
   {
     title: "Manage Slide",
     icon: "info",
-    href: "/createslide",
+    href: "/Admin/AddSlide",
   },
   {
     title: "Manage Machinery",
     icon: "star",
-    href: "/create",
+    href: "/Admin/AddProduct",
   },
   {
     title: "Manage Category",
@@ -32,7 +32,7 @@ const Menuitems = [
   {
     title: "Manage News",
     icon: "user",
-    href: "/createInfo",
+    href: "/Admin/AddNews",
   },
 ];
 

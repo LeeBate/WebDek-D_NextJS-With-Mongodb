@@ -21,6 +21,7 @@ const Profile = () => {
 
   const { state, dispatch } = useContext(DataContext);
   const { auth, notify, orders } = state;
+  console.log(state);
 
   useEffect(() => {
     if (auth.user) setData({ ...data, name: auth.user.name });
@@ -109,6 +110,12 @@ const Profile = () => {
   if (!auth.user) return null;
   return (
     <ThemeProvider theme={theme}>
+      <style jsx global>{`
+        Nav {
+          display: none;
+        }
+        
+      `}</style>
       <FullLayout>
         <div className="profile_page">
           <Head>

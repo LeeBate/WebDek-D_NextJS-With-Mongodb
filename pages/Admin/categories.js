@@ -57,6 +57,12 @@ const Categories = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <style jsx global>{`
+        Nav {
+          display: none;
+        }
+        
+      `}</style>
       <FullLayout>
         <div className="col-md-6 mx-auto my-3">
           <Head>

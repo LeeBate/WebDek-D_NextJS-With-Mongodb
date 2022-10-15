@@ -13,13 +13,19 @@ const Users = () => {
   if (!auth.user) return null;
   return (
     <ThemeProvider theme={theme}>
+      <style jsx global>{`
+        Nav {
+          display: none;
+        }
+        
+      `}</style>
       <FullLayout>
         <div className="table-responsive">
           <Head>
             <title>จัดการผู้ใช้</title>
           </Head>
 
-          <table className="table w-100">
+          <table className="table w-100 bg-white">
             <thead>
               <tr>
                 <th></th>

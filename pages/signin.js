@@ -59,7 +59,12 @@ const Signin = () => {
         <Head>
           <title>เข้าสู่ระบบ</title>
         </Head>
-
+        <style jsx global>{`
+        footer {
+          display: none;
+        }
+        
+      `}</style>
         <form className="mx-auto my-4" style={{maxWidth: '500px'}} onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="exampleInputEmail1">อีเมล์</label>

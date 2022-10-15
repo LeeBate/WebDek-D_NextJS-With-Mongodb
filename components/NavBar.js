@@ -9,9 +9,9 @@ import Image from 'next/image'
 function NavBar() {
     const router = useRouter()
     const {state, dispatch} = useContext(DataContext)
-    const { auth, cart } = state
+    const {auth} = state
     const [navbar, setNavbar] = useState(false);
-
+    console.log(state)
 
     const isActive = (r) => {
         if(r === router.pathname){
@@ -32,21 +32,10 @@ function NavBar() {
     const adminRouter = () => {
         return(
             <>
-            <Link href="/users">
-                <a className="dropdown-item">จัดการผู้ใช้</a>
+            <Link href="/Admin">
+                <a className="dropdown-item">Dashboard</a>
             </Link>
-            <Link href="/createslide">
-                <a className="dropdown-item">จัดการสไลด์บาร์</a>
-            </Link>
-            <Link href="/create">
-                <a className="dropdown-item">จัดการเครื่องมือ</a>
-            </Link>
-            <Link href="/createInfo">
-                <a className="dropdown-item">จัดการข่าวสาร</a>
-            </Link>
-            <Link href="/categories">
-                <a className="dropdown-item">จัดการหมวดหมู่เครื่องมือ</a>
-            </Link>
+            
             </>
         )
     }

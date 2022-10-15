@@ -3,6 +3,7 @@ import NavBar from './NavBar'
 import Notify from './Notify'
 import Modal from './Modal'
 import Footer from './footer'
+import VideoPlayer from "./VideoPlayer";
 
 
 function Layout({children}) {
@@ -12,8 +13,9 @@ function Layout({children}) {
             <div className="container">
             <Notify />
             <Modal />
-            <div className="">{children}</div>
+            <div >{children}</div>
             </div>
+            <Footer />
         </>
     )
 }
