@@ -20,7 +20,7 @@ function VideoPlayer() {
         autoPlay
         loop
         muted
-        className=" object-cover  w-screen h-[890px] "
+        className="w-full aspect-video"
       >
         <source src="./intro.mp4" type="video/mp4" />
       </video>
