@@ -17,7 +17,6 @@ import {
 import FeatherIcon from "feather-icons-react";
 import LogoIcon from "../logo/LogoIcon";
 import Menuitems from "./MenuItems";
-import Buynow from "./Buynow";
 import { useRouter } from "next/router";
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
@@ -34,6 +33,16 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   };
   let curl = useRouter();
   const location = curl.pathname;
+
+  const [anchorEl4, setAnchorEl4] = React.useState(null);
+
+  const handleClick4 = (event) => {
+    setAnchorEl4(event.currentTarget);
+  };
+
+  const handleClose4 = () => {
+    setAnchorEl4(null);
+  };
 
   const SidebarContent = (
     <Box p={2} height="100%">
@@ -77,7 +86,6 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
         </List>
       </Box>
 
-      <Buynow />
     </Box>
   );
   if (lgUp) {

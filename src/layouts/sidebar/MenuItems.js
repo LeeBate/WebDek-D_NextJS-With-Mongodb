@@ -1,3 +1,4 @@
+
 const Menuitems = [
   {
     title: "Dashbaord",
@@ -5,33 +6,28 @@ const Menuitems = [
     href: "/Admin",
   },
   {
-    title: "Profile",
-    icon: "disc",
-    href: "/Admin/profile",
-  },
-  {
     title: "Manage Users",
-    icon: "layout",
-    href: "/users",
+    icon: "users",
+    href: "/Admin/users",
   },
   {
     title: "Manage Slide",
-    icon: "info",
+    icon: "sidebar",
     href: "/Admin/AddSlide",
   },
   {
     title: "Manage Machinery",
-    icon: "star",
+    icon: "plus-circle",
     href: "/Admin/AddProduct",
   },
   {
     title: "Manage Category",
-    icon: "image",
+    icon: "type",
     href: "/Admin/categories",
   },
   {
     title: "Manage News",
-    icon: "user",
+    icon: "plus-circle",
     href: "/Admin/AddNews",
   },
 ];

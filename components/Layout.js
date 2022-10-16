@@ -10,7 +10,7 @@ function Layout({children}) {
     return (
         < >
             <NavBar />
-            <div className="container">
+            <div className="">
             <Notify />
             <Modal />
             <div >{children}</div>

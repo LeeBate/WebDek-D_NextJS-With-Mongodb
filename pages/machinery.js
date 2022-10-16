@@ -62,7 +62,7 @@ const machinery = (props) => {
   }
 
   return(
-    <div className="home_page">
+    <div className="container-xl">
       <Head>
         <title>เครื่องมือวิทยาศาสตร์</title>
       </Head>

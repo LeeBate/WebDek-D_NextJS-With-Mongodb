@@ -5,7 +5,7 @@ import { DataContext } from '../store/GlobalState'
 
 export default function footer() {
   const { state, dispatch } = useContext(DataContext)
-    const { cart, auth } = state
+    const {  auth } = state
 
   const bg = {
     backgroundImage : "url('/images/footer.png')",

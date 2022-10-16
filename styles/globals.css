@@ -27,6 +27,7 @@ a {
 
 * {
   box-sizing: border-box;
+  
 }
 
 img{
@@ -46,6 +47,8 @@ img{
   width:100%;
   position:absolute;
 }
+
+
 
 
 

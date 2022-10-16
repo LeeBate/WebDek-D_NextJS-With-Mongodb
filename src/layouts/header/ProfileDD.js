@@ -38,7 +38,7 @@ console.log(state)
     Cookie.remove('refreshtoken', {path: 'api/auth/accessToken'})
     localStorage.removeItem('firstLogin')
     dispatch({ type: 'AUTH', payload: {} })
-    // dispatch({ type: 'NOTIFY', payload: {success: 'ออกจากระบบ!'} })
+    dispatch({ type: 'NOTIFY', payload: {success: 'ออกจากระบบ!'} })
     return router.push('/')
 }
   return (
@@ -107,7 +107,7 @@ console.log(state)
               aria-label="secondary mailbox folder"
               onClick={handleClose4}
             >
-              <ListItemButton>
+              <ListItemButton href="/Admin/profile">
                 <ListItemText primary="Edit Profile" />
               </ListItemButton>
               <ListItemButton>

@@ -1,7 +1,5 @@
 import React from "react";
-import Button from "@mui/material/Button";
-import emailjs from "@emailjs/browser";
-import Swal from "sweetalert2";
+
 import { BsFillTelephoneFill } from "react-icons/bs";
 import { GrMail } from "react-icons/gr";
 import { IoTimeSharp } from "react-icons/io5";
