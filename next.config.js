@@ -1,5 +1,5 @@
 module.exports = {
-  plugins: [require('@tailwindcss/aspect-ratio')],
+  
   env: {
       "BASE_URL": "http://localhost:3000",
       "MONGODB_URL": "mongodb+srv://AdminX:admin123@project.ljdx6ja.mongodb.net/?retryWrites=true&w=majority",
@@ -14,7 +14,7 @@ module.exports = {
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
     },
-    
+    plugins: [require('@tailwindcss/aspect-ratio')],
     
   }
   
