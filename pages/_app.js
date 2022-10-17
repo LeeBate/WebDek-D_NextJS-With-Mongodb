@@ -6,10 +6,12 @@ import { ThemeProvider } from 'next-themes'
 function MyApp({ Component, pageProps }) {
   return (
     
-    <DataProvider><ThemeProvider attribute="class">
-      <Layout>
-        <Component {...pageProps} />
-      </Layout></ThemeProvider>
+    <DataProvider>
+      <ThemeProvider attribute="class">
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+      </ThemeProvider>
     </DataProvider>
     
   )
