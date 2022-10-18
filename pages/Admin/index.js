@@ -12,8 +12,6 @@ import { DataContext } from "../../store/GlobalState";
 import { useState, useContext, useEffect } from "react";
 
 
-
-
 export default function Index() {
   const { state } = useContext(DataContext);
   const { auth } = state;
@@ -40,9 +38,9 @@ export default function Index() {
       {/* <Grid item xs={12} lg={4}>
         <DailyActivity />
       </Grid> */}
-      <Grid item xs={12} lg={12}>
+      {/* <Grid item xs={12} lg={12}>
         <ProductPerfomance />
-      </Grid>
+      </Grid> */}
       <Grid item xs={12} lg={12}>
         <BlogCard />
       </Grid>

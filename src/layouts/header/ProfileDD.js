@@ -22,7 +22,7 @@ const ProfileDD = () => {
   const router = useRouter()
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
-console.log(state)
+
 
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 

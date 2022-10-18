@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from 'react'
 import {DataContext} from '../store/GlobalState'
 
 import { getData } from '../utils/fetchData'
-import InformItem from '../components/product/FavoriteItem'
+import FavoriteItem from '../components/product/FavoriteItem'
 import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
@@ -88,7 +88,7 @@ const Inform = (props) => {
           ? <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
 
           : products.map(product => (
-            <InformItem key={product._id} product={product} handleCheck={handleCheck} />
+            <FavoriteItem key={product._id} product={product} handleCheck={handleCheck} />
           ))
         }
       </div>

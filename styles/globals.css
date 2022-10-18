@@ -51,7 +51,7 @@ img{
 @layer base {
   body {
     /* @apply max-w-2xl mx-auto px-4; */
-    @apply dark:bg-black dark:text-gray-100 bg-white text-gray-900
+    @apply dark:bg-gray-800 dark:text-gray-100 bg-white text-gray-900
   }
 }
 

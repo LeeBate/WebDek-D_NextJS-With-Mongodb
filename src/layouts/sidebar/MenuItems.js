@@ -18,7 +18,7 @@ const Menuitems = [
   {
     title: "Manage Machinery",
     icon: "plus-circle",
-    href: "/Admin/AddProduct",
+    href: "/Admin/createProduct",
   },
   {
     title: "Manage Category",

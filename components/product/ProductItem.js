@@ -23,7 +23,7 @@ const ProductItem = ({ product, handleCheck }) => {
   const adminLink = () => {
     return (
       <>
-        <Link href={`create/${product._id}`}>
+        <Link href={`/Admin/createProduct/${product._id}`}>
           <a className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
             แก้ไขข้อมูล
           </a>
