@@ -2,8 +2,6 @@ import Head from "next/head";
 import { useState, useContext, useEffect } from "react";
 import { getData, putData, postData } from "../../utils/fetchData";
 import { DataContext } from "../../store/GlobalState";
-import { addToCart } from "../../store/Actions";
-import { imageUpload } from "../../utils/imageUpload";
 import { useRouter } from "next/router";
 
 const DetailProduct = (props) => {

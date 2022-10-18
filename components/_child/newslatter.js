@@ -89,7 +89,7 @@ export default function newslatter() {
     });
   }
   return (
-    <div className="w-full h-full">
+    <div className="w-full h-full pt-5">
       <div>
         <div id="main" className="grid grid-cols-2 gap-1 justify-evenly">
           <div className="bg-gray-100 col-span-2 w-full h-84 p-9 border-sm rounded">
@@ -106,7 +106,6 @@ export default function newslatter() {
                   marginWidth="0"
                   src="https://maps.google.com/maps?width=786&amp;height=210&amp;hl=en&amp;q=ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยีสุรนารี&amp;t=p&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                 ></iframe>
-                <a href="https://mcpenation.com/">Minecraft Website</a>
               </div>
               <style>{`.mapouter{position:relative;text-align:right;width:100%;height:210px;}.gmap_canvas {overflow:hidden;background:none!important;width:100%;height:210px;}.gmap_iframe
                 {height:210px!important;}`}</style>
@@ -166,15 +165,15 @@ export default function newslatter() {
             </div>
           </div>
         </div>
-        <Box sx={{ p: 3, textAlign: "center" }}>
+        
+      </div><Box sx={{ p: 1, textAlign: "center" }}>
           <Typography>
-            © 2022 All rights reserved by{" "}
+            © 2022 All rights reserved by {""}
             <Link href="/Admin">
               <a>CALLLAB</a>
-            </Link>{" "}
+            </Link>
           </Typography>
         </Box>
-      </div>
     </div>
   );
 }

@@ -62,90 +62,78 @@ return dispatch({ type: 'NOTIFY', payload: {} })
         <Head>
           <title>สมัครสมาชิก</title>
         </Head>
-
-            <section class="h-screen">
-              <div class="container px-6 py-12 h-full">
-                <div class="flex justify-center items-center flex-wrap h-full g-6 text-gray-800">
-                  <div class="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
-                    <img
-                      img src={"/images/puntest.png"}
-                      class="w-[500px] h-[500px]"
-                      alt="Phone image"
-                    />
-                  
-                  </div>
-                  <div class="md:w-8/12 lg:w-5/12 lg:ml-20">
-                    <form onSubmit={handleSubmit}>
-
-                    <div class="mb-6">
-                        <input
-                          type="text"
-                          class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="ชื่อ" name="name" value={name} onChange={handleChangeInput}
-                        />
+          <section className="vh-100 bg-[#f1f1f1]" >
+            <div className="container py-0 h-100">
+              <div className="row d-flex justify-center center h-100">
+                <div className="col col-xl-9 col-lg-8 ">
+                  <div className="card rounded-[1rem] mt-5" >
+                    <div className="row g-0 items-center pl-4 py-4 ">
+                      <div className="col-md-5 col-lg-5 d-none d-md-block">
+                      <img src={"/images/puntest.png"}
+                          className="object-cover rounded-md "  />
                       </div>
+                      <div className="col-md-6 col-lg-7 d-flex align-items-center">
+                        <div className="card-body p-4 p-lg-5 text-black">
 
-                      
-                      <div class="mb-6">
-                        <input
-                          type="text"
-                          class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="อีเมล์" name="email" value={email} onChange={handleChangeInput}
-                        />
-                        <small id="emailHelp" className="form-text text-muted">เราจะไม่แชร์อีเมลของคุณกับคนอื่นเด็ดขาด</small>
-                      </div>
+                      <form onSubmit={handleSubmit}>
 
-                    
-                      <div class="mb-6">
-                        <input
-                          type="password"
-                          class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="รหัสผ่าน" name="password" value={password} onChange={handleChangeInput}
-                        />
-                      </div>
+                        <div className="d-flex align-items-center mb-2 pb-1">
+                          
+                          <span className="h3 fw-bold mb-0">สมัครสมาชิก</span>
+                        </div>
+                        <div className="form-outline mb-2">
+                          <label className="form-label" htmlFor="form2Example17">ชื่อ</label>
+                          <input type="text" id="form2Example17" className="form-control form-control-lg" name="name" value={name} onChange={handleChangeInput} />
+                          
+                        </div>
 
+                        <div className="form-outline mb-2">
+                          <label className="form-label" htmlFor="form2Example17">อีเมล์</label>
+                          <input type="email" id="form2Example17" className="form-control form-control-lg" name="email" value={email} onChange={handleChangeInput} />
+                        </div>
 
-                      <div class="mb-6">
-                        <input
-                          type="password"
-                          class="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                          placeholder="ยืนยันรหัสผ่าน" name="cf_password" value={cf_password}   onChange={handleChangeInput}
-                        />
-                      </div>
+                        <div className="form-outline mb-2">
+                        <label className="form-label" htmlFor="form2Example27">รหัสผ่าน</label>
+                        <input type="password" id="form2Example27" className="form-control form-control-lg" name="password" value={password} onChange={handleChangeInput} />
+                        
+                        </div>
 
-                      <button
-                        type="submit"
-                        class="inline-block px-7 py-3 bg-indigo-900 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-indigo-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
-                        data-mdb-ripple="true"
-                        data-mdb-ripple-color="light"
-                      >
-                        สมัครสมาชิก
-                      </button>
-
-                      <div
-                        class="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
-                      >
-                        <p class="text-center font-semibold mx-4 mb-0">หรือ</p>
-                      </div>
-                      <div class="flex items-center justify-between pb-6">
-                        <p class="mb-0 mr-2">ถ้าคุณมีบัญชีอยู่แล้วคลิกที่นี้!</p>
-
-                        <Link href="/signin">
+                        <div className="form-outline mb-3">
+                        <label className="form-label" htmlFor="form2Example27">ยืนยันรหัสผ่าน</label>
+                        <input type="password" id="form2Example27" className="form-control form-control-lg" name="cf_password" value={cf_password}   onChange={handleChangeInput} />
+                        
+                        </div>
+                        
+                        <div className="pt-1 mb-2">
                         <button
-                          type="button"
-                          class="inline-block px-6 py-2 border-2 border-red-600 text-red-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-                          data-mdb-ripple="true"
-                          data-mdb-ripple-color="light"
-                        >
-                          เข้าสู่ระบบ
+                        type="submit"
+                        className="inline-block px-7 py-3 bg-indigo-900 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-indigo-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                        data-mdb-ripple="true"
+                        data-mdb-ripple-color="light">สมัครสมาชิก
                         </button>
-                        </Link>
-                      </div>
+                        </div>
+                        <div
+                          className="flex items-center my-3 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5"
+                        >
+                          <p className="text-center font-semibold mx-4 mb-0">หรือ</p>
+                        </div>
+                        
+                        <p className="mb-0 pb-lg-2  " >ถ้าคุณมีบัญชีอยู่แล้วคลิกที่นี่!
+                        <Link href="/signin">
+                        <a className='text-blue-500' href="#!"
+                            >  เข้าสู่ระบบ</a>
+                        </Link>    
+                        </p>
+
                     </form>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
       </div>
     )
   }

@@ -10,11 +10,9 @@ function Layout({children}) {
     return (
         < >
             <NavBar />
-            <div className="">
             <Notify />
             <Modal />
             <div >{children}</div>
-            </div>
             <Footer />
         </>
     )

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useState, useContext } from 'react'
 import { getData } from '../../utils/fetchData'
 import { DataContext } from '../../store/GlobalState'
-import { addToCart } from '../../store/Actions'
+import { useRouter } from "next/router";
 
 const DetailInform = (props) => {
     const [product] = useState(props.product)
@@ -10,6 +10,7 @@ const DetailInform = (props) => {
 
     const { state, dispatch } = useContext(DataContext)
     const { cart } = state
+    const router = useRouter();
 
     const isActive = (index) => {
         if(tab === index) return " active";
@@ -17,13 +18,16 @@ const DetailInform = (props) => {
     }
 
     return(
+        <div>
         <div className="row detail_page">
             <Head>
                 <title>Detail Inform</title>
             </Head>
-            <div className="ml-11 mt-10"><h2 className="text font-bold text-2xl ">{product.title}</h2></div>
-            <div className="flex flex-row">
-                <div className='basis-4/10 ml-3 mb-5'>
+            <div className="text-capitalize font-bold text-3xl mx-[80px] my-5">
+                <h1 className="text font-light text-xl ">{product.title}</h1>
+            </div>
+            <div className="flex flex-row bg-indigo-100 mx-24 rounded-xl">
+                <div className='basis-4/10 ml-3'>
                 <img src={ product.images[tab].url } alt={ product.images[tab].url }
                 className="d-block img-thumbnail rounded mt-4 ml-4 max-w-xl max-h-fit" />
 
@@ -42,6 +46,7 @@ const DetailInform = (props) => {
     
                 <div className="my-2">{product.description}</div>
             </div>
+        </div>
         </div>
         </div>
     )
