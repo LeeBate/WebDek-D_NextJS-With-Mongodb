@@ -4,7 +4,7 @@ import SwiperCore, { Autoplay } from "swiper";
 function VideoPlayer() {
     SwiperCore.use([Autoplay]);
   return (<>
-    <section>
+    {/* <section>
     <div className="flex justify-center  p-50  opacity-100 ">
       <div className="flex text-center items-center absolute  w-[72rem] mt-96 h-900">
         <h1 className="text-5xl font-bold text-white ">
@@ -13,14 +13,14 @@ function VideoPlayer() {
         </h1>
       </div>
     </div>
-  </section>
+  </section> */}
   <section>
     <div>
       <video
         autoPlay
         loop
         muted
-        className="w-full aspect-video"
+        className="w-full h-full aspect-video"
       >
         <source src="./intro.mp4" type="video/mp4" />
       </video>

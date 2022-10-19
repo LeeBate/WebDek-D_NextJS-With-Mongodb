@@ -12,7 +12,8 @@ function Layout({children}) {
             <NavBar />
             <Notify />
             <Modal />
-            <div >{children}</div>
+            <div className='container'></div>
+            {children}
             <Footer />
         </>
     )

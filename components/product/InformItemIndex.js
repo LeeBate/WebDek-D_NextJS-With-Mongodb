@@ -11,15 +11,10 @@ const InformItem = ({product, handleCheck}) => {
         return(
             <>
                 <Link href={`Inform/${product._id}`}>
-                    <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>View</a>
+                    <a className="btn btn-info mt-2"
+                    style={{marginRight: '5px', flex: 1}}>ดูข้อมูล</a>
                 </Link>
-                {/* <button className="btn btn-success"
-                style={{marginLeft: '5px', flex: 1}}
-                disabled={product.inStock === 0 ? true : false} 
-                onClick={() => dispatch(addToCart(product, cart))} >
-                    Buy
-                </button> */}
+                
             </>
         )
     }
@@ -29,7 +24,7 @@ const InformItem = ({product, handleCheck}) => {
             <>
                 <Link href={`createInfo/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>Edit</a>
+                    style={{marginRight: '5px', flex: 1}}>แก้ไห</a>
                 </Link>
                 <button className="btn btn-danger"
                 style={{marginLeft: '5px', flex: 1}}
@@ -46,23 +41,49 @@ const InformItem = ({product, handleCheck}) => {
             </>
         )
     }
+
     return(
-        <div className="card bg-sky-100/75" style={{ width: '18rem' }}>
-            
-            <img className="card-img-top object-fill" src={product.images[0].url} alt={product.images[0].url} />
-            <div className="card-body">
-                <h5 className=" card-title font-bold text-xl mb-2 text-capitalize" title={product.title}>
-                    {product.title}
-                </h5>
-                <h5 className="card-title text-capitalize" title={product.description}>
-                    {product.description}
-                </h5>
+        // <div class="flex items-center rounded-lg bg-white shadow-lg overflow-hidden">
+        //     <img className={`${sizeClasses.height} ${sizeClasses.width} flex-shrink-0`} src={product.images[0].url} alt={product.images[0].url} />
+        //     <div className="px-6 py-0">
+        //         <h5 className="text-lg font-semibold text-gray-800" title={product.title}>
+        //             {product.title}
+        //         </h5>
+        //         <h5 className=" text-gray-700 text-base truncate" title={product.description}>
+        //             {product.description}
+        //         </h5>
                     
-                <div className="row justify-content-between mx-0 ">
-                    {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
-                </div>
+        //         <div className="row justify-content-between mx-0 ">
+        //             {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
+        //         </div>
+        //     </div>
+            
+        // </div>
+        
+          <div>
+            <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md mx-auto sm:max-w-xl">
+              <img
+                class="w-full h-56 object-cover object-center"
+                src={product.images[0].url} alt={product.images[0].url}
+              />
+              <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 line-clamp-2" title={product.title}>
+                {product.title}
+                </h2>
+                <p class="mt-3 text-gray-700 line-clamp-3" title={product.description}>
+                {product.description}
+                </p>
+                <a
+                  class="mt-4 inline-block px-4 py-1.5 bg-blue-300 rounded text-blue-900 font-semibold tracking-wide hover:bg-blue-800 hover:text-blue-100"
+                  href="#"
+                >
+                  Read more
+                </a>
+              </div>
             </div>
-        </div>
+          </div>
+        
+
     
         
 

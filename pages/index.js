@@ -12,10 +12,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import SwiperCore, { Autoplay } from "swiper";
 import Footer from "../components/footer";
-import InformItemIndex from '../components/product/InformItemIndex'
+import InformItemIndex from "../components/product/InformItemIndex";
 import VideoPlayer from "../components/VideoPlayer";
 import { Navigation } from "swiper";
-SwiperCore.use([ Navigation]);
+SwiperCore.use([Navigation]);
 
 const index = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -31,7 +31,7 @@ const index = (props) => {
   useEffect(() => {
     setProducts(props.products);
   }, [props.products]);
-  
+
   useEffect(() => {
     setInforms(props.Informs);
   }, [props.Informs]);
@@ -76,51 +76,49 @@ const index = (props) => {
   SwiperCore.use([Autoplay]);
 
   return (
-    <div>
+    <div class="bg-gray-100">
       <Head>
         <title>Index</title>
       </Head>
-      
-      <section>
-        <div>
-          <VideoPlayer/>
-        </div>
-      </section>
+      <div class="px-0 py-0 max-w-md mx-auto sm:max-w-xl lg:px-12 lg:py-24 lg:max-w-full xl:mr-0 2xl:col-span-2">
+        <section>
+          <div>
+            <VideoPlayer />
+          </div>
+        </section>
 
-      <section className="  p-20">
-        <center>
-          <Swiper
-            spaceBetween={20}
-            navigation={true}
-            speed={700}
-            pagination={{ clickable: true }}
-            loop={true}
-            effect={"fade"}
-            slidesPerView={1}
-            onSlideChange={() => console.log("slide change")}
-            autoplay={{
-              delay: 2000,
-            }}
-            
-          >
-            {products.map((product, index) => (
-                  <SwiperSlide key={index}>                
-                        <Image
-                          src={product.images[0].url}
-                          alt={product.images[0].url}
-                          width={800}
-                          height={400}
-                          className="mt-80"
-                        />
-                      
-                  </SwiperSlide>
-            ))}
-          </Swiper>
-        </center>
-      </section>
+        <section className="p-10">
+          <center>
+            <Swiper
+              spaceBetween={20}
+              navigation={true}
+              speed={700}
+              pagination={{ clickable: true }}
+              loop={true}
+              effect={"fade"}
+              slidesPerView={1}
+              onSlideChange={() => console.log("slide change")}
+              autoplay={{
+                delay: 2000,
+              }}
+            >
+              {products.map((product, index) => (
+                <SwiperSlide key={index}>
+                  <Image
+                    src={product.images[0].url}
+                    alt={product.images[0].url}
+                    width={800}
+                    height={400}
+                    className="mt-80"
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </center>
+        </section>
 
-      {/* Slide */}
-      {/* <div className="mt-32 relative">
+        {/* Slide */}
+        {/* <div className="mt-32 relative">
         <h1 className="text-5xl font-extrabold tracking-tight text-center"> Slide
         </h1>
         <ul className="mt-10 pb-8 px-[50vw] w-full flex overflow-x-auto gap-8 snap-x">
@@ -142,26 +140,27 @@ const index = (props) => {
               </div>
             </li>
           ))}
-          
-
         </ul>
-        
-
       </div> */}
-
-
-
-      <section>
-      <div className="InformIndex">
-        {
-          Informs.length === 0 
-          ? <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
-
-          : Informs.slice(0,4).map(product => (
-            <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
-          ))
-        }
       </div>
+      {/* <div className="max-w-md sm:max-w-xl lg:max-w-6xl mx-auto px-8 lg:px-12 py-8">
+        <h2 className="text-xl text-gray-900">Popular destinations</h2>
+        <p className="mt-2 text-gray-600">A selection of great work-friendly cities with lots to see and explore.</p>
+        <div className="mt-6 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
+          {Informs.slice(0,4).map((product) => (
+            <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
+          ))}
+        </div>
+      </div> */}
+      <section class="max-w-7xl mx-auto px-8 py-10">
+        <h1 class="text-4xl font-extrabold text-center text-gray-900">
+          ข่าวประชาสัมพันธ์
+        </h1>
+        <div class="my-10 grid gap-6 lg:grid-cols-3">
+        {Informs.slice(0,4).map((product) => (
+            <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
+          ))}
+          </div>
       </section>
     </div>
   );
@@ -179,7 +178,9 @@ export async function getServerSideProps({ query }) {
     }&category=${category}&sort=${sort}&title=${search}`
   );
   const res1 = await getData(
-    `productNews?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    `productNews?limit=${
+      page * 6
+    }&category=${category}&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {

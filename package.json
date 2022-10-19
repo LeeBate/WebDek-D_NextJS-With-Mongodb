@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.10.4",
     "@mui/lab": "^5.0.0-alpha.103",
     "@mui/material": "^5.10.8",
+    "@tailwindcss/line-clamp": "^0.4.2",
     "add": "^2.0.6",
     "apexcharts": "^3.36.0",
     "bcrypt": "^5.0.0",

@@ -7,8 +7,23 @@ module.exports = {
 darkMode: 'class',
   theme: {
     extend: {
-     
+     colors: {
+        brand: {
+          bar: "#465A93",
+        },
+        lineClamp: {
+          10: "10",
+          12: "12",
+        },
+     },
+    },
+    
+  },
+  variants:{
+    extend: {
+      backgroundColor: ["active"],
+      lineClamp: ["hover"],
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 }

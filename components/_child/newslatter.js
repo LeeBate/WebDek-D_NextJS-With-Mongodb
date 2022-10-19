@@ -43,57 +43,13 @@ export default function newslatter() {
       );
     e.target.reset();
   }
-  function sendEmail2(e) {
-    e.preventDefault();
-    Swal.fire({
-      title: "คุณแน่ใจหรือไม่?",
-      text: "การกระทำนี้ คุณจะไม่สามารถย้อนกลับได้!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "ส่ง",
-      cancelButtonText: "ยกเลิก",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        emailjs
-          .sendForm(
-            "service_8qhwn8r",
-            "template_a0nrq3h",
-            e.target,
-            "urzLahGarV18K7U0b"
-          )
-          .then(
-            (result) => {
-              console.log(result.text);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-        e.target.reset();
-        Swal.fire("ส่งสำเร็จ!", "คำขอถูกดำเนินการแล้ว.", "success");
-
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 2500,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.addEventListener("mouseenter", Swal.stopTimer);
-            toast.addEventListener("mouseleave", Swal.resumeTimer);
-          },
-        });
-      }
-    });
-  }
+  
   return (
-    <div className="w-full h-full pt-5">
+    <div className="w-full h-full ">
       <div>
-        <div id="main" className="grid grid-cols-2 gap-1 justify-evenly">
-          <div className="bg-gray-100 col-span-2 w-full h-84 p-9 border-sm rounded">
-            <h1 className="pb-1 text-xl font-bold">ติดต่อสอบถาม</h1>
+        <div id="main" className="grid grid-cols-2 justify-evenly">
+          <div className="bg-gray-100 col-span-2 w-full h-84 p-9 border-sm ">
+            <h1 className="pb-1 text-xl font-bold dark:text-gray-900">ติดต่อสอบถาม</h1>
 
             <div className="mapouter">
               <div className="gmap_canvas">
@@ -112,7 +68,7 @@ export default function newslatter() {
             </div>
           </div>
 
-          <div className="bg-gray-100 w-26 h-60 p-7 pr-8 rounded">
+          <div className="bg-gray-100 w-26 h-60 p-7 pr-8 rounded dark:text-gray-900">
             <h1 className="text-xl font-bold">ตำแหน่งที่ตั้ง</h1>
             <p>111 ถ.มหาวิทยาลัย ต.สุรนารี อ.เมือง จ.นครราชสีมา, 30000</p>
             <div className="flex gap-2">

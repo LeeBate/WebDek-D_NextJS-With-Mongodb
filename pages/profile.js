@@ -94,7 +94,7 @@ const Profile = () => {
             
             <section className=" flex items-center justify-center row text-secondary my-3">
                 <div className="col-md-3 mt-2">
-                    <h3 className="text-center text-uppercase text-3xl">
+                    <h3 className="text-center text-uppercase text-3xl  dark:text-gray-100">
                         {auth.user.role === 'user' ? 'User Profile' : 'Admin Profile'}
                     </h3>
 
@@ -109,25 +109,25 @@ const Profile = () => {
                         </span>
                     </div>
 
-                    <div className="form-group ">
+                    <div className="form-group dark:text-gray-100">
                         <label htmlFor="name">ชื่อ</label>
                         <input type="text" name="name" value={name} className="form-control"
                         placeholder="ชื่อของคุณ" onChange={handleChange} />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group dark:text-gray-100">
                         <label htmlFor="email">อีเมล์</label>
                         <input type="text" name="อีมเล์" defaultValue={auth.user.email} 
                         className="form-control" disabled={true} />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group dark:text-gray-100">
                         <label htmlFor="password">รหัสผ่านใหม่</label>
                         <input type="password" name="password" value={password} className="form-control"
                         placeholder="รหัสผ่านใหม่ของคุณ" onChange={handleChange} />
                     </div>
 
-                    <div className="form-group">
+                    <div className="form-group dark:text-gray-100">
                         <label htmlFor="cf_password">ยืนยันรหัสผ่าน</label>
                         <input type="password" name="cf_password" value={cf_password} className="form-control"
                         placeholder="ยืนยันรหัสผ่าน" onChange={handleChange} />
