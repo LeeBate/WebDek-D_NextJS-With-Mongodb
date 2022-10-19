@@ -20,8 +20,8 @@ const Profile = () => {
   const { avatar, name, password, cf_password } = data;
 
   const { state, dispatch } = useContext(DataContext);
-  const { auth, notify, orders } = state;
-  console.log(state);
+  const { auth, notify} = state;
+  console.log(auth);
 
   useEffect(() => {
     if (auth.user) setData({ ...data, name: auth.user.name });
@@ -107,7 +107,8 @@ const Profile = () => {
     });
   };
 
-  if (!auth.user) return null;
+  if(!auth.user) return null;
+
   return (
     <ThemeProvider theme={theme}>
       <style jsx global>{`

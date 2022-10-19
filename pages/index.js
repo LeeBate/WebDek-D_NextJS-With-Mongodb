@@ -152,15 +152,18 @@ const index = (props) => {
           ))}
         </div>
       </div> */}
-      <section class="max-w-7xl mx-auto px-8 py-10">
-        <h1 class="text-4xl font-extrabold text-center text-gray-900">
+      <section className="max-w-full mx-auto px-8 pt-10 pb-1 bg-red-400">
+        <h1 className="text-4xl font-extrabold text-center text-gray-900">
           ข่าวประชาสัมพันธ์
         </h1>
-        <div class="my-10 grid gap-6 lg:grid-cols-3">
-        {Informs.slice(0,4).map((product) => (
+        <div className="my-10 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
+        {Informs.slice(0,3).map((product) => (
             <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
           ))}
-          </div>
+        </div>
+          
+            <h2 className="mt-4 inline-block px-4 py-1.5 bg-blue-300 rounded text-white font-semibold tracking-wide hover:bg-blue-800 hover:text-blue-100 text-center">
+              อ่านเพิ่มเติม</h2>
       </section>
     </div>
   );

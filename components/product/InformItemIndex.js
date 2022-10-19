@@ -11,7 +11,7 @@ const InformItem = ({product, handleCheck}) => {
         return(
             <>
                 <Link href={`Inform/${product._id}`}>
-                    <a className="btn btn-info mt-2"
+                    <a className="btn btn-info mt-2 w-full"
                     style={{marginRight: '5px', flex: 1}}>ดูข้อมูล</a>
                 </Link>
                 
@@ -24,7 +24,7 @@ const InformItem = ({product, handleCheck}) => {
             <>
                 <Link href={`createInfo/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>แก้ไห</a>
+                    style={{marginRight: '5px', flex: 1}}>แก้ไข</a>
                 </Link>
                 <button className="btn btn-danger"
                 style={{marginLeft: '5px', flex: 1}}
@@ -61,24 +61,21 @@ const InformItem = ({product, handleCheck}) => {
         // </div>
         
           <div>
-            <div class="bg-white rounded-xl shadow-2xl overflow-hidden max-w-md mx-auto sm:max-w-xl">
+            <div class="bg-white rounded-xl shadow-xl  max-w-md mx-auto md:object-cover">
               <img
-                class="w-full h-56 object-cover object-center"
+                class="w-full h-60 object-center object-cover rounded-t-xl  md:object-center md:object-cover "
                 src={product.images[0].url} alt={product.images[0].url}
               />
               <div class="p-6">
                 <h2 class="text-2xl font-bold text-gray-900 line-clamp-2" title={product.title}>
                 {product.title}
                 </h2>
-                <p class="mt-3 text-gray-700 line-clamp-3" title={product.description}>
+                <p class="mt-3 text-gray-700 line-clamp-2" title={product.description}>
                 {product.description}
                 </p>
-                <a
-                  class="mt-4 inline-block px-4 py-1.5 bg-blue-300 rounded text-blue-900 font-semibold tracking-wide hover:bg-blue-800 hover:text-blue-100"
-                  href="#"
-                >
-                  Read more
-                </a>
+               
+                    {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
+                
               </div>
             </div>
           </div>

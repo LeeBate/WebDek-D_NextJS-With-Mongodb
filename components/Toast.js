@@ -25,10 +25,6 @@ const {state, dispatch} = useContext(DataContext)
           });
     
     return(<div>
-       
-          
-        
-    
     </div>)
 }
 

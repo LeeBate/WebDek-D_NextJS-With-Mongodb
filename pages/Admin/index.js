@@ -15,7 +15,6 @@ import { useState, useContext, useEffect } from "react";
 export default function Index() {
   const { state } = useContext(DataContext);
   const { auth } = state;
-  if(!auth.user) return null;
   return (
     
     <ThemeProvider theme={theme}> 

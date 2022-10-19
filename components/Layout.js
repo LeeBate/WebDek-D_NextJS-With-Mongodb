@@ -9,6 +9,7 @@ import VideoPlayer from "./VideoPlayer";
 function Layout({children}) {
     return (
         < >
+            
             <NavBar />
             <Notify />
             <Modal />

@@ -121,7 +121,7 @@ function NavBar() {
       <nav className="w-full bg-brand-bar shadow">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
-            <div className="flex items-center justify-between py-3 md:py-5 md:block">
+            <div className="flex items-center justify-between py-3 ">
               <a href="/">
                 <img
                   src={"/images/callab2.png"}
@@ -130,7 +130,7 @@ function NavBar() {
                   height={51.95}
                 />
               </a>
-              <div className="lg:hidden md:hidden">
+              <div className="lg:hidden  md:pl-[700px] ">
                 <button
                   className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={() => setNavbar(!navbar)}
@@ -170,7 +170,7 @@ function NavBar() {
           </div>
           <div>
             <div
-              className={`flex-1 justify-self-center pb-3 mt-8 md:block 2 md:px-0 2 md:py-0 ${
+              className={`flex-1 justify-self-center pb-3 mt-8 lg:block 2 lg:px-0 2 lg:py-0 ${
                 navbar ? "block" : "hidden"
               }`}
             >
@@ -264,7 +264,6 @@ function NavBar() {
         </div>
         
       </nav>
-      <div className="flex justify-center items-center "></div>
     </div>
   );
 }

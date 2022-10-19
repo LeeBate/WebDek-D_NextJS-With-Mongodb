@@ -37,7 +37,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/machinery')
+            return router.push('/Admin/createProduct')
         })
     }    
     
@@ -57,7 +57,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/manageslide')
+            return router.push('/Admin/AddSlide')
         })
     }
 
@@ -92,40 +92,12 @@ const Modal = () => {
         buttonsStyling: false
       })
 
-    //   swalWithBootstrapButtons.fire({
-    //     title: 'Are you sure?',
-    //     text: "You won't be able to revert this!",
-    //     icon: 'warning',
-    //     showCancelButton: true,
-    //     confirmButtonText: 'Yes, delete it!',
-    //     cancelButtonText: 'No, cancel!',
-    //     reverseButtons: true
-    //   }).then((result) => {
-    //     if (result.isConfirmed) {
-    //         handleSubmit()
-    //       swalWithBootstrapButtons.fire(
-    //         'Deleted!',
-    //         'Your file has been deleted.',
-    //         'success'
-    //       )
-    //     } else if (
-    //       /* Read more about handling dismissals below */
-    //       result.dismiss === Swal.DismissReason.cancel
-    //     ) {
-    //       swalWithBootstrapButtons.fire(
-    //         'Cancelled',
-    //         'Your imaginary file is safe :)',
-    //         'error'
-    //       )
-    //     }
-    //   })
-
 
     return(
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                <div className="modal-header">
+                <div className="modal-header ">
                     <h5 className="modal-title text-capitalize" id="exampleModalLabel">
                         {modal.length !== 0 && modal[0].title}
                     </h5>
