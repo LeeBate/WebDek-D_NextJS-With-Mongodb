@@ -1,14 +1,16 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import React, { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { DataContext } from "../store/GlobalState";
 import Cookie from "js-cookie";
 import Image from "next/image";
+import { Fragment } from "react";
+import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useTheme } from "next-themes";
 import ButtonMode from "../components/Button";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
-
 
 function NavBar() {
   const router = useRouter();
@@ -23,7 +25,6 @@ function NavBar() {
       return "";
     }
   };
-
 
   const handleLogout = () => {
     Cookie.remove("refreshtoken", { path: "api/auth/accessToken" });
@@ -42,122 +43,177 @@ function NavBar() {
       </>
     );
   };
+  const LogoutRouter = () => {
+    return (
+      <>
+        <Link href="/">
+          <a className="dropdown-item" onClick={handleLogout}>
+            ออกจากระบบ
+          </a>
+        </Link>
+      </>
+    );
+  };
+  const LogoutRouterMobile = () => {
+    return (
+      <>
+        <Link href="/">
+          <a className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white" onClick={handleLogout}>
+            ออกจากระบบ
+          </a>
+        </Link>
+      </>
+    );
+  };
+  const user = {
+    name: "Tom Cook",
+    email: "tom@example.com",
+    imageUrl:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
+  };
+  const navigation = [
+    { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
+    { name: "บริการวิเคราะห์ทดสอบ", href: "#", current: false },
+    { name: "ติดตามผล", href: "#", current: false },
+    { name: "เกี่ยวกับเรา", href: "#", current: false },
+  ];
+  const userNavigation = [
+    { name: "โปรไฟล์", href: "/profile" },
+    { name: "เครื่องมือที่ชอบ", href: "/favorite" },
+  ];
+
+  function classNames(...classes) {
+    return classes.filter(Boolean).join(" ");
+  }
 
   const loggedRouter = () => {
     return (
-      <li className="nav-item dropdown">
-        <a
-          className="nav-link dropdown-toggle "
-          href="#"
-          id="navbarDropdownMenuLink"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          <img
-            src={auth.user.avatar}
-            alt={auth.user.avatar}
-            style={{
-              borderRadius: "50%",
-              width: "50px",
-              height: "50px",
-              transform: "translateY(-3px)",
-              marginLeft: "30px",
-            }}
-          />
-
-          {auth.user.name}
-        </a>
-
-        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <Link href="/profile">
-            <a className="dropdown-item">โปรไฟล์</a>
-          </Link>
-          {auth.user.role === "admin" && adminRouter()}
-          <div className="dropdown-divider"></div>
-          <button className="dropdown-item" onClick={handleLogout}>
-            ออกระบบ
-          </button>
+      <Menu as="div" className="relative ml-3">
+        <div>
+          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span className="sr-only">Open user menu</span>
+            <img
+              className="h-8 w-8 rounded-full"
+              src={auth.user.avatar}
+              alt={auth.user.avatar}
+            />
+          </Menu.Button>
         </div>
-      </li>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            {auth.user.role === "admin" && adminRouter()}
+            {userNavigation.map((item) => (
+              <Menu.Item key={item.name}>
+                {({ active }) => (
+                  <a
+                    href={item.href}
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+            {auth.user.role === "admin" && LogoutRouter()}
+            {auth.user.role === "user" && LogoutRouter()}
+          </Menu.Items>
+        </Transition>
+      </Menu>
+
+      // <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      //   <Link href="/profile">
+      //     <a className="dropdown-item">โปรไฟล์</a>
+      //   </Link>
+      //   {auth.user.role === "admin" && adminRouter()}
+      //   <div className="dropdown-divider"></div>
+      //   <button className="dropdown-item" onClick={handleLogout}>
+      //     ออกระบบ
+      //   </button>
+      // </div>
+    );
+  };
+  const loggedRouterMobile = () => {
+    return (
+      <Menu as="div" className="relative ml-3">
+        <div>
+          <div className="border-t border-gray-700 pt-4 pb-4">
+            <div className="flex items-center px-5">
+              <div className="flex-shrink-0">
+                <img
+                  className="h-10 w-10 rounded-full"
+                  src={auth.user.avatar}
+                  alt={auth.user.avatar}
+                />
+              </div>
+              <div className="ml-3">
+                <div className="text-base font-medium leading-none text-white">
+                {auth.user.name}
+                </div>
+                <div className="text-sm font-medium leading-none text-gray-400">
+                {auth.user.email}
+                </div>
+              </div>
+              <button
+                type="button"
+                className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+              >
+                <span className="sr-only">View notifications</span>
+                <BellIcon className="h-6 w-6" aria-hidden="true" />
+              </button>
+            </div>
+          </div>
+          
+          <div className="mt-3 space-y-1 px-2 pb-3">
+            {auth.user.role === "admin" && adminRouter()}
+            {userNavigation.map((item) => (
+              <Disclosure.Button
+                key={item.name}
+                as="a"
+                href={item.href}
+                className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+              >
+                {item.name}
+              </Disclosure.Button>
+            ))}
+            
+              {auth.user.role === "admin" && LogoutRouterMobile()}
+              {auth.user.role === "user" && LogoutRouterMobile()}
+            
+            
+          </div>
+        </div>
+      </Menu>
+
+      // <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      //   <Link href="/profile">
+      //     <a className="dropdown-item">โปรไฟล์</a>
+      //   </Link>
+      //   {auth.user.role === "admin" && adminRouter()}
+      //   <div className="dropdown-divider"></div>
+      //   <button className="dropdown-item" onClick={handleLogout}>
+      //     ออกระบบ
+      //   </button>
+      // </div>
     );
   };
 
-  const { systemTheme, theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  const renderThemeChanger = () => {
-    if (!mounted) return null;
-
-    const currentTheme = theme === "system" ? systemTheme : theme;
-
-    if (currentTheme === "dark") {
-      return (
-        <Button
-          className="bg-gray-200 dark:bg-gray-600"
-          onClick={() => setTheme("light")}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
-              clipRule="evenodd"
-            />
-          </svg>
-        </Button>
-      );
-    } else {
-      return (
-        <Button className="bg-gray-200" onClick={() => setTheme("dark")}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-5 w-5"
-            viewBox="0 0 20 20"
-            fill="currentColor"
-          >
-            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z" />
-          </svg>
-        </Button>
-      );
-    }
-  };
-
-  const [nav, setNav] = useState(false);
-  const [color, setColor] = useState("transparent");
-  const [textColor, setTextColor] = useState("white");
-
-  const handleNav = () => {
-    setNav(!nav);
-  };
-
-  useEffect(() => {
-    const changeColor = () => {
-      if (window.scrollY >= 90) {
-        setColor("#465A93");
-        setTextColor("#ffffff");
-      } else {
-        setColor("transparent");
-        setTextColor("#ffffff");
-      }
-    };
-    window.addEventListener("scroll", changeColor);
-  }, []);
-
   return (
     // <div>
-    //   <nav className="w-full bg-brand-bar shadow">
+    //   <nav className="w-full bg-indigo-900 bg-opacity-100 shadow">
     //     <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
     //       <div>
-    //         <div className="flex items-center justify-between py-3 ">
+    //         <div className="flex items-center justify-between py-3 md:py-5 md:block">
     //           <a href="/">
     //             <img
     //               src={"/images/callab2.png"}
@@ -166,7 +222,7 @@ function NavBar() {
     //               height={51.95}
     //             />
     //           </a>
-    //           <div className="lg:hidden  md:pl-[700px] ">
+    //           <div className="md:hidden">
     //             <button
     //               className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
     //               onClick={() => setNavbar(!navbar)}
@@ -206,7 +262,7 @@ function NavBar() {
     //       </div>
     //       <div>
     //         <div
-    //           className={`flex-1 justify-self-center pb-3 mt-8 lg:block 2 lg:px-0 2 lg:py-0 ${
+    //           className={`flex-1 justify-self-center pb-3 mt-8 md:block md:pb-0 md:mt-0 ${
     //             navbar ? "block" : "hidden"
     //           }`}
     //         >
@@ -293,117 +349,154 @@ function NavBar() {
     //                 />
     //               </a>
     //             </Link>
-    //             {renderThemeChanger()}
     //           </ul>
     //         </div>
     //       </div>
     //     </div>
-
     //   </nav>
+    //   <div className="flex justify-center items-center "></div>
     // </div>
-    <div
-    style={{ backgroundColor: `${color}` }}
-    className="fixed left-0 top-0 w-full h-[78px] z-10 ease-in duration-300"
-  >
-    <div className="max-w-[1240px] m-auto h-[78px] flex justify-between items-center p-4 text-white">
-      <Link href="/">
-      <img
-                  src={"/images/callab2.png"}
-                  className="rounded cursor-pointer h-12"
-                  
-                />
-      </Link>
-      <ul style={{ color: `${textColor}` }} className="hidden sm:flex">
-        <li className="p-4">
-          <Link href="/machinery">
-            <p className="text-white no-underline cursor-pointer">เครื่องมือวิเคราะห์</p>
-            </Link>
-        </li>
-        <li className="p-4">
-          <Link href="/#gallery"><p className="text-white no-underline cursor-pointer">บริการวิเคราะห์ทดสอบ</p></Link>
-        </li>
-        <li className="p-4">
-          <Link href="/#portfolio"><p className="text-white no-underline cursor-pointer">ติดตามผล</p></Link>
-        </li>
-        <li className="p-4">
-            <div
-                    className="dropdown-toggle "
-                    id="navbarDropdownMenuLink"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    <a className="text-white cursor-pointer no-underline">
-                      เกี่ยวกับเรา
-                    </a>
+    <>
+      <div className="min-h-full">
+        <Disclosure as="nav" className="bg-gray-800">
+          {({ open }) => (
+            <>
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 items-center justify-between">
+                  <div className="flex items-center">
+                    <div className="flex-shrink w-24">
+                      <a href="/">
+                      <img className="h-16 w-24 cursor-pointer" src={"/images/CALLLAB.png"} alt="logo" />
+                      </a>  
+                 
+                    </div>
+                    <div className="hidden md:block">
+                      <div className="ml-10 flex items-baseline space-x-4">
+                        {navigation.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? "bg-gray-900 text-white"
+                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                              "px-3 py-2 rounded-md text-sm font-medium"
+                            )}
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
+                  <div className="hidden md:block">
+                    <div className="ml-4 flex items-center md:ml-6">
+                      <button
+                        type="button"
+                        className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                      >
+                        <span className="sr-only">View notifications</span>
+                        <BellIcon className="h-6 w-6" aria-hidden="true" />
+                      </button>
 
-                  <div
-                    className="dropdown-menu"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <Link href="/Inform">
-                      <a className="dropdown-item">ข่าวประชาสัมพันธ์</a>
-                    </Link>
-                    <div className="dropdown-divider"></div>
-                    <Link href="/profile">
-                      <a className="dropdown-item">บุคลากร</a>
-                    </Link>
-                    <div className="dropdown-divider"></div>
-                    <Link href="/contactemail">
-                      <a className="dropdown-item">ติดต่อเรา</a>
-                    </Link>
+                      {/* Profile dropdown */}
+                      <Menu as="div" className="relative ml-3">
+                        <div>
+                          <span className="sr-only">Open user menu</span>
+                          {Object.keys(auth).length === 0 ? (
+                            <Link href="/signin">
+                              <a className={isActive("/signin")}>
+                                <i
+                                  className="fas fa-user text-white"
+                                  aria-hidden="true"
+                                ></i>{" "}
+                                เข้าสู่ระบบ
+                              </a>
+                            </Link>
+                          ) : (
+                            loggedRouter()
+                          )}
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100"
+                          enterFrom="transform opacity-0 scale-95"
+                          enterTo="transform opacity-100 scale-100"
+                          leave="transition ease-in duration-75"
+                          leaveFrom="transform opacity-100 scale-100"
+                          leaveTo="transform opacity-0 scale-95"
+                        >
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            <Menu.Item></Menu.Item>
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
+                    </div>
                   </div>
-          </li>
-          
-      </ul>
+                  <div className="-mr-2 flex md:hidden">
+                    {/* Mobile menu button */}
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                      <span className="sr-only">Open main menu</span>
+                      {open ? (
+                        <XMarkIcon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      ) : (
+                        <Bars3Icon
+                          className="block h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      )}
+                    </Disclosure.Button>
+                  </div>
+                </div>
+              </div>
 
-      {/* Mobile Button */}
-      <div onClick={handleNav} className="block sm:hidden z-10">
-        {nav ? (
-          <AiOutlineClose size={20} style={{ color: `${textColor}` }} />
-        ) : (
-          <AiOutlineMenu size={20} style={{ color: `${textColor}` }} />
-        )}
+              <Disclosure.Panel className="md:hidden">
+                <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
+                  {navigation.map((item) => (
+                    <Disclosure.Button
+                      key={item.name}
+                      as="a"
+                      href={item.href}
+                      className={classNames(
+                        item.current
+                          ? "bg-gray-900 text-white"
+                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                        "block px-3 py-2 rounded-md text-base font-medium"
+                      )}
+                      aria-current={item.current ? "page" : undefined}
+                    >
+                      {item.name}
+                    </Disclosure.Button>
+                  ))}
+                </div>
+
+                <div>
+                  <span className="sr-only">Open user menu</span>
+                  {Object.keys(auth).length === 0 ? (
+                    <Link href="/signin">
+                      <a className={isActive("/signin")}>
+                        <i
+                          className="fas fa-user text-white"
+                          aria-hidden="true"
+                        ></i>{" "}
+                        เข้าสู่ระบบ
+                      </a>
+                    </Link>
+                  ) : (
+                    loggedRouterMobile()
+                  )}
+                </div>
+              </Disclosure.Panel>
+            </>
+          )}
+        </Disclosure>
       </div>
-      {/* Mobile Menu */}
-      <div
-        className={
-          nav
-            ? "sm:hidden absolute top-0 left-0 right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
-            : "sm:hidden absolute top-0 left-[-100%] right-0 bottom-0 flex justify-center items-center w-full h-screen bg-black text-center ease-in duration-300"
-        }
-      >
-        <ul>
-          <li
-            onClick={handleNav}
-            className="p-4 text-4xl hover:text-gray-500"
-          >
-            <Link href="/">Home</Link>
-          </li>
-          <li
-            onClick={handleNav}
-            className="p-4 text-4xl hover:text-gray-500"
-          >
-            <Link href="/#gallery">Gallery</Link>
-          </li>
-          <li
-            onClick={handleNav}
-            className="p-4 text-4xl hover:text-gray-500"
-          >
-            <Link href="/#portfolio">My roads</Link>
-          </li>
-          <li
-            onClick={handleNav}
-            className="p-4 text-4xl hover:text-gray-500"
-          >
-            <Link href="/#contact">Contact</Link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-);
-};
+    </>
+  );
+}
 
 export default NavBar;

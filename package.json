@@ -13,6 +13,8 @@
     "@emailjs/browser": "^3.7.0",
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@headlessui/react": "^1.7.3",
+    "@heroicons/react": "^2.0.12",
     "@mui/lab": "^5.0.0-alpha.103",
     "@mui/material": "^5.10.8",
     "@tailwindcss/line-clamp": "^0.4.2",

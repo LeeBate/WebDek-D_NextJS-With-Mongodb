@@ -5,7 +5,7 @@ function VideoPlayer() {
     SwiperCore.use([Autoplay]);
   return (<>
 
-  <section className='max-w-full mx-auto'>
+  <section className='max-w-full '>
     <div>
       <video
         autoPlay
