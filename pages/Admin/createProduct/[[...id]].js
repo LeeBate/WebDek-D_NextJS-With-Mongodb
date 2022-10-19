@@ -11,6 +11,7 @@ import theme from "../../../src/theme/theme";
 import ProductItem from '../../../components/product/ProductItem'
 import filterSearch from '../../../utils/filterSearch'
 import Filter from '../../../components/Filter'
+import Link from "next/link";
 
 
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
@@ -50,6 +51,15 @@ const ProductsManager = (props) => {
     detailRestrictions,
     category,
   } = product;
+
+//TAB Change
+const [tabIndex, setTabIndex] = useState(0)
+
+
+//TAB Change
+
+
+
 
   //machinery
   const [machinery, setMachinery] = useState(props.products)
@@ -224,8 +234,25 @@ const ProductsManager = (props) => {
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
-
-    return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+      if(!onEdit){
+        setImages([]);
+        setInputFields([
+          {
+            idx: uuidv4(),
+            ListName: "",
+            price1: "",
+            price2: "",
+            price3: "",
+            price4: "",
+            price5: "",
+          },
+        ])
+        setProduct(initialState)
+      }
+       dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+       setTabIndex(1)
+    return router.push('/Admin/createProduct')
+    
   };
 
   const [inputFields, setInputFields] = useState([
@@ -282,10 +309,10 @@ const ProductsManager = (props) => {
           }
         `}</style>
         <FullLayout>
-          <Tabs isFitted variant="enclosed">
+          <Tabs index={tabIndex} isFitted variant="enclosed">
             <TabList mb="1em">
-              <Tab>Add Machinery</Tab>
-              <Tab>Edit Machinery</Tab>
+              <Tab onClick={()=>{setTabIndex(0)}}>Add Machinery</Tab>
+              <Tab onClick={()=>{setTabIndex(1)}}>Edit Machinery</Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -617,7 +644,7 @@ const ProductsManager = (props) => {
 
                         <div
                           className="flex justify-center items-center w-full"
-                          hidden={images.length > 0 ? true : false}
+                          hidden={images.length >= 5 ? true : false}
                         >
                           <label
                             htmlFor="dropzone-file"
@@ -720,7 +747,66 @@ const ProductsManager = (props) => {
     ? <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
 
     : machinery.map(product => (
-      <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+      <ul className="card bg-sky-100/75" style={{ width: "18rem" }} key={product._id}>
+      {auth.user && auth.user.role === "admin" && (
+        <input
+          type="checkbox"
+          checked={product.checked}
+          className="position-absolute"
+          style={{ height: "20px", width: "20px" }}
+          onChange={() => handleCheck(product._id)}
+        />
+      )}
+      <Link href={`/product/${product._id}`}>
+        <img
+          className="aspect-square object-fill cursor-pointer"
+          src={product.images[0].url}
+          alt={product.images[0].url}
+        />
+      </Link>
+      <div className="card-body">
+        <h5
+          className="card-title font-bold text-xl mb-2 text-capitalize"
+          title={product.en}
+        >
+          {product.en}
+        </h5>
+        <h5 className="card-title text-capitalize" title={product.title}>
+          {product.title}
+        </h5>
+
+        <div className="row justify-content-between mx-0 ">
+        <>
+        <Link href={`/Admin/createProduct/${product._id}`}>
+          <a onClick={()=>{setTabIndex(0)}} className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
+            แก้ไขข้อมูล
+          </a>
+        </Link>
+        <button
+          className="btn btn-danger"
+          style={{ marginLeft: "5px", flex: 1 }}
+          data-toggle="modal"
+          data-target="#exampleModal"
+          onClick={() =>
+            dispatch({
+              type: "ADD_MODAL",
+              payload: [
+                {
+                  data: "",
+                  id: product._id,
+                  title: product.title,
+                  type: "DELETE_PRODUCT",
+                },
+              ],
+            })
+          }
+        >
+          ลบข้อมูล
+        </button>
+      </>
+        </div>
+      </div>
+    </ul>
     ))
   }
 </div>

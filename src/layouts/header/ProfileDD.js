@@ -51,13 +51,18 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          <img
-            src={auth.user.avatar}
-            alt={auth.user.avatar}
-            width="30"
-            height="30"
-            className="roundedCircle"
-          />
+          
+          { Object.keys(auth).length !== 0 ? (
+          <img   src={auth.user.avatar}  width="30"
+          height="30"
+          className="roundedCircle"
+        />
+          ) : (
+            <img   src={"https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"} width="30"
+           height="30"
+           className="roundedCircle" />
+          )}
+           
           <Box
             sx={{
               display: {
@@ -82,7 +87,12 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              {auth.user.name}
+              
+          { Object.keys(auth).length !== 0 ? (
+          auth.user.name
+          ) : (
+           <p>Loading..</p>
+          )}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>

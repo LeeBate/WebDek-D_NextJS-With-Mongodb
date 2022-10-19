@@ -24,7 +24,7 @@ const InformItem = ({product, handleCheck}) => {
             <>
                 <Link href={`createInfo/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>แก้ไห</a>
+                    style={{marginRight: '5px', flex: 1}}>แก้ไข</a>
                 </Link>
                 <button className="btn btn-danger"
                 style={{marginLeft: '5px', flex: 1}}
