@@ -75,17 +75,87 @@ function NavBar() {
     { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
     { name: "บริการวิเคราะห์ทดสอบ", href: "#", current: false },
     { name: "ติดตามผล", href: "#", current: false },
+    { name: "เกี่ยวกับเรา", current: false },
+  ];
+  const navigation1 = [
+    { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
+  ];
+  const navigation2 = [  
+    { name: "บริการวิเคราะห์ทดสอบ", href: "#", current: false },
+  ];
+  const navigation3 = [
+    { name: "ติดตามผลวิเคราะห์ทดสอบ", href: "#", current: false },
+  ];
+  const navigation4 = [
     { name: "เกี่ยวกับเรา", href: "#", current: false },
   ];
   const userNavigation = [
     { name: "โปรไฟล์", href: "/profile" },
     { name: "เครื่องมือที่ชอบ", href: "/favorite" },
   ];
+  const dropdownMenu = [
+    { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
+    { name: "บุคลากร", href: "#", current: false },
+    { name: "ติดต่อเรา", href: "/contactemail", current: false },
+  ];
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
 
+  const loggedRouterMenu = () => {
+    return (
+      <Menu as="div" className="relative ml-3">
+        <div>
+          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+            <span className="sr-only">Open user menu</span>
+            
+          </Menu.Button>
+        </div>
+        <Transition
+          as={Fragment}
+          enter="transition ease-out duration-100"
+          enterFrom="transform opacity-0 scale-95"
+          enterTo="transform opacity-100 scale-100"
+          leave="transition ease-in duration-75"
+          leaveFrom="transform opacity-100 scale-100"
+          leaveTo="transform opacity-0 scale-95"
+        >
+          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            {auth.user.role === "admin" && adminRouter()}
+            {userNavigation.map((item) => (
+              <Menu.Item key={item.name}>
+                {({ active }) => (
+                  <a
+                    href={item.href}
+                    className={classNames(
+                      active ? "bg-gray-100" : "",
+                      "block px-4 py-2 text-sm text-gray-700"
+                    )}
+                  >
+                    {item.name}
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+            {auth.user.role === "admin" && LogoutRouter()}
+            {auth.user.role === "user" && LogoutRouter()}
+          </Menu.Items>
+        </Transition>
+      </Menu>
+
+      // <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+      //   <Link href="/profile">
+      //     <a className="dropdown-item">โปรไฟล์</a>
+      //   </Link>
+      //   {auth.user.role === "admin" && adminRouter()}
+      //   <div className="dropdown-divider"></div>
+      //   <button className="dropdown-item" onClick={handleLogout}>
+      //     ออกระบบ
+      //   </button>
+      // </div>
+    );
+  };
   const loggedRouter = () => {
     return (
       <Menu as="div" className="relative ml-3">
@@ -145,10 +215,10 @@ function NavBar() {
   };
   const loggedRouterMobile = () => {
     return (
-      <Menu as="div" className="relative ml-3">
+      <Menu as="div" className="relative ">
         <div>
-          <div className="border-t border-gray-700 pt-4 pb-4">
-            <div className="flex items-center px-5">
+          <div className="border-t border-gray-700 pt-4 pb-3">
+            <div className="flex items-center ml-4">
               <div className="flex-shrink-0">
                 <img
                   className="h-10 w-10 rounded-full"
@@ -194,17 +264,6 @@ function NavBar() {
           </div>
         </div>
       </Menu>
-
-      // <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-      //   <Link href="/profile">
-      //     <a className="dropdown-item">โปรไฟล์</a>
-      //   </Link>
-      //   {auth.user.role === "admin" && adminRouter()}
-      //   <div className="dropdown-divider"></div>
-      //   <button className="dropdown-item" onClick={handleLogout}>
-      //     ออกระบบ
-      //   </button>
-      // </div>
     );
   };
 
@@ -372,21 +431,101 @@ function NavBar() {
                     </div>
                     <div className="hidden md:block">
                       <div className="ml-10 flex items-baseline space-x-4">
-                        {navigation.map((item) => (
+                      {navigation1.map((item) => (
                           <a
                             key={item.name}
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium'
                             )}
-                            aria-current={item.current ? "page" : undefined}
+                            aria-current={item.current ? 'page' : undefined}
                           >
                             {item.name}
                           </a>
                         ))}
+                        {navigation2.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                        {navigation3.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                        <Menu as="div" className="relative ml-3">
+                        <div>
+                          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <span className="sr-only">Open user menu</span>
+                            {navigation4.map((item) => (
+                          <a
+                            key={item.name}
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? 'bg-gray-900 text-white'
+                                : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                              'px-3 py-2 rounded-md text-sm font-medium'
+                            )}
+                            aria-current={item.current ? 'page' : undefined}
+                          >
+                            {item.name}
+                          </a>
+                        ))}
+                          </Menu.Button>
+                        </div>
+                        <Transition
+                          as={Fragment}
+                          enter="transition ease-out duration-100 no-underline"
+                          enterFrom="transform opacity-0 scale-95 no-underline"
+                          enterTo="transform opacity-100 scale-100 no-underline"
+                          leave="transition ease-in duration-75 no-underline"
+                          leaveFrom="transform opacity-100 scale-100 no-underline"
+                          leaveTo="transform opacity-0 scale-95 no-underline"
+                        >
+                          <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                            {dropdownMenu.map((item) => (
+                              <Menu.Item key={item.name}>
+                                {({ active }) => (
+                                  <a
+                                    href={item.href}
+                                    className={classNames(
+                                      active ? 'bg-gray-100' : '',
+                                      'block px-4 py-2 text-sm text-gray-700'
+                                    )}
+                                  >
+                                    {item.name}
+                                  </a>
+                                  
+                                )}
+                              </Menu.Item>
+                            ))}
+                          </Menu.Items>
+                        </Transition>
+                      </Menu>
                       </div>
                     </div>
                   </div>
@@ -456,22 +595,82 @@ function NavBar() {
 
               <Disclosure.Panel className="md:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                  {navigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className={classNames(
-                        item.current
-                          ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
-                        "block px-3 py-2 rounded-md text-base font-medium"
-                      )}
-                      aria-current={item.current ? "page" : undefined}
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
+                {navigation1.map((item) => (
+                          <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                        ))}
+                        {navigation2.map((item) => (
+                          <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                        ))}
+                        {navigation3.map((item) => (
+                          <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                        ))}
+                        <Menu as="div" className="relative ">
+                        <div>
+                          <Menu.Button >
+                            <span className="sr-only">Open user menu</span>
+                            {navigation4.map((item) => (
+                          <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          href={item.href}
+                          className={classNames(
+                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            'block px-3 py-2 rounded-md text-base font-medium'
+                          )}
+                          aria-current={item.current ? 'page' : undefined}
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                        ))}
+                          </Menu.Button>
+                        </div>
+                        <div className="mt-1 space-y-1 px-2 ">
+            
+            {dropdownMenu.map((item) => (
+              <Disclosure.Button
+                key={item.name}
+                as="a"
+                href={item.href}
+                className="block rounded-md px-3 py-1 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white "
+              >
+                {item.name}
+              </Disclosure.Button>
+            ))}
+          </div>
+                      </Menu>
                 </div>
 
                 <div>

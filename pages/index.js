@@ -74,14 +74,8 @@ const index = (props) => {
         <title>Index</title>
       </Head>
       <VideoPlayer />
-      <div class="bg-gray-100 px-0 py-0 max-w-md mx-auto sm:max-w-xl lg:px-12 lg:py-24 lg:max-w-full xl:mr-0 2xl:col-span-2">
-            
-        <section className="p-5">
-          <center>
                 <Slideshow product={products} />
-          </center>
-        </section>
-      </div>
+
       <section className="max-w-full mx-auto px-8 py-10 pb-1 ">
         <h1 className="text-4xl font-extrabold text-center text-gray-900">
           ข่าวประชาสัมพันธ์

@@ -23,32 +23,20 @@ const Slideshow = (products) => {
         navigator: true,
 		infinite: true,
 		prevArrow: (
-			<div style={{ width: "30px", marginRight: "-30px", cursor: "pointer" }}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
-					fill="#2e2e2e"
-				>
-					<path d="M242 180.6v-138L0 256l242 213.4V331.2h270V180.6z" />
-				</svg>
+			<div style={{ width: "60px", marginRight: "0px", cursor: "pointer" }}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm7.58 0l5.988-5.995 1.414 1.416-4.574 4.579 4.574 4.59-1.414 1.416-5.988-6.006z"/></svg>
 			</div>
 		),
 		nextArrow: (
-			<div style={{ width: "30px", marginLeft: "-30px", cursor: "pointer" }}>
-				<svg
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 512 512"
-					fill="#2e2e2e"
-				>
-					<path d="M512 256L270 42.6v138.2H0v150.6h270v138z" />
-				</svg>
+			<div style={{ width: "60px", marginLeft: "-30px", cursor: "pointer" }}>
+				<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z"/></svg>
 			</div>
 		),
 	};
 	return (
-		<div className="m-10">
-			
-
+		<section className='max-w-full p-5 '>
+		
+		<div >
 			<Zoom {...zoomInProperties}>
 				{products.product.map((each, index) => (
 					<div key={index} className="flex justify-center w-full h-full">
@@ -62,6 +50,7 @@ const Slideshow = (products) => {
 				))}
 			</Zoom>
 		</div>
+		</section>
 	);
 };
 

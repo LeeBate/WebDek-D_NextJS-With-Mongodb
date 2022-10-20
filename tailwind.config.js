@@ -23,6 +23,7 @@ darkMode: 'class',
     extend: {
       backgroundColor: ["active"],
       lineClamp: ["hover"],
+      display: ['responsive', 'group-hover', 'group-focus'],
     },
   },
   plugins: [require("@tailwindcss/line-clamp")],
