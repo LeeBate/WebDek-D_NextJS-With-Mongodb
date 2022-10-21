@@ -65,8 +65,8 @@ const Inform = (props) => {
       <Head>
         <title>ข่าวสาร</title>
       </Head>
-      <h1 className="flex justify-center items-center font-bold text-4xl pt-5">
-        ข่าวประชาสัมพันธ์5555555555555555
+      <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">
+        ข่าวประชาสัมพันธ์
       </h1>
       <Filter state={state} />
 

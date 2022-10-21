@@ -30,8 +30,11 @@ const Users = () => {
         }
         
       `}</style>
+      <Head>
+        <title>Users</title>
+      </Head>
       <FullLayout>
-      <BaseCard title="Product Perfomance">
+      <BaseCard title="Users">
       <Table
         aria-label="simple table"
         sx={{

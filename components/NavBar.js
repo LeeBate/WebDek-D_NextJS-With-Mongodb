@@ -6,6 +6,7 @@ import Cookie from "js-cookie";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Divider } from "@chakra-ui/react";
 
 function NavBar() {
   const router = useRouter();
@@ -109,6 +110,7 @@ function NavBar() {
     { name: "บุคลากร", href: "#", current: false },
     { name: "ติดต่อเรา", href: "/contactemail", current: false },
   ];
+  
 
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
@@ -116,7 +118,7 @@ function NavBar() {
 
   const loggedRouter = () => {
     return (
-      <Menu as="div" className="relative ml-3">
+      <Menu as="div" className="relative ml-3 backdrop-blur-sm ">
         <div>
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
             <span className="sr-only">Open user menu</span>
@@ -313,6 +315,7 @@ function NavBar() {
                               {dropdownMenu.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
+                                    
                                     <a
                                       href={item.href}
                                       className={classNames(
@@ -326,6 +329,7 @@ function NavBar() {
                                 </Menu.Item>
                               ))}
                             </Menu.Items>
+                            
                           </Transition>
                         </Menu>
                       </div>

@@ -77,6 +77,7 @@ const index = (props) => {
                 <Slideshow product={products} />
 
       <section className="max-w-full mx-auto px-8 py-10 pb-1 ">
+        
         <h1 className="text-4xl font-extrabold text-center text-gray-900">
           ข่าวประชาสัมพันธ์
         </h1>
