@@ -43,13 +43,15 @@ export default function newslatter() {
       );
     e.target.reset();
   }
-  
+
   return (
     <div className="w-full h-full ">
       <div>
         <div id="main" className="grid grid-cols-2 justify-evenly">
           <div className="bg-gray-100 col-span-2 w-full h-84 p-9 border-sm ">
-            <h1 className="pb-1 text-xl font-bold dark:text-gray-900">ติดต่อสอบถาม</h1>
+            <h1 className="pb-1 text-xl font-bold dark:text-gray-900">
+              ติดต่อสอบถาม
+            </h1>
 
             <div className="mapouter">
               <div className="gmap_canvas">
@@ -121,15 +123,12 @@ export default function newslatter() {
             </div>
           </div>
         </div>
-        
-      </div><Box sx={{ p: 1, textAlign: "center" }}>
+        <Box sx={{ p: 3, textAlign: "center" }}>
           <Typography>
-            © 2022 All rights reserved by {""}
-            <Link href="/Admin">
-              <a>CALLLAB</a>
-            </Link>
+            © 2022 All rights reserved by <a>CALLLAB</a>
           </Typography>
         </Box>
+      </div>
     </div>
   );
 }

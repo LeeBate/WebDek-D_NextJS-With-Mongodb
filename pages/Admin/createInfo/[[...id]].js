@@ -1,12 +1,12 @@
 import Head from "next/head";
 import { useState, useContext, useEffect } from "react";
-import { DataContext } from "../../store/GlobalState";
-import { imageUpload } from "../../utils/imageUpload";
-import { postData, getData, putData } from "../../utils/fetchData";
+import { DataContext } from "../../../store/GlobalState";
+import { imageUpload } from "../../../utils/imageUpload";
+import { postData, getData, putData } from "../../../utils/fetchData";
 import { useRouter } from "next/router";
-import FullLayout from "../../src/layouts/FullLayout";
+import FullLayout from "../../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
-import theme from "../../src/theme/theme";
+import theme from "../../../src/theme/theme";
 
 const NewsManager = () => {
   const initialState = {

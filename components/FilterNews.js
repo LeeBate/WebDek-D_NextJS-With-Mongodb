@@ -16,11 +16,6 @@ const Filter = ({ state }) => {
 
   const router = useRouter();
 
-  const handleCategory = (e) => {
-    setCategory(e.target.value);
-    filterSearch({ router, category: e.target.value });
-  };
-
   const handleSort = (e) => {
     setSort(e.target.value);
     filterSearch({ router, sort: e.target.value });
@@ -35,23 +30,7 @@ const Filter = ({ state }) => {
   return (
     <div className="px-[30px] py-4 max-w-[1170px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-0 lg:shadow-1 bg-white lg:bg-transparent lg:backdrop-blur rounded-lg">
       
-      <div className=" col-md-2 px-0  mt-2 h-full">
-        <select
-          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-2 py-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          value={category}
-          onChange={handleCategory}
-        >
-          <option value="all">เครื่องมือทั้งหมด</option>
-
-          {categories.map((item) => (
-            <option key={item._id} value={item._id}>
-              {item.name}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <form class="flex items-center mt-2 col-md-8 px-0" autoComplete="off">
+      <form class="flex items-center mt-2 col-md-10 px-0" autoComplete="off">
         <label for="voice-search" class="sr-only">
           Search
         </label>

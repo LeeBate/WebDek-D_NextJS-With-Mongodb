@@ -8,13 +8,12 @@ import { v4 as uuidv4 } from "uuid";
 import FullLayout from "../../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../../src/theme/theme";
-import ProductItem from '../../../components/product/ProductItem'
-import filterSearch from '../../../utils/filterSearch'
-import Filter from '../../../components/Filter'
+import filterSearch from "../../../utils/filterSearch";
+import Filter from "../../../components/Filter";
 import Link from "next/link";
 
-
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Button } from "@mui/material";
 
 const ProductsManager = (props) => {
   const [images, setImages] = useState([]);
@@ -52,65 +51,59 @@ const ProductsManager = (props) => {
     category,
   } = product;
 
-//TAB Change
-const [tabIndex, setTabIndex] = useState(0)
+  //TAB Change
+  const [tabIndex, setTabIndex] = useState(0);
 
-
-//TAB Change
-
-
-
+  //TAB Change
 
   //machinery
-  const [machinery, setMachinery] = useState(props.products)
-  
-  const [isCheck, setIsCheck] = useState(false)
-  const [page, setPage] = useState(1)
+  const [machinery, setMachinery] = useState(props.products);
+
+  const [isCheck, setIsCheck] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setMachinery(props.products)
-  },[props.products])
+    setMachinery(props.products);
+  }, [props.products]);
 
   useEffect(() => {
-    if(Object.keys(router.query).length === 0) setPage(1)
-  },[router.query])
+    if (Object.keys(router.query).length === 0) setPage(1);
+  }, [router.query]);
 
   const handleCheck = (id) => {
-    machinery.forEach(product => {
-      if(product._id === id) product.checked = !product.checked
-    })
-    setMachinery([...machinery])
-  }
+    machinery.forEach((product) => {
+      if (product._id === id) product.checked = !product.checked;
+    });
+    setMachinery([...machinery]);
+  };
 
   const handleCheckALL = () => {
-    machinery.forEach(product => product.checked = !isCheck)
-    setMachinery([...machinery])
-    setIsCheck(!isCheck)
-  }
+    machinery.forEach((product) => (product.checked = !isCheck));
+    setMachinery([...machinery]);
+    setIsCheck(!isCheck);
+  };
 
   const handleDeleteAll = () => {
     let deleteArr = [];
-    machinery.forEach(product => {
-      if(product.checked){
-          deleteArr.push({
-            data: '', 
-            id: product._id, 
-            title: 'ลบ?', 
-            type: 'DELETE_PRODUCT'
-          })
+    machinery.forEach((product) => {
+      if (product.checked) {
+        deleteArr.push({
+          data: "",
+          id: product._id,
+          title: "ลบ?",
+          type: "DELETE_PRODUCT",
+        });
       }
-    })
+    });
 
-    dispatch({type: 'ADD_MODAL', payload: deleteArr})
-  }
+    dispatch({ type: "ADD_MODAL", payload: deleteArr });
+  };
 
   const handleLoadmore = () => {
-    setPage(page + 1)
-    filterSearch({router, page: page + 1})
-  }
+    setPage(page + 1);
+    filterSearch({ router, page: page + 1 });
+  };
   //end machinery
-
-  
 
   useEffect(() => {
     if (id) {
@@ -234,25 +227,24 @@ const [tabIndex, setTabIndex] = useState(0)
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
-      if(!onEdit){
-        setImages([]);
-        setInputFields([
-          {
-            idx: uuidv4(),
-            ListName: "",
-            price1: "",
-            price2: "",
-            price3: "",
-            price4: "",
-            price5: "",
-          },
-        ])
-        setProduct(initialState)
-      }
-       dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-       setTabIndex(1)
-    return router.push('/Admin/createProduct')
-    
+    if (!onEdit) {
+      setImages([]);
+      setInputFields([
+        {
+          idx: uuidv4(),
+          ListName: "",
+          price1: "",
+          price2: "",
+          price3: "",
+          price4: "",
+          price5: "",
+        },
+      ]);
+      setProduct(initialState);
+    }
+    dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+    setTabIndex(1);
+    return router.push("/Admin/createProduct");
   };
 
   const [inputFields, setInputFields] = useState([
@@ -310,9 +302,23 @@ const [tabIndex, setTabIndex] = useState(0)
         `}</style>
         <FullLayout>
           <Tabs index={tabIndex} isFitted variant="enclosed">
-            <TabList mb="1em">
-              <Tab onClick={()=>{setTabIndex(0)}}>Add Machinery</Tab>
-              <Tab onClick={()=>{setTabIndex(1)}}>Edit Machinery</Tab>
+            <TabList mb="1em" >
+              <Tab
+                onClick={() => {
+                  setTabIndex(0);
+                }}
+              >
+                <Button className=" bg-emerald-700 text-white px-4 hover:bg-emerald-600 rounded-lg">Add Machinery</Button>
+              </Tab>
+              <div className="px-1"></div>
+              <Tab 
+                onClick={() => {
+                  setTabIndex(1);
+                }}
+              >
+                 <Button className=" bg-red-700 text-white px-4 hover:bg-red-600 rounded-lg">Edit Machinery</Button>
+                
+              </Tab>
             </TabList>
             <TabPanels>
               <TabPanel>
@@ -724,101 +730,131 @@ const [tabIndex, setTabIndex] = useState(0)
               <TabPanel>
                 <div className="products_manager">
                   <section className="bg-white">
-                  <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                  <Filter state={state} />
+                    <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+                      <Filter state={state} />
 
-{
-  auth.user && auth.user.role === 'admin' &&
-  <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
-    <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
-    style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+                      {auth.user && auth.user.role === "admin" && (
+                        <div
+                          className="delete_all btn btn-danger mt-2"
+                          style={{ marginBottom: "-10px" }}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={isCheck}
+                            onChange={handleCheckALL}
+                            style={{
+                              width: "25px",
+                              height: "25px",
+                              transform: "translateY(8px)",
+                            }}
+                          />
 
-    <button className="btn btn-danger ml-2"
-    data-toggle="modal" data-target="#exampleModal"
-    onClick={handleDeleteAll}>
-      ลบข้อมูลทั้งหมด
-    </button>
-  </div>
-}
+                          <button
+                            className="btn btn-danger ml-2"
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                            onClick={handleDeleteAll}
+                          >
+                            ลบข้อมูลทั้งหมด
+                          </button>
+                        </div>
+                      )}
 
-<div className="products">
-  {
-    machinery.length === 0 
-    ? <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+                      <div className="products">
+                        {machinery.length === 0 ? (
+                          <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+                        ) : (
+                          machinery.map((product) => (
+                            <ul
+                              className="card bg-sky-100/75"
+                              style={{ width: "18rem" }}
+                              key={product._id}
+                            >
+                              {auth.user && auth.user.role === "admin" && (
+                                <input
+                                  type="checkbox"
+                                  checked={product.checked}
+                                  className="position-absolute"
+                                  style={{ height: "20px", width: "20px" }}
+                                  onChange={() => handleCheck(product._id)}
+                                />
+                              )}
+                              <Link href={`/product/${product._id}`}>
+                                <img
+                                  className="aspect-square object-fill cursor-pointer"
+                                  src={product.images[0].url}
+                                  alt={product.images[0].url}
+                                />
+                              </Link>
+                              <div className="card-body">
+                                <h5
+                                  className="card-title font-bold text-xl mb-2 text-capitalize"
+                                  title={product.en}
+                                >
+                                  {product.en}
+                                </h5>
+                                <h5
+                                  className="card-title text-capitalize"
+                                  title={product.title}
+                                >
+                                  {product.title}
+                                </h5>
 
-    : machinery.map(product => (
-      <ul className="card bg-sky-100/75" style={{ width: "18rem" }} key={product._id}>
-      {auth.user && auth.user.role === "admin" && (
-        <input
-          type="checkbox"
-          checked={product.checked}
-          className="position-absolute"
-          style={{ height: "20px", width: "20px" }}
-          onChange={() => handleCheck(product._id)}
-        />
-      )}
-      <Link href={`/product/${product._id}`}>
-        <img
-          className="aspect-square object-fill cursor-pointer"
-          src={product.images[0].url}
-          alt={product.images[0].url}
-        />
-      </Link>
-      <div className="card-body">
-        <h5
-          className="card-title font-bold text-xl mb-2 text-capitalize"
-          title={product.en}
-        >
-          {product.en}
-        </h5>
-        <h5 className="card-title text-capitalize" title={product.title}>
-          {product.title}
-        </h5>
+                                <div className="row justify-content-between mx-0 ">
+                                  <>
+                                    <Link
+                                      href={`/Admin/createProduct/${product._id}`}
+                                    >
+                                      <a
+                                        onClick={() => {
+                                          setTabIndex(0);
+                                        }}
+                                        className="btn btn-info"
+                                        style={{ marginRight: "5px", flex: 1 }}
+                                      >
+                                        แก้ไขข้อมูล
+                                      </a>
+                                    </Link>
+                                    <button
+                                      className="btn btn-danger"
+                                      style={{ marginLeft: "5px", flex: 1 }}
+                                      data-toggle="modal"
+                                      data-target="#exampleModal"
+                                      onClick={() =>
+                                        dispatch({
+                                          type: "ADD_MODAL",
+                                          payload: [
+                                            {
+                                              data: "",
+                                              id: product._id,
+                                              title: product.title,
+                                              type: "DELETE_PRODUCT",
+                                            },
+                                          ],
+                                        })
+                                      }
+                                    >
+                                      ลบข้อมูล
+                                    </button>
+                                  </>
+                                </div>
+                              </div>
+                            </ul>
+                          ))
+                        )}
+                      </div>
 
-        <div className="row justify-content-between mx-0 ">
-        <>
-        <Link href={`/Admin/createProduct/${product._id}`}>
-          <a onClick={()=>{setTabIndex(0)}} className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
-            แก้ไขข้อมูล
-          </a>
-        </Link>
-        <button
-          className="btn btn-danger"
-          style={{ marginLeft: "5px", flex: 1 }}
-          data-toggle="modal"
-          data-target="#exampleModal"
-          onClick={() =>
-            dispatch({
-              type: "ADD_MODAL",
-              payload: [
-                {
-                  data: "",
-                  id: product._id,
-                  title: product.title,
-                  type: "DELETE_PRODUCT",
-                },
-              ],
-            })
-          }
-        >
-          ลบข้อมูล
-        </button>
-      </>
-        </div>
-      </div>
-    </ul>
-    ))
-  }
-</div>
-
-{
-  props.result < page * 6 ? ""
-  : <button className="btn btn-outline-info d-block mx-auto mb-4"
-  onClick={handleLoadmore}>
-    Load more
-  </button>
-}
-                  </div>
+                      {props.result < page * 6 ? (
+                        ""
+                      ) : (
+                        <button
+                          className="btn btn-outline-info d-block mx-auto mb-4"
+                          onClick={handleLoadmore}
+                        >
+                          Load more
+                        </button>
+                      )}
+                    </div>
                   </section>
                 </div>
               </TabPanel>
@@ -830,22 +866,24 @@ const [tabIndex, setTabIndex] = useState(0)
   );
 };
 
-export async function getServerSideProps({query}) {
-  const page = query.page || 1
-  const category = query.category || 'all'
-  const sort = query.sort || ''
-  const search = query.search || 'all'
+export async function getServerSideProps({ query }) {
+  const page = query.page || 1;
+  const category = query.category || "all";
+  const sort = query.sort || "";
+  const search = query.search || "all";
 
   const res = await getData(
-    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
-  )
+    `product?limit=${
+      page * 6
+    }&category=${category}&sort=${sort}&title=${search}`
+  );
   // server side rendering
   return {
     props: {
       products: res.products,
-      result: res.result
+      result: res.result,
     }, // will be passed to the page component as props
-  }
+  };
 }
 
 export default ProductsManager;

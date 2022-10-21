@@ -1,4 +1,3 @@
-
 import React, { useContext } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -7,7 +6,6 @@ import Cookie from "js-cookie";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-
 
 function NavBar() {
   const router = useRouter();
@@ -33,9 +31,10 @@ function NavBar() {
   const adminRouter = () => {
     return (
       <>
-      
         <Link href="/Admin">
-          <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">Dashboard</a>
+          <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
+            Dashboard
+          </a>
         </Link>
       </>
     );
@@ -43,7 +42,6 @@ function NavBar() {
   const adminRouterMobile = () => {
     return (
       <>
-      
         <Link href="/Admin">
           <a className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 hover:text-white text-white">
             Dashboard
@@ -56,7 +54,10 @@ function NavBar() {
     return (
       <>
         <Link href="/">
-          <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={handleLogout}>
+          <a
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            onClick={handleLogout}
+          >
             ออกจากระบบ
           </a>
         </Link>
@@ -347,11 +348,9 @@ function NavBar() {
                           {Object.keys(auth).length === 0 ? (
                             <Link href="/signin">
                               <a className={isActive("/signin")}>
-                                <i
-                                  className="fas fa-user text-white"
-                                  aria-hidden="true"
-                                ></i>{" "}
-                                เข้าสู่ระบบ
+                                <button className=" hover:bg-gray-600 text-white px-4 py-2 rounded-lg">
+                                  เข้าสู่ระบบ
+                                </button>
                               </a>
                             </Link>
                           ) : (
@@ -375,6 +374,7 @@ function NavBar() {
                     </div>
                   </div>
                   <div className="-mr-2 flex md:hidden">
+
                     {/* Mobile menu button */}
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
@@ -404,7 +404,7 @@ function NavBar() {
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          : "text-white hover:bg-gray-700 hover:text-white",
                         "block px-3 py-2 rounded-md text-base font-medium"
                       )}
                       aria-current={item.current ? "page" : undefined}
@@ -420,7 +420,7 @@ function NavBar() {
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          : "text-white hover:bg-gray-700 hover:text-white",
                         "block px-3 py-2 rounded-md text-base font-medium"
                       )}
                       aria-current={item.current ? "page" : undefined}
@@ -436,7 +436,7 @@ function NavBar() {
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
-                          : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                          : "text-white hover:bg-gray-700 hover:text-white",
                         "block px-3 py-2 rounded-md text-base font-medium"
                       )}
                       aria-current={item.current ? "page" : undefined}
@@ -456,7 +456,7 @@ function NavBar() {
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                : "text-white hover:bg-gray-700 hover:text-white",
                               "block px-3 py-2 rounded-md text-base font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -472,7 +472,7 @@ function NavBar() {
                           key={item.name}
                           as="a"
                           href={item.href}
-                          className="block rounded-md px-3 py-1 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white "
+                          className="block rounded-md px-3 py-1 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white "
                         >
                           {item.name}
                         </Disclosure.Button>
@@ -485,13 +485,13 @@ function NavBar() {
                   <span className="sr-only">Open user menu</span>
                   {Object.keys(auth).length === 0 ? (
                     <Link href="/signin">
+                      <div className="pb-3 px-3">
                       <a className={isActive("/signin")}>
-                        <i
-                          className="fas fa-user text-white"
-                          aria-hidden="true"
-                        ></i>{" "}
-                        เข้าสู่ระบบ
+                        <button className="bg-gray-700 hover:bg-violet-800 text-white px-1 py-2 rounded-lg">
+                          เข้าสู่ระบบ
+                        </button>
                       </a>
+                      </div>
                     </Link>
                   ) : (
                     loggedRouterMobile()

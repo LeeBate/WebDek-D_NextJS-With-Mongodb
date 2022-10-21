@@ -6,7 +6,7 @@ import { getData } from "../utils/fetchData";
 import InformItem from "../components/product/InformItem";
 import filterSearch from "../utils/filterSearch";
 import { useRouter } from "next/router";
-import Filter from "../components/Filter";
+import Filter from "../components/FilterNews";
 
 const Inform = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -61,12 +61,12 @@ const Inform = (props) => {
   };
 
   return (
-    <div className="home_page">
+    <div className="container">
       <Head>
         <title>ข่าวสาร</title>
       </Head>
       <h1 className="flex justify-center items-center font-bold text-4xl pt-5">
-        ข่าวประชาสัมพันธ์
+        ข่าวประชาสัมพันธ์5555555555555555
       </h1>
       <Filter state={state} />
 
@@ -111,30 +111,27 @@ const Inform = (props) => {
         )}
       </div>
 
-      {props.result < page * 6 ? (
-        ""
-      ) : (
-        <button
-          className="btn btn-outline-info d-block mx-auto mb-4"
-          onClick={handleLoadmore}
-        >
+      {
+        props.result < page * 6 ? ""
+        : <button className="btn btn-outline-info d-block mx-auto mb-4"
+        onClick={handleLoadmore}>
           อ่านเพิ่มเติม
         </button>
-      )}
+      }
     </div>
   );
 };
 
 export async function getServerSideProps({ query }) {
   const page = query.page || 1;
-  const category = query.category || "all";
+  // const category = query.category || "all";
   const sort = query.sort || "";
   const search = query.search || "all";
 
   const res = await getData(
     `productNews?limit=${
       page * 6
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {

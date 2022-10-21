@@ -28,7 +28,7 @@ const Menuitems = [
   {
     title: "Manage News",
     icon: "plus-circle",
-    href: "/Admin/AddNews",
+    href: "/Admin/createInfo/",
   },
 ];
 

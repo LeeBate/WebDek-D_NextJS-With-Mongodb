@@ -8,58 +8,57 @@ import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
-
 const machinery = (props) => {
-  const [products, setProducts] = useState(props.products)
-  
-  const [isCheck, setIsCheck] = useState(false)
-  const [page, setPage] = useState(1)
-  const router = useRouter()
+  const [products, setProducts] = useState(props.products);
 
-  const {state, dispatch} = useContext(DataContext)
-  const {auth} = state
+  const [isCheck, setIsCheck] = useState(false);
+  const [page, setPage] = useState(1);
+  const router = useRouter();
 
-  useEffect(() => {
-    setProducts(props.products)
-  },[props.products])
+  const { state, dispatch } = useContext(DataContext);
+  const { auth } = state;
 
   useEffect(() => {
-    if(Object.keys(router.query).length === 0) setPage(1)
-  },[router.query])
+    setProducts(props.products);
+  }, [props.products]);
+
+  useEffect(() => {
+    if (Object.keys(router.query).length === 0) setPage(1);
+  }, [router.query]);
 
   const handleCheck = (id) => {
-    products.forEach(product => {
-      if(product._id === id) product.checked = !product.checked
-    })
-    setProducts([...products])
-  }
+    products.forEach((product) => {
+      if (product._id === id) product.checked = !product.checked;
+    });
+    setProducts([...products]);
+  };
 
   const handleCheckALL = () => {
-    products.forEach(product => product.checked = !isCheck)
-    setProducts([...products])
-    setIsCheck(!isCheck)
-  }
+    products.forEach((product) => (product.checked = !isCheck));
+    setProducts([...products]);
+    setIsCheck(!isCheck);
+  };
 
   const handleDeleteAll = () => {
     let deleteArr = [];
-    products.forEach(product => {
-      if(product.checked){
-          deleteArr.push({
-            data: '', 
-            id: product._id, 
-            title: 'ลบ?', 
-            type: 'DELETE_PRODUCT'
-          })
+    products.forEach((product) => {
+      if (product.checked) {
+        deleteArr.push({
+          data: "",
+          id: product._id,
+          title: "ลบทั้งหมด",
+          type: "DELETE_PRODUCTS",
+        });
       }
-    })
+    });
 
-    dispatch({type: 'ADD_MODAL', payload: deleteArr})
-  }
+    dispatch({ type: "ADD_MODAL", payload: deleteArr });
+  };
 
-  const handleLoadmore = () => {
-    setPage(page + 1)
-    filterSearch({router, page: page + 1})
-  }
+   const handleLoadmore = () => {
+    setPage(page + 1);
+    filterSearch({ router, page: page + 1 });
+  };
 
   return(
     <div className="container">
@@ -69,62 +68,80 @@ const machinery = (props) => {
       
       <Filter state={state} />
 
-      {
-        auth.user && auth.user.role === 'admin' &&
-        <div className="delete_all btn btn-danger mt-2" style={{marginBottom: '-10px'}}>
-          <input type="checkbox" checked={isCheck} onChange={handleCheckALL}
-          style={{width: '25px', height: '25px', transform: 'translateY(8px)'}} />
+      {auth.user && auth.user.role === "admin" && (
+        <div
+          className="delete_all btn btn-danger mt-2"
+          style={{ marginBottom: "-10px" }}
+        >
+          <input
+            type="checkbox"
+            checked={isCheck}
+            onChange={handleCheckALL}
+            style={{
+              width: "25px",
+              height: "25px",
+              transform: "translateY(8px)",
+            }}
+          />
 
-          <button className="btn btn-danger ml-2"
-          data-toggle="modal" data-target="#exampleModal"
-          onClick={handleDeleteAll}>
-            ลบข้อมูลทั้งหมด
+          <button
+            className="btn btn-danger ml-2"
+            data-toggle="modal"
+            data-target="#exampleModal"
+            onClick={handleDeleteAll}
+          >
+            ลบข้อมูลทั้งหมด5555
           </button>
         </div>
-      }
+      )}
 
-      <div className="products">
-        {
-          products.length === 0 
-          ? <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
-
-          : products.map(product => (
-            <ProductItem key={product._id} product={product} handleCheck={handleCheck} />
+<div className="products">
+        {products.length === 0 ? (
+          <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+        ) : (
+          products.map((product) => (
+            <ProductItem
+              key={product._id}
+              product={product}
+              handleCheck={handleCheck}
+            />
           ))
-        }
+        )}
       </div>
       
       {
         props.result < page * 6 ? ""
         : <button className="btn btn-outline-info d-block mx-auto mb-4"
         onClick={handleLoadmore}>
-          Load more
+          อ่านเพิ่มเติม
         </button>
       }
-    </div>
     
-  )
-}
+    </div>
+  );
+};
 
 
 export async function getServerSideProps({query}) {
-  const page = query.page || 1
-  const category = query.category || 'all'
-  const sort = query.sort || ''
-  const search = query.search || 'all'
+  const page = query.page || 1;
+  const category = query.category || 'all';
+  const sort = query.sort || '';
+  const search = query.search || 'all';
 
   const res = await getData(
-    `product?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
-  )
+    `product?limit=${
+      page * 6
+    }&category=${category}&sort=${sort}&title=${search}`
+  );
   // server side rendering
   return {
     props: {
       products: res.products,
       result: res.result
     }, // will be passed to the page component as props
-  }
+  };
 }
 
-export default machinery
+export default machinery;
 
 

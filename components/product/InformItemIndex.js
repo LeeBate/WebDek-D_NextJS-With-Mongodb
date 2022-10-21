@@ -22,7 +22,7 @@ const InformItem = ({product, handleCheck}) => {
     const adminLink = () => {
         return(
             <>
-                <Link href={`createInfo/${product._id}`}>
+                <Link href={`/Admin/createInfo/${product._id}`}>
                     <a className="btn btn-info"
                     style={{marginRight: '5px', flex: 1}}>แก้ไข</a>
                 </Link>
@@ -36,45 +36,30 @@ const InformItem = ({product, handleCheck}) => {
                         title: product.title, type: 'DELETE_PRODUCTS' 
                     }]
                 })} >
-                    Delete
+                    ลขข้อมูล
                 </button>
             </>
         )
     }
 
     return(
-        // <div class="flex items-center rounded-lg bg-white shadow-lg overflow-hidden">
-        //     <img className={`${sizeClasses.height} ${sizeClasses.width} flex-shrink-0`} src={product.images[0].url} alt={product.images[0].url} />
-        //     <div className="px-6 py-0">
-        //         <h5 className="text-lg font-semibold text-gray-800" title={product.title}>
-        //             {product.title}
-        //         </h5>
-        //         <h5 className=" text-gray-700 text-base truncate" title={product.description}>
-        //             {product.description}
-        //         </h5>
-                    
-        //         <div className="row justify-content-between mx-0 ">
-        //             {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
-        //         </div>
-        //     </div>
-            
-        // </div>
-        
           <div>
-            <div class="bg-white rounded-xl shadow-xl  max-w-md mx-auto md:object-cover">
+            <div className="bg-white rounded-t-xl border   max-w-md mx-auto md:object-cover">
               <img
-                class="w-full h-60 object-center object-cover rounded-t-xl  md:object-center md:object-cover "
+                className="w-full h-60 object-center object-cover rounded-t-xl  md:object-center md:object-cover "
                 src={product.images[0].url} alt={product.images[0].url}
               />
-              <div class="p-6">
-                <h2 class="text-2xl font-bold text-gray-900 line-clamp-2" title={product.title}>
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-900 line-clamp-2" title={product.title}>
                 {product.title}
                 </h2>
-                <p class="mt-3 text-gray-700 line-clamp-2" title={product.description}>
+                <p className="mt-3 text-gray-700 line-clamp-2" title={product.description}>
                 {product.description}
                 </p>
                
-                    {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
+                <div className="row justify-content-between mx-0 mt-4 ">
+          {!auth.user || auth.user.role !== "admin" ? userLink() : <></>}
+        </div>
                 
               </div>
             </div>

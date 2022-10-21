@@ -12,7 +12,7 @@ const InformItem = ({product, handleCheck}) => {
             <>
                 <Link href={`Inform/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>View</a>
+                    style={{marginRight: '5px', flex: 1}}>ดูข้อมู,</a>
                 </Link>
                 {/* <button className="btn btn-success"
                 style={{marginLeft: '5px', flex: 1}}
@@ -27,9 +27,9 @@ const InformItem = ({product, handleCheck}) => {
     const adminLink = () => {
         return(
             <>
-                <Link href={`createInfo/${product._id}`}>
+                <Link href={`/Admin/createInfo/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>Edit</a>
+                    style={{marginRight: '5px', flex: 1}}>แก้ไข</a>
                 </Link>
                 <button className="btn btn-danger"
                 style={{marginLeft: '5px', flex: 1}}
@@ -41,7 +41,7 @@ const InformItem = ({product, handleCheck}) => {
                         title: product.title, type: 'DELETE_PRODUCTS' 
                     }]
                 })} >
-                    Delete
+                    ลบข้อมูล
                 </button>
             </>
         )
@@ -55,7 +55,9 @@ const InformItem = ({product, handleCheck}) => {
                 style={{height: '20px', width: '20px'}}
                 onChange={() => handleCheck(product._id)} />
             }
-            <img className="card-img-top object-fill" src={product.images[0].url} alt={product.images[0].url} />
+            <Link href={`Inform/${product._id}`}>
+            <img className="card-img-top object-fill cursor-pointer" src={product.images[0].url} alt={product.images[0].url} />
+            </Link>
             <div className="card-body">
                 <h5 className=" card-title font-bold text-xl mb-2 text-capitalize" title={product.title}>
                     {product.title}

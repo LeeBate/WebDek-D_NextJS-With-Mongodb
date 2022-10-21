@@ -22,6 +22,7 @@ const Modal = () => {
     }
 
     const  deleteCategories =   (item) => {
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
         deleteData(`categories/${item.id}`, auth.token)
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
