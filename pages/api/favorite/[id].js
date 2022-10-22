@@ -1,5 +1,5 @@
 import connectDB from '../../../utils/connectDB'
-import Products from '../../../models/productModel'
+import Products from '../../../models/FavoriteModel'
 import auth from '../../../middleware/auth'
 
 connectDB()

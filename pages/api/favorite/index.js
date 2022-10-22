@@ -60,12 +60,12 @@ const getProducts = async (req, res) => {
         const features = new APIfeatures(Products.find(), req.query)
         .filtering().sorting().paginating()
 
-        const products = await features.query
+        const favorits = await features.query
         
         res.json({
             status: 'success',
-            result: products.length,
-            products
+            result: favorits.length,
+            favorits
         })
     } catch (err) {
         return res.status(500).json({err: err.message})

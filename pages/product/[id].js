@@ -3,16 +3,21 @@ import { useState, useContext, useEffect } from "react";
 import { getData, putData, postData } from "../../utils/fetchData";
 import { DataContext } from "../../store/GlobalState";
 import { useRouter } from "next/router";
+import { BsHeartFill,BsHeart } from "react-icons/bs";
+import { deleteData } from '../../utils/fetchData'
 
-const DetailProduct = (props) => {
+const DetailProduct = (props,query) => {
+   let  [fav,setFav] = useState()
+  const [favoriteData,setFavoriteData] = useState(fav);
+
   const [product] = useState(props.product);
   const [tab, setTab] = useState(0);
-
+ 
   const { state, dispatch } = useContext(DataContext);
 
   const { auth } = state;
 
-  const [loading, setLoading] = useState(true);
+  const [toggler, setToggler] = useState();
 
   let initialState = {
     title: "",
@@ -23,12 +28,91 @@ const DetailProduct = (props) => {
     prodid: "",
   };
 
+ 
+
   const [favorite, setFavorite] = useState(initialState);
   const { title, en, category, prodid, userid, images } = favorite;
 
   const router = useRouter();
   const { id } = router.query;
   const [onEdit, setOnEdit] = useState(false);
+  let filleredProd = [];
+  let [tempcheck,setTemcheck] = useState([]);
+  let [gg,setGg] = useState();
+ 
+  const [checkFavExit,setcheckFavExit] = useState(tempcheck)
+
+
+
+
+ useEffect(() => {
+  if(tempcheck.length > 0){
+    setToggler(false)
+  
+  }else{
+    setToggler(true)
+   
+  }
+  }, [fav,checkFavExit,tempcheck]);
+
+  useEffect(() => {
+    HandleCheckFavorite()
+
+  },[auth,tempcheck,checkFavExit,gg])
+
+
+
+ async function  HandleCheckFavorite(){
+  if(Object.keys(auth).length !== 0){
+    const page = query.page || 1
+    const category = query.category || 'all'
+    const sort = query.sort || ''
+    const search = query.search || 'all'
+  
+     fav = await getData(
+    
+      `favorite?limit=${page * 500}&category=${category}&sort=${sort}&title=${search}`
+    )
+ 
+    console.log("fav api",fav)
+
+    filleredProd = []
+
+    for (let i = 0; i <fav.favorits.length; i++) {
+      if (fav.favorits[i].userid === auth.user.email) {
+          filleredProd.push(fav.favorits[i]);
+      }
+  }
+
+ // setFavoriteData(filleredProd)
+
+  
+  //  console.log("filleredProdFavoriteData",filleredProd)
+  //  console.log("auth.user.email",auth.user.email)
+   
+   for (let i = 0; i <filleredProd.length; i++) {
+    if (filleredProd[i].prodid === product._id) {
+        tempcheck.push(filleredProd[i]);
+    }
+
+  
+
+}
+    setcheckFavExit(tempcheck)
+   console.log("tempcheck=",tempcheck)
+         if(tempcheck.length > 0){
+  setToggler(false)
+
+}else{
+  setToggler(true)
+ 
+}
+}else{
+console.log("enter else")
+  setFavoriteData(props.favorite.favorits)
+  }
+ }
+
 
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
@@ -45,22 +129,53 @@ const DetailProduct = (props) => {
     } else {
       getData(`product/${id}`).then((res) => {
       setFavorite(res.product);
+    
     });
     }
   }, [id]);
 
-  const handleChangeInput = (e) => {
-    const { name, value } = e.target;
-    setFavorite({ ...favorite, [name]: value });
-    dispatch({ type: "NOTIFY", payload: {} });
-  };
+  // const handleChangeInput = (e) => {
+  //   const { name, value } = e.target;
+  //   setFavorite({ ...favorite, [name]: value });
+  //   dispatch({ type: "NOTIFY", payload: {} });
+  // };
 
   const isActive = (index) => {
     if (tab === index) return " active";
     return "";
   };
+
+  const handleRemove = async (e) => {
+    e.preventDefault();
+   
+    
+    
+    dispatch({type: 'NOTIFY', payload: {loading: true}})
+    deleteData(`favorite/${checkFavExit[0]._id}`, auth.token)
+    .then(res => {
+        if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+         else{
+          console.log("hahahaha")
+          setTemcheck([])
+        HandleCheckFavorite()
+        
+   return dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+      }
+     
+    })
+
+
+
+
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    HandleCheckFavorite()
+    // if()
+    // setToggler(false)
+
+
     const { auth } = await state;
 
     if (Object.keys(auth).length === 0) 
@@ -75,7 +190,7 @@ const DetailProduct = (props) => {
         payload: { error: "Please add all the fields111." },
       });
 
-    console.log(auth.token);
+   // console.log(auth.token);
     let res;
     if (false) {
       res = await putData(
@@ -92,7 +207,7 @@ const DetailProduct = (props) => {
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
-
+    HandleCheckFavorite()
     return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
   };
 
@@ -253,26 +368,47 @@ const DetailProduct = (props) => {
           >
             จองเข้าใช้เครื่องมือ
           </button>
-
+          { 
+           toggler 
+           ?
           <button
             type="button"
             onClick={handleSubmit}
-            className="px-4 py-2 rounded-xl bg-gray-400 text-white border-2 mr-2"
-          >
-            รายการโปรด
-          </button>
+            className="flex items-center px-3 py-2 rounded-xl bg-[#f6f6f6] text-black border-2 "> <BsHeart className="mr-2"/>เพิ่มรายการ</button>
+           :
+           <button
+            type="button"
+            // data-toggle="modal" data-target="#exampleModal"
+            onClick={handleRemove}
+            className="flex items-center px-3 py-2 rounded-xl bg-[#f6f6f6] text-black border-2 "> <BsHeartFill color="fe4141" className="mr-2"/>เพิ่มแล้ว</button>
+          }
         </div>
       </div>
     </div>
   );
 };
 
-export async function getServerSideProps({ params: { id } }) {
+export async function getServerSideProps({ params: { id  } ,query }) {
   const res = await getData(`product/${id}`);
-  // server side rendering
+
+  const page = query.page || 1
+  const category = query.category || 'all'
+  const sort = query.sort || ''
+  const search = query.search || 'all'
+
+  const resfav = await getData(
+    
+    `favorite?limit=${page * 500}&category=${category}&sort=${sort}&title=${search}`
+  )
+  
+    // server side rendering
+console.log(resfav)
   return {
-    props: { product: res.product }, // will be passed to the page component as props
+    props: { product: res.product ,  result: resfav.result ,favorite: resfav }
+    
+    // will be passed to the page component as props
   };
+
 }
 
 export default DetailProduct;

@@ -9,20 +9,40 @@ import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
 const Inform = (props) => {
+  const [temp, setTemp] = useState(props.products)
   const [products, setProducts] = useState(props.products)
   
   const [isCheck, setIsCheck] = useState(false)
   const [page, setPage] = useState(1)
   const router = useRouter()
-
+let filleredProd = [];
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
 
   useEffect(() => {
-    setProducts(props.products)
+    if(Object.keys(auth).length !== 0){
+
+      for (let i = 0; i < props.products.length; i++) {
+        if (props.products[i].userid === auth.user.email) {
+            filleredProd.push(props.products[i]);
+        }
+    }
+
+    setProducts(filleredProd)
+    
+    
+     console.log("filleredProd",filleredProd)
+     console.log("auth.user.email",auth.user.email)
+      console.log("products.userid",products.userid)
+      console.log("props.products",props.products)
+  }else{
+
+      setProducts(props.products)
+    }
   },[props.products])
 
   useEffect(() => {
+    console.log("kuy",products)
     if(Object.keys(router.query).length === 0) setPage(1)
   },[router.query])
 
@@ -84,7 +104,7 @@ const Inform = (props) => {
 
       <div className="products">
         {
-          products.length === 0 
+         false
           ? <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
 
           : products.map(product => (
@@ -113,12 +133,12 @@ export async function getServerSideProps({query}) {
   const search = query.search || 'all'
 
   const res = await getData(
-    `favorite?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    `favorite?limit=${page * 500}&category=${category}&sort=${sort}&title=${search}`
   )
   // server side rendering
   return {
     props: {
-      products: res.products,
+      products: res.favorits,
       result: res.result
     }, // will be passed to the page component as props
   }
