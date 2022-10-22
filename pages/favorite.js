@@ -8,21 +8,41 @@ import filterSearch from '../utils/filterSearch'
 import {useRouter} from 'next/router'
 import Filter from '../components/Filter'
 
-const Inform = (props) => {
+const Favorite = (props) => {
+  const [temp, setTemp] = useState(props.products)
   const [products, setProducts] = useState(props.products)
   
   const [isCheck, setIsCheck] = useState(false)
   const [page, setPage] = useState(1)
   const router = useRouter()
-
+let filleredProd = [];
   const {state, dispatch} = useContext(DataContext)
   const {auth} = state
 
   useEffect(() => {
-    setProducts(props.products)
+    if(Object.keys(auth).length !== 0){
+
+      for (let i = 0; i < props.products.length; i++) {
+        if (props.products[i].userid === auth.user.email) {
+            filleredProd.push(props.products[i]);
+        }
+    }
+
+    setProducts(filleredProd)
+    
+    
+     console.log("filleredProd",filleredProd)
+     console.log("auth.user.email",auth.user.email)
+      console.log("products.userid",products.userid)
+      console.log("props.products",props.products)
+  }else{
+
+      setProducts(props.products)
+    }
   },[props.products])
 
   useEffect(() => {
+    console.log("kuy",products)
     if(Object.keys(router.query).length === 0) setPage(1)
   },[router.query])
 
@@ -63,9 +83,9 @@ const Inform = (props) => {
   return(
     <div className="home_page">
       <Head>
-        <title>ข่าวสาร</title>
+        <title>รายการโปรด</title>
       </Head>
-      <h1 className="flex justify-center items-center font-bold text-4xl">ข่าวประชาสัมพันธ์</h1>
+      <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">รายการโปรด</h1>
       <Filter state={state} />
 
       {
@@ -82,15 +102,18 @@ const Inform = (props) => {
         </div>
       }
 
-      <div className="products">
-        {
-          products.length === 0 
-          ? <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
-
-          : products.map(product => (
-            <FavoriteItem key={product._id} product={product} handleCheck={handleCheck} />
+<div className="products">
+        {products.length === 0 ? (
+          <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
+        ) : (
+          products.map((product) => (
+            <FavoriteItem
+              key={product._id}
+              product={product}
+              handleCheck={handleCheck}
+            />
           ))
-        }
+        )}
       </div>
       
       {
@@ -113,16 +136,15 @@ export async function getServerSideProps({query}) {
   const search = query.search || 'all'
 
   const res = await getData(
-    `favorite?limit=${page * 6}&category=${category}&sort=${sort}&title=${search}`
+    `favorite?limit=${page * 500}&category=${category}&sort=${sort}&title=${search}`
   )
   // server side rendering
   return {
     props: {
-      products: res.products,
+      products: res.favorits,
       result: res.result
     }, // will be passed to the page component as props
   }
 }
 
-export default Inform
-
+export default Favorite

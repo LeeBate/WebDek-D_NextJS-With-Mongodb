@@ -74,9 +74,9 @@ const index = (props) => {
         <title>Index</title>
       </Head>
       <VideoPlayer />
-                <Slideshow product={products} />
+      <Slideshow product={products} />
 
-      <section className="max-w-full mx-auto px-8 py-10 pb-1 ">
+      <section className="container pt-4">
         
         <h1 className="text-4xl font-extrabold text-center text-gray-900">
           ข่าวประชาสัมพันธ์
@@ -86,7 +86,6 @@ const index = (props) => {
             <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
           ))}
         </div>
-          
       </section>
     </div>
   );

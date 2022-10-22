@@ -22,7 +22,6 @@ const Modal = () => {
     }
 
     const  deleteCategories =   (item) => {
-        dispatch({type: 'NOTIFY', payload: {loading: true}})
         deleteData(`categories/${item.id}`, auth.token)
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
@@ -38,7 +37,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/Admin/createProduct')
+            return router.push('/machinery')
         })
     }    
     
@@ -58,7 +57,19 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/Admin/AddSlide')
+            return router.push('/manageslide')
+        })
+    }
+  const deleteFav = (item) => {
+    
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
+        deleteData(`favorite/${item.id}`, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+       return    dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+          
+               //router.push(`/product/${item.pid}`)
+          //  return  router.replace(router.asPath);
         })
     }
 
@@ -78,7 +89,9 @@ const Modal = () => {
 
                 if(item.type === 'DELETE_PRODUCTS') deleteProduct1(item)
 
-                if(item.type === 'DELETE_SLIDE') deleteSlide(item)
+                if(item.type === 'DELETE_SLIDE') deleteSlide(item)  
+                
+                if(item.type === 'DELETE_FAV') deleteFav(item)
         
                 dispatch({ type: 'ADD_MODAL', payload: [] })
             }
@@ -98,7 +111,7 @@ const Modal = () => {
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
-                <div className="modal-header ">
+                <div className="modal-header">
                     <h5 className="modal-title text-capitalize" id="exampleModalLabel">
                         {modal.length !== 0 && modal[0].title}
                     </h5>

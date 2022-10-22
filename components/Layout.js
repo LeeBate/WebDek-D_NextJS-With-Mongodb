@@ -9,12 +9,13 @@ import VideoPlayer from "./VideoPlayer";
 function Layout({children}) {
     return (
         < >
-            
-            <NavBar />
             <Notify />
             <Modal />
-            <div className='container'></div>
-            {children}
+            <NavBar />
+            <div className='container'>
+            </div>
+            {children} 
+            
             <Footer />
         </>
     )

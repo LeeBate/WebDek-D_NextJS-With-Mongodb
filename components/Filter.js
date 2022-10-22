@@ -35,7 +35,7 @@ const Filter = ({ state }) => {
   return (
     <div className="px-[60px] py-4 max-w-[950px] mx-auto flex flex-col lg:flex-row justify-between gap-2 ">
       
-      <div className=" col-md-2 px-0  mt-2 h-full">
+      <div className=" col-md-2 px-0 mt-2 h-full">
         <select
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-2 py-1.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={category}
@@ -92,6 +92,7 @@ const Filter = ({ state }) => {
           <option value="oldest">เก่าที่สุด</option>
         </select>
       </div>
+  
     </div>
   );
 };
