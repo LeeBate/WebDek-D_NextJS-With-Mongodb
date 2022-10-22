@@ -13,6 +13,7 @@ const Favorite = (props) => {
   const [products, setProducts] = useState(props.products)
   
   const [isCheck, setIsCheck] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
   const router = useRouter()
 let filleredProd = [];
@@ -27,16 +28,18 @@ let filleredProd = [];
             filleredProd.push(props.products[i]);
         }
     }
-
     setProducts(filleredProd)
     
+   delay()
     
-     console.log("filleredProd",filleredProd)
-     console.log("auth.user.email",auth.user.email)
-      console.log("products.userid",products.userid)
-      console.log("props.products",props.products)
-  }else{
 
+
+    //  console.log("filleredProd",filleredProd)
+    //  console.log("auth.user.email",auth.user.email)
+    //   console.log("products.userid",products.userid)
+    //   console.log("props.products",props.products)
+  }else{
+    //setLoading(false)
       setProducts(props.products)
     }
   },[props.products])
@@ -45,6 +48,15 @@ let filleredProd = [];
     console.log("kuy",products)
     if(Object.keys(router.query).length === 0) setPage(1)
   },[router.query])
+
+ 
+  const  delay = async ()  => {
+   
+    setTimeout(() => {  setLoading(false); }, 1000);
+     
+    }
+
+  
 
   const handleCheck = (id) => {
     products.forEach(product => {
@@ -81,12 +93,17 @@ let filleredProd = [];
   }
 
   return(
+
     <div className="home_page">
       <Head>
+        
         <title>รายการโปรด</title>
       </Head>
+
+
       <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">รายการโปรด</h1>
       <Filter state={state} />
+
 
       {
         auth.user && auth.user.role === 'admin' &&
@@ -104,8 +121,8 @@ let filleredProd = [];
 
 <div className="products">
         {products.length === 0 ? (
-          <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
-        ) : (
+          <center>ไม่มีข้อมูลข่าวประชาสัมพันธ์</center>
+        ) : !loading ? (
           products.map((product) => (
             <FavoriteItem
               key={product._id}
@@ -113,6 +130,15 @@ let filleredProd = [];
               handleCheck={handleCheck}
             />
           ))
+        ):(
+          <div className="position-fixed w-100 h-100 text-center loading"
+        style={{background: '#0008', color: 'white', top: 0, left: 0, zIndex: 9}}>
+            <svg width="205" height="250" viewBox="0 0 40 50">
+                <polygon strokeWidth="1" stroke="#fff" fill="none"
+                points="20,1 40,40 1,40"></polygon>
+                <text fill="#fff" x="5" y="47">Loading</text>
+            </svg>
+        </div>
         )}
       </div>
       
@@ -125,6 +151,7 @@ let filleredProd = [];
       }
     
     </div>
+    
   )
 }
 
