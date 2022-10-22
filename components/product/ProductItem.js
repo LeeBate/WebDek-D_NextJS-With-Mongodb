@@ -65,7 +65,7 @@ const ProductItem = ({ product, handleCheck }) => {
       )}
       <Link href={`/product/${product._id}`}>
         <img
-          className="aspect-square object-fill cursor-pointer"
+          className="transform aspect-square object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125"
           src={product.images[0].url}
           alt={product.images[0].url}
         />

@@ -76,12 +76,12 @@ const index = (props) => {
       <VideoPlayer />
       <Slideshow product={products} />
 
-      <section className="container pt-4">
+      <section className="container ">
         
-        <h1 className="text-4xl font-extrabold text-center text-gray-900">
+        <h1 className="text-4xl font-extrabold text-center text-gray-900 pt-4">
           ข่าวประชาสัมพันธ์
         </h1>
-        <div className="my-10 grid gap-6 md:grid-cols-3 lg:grid-cols-3">
+        <div className=" grid md:grid-cols-2 lg:grid-cols-3">
         {Informs.slice(0,3).map((product) => (
             <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
           ))}
