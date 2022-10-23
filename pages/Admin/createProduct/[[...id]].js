@@ -147,14 +147,14 @@ const ProductsManager = (props) => {
         return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 5) newImages.push(file);
+      if (num <= 3) newImages.push(file);
       return newImages;
     });
 
     if (err) dispatch({ type: "NOTIFY", payload: { error: err } });
 
     const imgCount = images.length;
-    if (imgCount + newImages.length > 5)
+    if (imgCount + newImages.length > 3)
       return dispatch({
         type: "NOTIFY",
         payload: { error: "Select up to 5 images." },
@@ -650,7 +650,7 @@ const ProductsManager = (props) => {
 
                         <div
                           className="flex justify-center items-center w-full"
-                          hidden={images.length >= 5 ? true : false}
+                          hidden={images.length >= 3 ? true : false}
                         >
                           <label
                             htmlFor="dropzone-file"

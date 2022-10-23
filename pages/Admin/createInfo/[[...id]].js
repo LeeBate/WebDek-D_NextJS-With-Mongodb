@@ -67,7 +67,7 @@ const NewsManager = () => {
         return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 1) newImages.push(file);
+      if (num <= 3) newImages.push(file);
       return newImages;
     });
 
@@ -220,6 +220,7 @@ const NewsManager = () => {
                         </p>
                       </div>
                       <input
+                        multiple
                         id="dropzone-file"
                         type="file"
                         className="hidden"
@@ -229,18 +230,20 @@ const NewsManager = () => {
                     </label>
                   </div>
                   <div className="row img-up mx-0">
-                    {images.map((img, index) => (
-                      <div key={index} className="file_img my-1">
-                        <img
-                          src={img.url ? img.url : URL.createObjectURL(img)}
-                          alt=""
-                          className="img-thumbnail rounded"
-                        />
+                          {images.map((img, index) => (
+                            <div key={index} className="file_img my-1">
+                              <img
+                                src={
+                                  img.url ? img.url : URL.createObjectURL(img)
+                                }
+                                alt=""
+                                className="img-thumbnail rounded"
+                              />
 
-                        <span onClick={() => deleteImage(index)}>X</span>
-                      </div>
-                    ))}
-                  </div>
+                              <span onClick={() => deleteImage(index)}>X</span>
+                            </div>
+                          ))}
+                        </div>
                   <button
                     type="submit"
                     className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
