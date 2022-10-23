@@ -74,10 +74,10 @@ const NewsManager = () => {
     if (err) dispatch({ type: "NOTIFY", payload: { error: err } });
 
     const imgCount = images.length;
-    if (imgCount + newImages.length > 1)
+    if (imgCount + newImages.length > 3)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "อัพโหลดได้ครั้งละ 1 รูปภาพ" },
+        payload: { error: "อัพโหลดได้ครั้งละ 3 รูปภาพ" },
       });
     setImages([...images, ...newImages]);
   };
@@ -192,7 +192,7 @@ const NewsManager = () => {
 
                   <div
                     className="flex justify-center items-center w-full"
-                    hidden={images.length > 0 ? true : false}
+                    hidden={images.length > 3 ? true : false}
                   >
                     <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                       <div className="flex flex-col justify-center items-center pt-5 pb-6">
