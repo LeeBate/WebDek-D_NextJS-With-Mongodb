@@ -47,8 +47,8 @@ export default function newslatter() {
   return (
     <div className="w-full h-full ">
       <div>
-        <div id="main" className="xl:grid grid-cols-2 justify-evenly ">
-          <div className="bg-gray-100 col-span-2 w-full xl:h-72 h-64 p-9 border-sm ">
+        <div id="main" className="xl:grid lg:grid grid-cols-2 justify-evenly ">
+          <div className="bg-gray-100 col-span-2 w-full xl:h-62 h-64 p-2  border-xl ">
             <h1 className="pb-1 xl:text-xl font-bold md:text-base dark:text-gray-900">ติดต่อสอบถาม</h1>
 
             <div className="mapouter">
@@ -67,10 +67,9 @@ export default function newslatter() {
                 {height:210px!important;}`}</style>
             </div>
           </div>
-
-          <div className="bg-gray-100 w-26 h-52 xl:h-60 xl:p-7 p-5 pr-8  dark:text-gray-900">
-            <h1 className="xl:text-xl md:text-lg sm:text-base font-bold ">ตำแหน่งที่ตั้ง</h1>
-            <div className="text-sm xl:text-base ">
+          <div className="bg-gray-100 w-26 h-48  md:w-26 md:h-44 lg:w-26 lg:h-auto ">
+            <h1 className="text-base font-bold p-2 md:text-lg  lg:mt-2 xl:text-xl  ">ตำแหน่งที่ตั้ง</h1>
+            <div className="text-sm ml-9 lg:ml-12 xl:text-base">
             <p>111 ถ.มหาวิทยาลัย ต.สุรนารี อ.เมือง จ.นครราชสีมา, 30000</p>
             <div className="flex gap-2">
               <BsFillTelephoneFill />
@@ -94,35 +93,43 @@ export default function newslatter() {
           </div>
 
         {/* <div className="bg-gray-100 w-26 h-52 xl:h-60 xl:p-7 p-5 pr-8  dark:text-gray-900"></div> */}
-          <div className="bg-gray-100 w-26 h-60 xl:mb-5 mb-1 ">
-            <div className="w-full h-full p-4">
+          <div className="bg-gray-100 p-2 w-26 h-32 md:w-26 md:h-40 lg:w-26 lg:h-auto ">
+            <div className="w-full h-full">
               <Link href={"https://www.facebook.com/cstesut"}>
-                <div className="bg-blue-100 w-full h-full rounded-lg cursor-pointer relative">
-                  <div className="text-wight p-6 flex flex-col-2">
+                <div className="bg-blue-100  w-full h-full rounded-lg cursor-pointer lg:w-26 lg:h-auto ">
+                  <div className="text-wight  flex flex-col-2 ">
                     <img
-                      className="rounded-full mt-2 ml-3 xl:w-36 xl:h-36 md:w-26 md:h-28 w-24 h-18"
+                      className="rounded-full object-cover w-16 h-16 ml-2 mt-4  md:ml-4 md:mt-4 md:w-28 md:h-28 lg:w-36 lg:h-36 lg:mb-2"
                       src={"/images/ffotterr2.jpg"}
                       
                     />
-                    <div className="xl:ml-16 md:ml-12 ml-8 text-gray-600 ">
-                      <div className="xl:text-xl md:text-lg sm:text-xs font-bold sm:whitespace-pre ">
+                    <div className="text-gray-600 mt-3 ml-4 md:ml-8 md:mt-6 lg:ml-10 xl:ml-16 ">
+                      <div className="text-sm xl:text-xl md:text-lg  font-bold ">
                         ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
+                       
+                      </div>
+                      <div className="text-sm xl:text-xl md:text-lg  font-bold ">
                         มหาวิทยาลัยเทคโนโลยีสุรนารี
                       </div>
                       <p className="text-sm">
                         ชุมชน · 14.3 km · จะปิดเร็วๆ นี้
                       </p>
                       <p className="text-sm">ผู้ติดตาม 2.6 พัน คน</p>
-                      <div className="absolute bottom-2 right-2 ">
-                        <FaFacebookSquare size={40} color={"#1a4789"} />
-                      </div>
+                      
                     </div>
                   </div>
+                  <div className="absolute bottom-14 right-4 ">
+                        <FaFacebookSquare size={40} color={"#1a4789"} />
+                      </div>
                 </div>
               </Link>
             </div>
           </div>
         </div>
+        
+        
+          
+          
         
       </div><Box sx={{ p: 1, textAlign: "center" }}>
           <Typography>

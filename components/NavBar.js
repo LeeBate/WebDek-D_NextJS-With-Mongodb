@@ -220,7 +220,7 @@ function NavBar() {
         <Disclosure as="nav" className="bg-gray-800">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink w-24">
@@ -232,7 +232,7 @@ function NavBar() {
                         />
                       </a>
                     </div>
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                       <div className="ml-10 flex items-baseline space-x-4">
                         {navigation1.map((item) => (
                           <a
@@ -333,7 +333,7 @@ function NavBar() {
                       </div>
                     </div>
                   </div>
-                  <div className="hidden md:block">
+                  <div className="hidden lg:block">
                     <div className="ml-4 flex items-center md:ml-6">
                       <button
                         type="button"
@@ -373,7 +373,7 @@ function NavBar() {
                   </div>
 
                   {/* Mobile menu button */}
-                  <div className="-mr-2 flex md:hidden">
+                  <div className="mr-2 flex md:block lg:hidden">
                     <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -392,7 +392,7 @@ function NavBar() {
                 </div>
               </div>
 
-              <Disclosure.Panel className="md:hidden">
+              <Disclosure.Panel className="lg:hidden">
                 <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
                   {navigation1.map((item) => (
                     <Disclosure.Button
