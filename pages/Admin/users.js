@@ -21,7 +21,6 @@ const Users = () => {
   const { state, dispatch } = useContext(DataContext);
   const { users, auth, modal } = state;
 
-  if (!auth.user) return null;
   return (
     <ThemeProvider theme={theme}>
       <style jsx global>{`

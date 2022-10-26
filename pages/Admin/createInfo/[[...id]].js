@@ -8,6 +8,9 @@ import FullLayout from "../../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../../src/theme/theme";
 
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+import { Button } from "@mui/material";
+
 const NewsManager = () => {
   const initialState = {
     title: "",
@@ -25,6 +28,19 @@ const NewsManager = () => {
   const router = useRouter();
   const { id } = router.query;
   const [onEdit, setOnEdit] = useState(false);
+
+    //TAB Change
+    // const [tabIndex, setTabIndex] = useState(0);
+
+      //Inform
+  // const [Inform, setInform] = useState(props.products);
+
+  // useEffect(() => {
+  //   setInform(props.products);
+  // },[Inform]);
+
+
+
 
   useEffect(() => {
     if (id) {
@@ -260,5 +276,25 @@ const NewsManager = () => {
     </ThemeProvider>
   );
 };
+
+// export async function getServerSideProps({ query }) {
+//   const page = query.page || 1;
+//   const category = query.category || "all";
+//   const sort = query.sort || "";
+//   const search = query.search || "all";
+
+//   const res = await getData(
+//     `Inform?limit=${
+//       page * 6
+//     }&category=${category}&sort=${sort}&title=${search}`
+//   );
+//   // server side rendering
+//   return {
+//     props: {
+//       products: res.products,
+//       result: res.result,
+//     }, // will be passed to the page component as props
+//   };
+// }
 
 export default NewsManager;

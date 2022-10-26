@@ -1,4 +1,5 @@
 import Head from "next/head";
+import * as React from 'react';
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
 import { imageUpload } from "../../../utils/imageUpload";
@@ -12,8 +13,14 @@ import filterSearch from "../../../utils/filterSearch";
 import Filter from "../../../components/Filter";
 import Link from "next/link";
 
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
+// import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Button } from "@mui/material";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import TabContext from '@mui/lab/TabContext';
+import Box from '@mui/material/Box';
 
 const ProductsManager = (props) => {
   const [images, setImages] = useState([]);
@@ -52,9 +59,11 @@ const ProductsManager = (props) => {
   } = product;
 
   //TAB Change
-  const [tabIndex, setTabIndex] = useState(0);
-
-  //TAB Change
+  const [tabIndex, setTabIndex] = React.useState('0');
+  // const [value, setValue] = useState(1);
+  const handleChange = (event, newValue) => {
+    setTabIndex(newValue);
+  };
 
   //machinery
   const [machinery, setMachinery] = useState(props.products);
@@ -243,9 +252,10 @@ const ProductsManager = (props) => {
       setProduct(initialState);
     }
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-    setTabIndex(1);
+    setTabIndex('1');
     return router.push("/Admin/createProduct");
   };
+  
 
   const [inputFields, setInputFields] = useState([
     {
@@ -293,7 +303,6 @@ const ProductsManager = (props) => {
   };
 
   return (
-    <>
       <ThemeProvider theme={theme}>
         <style jsx global>{`
           Nav {
@@ -301,27 +310,27 @@ const ProductsManager = (props) => {
           }
         `}</style>
         <FullLayout>
-          <Tabs index={tabIndex} isFitted variant="enclosed">
-            <TabList mb="1em" >
+        <Box sx={{ width: '100%', typography: 'body1' }}>
+          <TabContext value={tabIndex} isFitted variant="enclosed">
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <TabList mb="1em" onChange={handleChange} aria-label="lab API tabs example">
               <Tab
-                onClick={() => {
-                  setTabIndex(0);
-                }}
+                value="0"
+                label="Add Machinery"
               >
-                <Button className=" bg-emerald-700 text-white px-4 hover:bg-emerald-600 rounded-lg">Add Machinery</Button>
               </Tab>
-              <div className="px-1"></div>
+              
               <Tab 
-                onClick={() => {
-                  setTabIndex(1);
-                }}
+                value="1"
+                label="Edit Machinery"
               >
-                 <Button className=" bg-red-700 text-white px-4 hover:bg-red-600 rounded-lg">Edit Machinery</Button>
                 
               </Tab>
             </TabList>
-            <TabPanels>
-              <TabPanel>
+            </Box>
+            
+              <TabPanel value="0">
+               
                 <Head>
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
@@ -727,7 +736,11 @@ const ProductsManager = (props) => {
                   </section>
                 </div>
               </TabPanel>
-              <TabPanel>
+
+              <TabPanel value= "1">
+              <Head>
+                  <title>การจัดการเครื่องมือ</title>
+                </Head>
                 <div className="products_manager">
                   <section className="bg-white">
                     <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -807,7 +820,7 @@ const ProductsManager = (props) => {
                                     >
                                       <a
                                         onClick={() => {
-                                          setTabIndex(0);
+                                          setTabIndex('0');
                                         }}
                                         className="btn btn-info"
                                         style={{ marginRight: "5px", flex: 1 }}
@@ -858,11 +871,10 @@ const ProductsManager = (props) => {
                   </section>
                 </div>
               </TabPanel>
-            </TabPanels>
-          </Tabs>
+          </TabContext>
+          </Box>
         </FullLayout>
       </ThemeProvider>
-    </>
   );
 };
 
