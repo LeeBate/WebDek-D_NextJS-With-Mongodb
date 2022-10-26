@@ -27,7 +27,7 @@ const SlideItem = ({product, handleCheck}) => {
     const adminLink = () => {
         return(
             <>
-                <Link href={`createslide/${product._id}`}>
+                <Link href={`/Admin/createlide/${product._id}`}>
                     <a className="btn btn-info"
                     style={{marginRight: '5px', flex: 1}}>Edit</a>
                 </Link>
@@ -75,6 +75,26 @@ const SlideItem = ({product, handleCheck}) => {
 
     )
 }
+
+export async function getServerSideProps({ query }) {
+    const page = query.page || 1;
+    // const category = query.category || "all";
+    const sort = query.sort || "";
+    const search = query.search || "all";
+  
+    const res = await getData(
+      `slideimage?limit=${
+        page * 6
+      }&sort=${sort}&title=${search}`
+    );
+    // server side rendering
+    return {
+      props: {
+        products: res.products,
+        result: res.result,
+      }, // will be passed to the page component as props
+    };
+  }
 
 
 export default SlideItem

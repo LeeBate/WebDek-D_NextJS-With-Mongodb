@@ -16,7 +16,7 @@ const Profile = () => {
     const { avatar, name, password, cf_password } = data
 
     const {state, dispatch} = useContext(DataContext)
-    const { auth, notify, orders } = state
+    const { auth, notify } = state
 
     useEffect(() => {
         if(auth.user) setData({...data, name: auth.user.name})

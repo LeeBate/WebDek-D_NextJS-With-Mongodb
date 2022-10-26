@@ -6,7 +6,7 @@ import { getData } from "../utils/fetchData";
 import InformItem from "../components/product/InformItem";
 import filterSearch from "../utils/filterSearch";
 import { useRouter } from "next/router";
-import Filter from "../components/FilterNews";
+import FilterNews from "../components/FilterNews";
 
 const Inform = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -68,7 +68,7 @@ const Inform = (props) => {
       <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">
         ข่าวประชาสัมพันธ์
       </h1>
-      <Filter state={state} />
+      <FilterNews state={state} />
 
       {auth.user && auth.user.role === "admin" && (
         <div
