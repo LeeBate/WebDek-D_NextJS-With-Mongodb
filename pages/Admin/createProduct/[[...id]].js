@@ -363,11 +363,7 @@ const ProductsManager = (props) => {
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
               
-<<<<<<< HEAD
                  {onEdit?<button  className="btn btn-success d-block ml-10 mb-4"onClick={handleClearAddNew}> Add New </button>:<></>}
-=======
-                 <button  className="btn btn-success d-block mx-auto mb-4"onClick={handleClearAddNew}> Add New  </button>
->>>>>>> 1782d9b14601299003e0bbb4a3ee92e52fb3b0cf
                           
                         
                       
