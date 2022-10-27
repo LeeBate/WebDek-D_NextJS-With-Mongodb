@@ -29,7 +29,7 @@ const ProductsManager = (props) => {
   const { categories, auth } = state;
 
   const router = useRouter();
-  const { id } = router.query;
+  let { id } = router.query;
   const [onEdit, setOnEdit] = useState(false);
   const initialState = {
     title: "",
@@ -85,6 +85,31 @@ const ProductsManager = (props) => {
     });
     setMachinery([...machinery]);
   };
+
+
+  const handleClearAddNew = async () => {
+   
+    
+    setImages([]);
+    setInputFields([
+      {
+        idx: uuidv4(),
+        ListName: "",
+        price1: "",
+        price2: "",
+        price3: "",
+        price4: "",
+        price5: "",
+      },
+    ]);
+   
+    setProduct(initialState); 
+   router.replace("/Admin/createProduct"); 
+
+   id = ""
+
+   };
+ 
 
   const handleCheckALL = () => {
     machinery.forEach((product) => (product.checked = !isCheck));
@@ -233,27 +258,30 @@ const ProductsManager = (props) => {
         },
         auth.token
       );
+         setImages([]);
+         setInputFields([
+           {
+             idx: uuidv4(),
+             ListName: "",
+             price1: "",
+             price2: "",
+             price3: "",
+             price4: "",
+             price5: "",
+           },
+         ]);
+         setProduct(initialState);
+
       if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+
+         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
-    if (!onEdit) {
-      setImages([]);
-      setInputFields([
-        {
-          idx: uuidv4(),
-          ListName: "",
-          price1: "",
-          price2: "",
-          price3: "",
-          price4: "",
-          price5: "",
-        },
-      ]);
-      setProduct(initialState);
-    }
-    dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-    setTabIndex('1');
-    return router.push("/Admin/createProduct");
+    
+  
+  setTabIndex('1');
+ dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+    
+     return router.replace("/Admin/createProduct");
   };
   
 
@@ -316,7 +344,7 @@ const ProductsManager = (props) => {
             <TabList mb="1em" onChange={handleChange} aria-label="lab API tabs example">
               <Tab
                 value="0"
-                label="Add Machinery"
+                label={onEdit?"Edit Machinery":"Add Machinery"}
               >
               </Tab>
               
@@ -334,6 +362,12 @@ const ProductsManager = (props) => {
                 <Head>
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
+              
+                 {onEdit?<button  className="btn btn-success d-block ml-10 mb-4"onClick={handleClearAddNew}> Add New </button>:<></>}
+                          
+                        
+                      
+            
                 <div className="products_manager">
                   <section className="bg-white">
                     <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
