@@ -363,7 +363,11 @@ const ProductsManager = (props) => {
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
               
+<<<<<<< HEAD
                  {onEdit?<button  className="btn btn-success d-block ml-10 mb-4"onClick={handleClearAddNew}> Add New </button>:<></>}
+=======
+                 <button  className="btn btn-success d-block mx-auto mb-4"onClick={handleClearAddNew}> Add New  </button>
+>>>>>>> 1782d9b14601299003e0bbb4a3ee92e52fb3b0cf
                           
                         
                       
@@ -775,9 +779,8 @@ const ProductsManager = (props) => {
               <Head>
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
-                <div className="products_manager">
-                  <section className="bg-white">
-                    <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+               
+                    <div className="container">
                       <Filter state={state} />
 
                       {auth.user && auth.user.role === "admin" && (
@@ -890,19 +893,6 @@ const ProductsManager = (props) => {
                           ))
                         )}
                       </div>
-
-                      {props.result < page * 6 ? (
-                        ""
-                      ) : (
-                        <button
-                          className="btn btn-outline-info d-block mx-auto mb-4"
-                          onClick={handleLoadmore}
-                        >
-                          Load more
-                        </button>
-                      )}
-                    </div>
-                  </section>
                 </div>
               </TabPanel>
           </TabContext>
@@ -920,7 +910,7 @@ export async function getServerSideProps({ query }) {
 
   const res = await getData(
     `product?limit=${
-      page * 6
+      page * 100
     }&category=${category}&sort=${sort}&title=${search}`
   );
   // server side rendering

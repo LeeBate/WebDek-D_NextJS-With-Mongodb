@@ -37,7 +37,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/machinery')
+            return router.push('/Admin/createProduct')
         })
     }    
     
@@ -47,7 +47,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/Inform')
+            return router.push('/Admin/createInfo')
         })
     } 
 
@@ -57,7 +57,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/manageslide')
+            return router.push('/Admin/createSlide')
         })
     }
   const deleteFav = (item) => {

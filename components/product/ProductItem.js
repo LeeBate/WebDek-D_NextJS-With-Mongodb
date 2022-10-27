@@ -53,7 +53,7 @@ const ProductItem = ({ product, handleCheck }) => {
     );
   };
   return (
-    <ul className="card bg-sky-100/75" style={{ width: "18rem" }}>
+    <div className="card bg-sky-100/75" style={{ width: "18rem" }}>
       {auth.user && auth.user.role === "admin" && (
         <input
           type="checkbox"
@@ -85,7 +85,7 @@ const ProductItem = ({ product, handleCheck }) => {
           {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
         </div>
       </div>
-    </ul>
+    </div>
   );
 };
 

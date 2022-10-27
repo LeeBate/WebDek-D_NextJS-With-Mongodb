@@ -156,7 +156,7 @@ const DetailProduct = (props, query) => {
     if (Object.keys(auth).length === 0)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "login ด้วยไอสัส" },
+        payload: { error: "loginก่อนนะครับคุณ" },
       });
 
     if (!title || !en || !prodid || !userid || !category || !images)
@@ -186,39 +186,37 @@ const DetailProduct = (props, query) => {
     return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
   };
 
-  return (
-    <div>
-      <div className="row detail_page">
+  return(
+    <div className="mb-5">
+    <div className="mt-5">
         <Head>
-          <title>Detail Product</title>
+            <title>Detail product</title>
         </Head>
-        <div className="text-capitalize font-bold text-3xl mx-[80px] my-5">
-          <h1>{product.en}</h1>
-          <h2 className="text font-light text-xl ">{product.title}</h2>
+        <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24">
+        <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
+            <h1 className="text-lg sm:text-base font-bold  ">{product.title}</h1>
+            <h1 className="text-lg sm:text-base font-bold  ">{product.en}</h1>
         </div>
-        <div className="flex flex-row bg-indigo-100 mx-24 rounded-xl">
-          <div className="basis-4/10 ml-3">
-            <img
-              src={product.images[tab].url}
-              alt={product.images[tab].url}
-              className="d-block img-thumbnail rounded-xl mt-4 ml-3 max-w-xl max-h-fit"
-            />
+        <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
+        
+            <div className='mx-3 md:mx-auto'>
+            <img src={ product.images[tab].url } alt={ product.images[tab].url }
+            className="img-thumbnail rounded mt-4 sm:mr-5 sm:max-w-xs sm:max-h-xs md:max-w-2xl md:max-h-fit xl:max-w-xl xl:max-h-fit" />
 
-            <div className="row mx-0 mb-4 mt-3" style={{ cursor: "pointer" }}>
-              {product.images.map((img, index) => (
-                <img
-                  key={index}
-                  src={img.url}
-                  alt={img.url}
-                  className={`img-thumbnail rounded ml-3 ${isActive(index)}`}
-                  style={{ height: "80px", width: "20%" }}
-                  onClick={() => setTab(index)}
-                />
-              ))}
+            <div className="row mx-0 mt-3 mb-4" style={{cursor: 'pointer'}} >
+
+                {product.images.map((img, index) => (
+                    <img key={index} src={img.url} alt={img.url}
+                    className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(index)}`}
+                    // style={{height: '60px', width: '80px'}}
+                    onClick={() => setTab(index)} />
+                ))}
+                </div>
             </div>
-          </div>
+        
+        <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-3 mb-4">
 
-          <div className="basis-6/10 mx-5 my-4">
+        <div className=" mx-1 my-4">
             {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
                 <h2 className="text font-light text-xl ">{product.title}</h2> */}
             <div className="flex flex-col">
@@ -257,116 +255,141 @@ const DetailProduct = (props, query) => {
               </div>
             </div>
 
-            <br />
-          </div>
+            <br/>
         </div>
-        <div className="text-2xl mx-24 mt-14 mb-2">
+
+        </div>
+        </div>
+    </div>
+
+    <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-14 mb-3 ">
           <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>
-        <div className="flex items-center w-full mx-24">
-          <table className="table table-bordered">
-            <thead>
-              <tr className="text-center">
-                <th>ลำดับ</th>
-                <th>รายการ</th>
-                <th>
-                  อัตรา1
-                  <br />
+        <div className="mx-4 md:mx-14 xl:mx-24">
+        <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
+            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" className="py-3 px-6">
+                        ลำดับ
+                        </th>
+                        <th scope="col" className="py-3 px-6">
+                        รายการ
+                        </th>
+                        <th scope="col" className="py-3 px-6">
+                        อัตรา1
+                        <br />
                   (100%)
-                </th>
-                <th>
-                  อัตรา2
-                  <br />
+                        </th>
+                        <th scope="col" className="py-3 px-6">
+                        อัตรา2
+                        <br />
                   (75%)
-                </th>
-                <th>
-                  อัตรา3
-                  <br />
+                        </th>
+                        <th scope="col" className="py-3 px-6">
+                        อัตรา3
+                        <br />
                   (50%)
-                </th>
-                <th>
-                  อัตรา4
-                  <br />
+                        </th>
+                        <th scope="col" className="py-3 px-6">
+                        อัตรา4
+                        <br />
                   (นักวิจัย)
-                </th>
-                <th>
-                  อัตรา5
-                  <br />
+                        </th>
+                        
+                        <th scope="col" className="py-3 px-6">
+                        อัตรา5
+                        <br />
                   (บัณฑิต)
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {product.nameRate.map((obj, i) => (
-                <tr key={i} className="bg-gray-50 text-center">
-                  <td>
-                    <span>{i + 1 || "-"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.ListName || "Unknown"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.price1 || "-"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.price2 || "-"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.price3 || "-"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.price4 || "-"}</span>
-                  </td>
-                  <td>
-                    <span>{obj.price5 || "-"}</span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {product.nameRate.map((obj, i) => (
+                    <tr key={i} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
+                      <td className="py-4 px-6">
+                        <span>{i + 1 || "-"}</span>
+                        </td>
+                        <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <span>{obj.ListName || "Unknown"}</span>
+                        </th>
+                        
+                        <td className ="py-4 px-6">
+                        <span>{obj.price1 || "-"}</span>
+                        </td>
+
+                        <td className="py-4 px-6">
+                        <span>{obj.price2 || "-"}</span>
+                        </td>
+
+                        <td className="py-4 px-6">
+                        <span>{obj.price3 || "-"}</span>
+                        </td>
+
+                        <td className="py-4 px-6">
+                        <span>{obj.price4 || "-"}</span>
+                        </td>
+
+                        <td className="py-4 px-6">
+                        <span>{obj.price5 || "-"}</span>
+                        </td>
+                    </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
-      </div>
-      <div className="flex mb-5  justify-between items-center">
-        <p className="ml-[80px]">
+        </div>
+
+        <p className="text-sm xl:text-base mx-7 xl:mx-22 mt-3">
           หมายเหตุ : เฉพาะเจ้าหน้าที่ทดสอบ ติดต่อสอบถามโดยตรงกับเจ้าหน้าที่
         </p>
-        <div className="mr-[72px]">
-          <button
+
+        <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5">
+
+        <button
             type="button"
-            className="px-4 py-2 rounded-xl bg-indigo-900 text-white border-2 mr-2 ml-[265px]"
-          >
-            ติดต่อขอรับบริการ
-          </button>
-          <button
-            type="button"
-            className="px-4 py-2 rounded-xl bg-green-700 text-white border-2 mr-2"
+            className=" rounded-xl bg-green-700 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
             จองเข้าใช้เครื่องมือ
           </button>
+
+          <button
+            type="button"
+            className=" rounded-xl bg-indigo-900 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+          >
+            ติดต่อขอรับบริการ
+          </button>
+          
+
           {toggler ? (
-            <button
-              type="button"
-              onClick={handleSubmit}
-              className="flex items-center px-3 py-2 rounded-xl bg-[#f6f6f6] text-black border-2 "
-            >
-              {" "}
-              <BsHeart className="mr-2" />
-              เพิ่มรายการ
-            </button>
-          ) : (
-            <button
-              type="button"
-              // data-toggle="modal" data-target="#exampleModal"
-              onClick={handleRemove}
-              className="flex items-center px-3 py-2 rounded-xl bg-[#f6f6f6] text-black border-2 "
-            >
-              {" "}
-              <BsHeartFill color="fe4141" className="mr-2" />
-              เพิ่มแล้ว
-            </button>
-          )}
-        </div>
+          
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+          >
+            {" "}
+            <BsHeart className="mr-2" />
+            เพิ่มรายการ
+          </button>
+        ) : (
+          <button
+            type="button"
+            // data-toggle="modal" data-target="#exampleModal"
+            onClick={handleRemove}
+            className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+          >
+            {" "}
+            <BsHeartFill color="fe4141" className="mr-2" />
+            เพิ่มแล้ว
+          </button>
+        )}
+
+
+          
+        
       </div>
+    </div>
     </div>
   );
 };

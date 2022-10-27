@@ -1,15 +1,16 @@
 import Head from "next/head";
-import * as React from 'react';
+import * as React from "react";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
 import { imageUpload } from "../../../utils/imageUpload";
 import { postData, getData, putData } from "../../../utils/fetchData";
 import { useRouter } from "next/router";
+import { v4 as uuidv4 } from "uuid";
 import FullLayout from "../../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../../src/theme/theme";
 import filterSearch from "../../../utils/filterSearch";
-import FilterNews from "../../../components/FilterNews";
+import Filter from "../../../components/Filter";
 import Link from "next/link";
 
 import Tab from "@mui/material/Tab";
@@ -18,14 +19,33 @@ import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
 
-const NewsManager = (props) => {
+const SlideManager = (props) => {
   const initialState = {
     title: "",
-    description: "",
+    en: "tt",
+    brand: "tt",
+    modelName: "tt",
+    room: "tt",
+    roomen: "tt",
+    manager: "tt",
+    detailCapability: "tt",
+    detailRestrictions: "tt",
+    category: "tt",
   };
 
   const [product, setProduct] = useState(initialState);
-  const { title, description } = product;
+  const {
+    title,
+    en,
+    brand,
+    modelName,
+    room,
+    roomen,
+    manager,
+    detailCapability,
+    detailRestrictions,
+    category,
+  } = product;
 
   const [images, setImages] = useState([]);
 
@@ -43,37 +63,35 @@ const NewsManager = (props) => {
     setTabIndex(newValue);
   };
 
-  const [Inform, setInform] = useState(props.products);
+  const [Slides, setSlides] = useState(props.products);
   const [isCheck, setIsCheck] = useState(false);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    setInform(props.products);
+    setSlides(props.products);
   }, [props.products]);
 
-
   const handleCheck = (id) => {
-    Inform.forEach((product) => {
+    Slides.forEach((product) => {
       if (product._id === id) product.checked = !product.checked;
     });
-    setInform([...Inform]);
+    setSlides([...Slides]);
   };
 
   const handleCheckALL = () => {
-    Inform.forEach((product) => (product.checked = !isCheck));
-    setInform([...Inform]);
+    Slides.forEach((product) => (product.checked = !isCheck));
+    setSlides([...Slides]);
     setIsCheck(!isCheck);
   };
 
   const handleDeleteAll = () => {
     let deleteArr = [];
-    Inform.forEach((product) => {
+    Slides.forEach((product) => {
       if (product.checked) {
         deleteArr.push({
           data: "",
           id: product._id,
           title: "ลบ?",
-          type: "DELETE_PRODUCTS",
+          type: "DELETE_PRODUCT",
         });
       }
     });
@@ -81,18 +99,13 @@ const NewsManager = (props) => {
     dispatch({ type: "ADD_MODAL", payload: deleteArr });
   };
 
-  const handleLoadmore = () => {
-    setPage(page + 1);
-    filterSearch({ router, page: page + 1 });
-  };
-  // end Infomation
-
   useEffect(() => {
     if (id) {
       setOnEdit(true);
-      getData(`productNews/${id}`).then((res) => {
+      getData(`slideimage/${id}`).then((res) => {
         setProduct(res.product);
         setImages(res.product.images);
+        setInputFields(res.product.nameRate);
       });
     } else {
       setOnEdit(false);
@@ -128,17 +141,17 @@ const NewsManager = (props) => {
         return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 3) newImages.push(file);
+      if (num <= 1) newImages.push(file);
       return newImages;
     });
 
     if (err) dispatch({ type: "NOTIFY", payload: { error: err } });
 
     const imgCount = images.length;
-    if (imgCount + newImages.length > 3)
+    if (imgCount + newImages.length > 1)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "อัพโหลดได้ครั้งละ 3 รูปภาพ" },
+        payload: { error: "อัพโหลดได้ครั้งละ 1 รูปภาพ" },
       });
     setImages([...images, ...newImages]);
   };
@@ -157,7 +170,7 @@ const NewsManager = (props) => {
         payload: { error: "Authentication is not valid." },
       });
 
-    if (!title || images.length === 0 || !description)
+    if (!title || images.length === 0)
       return dispatch({
         type: "NOTIFY",
         payload: { error: "Please add all the fields111." },
@@ -170,19 +183,29 @@ const NewsManager = (props) => {
 
     if (imgNewURL.length > 0) media = await imageUpload(imgNewURL);
 
+    console.log("url=", media);
+
     let res;
     if (onEdit) {
       res = await putData(
-        `productNews/${id}`,
-        { ...product, images: [...imgOldURL, ...media] },
+        `slideimage/${id}`,
+        {
+          ...product,
+          nameRate: [...inputFields],
+          images: [...imgOldURL, ...media],
+        },
         auth.token
       );
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     } else {
       res = await postData(
-        "productNews",
-        { ...product, images: [...imgOldURL, ...media] },
+        "slideimage",
+        {
+          ...product,
+          nameRate: [...inputFields],
+          images: [...imgOldURL, ...media],
+        },
         auth.token
       );
       if (res.err)
@@ -191,7 +214,52 @@ const NewsManager = (props) => {
 
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
     setTabIndex("1");
-    return router.push("/Admin/createInfo");
+    return router.push("/Admin/createSlide");
+  };
+
+  const [inputFields, setInputFields] = useState([
+    {
+      idx: uuidv4(),
+      ListName: "",
+      price1: "",
+      price2: "",
+      price3: "",
+      price4: "",
+      price5: "",
+    },
+  ]);
+
+  const handleChangeInput2 = async (idx, event) => {
+    const newInputFields = inputFields.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+    setInputFields(newInputFields);
+  };
+  const handleAddFields = () => {
+    setInputFields([
+      ...inputFields,
+      {
+        idx: uuidv4(),
+        ListName: "tt",
+        price1: "tt",
+        price2: "tt",
+        price3: "tt",
+        price4: "tt",
+        price5: "tt",
+      },
+    ]);
+  };
+
+  const handleRemoveFields = (idx) => {
+    const values = [...inputFields];
+    values.splice(
+      values.findIndex((value) => value.idx === idx),
+      1
+    );
+    setInputFields(values);
   };
 
   return (
@@ -210,20 +278,20 @@ const NewsManager = (props) => {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab value="0" label="Add News"></Tab>
+                <Tab value="0" label="Add Slide"></Tab>
 
-                <Tab value="1" label="Edit News"></Tab>
+                <Tab value="1" label="Edit Slide"></Tab>
               </TabList>
             </Box>
             <TabPanel value="0">
               <div className="products_manager">
                 <Head>
-                  <title>การจัดการข่าวสาร</title>
+                  <title>การจัดการสไลด์</title>
                 </Head>
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
-                      เพิ่มข้อมูลข่าวสาร
+                      อัพโหลดสไลด์
                     </h2>
                     <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
                       ไม่รู้จะใส่อะไร เผื่ออยากใส่
@@ -233,41 +301,25 @@ const NewsManager = (props) => {
                       onSubmit={handleSubmit}
                       className="space-y-8"
                     >
-                      <div>
+                      {/* <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          หัวเรื่อง
+                          ไม่รู้จะใส่อะไร เผื่ออยากใส่
                         </label>
                         <input
-                          value={title}
                           type="text"
                           name="title"
                           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
               block w-full p-2.5 "
                           onChange={handleChangeInput}
-                          placeholder="กรอกหัวเรื่อง . . . "
+                          placeholder="ชื่อสไลด์ . . . "
                           required
                         />
-                      </div>
-
-                      <div className="sm:col-span-2">
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          เนื้อหา
-                        </label>
-                        <textarea
-                          rows="6"
-                          name="description"
-                          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 "
-                          placeholder="กรอกเนื้อหา . . ."
-                          required
-                          value={description}
-                          onChange={handleChangeInput}
-                        ></textarea>
-                      </div>
+                      </div> */}
 
                       <div
                         className="flex justify-center items-center w-full"
-                        hidden={images.length > 3 ? true : false}
+                        hidden={images.length > 0 ? true : false}
                       >
                         <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                           <div className="flex flex-col justify-center items-center pt-5 pb-6">
@@ -296,7 +348,6 @@ const NewsManager = (props) => {
                             </p>
                           </div>
                           <input
-                            multiple
                             id="dropzone-file"
                             type="file"
                             className="hidden"
@@ -305,13 +356,13 @@ const NewsManager = (props) => {
                           />
                         </label>
                       </div>
-                      <div className="row img-up mx-0 object-cover">
+                      <div className="row img-up mx-0">
                         {images.map((img, index) => (
-                          <div key={index} className="file_img my-1 object-cover">
+                          <div key={index} className="file_img my-1">
                             <img
                               src={img.url ? img.url : URL.createObjectURL(img)}
                               alt=""
-                              className="img-thumbnail rounded object-cover"
+                              className="img-thumbnail rounded"
                             />
 
                             <span onClick={() => deleteImage(index)}>X</span>
@@ -333,86 +384,37 @@ const NewsManager = (props) => {
             <TabPanel value="1">
               <div className="container">
                 <Head>
-                  <title>ข่าวสาร</title>
+                  <title>การจัดการสไลด์</title>
                 </Head>
-                <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">
-                  ข่าวประชาสัมพันธ์
-                </h1>
-                <FilterNews state={state} />
-
-                {auth.user && auth.user.role === "admin" && (
-                  <div
-                    className="delete_all btn btn-danger mt-2"
-                    style={{ marginBottom: "-10px" }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isCheck}
-                      onChange={handleCheckALL}
-                      style={{
-                        width: "25px",
-                        height: "25px",
-                        transform: "translateY(8px)",
-                      }}
-                    />
-
-                    <button
-                      className="btn btn-danger ml-2"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                      onClick={handleDeleteAll}
-                    >
-                      ลบข้อมูลทั้งหมด
-                    </button>
-                  </div>
-                )}
-
                 <div className="products">
-                  {Inform.length === 0 ? (
-                    <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
+                  {Slides.length === 0 ? (
+                    <h2>No Slides</h2>
                   ) : (
-                    Inform.map((product) => (
+                    Slides.map((product) => (
                       <ul
-                              className="card bg-sky-100/75"
-                              style={{ width: "18rem" }}
-                              key={product._id}
-                            >
-                              {auth.user && auth.user.role === "admin" && (
-                                <input
-                                  type="checkbox"
-                                  checked={product.checked}
-                                  className="position-absolute"
-                                  style={{ height: "20px", width: "20px" }}
-                                  onChange={() => handleCheck(product._id)}
-                                />
-                              )}
-                              <Link href={`/productNews/${product._id}`}>
-                                <img
-                                  className="aspect-square object-fill cursor-pointer"
-                                  src={product.images[0].url}
-                                  alt={product.images[0].url}
-                                />
-                              </Link>
-                              <div className="card-body">
-                                <h5
-                                  className="card-title font-bold text-xl mb-2 text-capitalize"
-                                  title={product.en}
-                                >
-                                  {product.en}
-                                </h5>
-                                <h5
-                                  className="card-title text-capitalize"
-                                  title={product.title}
-                                >
-                                  {product.title}
-                                </h5>
+                        className="card bg-sky-100/75"
+                        style={{ width: "18rem" }}
+                      >
+                        {auth.user && auth.user.role === "admin" && (
+                          <input
+                            type="checkbox"
+                            checked={product.checked}
+                            className="position-absolute"
+                            style={{ height: "20px", width: "20px" }}
+                            onChange={() => handleCheck(product._id)}
+                          />
+                        )}
+                        <img
+                          className="card-img-top object-cover h-48 w-full"
+                          src={product.images[0].url}
+                          alt={product.images[0].url}
+                        />
+                        <div className="card-body">
 
-                                <div className="row justify-content-between mx-0 ">
-                                  <>
-                                    <Link
-                                      href={`/Admin/createInfo/${product._id}`}
-                                    >
-                                      <a
+                          <div className="row justify-content-between mx-0 ">
+                            <>
+                            <Link href={`/Admin/createSlide/${product._id}`}>
+                            <a
                                         onClick={() => {
                                           setTabIndex('0');
                                         }}
@@ -421,8 +423,8 @@ const NewsManager = (props) => {
                                       >
                                         แก้ไขข้อมูล
                                       </a>
-                                    </Link>
-                                    <button
+                            </Link>
+                            <button
                                       className="btn btn-danger"
                                       style={{ marginLeft: "5px", flex: 1 }}
                                       data-toggle="modal"
@@ -435,7 +437,7 @@ const NewsManager = (props) => {
                                               data: "",
                                               id: product._id,
                                               title: product.title,
-                                              type: "DELETE_PRODUCTS",
+                                              type: "DELETE_SLIDE",
                                             },
                                           ],
                                         })
@@ -443,24 +445,13 @@ const NewsManager = (props) => {
                                     >
                                       ลบข้อมูล
                                     </button>
-                                  </>
-                                </div>
-                              </div>
-                            </ul>
+                            </>
+                          </div>
+                        </div>
+                      </ul>
                     ))
                   )}
                 </div>
-
-                {props.result < page * 6 ? (
-                  ""
-                ) : (
-                  <button
-                    className="btn btn-outline-info d-block mx-auto mb-4"
-                    onClick={handleLoadmore}
-                  >
-                    อ่านเพิ่มเติม
-                  </button>
-                )}
               </div>
             </TabPanel>
           </TabContext>
@@ -472,14 +463,14 @@ const NewsManager = (props) => {
 
 export async function getServerSideProps({ query }) {
   const page = query.page || 1;
-  // const category = query.category || "all";
+  const category = query.category || "all";
   const sort = query.sort || "";
   const search = query.search || "all";
 
   const res = await getData(
-    `productNews?limit=${
+    `slideimage?limit=${
       page * 100
-    }&sort=${sort}&title=${search}`
+    }&category=${category}&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {
@@ -489,5 +480,4 @@ export async function getServerSideProps({ query }) {
     }, // will be passed to the page component as props
   };
 }
-
-export default NewsManager;
+export default SlideManager;

@@ -13,7 +13,7 @@ const Menuitems = [
   {
     title: "Manage Slide",
     icon: "sidebar",
-    href: "/Admin/AddSlide",
+    href: "/Admin/createSlide/[[...id]]",
   },
   {
     title: "Manage Machinery",
