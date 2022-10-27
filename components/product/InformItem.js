@@ -56,7 +56,7 @@ const InformItem = ({product, handleCheck}) => {
                 onChange={() => handleCheck(product._id)} />
             }
             <Link href={`Inform/${product._id}`}>
-            <img className="transform aspect-square card-img-top object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125" src={product.images[0].url} alt={product.images[0].url} />
+            <img className="transform aspect-square card-img-top object-fill cursor-pointer transition duration-700 scale-75 hover:scale-[100px]" src={product.images[0].url} alt={product.images[0].url} />
             </Link>
             <div className="card-body">
                 <h5 className=" card-title font-bold text-xl mb-2 text-capitalize" title={product.title}>
@@ -67,7 +67,7 @@ const InformItem = ({product, handleCheck}) => {
                 </h5>
                     
                 <div className="row justify-content-between mx-0 ">
-                    {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
+                    {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
                 </div>
             </div>
         </div>

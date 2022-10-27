@@ -65,7 +65,7 @@ const ProductItem = ({ product, handleCheck }) => {
       )}
       <Link href={`/product/${product._id}`}>
         <img
-          className="transform aspect-square object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125"
+          className="transform aspect-square object-fill cursor-pointer transition duration-700 scale-75 hover:scale-[100px]"
           src={product.images[0].url}
           alt={product.images[0].url}
         />
@@ -82,7 +82,7 @@ const ProductItem = ({ product, handleCheck }) => {
         </h5>
 
         <div className="row justify-content-between mx-0 ">
-          {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
+          {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
         </div>
       </div>
     </div>

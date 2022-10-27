@@ -65,7 +65,7 @@ const InformItem = ({product, handleCheck}) => {
                 </h5>
                     
                 <div className="row justify-content-between mx-0 ">
-                    {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
+                    {!auth.user || auth.user.role !== "admin" ? userLink() : userLink()}
                 </div>
             </div>
         </div>

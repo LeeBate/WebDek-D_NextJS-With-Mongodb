@@ -47,7 +47,7 @@ const machinery = (props) => {
           data: "",
           id: product._id,
           title: "ลบทั้งหมด",
-          type: "DELETE_PRODUCTS",
+          type: "DELETE_PRODUCT",
         });
       }
     });

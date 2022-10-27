@@ -326,7 +326,7 @@ const SlideManager = (props) => {
                     >
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          ไม่รู้จะใส่อะไร เผื่ออยากใส่
+                          หัวเรื่อง
                         </label>
                         <input
                           type="text"
