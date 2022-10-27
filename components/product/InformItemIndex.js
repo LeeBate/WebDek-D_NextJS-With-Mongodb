@@ -56,10 +56,10 @@ const InformItem = ({ product, handleCheck }) => {
   };
 
   return (
-    
-      <div className=" bg-sky-100/75 rounded-t-xl border w-[300px] h-auto my-2 mx-auto md:object-cover md:w-full md:h-auto">
+    <div className="flex flex-col justify-center items-center ">
+      <div className=" bg-sky-100/75 rounded-t-lg border w-[325px] h-auto my-2 ">
         <img
-          className="transform w-full h-60 object-center object-cover rounded-t-xl hover:rounded-none md:object-center md:object-cover transition duration-700  hover:scale-125 "
+          className="transform w-full h-60 object-center object-cover rounded-t-lg hover:rounded-none md:object-center md:object-cover transition duration-700  hover:scale-125 "
           src={product.images[0].url}
           alt={product.images[0].url}
         />
@@ -82,7 +82,7 @@ const InformItem = ({ product, handleCheck }) => {
           </div>
         </div>
       </div>
-    
+      </div>
   );
 };
 

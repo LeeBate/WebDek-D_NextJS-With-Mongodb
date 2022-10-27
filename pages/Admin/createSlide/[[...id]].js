@@ -77,6 +77,14 @@ const SlideManager = (props) => {
     setSlides([...Slides]);
   };
 
+  const handleClearAddNew = async () => {
+    setImages([]);
+    setProduct(initialState);
+    router.replace("/Admin/createSlide");
+
+    id = "";
+  };
+
   const handleCheckALL = () => {
     Slides.forEach((product) => (product.checked = !isCheck));
     setSlides([...Slides]);
@@ -278,7 +286,10 @@ const SlideManager = (props) => {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab value="0" label="Add Slide"></Tab>
+                <Tab
+                  value="0"
+                  label={onEdit ? "Edit Slide" : "Add Slide"}
+                ></Tab>
 
                 <Tab value="1" label="Edit Slide"></Tab>
               </TabList>
@@ -288,6 +299,18 @@ const SlideManager = (props) => {
                 <Head>
                   <title>การจัดการสไลด์</title>
                 </Head>
+
+                {onEdit ? (
+                  <button
+                    className="btn btn-success d-block ml-10 mb-4"
+                    onClick={handleClearAddNew}
+                  >
+                    {" "}
+                    Add New{" "}
+                  </button>
+                ) : (
+                  <></>
+                )}
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
@@ -301,12 +324,13 @@ const SlideManager = (props) => {
                       onSubmit={handleSubmit}
                       className="space-y-8"
                     >
-                      {/* <div>
+                      <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                           ไม่รู้จะใส่อะไร เผื่ออยากใส่
                         </label>
                         <input
                           type="text"
+                          value={title}
                           name="title"
                           className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
@@ -315,7 +339,7 @@ const SlideManager = (props) => {
                           placeholder="ชื่อสไลด์ . . . "
                           required
                         />
-                      </div> */}
+                      </div>
 
                       <div
                         className="flex justify-center items-center w-full"
@@ -410,41 +434,40 @@ const SlideManager = (props) => {
                           alt={product.images[0].url}
                         />
                         <div className="card-body">
-
                           <div className="row justify-content-between mx-0 ">
                             <>
-                            <Link href={`/Admin/createSlide/${product._id}`}>
-                            <a
-                                        onClick={() => {
-                                          setTabIndex('0');
-                                        }}
-                                        className="btn btn-info"
-                                        style={{ marginRight: "5px", flex: 1 }}
-                                      >
-                                        แก้ไขข้อมูล
-                                      </a>
-                            </Link>
-                            <button
-                                      className="btn btn-danger"
-                                      style={{ marginLeft: "5px", flex: 1 }}
-                                      data-toggle="modal"
-                                      data-target="#exampleModal"
-                                      onClick={() =>
-                                        dispatch({
-                                          type: "ADD_MODAL",
-                                          payload: [
-                                            {
-                                              data: "",
-                                              id: product._id,
-                                              title: product.title,
-                                              type: "DELETE_SLIDE",
-                                            },
-                                          ],
-                                        })
-                                      }
-                                    >
-                                      ลบข้อมูล
-                                    </button>
+                              <Link href={`/Admin/createSlide/${product._id}`}>
+                                <a
+                                  onClick={() => {
+                                    setTabIndex("0");
+                                  }}
+                                  className="btn btn-info"
+                                  style={{ marginRight: "5px", flex: 1 }}
+                                >
+                                  แก้ไขข้อมูล
+                                </a>
+                              </Link>
+                              <button
+                                className="btn btn-danger"
+                                style={{ marginLeft: "5px", flex: 1 }}
+                                data-toggle="modal"
+                                data-target="#exampleModal"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD_MODAL",
+                                    payload: [
+                                      {
+                                        data: "",
+                                        id: product._id,
+                                        title: product.title,
+                                        type: "DELETE_SLIDE",
+                                      },
+                                    ],
+                                  })
+                                }
+                              >
+                                ลบข้อมูล
+                              </button>
                             </>
                           </div>
                         </div>

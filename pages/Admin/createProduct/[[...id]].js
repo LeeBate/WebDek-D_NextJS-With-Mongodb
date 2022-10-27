@@ -12,6 +12,7 @@ import theme from "../../../src/theme/theme";
 import filterSearch from "../../../utils/filterSearch";
 import Filter from "../../../components/Filter";
 import Link from "next/link";
+import { RiDeleteBinLine } from "react-icons/ri";
 
 // import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 import { Button } from "@mui/material";
@@ -363,7 +364,7 @@ const ProductsManager = (props) => {
                   <title>การจัดการเครื่องมือ</title>
                 </Head>
               
-                 <button  className="btn btn-success d-block mx-auto mb-4"onClick={handleClearAddNew}> Add New  </button>
+                 {onEdit?<button  className="btn btn-success d-block ml-10 mb-4" onClick={handleClearAddNew}> Add New </button>:<></>}
                           
                         
                       
@@ -657,15 +658,17 @@ const ProductsManager = (props) => {
                               </div>
                             </div>
 
-                            <div>
+                            <div className="ml-2 ">
                               <button
-                                className="w-20 h-[41px] ml-3 rounded-sm bg-red-400 text-white "
+                                className="w-16 h-[41px]  px-auto py-auto rounded-sm bg-red-400  text-white "
                                 disabled={inputFields.length === 1}
                                 onClick={() =>
                                   handleRemoveFields(inputField.idx)
                                 }
                               >
-                                ลบช่อง
+                                
+                                <RiDeleteBinLine color="white" className="mx-auto" size={20}/>
+                                
                               </button>
                             </div>
                           </div>

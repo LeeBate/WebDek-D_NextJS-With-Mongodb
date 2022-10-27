@@ -39,34 +39,7 @@ const index = (props) => {
     });
     setProducts([...products]);
   };
-
-  const handleCheckALL = () => {
-    products.forEach((product) => (product.checked = !isCheck));
-    setProducts([...products]);
-    setIsCheck(!isCheck);
-  };
-
-  const handleDeleteAll = () => {
-    let deleteArr = [];
-    products.forEach((product) => {
-      if (product.checked) {
-        deleteArr.push({
-          data: "",
-          id: product._id,
-          title: "Delete all selected products?",
-          type: "DELETE_PRODUCT",
-        });
-      }
-    });
-
-    dispatch({ type: "ADD_MODAL", payload: deleteArr });
-  };
-
-  const handleLoadmore = () => {
-    setPage(page + 1);
-    filterSearch({ router, page: page + 1 });
-  };
-
+ 
 
   return (
     <div >
@@ -76,17 +49,17 @@ const index = (props) => {
       <VideoPlayer />
       <Slideshow product={products} />
 
-      <section className="container ">
+      <div className="container ">
         
         <h1 className="text-4xl font-extrabold text-center text-gray-900 pt-4">
           ข่าวประชาสัมพันธ์
         </h1>
-        <div className=" grid md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-center  ">
         {Informs.slice(0,3).map((product) => (
-            <InformItemIndex key={product._id} product={product} handleCheck={handleCheck} />
+            <InformItemIndex key={product._id} product={product}/>
           ))}
         </div>
-      </section>
+      </div>
     </div>
   );
 };
@@ -105,7 +78,7 @@ export async function getServerSideProps({ query }) {
   const res1 = await getData(
     `productNews?limit=${
       page * 6
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&title=${search}`
   );
   // server side rendering
   return {

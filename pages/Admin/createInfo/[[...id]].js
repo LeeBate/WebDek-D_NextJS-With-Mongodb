@@ -1,5 +1,5 @@
 import Head from "next/head";
-import * as React from 'react';
+import * as React from "react";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
 import { imageUpload } from "../../../utils/imageUpload";
@@ -51,12 +51,19 @@ const NewsManager = (props) => {
     setInform(props.products);
   }, [props.products]);
 
-
   const handleCheck = (id) => {
     Inform.forEach((product) => {
       if (product._id === id) product.checked = !product.checked;
     });
     setInform([...Inform]);
+  };
+
+  const handleClearAddNew = async () => {
+    setImages([]);
+    setProduct(initialState);
+    router.replace("/Admin/createInfo");
+
+    id = "";
   };
 
   const handleCheckALL = () => {
@@ -210,7 +217,7 @@ const NewsManager = (props) => {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab value="0" label="Add News"></Tab>
+                <Tab value="0" label={onEdit ? "Edit News" : "Add News"}></Tab>
 
                 <Tab value="1" label="Edit News"></Tab>
               </TabList>
@@ -220,6 +227,17 @@ const NewsManager = (props) => {
                 <Head>
                   <title>การจัดการข่าวสาร</title>
                 </Head>
+                {onEdit ? (
+                  <button
+                    className="btn btn-success d-block ml-10 mb-4"
+                    onClick={handleClearAddNew}
+                  >
+                    {" "}
+                    Add New{" "}
+                  </button>
+                ) : (
+                  <></>
+                )}
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
@@ -307,7 +325,10 @@ const NewsManager = (props) => {
                       </div>
                       <div className="row img-up mx-0 object-cover">
                         {images.map((img, index) => (
-                          <div key={index} className="file_img my-1 object-cover">
+                          <div
+                            key={index}
+                            className="file_img my-1 object-cover"
+                          >
                             <img
                               src={img.url ? img.url : URL.createObjectURL(img)}
                               alt=""
@@ -373,80 +394,78 @@ const NewsManager = (props) => {
                   ) : (
                     Inform.map((product) => (
                       <ul
-                              className="card bg-sky-100/75"
-                              style={{ width: "18rem" }}
-                              key={product._id}
-                            >
-                              {auth.user && auth.user.role === "admin" && (
-                                <input
-                                  type="checkbox"
-                                  checked={product.checked}
-                                  className="position-absolute"
-                                  style={{ height: "20px", width: "20px" }}
-                                  onChange={() => handleCheck(product._id)}
-                                />
-                              )}
-                              <Link href={`/productNews/${product._id}`}>
-                                <img
-                                  className="aspect-square object-fill cursor-pointer"
-                                  src={product.images[0].url}
-                                  alt={product.images[0].url}
-                                />
-                              </Link>
-                              <div className="card-body">
-                                <h5
-                                  className="card-title font-bold text-xl mb-2 text-capitalize"
-                                  title={product.en}
-                                >
-                                  {product.en}
-                                </h5>
-                                <h5
-                                  className="card-title text-capitalize"
-                                  title={product.title}
-                                >
-                                  {product.title}
-                                </h5>
+                        className="card bg-sky-100/75"
+                        style={{ width: "18rem" }}
+                        key={product._id}
+                      >
+                        {auth.user && auth.user.role === "admin" && (
+                          <input
+                            type="checkbox"
+                            checked={product.checked}
+                            className="position-absolute"
+                            style={{ height: "20px", width: "20px" }}
+                            onChange={() => handleCheck(product._id)}
+                          />
+                        )}
+                        <Link href={`/productNews/${product._id}`}>
+                          <img
+                            className="aspect-square object-fill cursor-pointer"
+                            src={product.images[0].url}
+                            alt={product.images[0].url}
+                          />
+                        </Link>
+                        <div className="card-body">
+                          <h5
+                            className="card-title font-bold text-xl mb-2 text-capitalize"
+                            title={product.en}
+                          >
+                            {product.en}
+                          </h5>
+                          <h5
+                            className="card-title text-capitalize"
+                            title={product.title}
+                          >
+                            {product.title}
+                          </h5>
 
-                                <div className="row justify-content-between mx-0 ">
-                                  <>
-                                    <Link
-                                      href={`/Admin/createInfo/${product._id}`}
-                                    >
-                                      <a
-                                        onClick={() => {
-                                          setTabIndex('0');
-                                        }}
-                                        className="btn btn-info"
-                                        style={{ marginRight: "5px", flex: 1 }}
-                                      >
-                                        แก้ไขข้อมูล
-                                      </a>
-                                    </Link>
-                                    <button
-                                      className="btn btn-danger"
-                                      style={{ marginLeft: "5px", flex: 1 }}
-                                      data-toggle="modal"
-                                      data-target="#exampleModal"
-                                      onClick={() =>
-                                        dispatch({
-                                          type: "ADD_MODAL",
-                                          payload: [
-                                            {
-                                              data: "",
-                                              id: product._id,
-                                              title: product.title,
-                                              type: "DELETE_PRODUCTS",
-                                            },
-                                          ],
-                                        })
-                                      }
-                                    >
-                                      ลบข้อมูล
-                                    </button>
-                                  </>
-                                </div>
-                              </div>
-                            </ul>
+                          <div className="row justify-content-between mx-0 ">
+                            <>
+                              <Link href={`/Admin/createInfo/${product._id}`}>
+                                <a
+                                  onClick={() => {
+                                    setTabIndex("0");
+                                  }}
+                                  className="btn btn-info"
+                                  style={{ marginRight: "5px", flex: 1 }}
+                                >
+                                  แก้ไขข้อมูล
+                                </a>
+                              </Link>
+                              <button
+                                className="btn btn-danger"
+                                style={{ marginLeft: "5px", flex: 1 }}
+                                data-toggle="modal"
+                                data-target="#exampleModal"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD_MODAL",
+                                    payload: [
+                                      {
+                                        data: "",
+                                        id: product._id,
+                                        title: product.title,
+                                        type: "DELETE_PRODUCTS",
+                                      },
+                                    ],
+                                  })
+                                }
+                              >
+                                ลบข้อมูล
+                              </button>
+                            </>
+                          </div>
+                        </div>
+                      </ul>
                     ))
                   )}
                 </div>
@@ -477,9 +496,7 @@ export async function getServerSideProps({ query }) {
   const search = query.search || "all";
 
   const res = await getData(
-    `productNews?limit=${
-      page * 100
-    }&sort=${sort}&title=${search}`
+    `productNews?limit=${page * 100}&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {
