@@ -107,7 +107,7 @@ const Profile = () => {
     });
   };
 
-
+  if(!auth.user) return null;
   return (
     <ThemeProvider theme={theme}>
       <style jsx global>{`

@@ -13,7 +13,7 @@ function VideoPlayer() {
         muted
         className="w-full h-full  aspect-video"
       >
-        <source src="./intro.mp4" type="video/mp4" />
+        <source src="./intro1.mp4" type="video/mp4" />
       </video>
     </div>
   </section>
