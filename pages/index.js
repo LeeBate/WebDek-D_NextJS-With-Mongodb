@@ -44,7 +44,7 @@ const index = (props) => {
   return (
     <div >
       <Head>
-        <title>Index</title>
+        <title>Home - CALLLAB</title>
       </Head>
       <VideoPlayer />
       <Slideshow product={products} />
@@ -54,6 +54,10 @@ const index = (props) => {
         <h1 className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl font-extrabold text-center text-gray-900 pt-4">
           ข่าวประชาสัมพันธ์
         </h1>
+        <center>
+        
+        <iframe className="w-[100%] h-[250px] lg:w-[48%] lg:h-[405px] aspect-video" src="https://www.youtube.com/embed/Ww1UCfx2JjE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</center>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-center  ">
         {Informs.slice(0,3).map((product) => (
             <InformItemIndex key={product._id} product={product}/>

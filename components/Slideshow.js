@@ -45,7 +45,7 @@ const Slideshow = (products) => {
 				{products.product.map((each, index) => (
 					<div key={index} className="flex justify-center w-full h-full pt-3">
 						<Image	
-							
+							className="rounded-lg shadow-md object-fill"
                             src={each.images[0].url}
                             width={800}
                             height={400}

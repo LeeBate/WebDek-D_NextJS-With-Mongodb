@@ -5,15 +5,15 @@ function VideoPlayer() {
     SwiperCore.use([Autoplay]);
   return (<>
 
-  <section className='max-w-full '>
+  <section className='max-w-full'>
     <div>
       <video
         autoPlay
         loop
         muted
-        className="w-full h-full  aspect-video"
+        className="w-full max-h-[50%] aspect-video"
       >
-        <source src="./intro1.mp4" type="video/mp4" />
+        <source src="./introvideo.mp4" type="video/mp4" />
       </video>
     </div>
   </section>

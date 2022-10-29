@@ -6,6 +6,13 @@ module.exports = {
 ],
 darkMode: 'class',
   theme: {
+    aspectRatio: {
+      none: 0,
+      square: [1, 1],
+      "16/9": [16, 9],
+      "4/3": [4, 3],
+      "21/9": [21, 9]
+  },
     extend: {
      colors: {
         brand: {
@@ -23,6 +30,7 @@ darkMode: 'class',
     extend: {
       backgroundColor: ["active"],
       lineClamp: ["hover"],
+      aspectRatio: ["responsive", "hover"],
       display: ['responsive', 'group-hover', 'group-focus'],
     },
   },

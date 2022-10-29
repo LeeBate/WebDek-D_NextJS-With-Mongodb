@@ -99,7 +99,7 @@ const SlideManager = (props) => {
           data: "",
           id: product._id,
           title: "ลบ?",
-          type: "DELETE_PRODUCT",
+          type: "DELETE_SLIDE",
         });
       }
     });
@@ -412,6 +412,32 @@ const SlideManager = (props) => {
                 <Head>
                   <title>การจัดการสไลด์</title>
                 </Head>
+                {auth.user && auth.user.role === "admin" && (
+                    <div
+                      className="delete_all btn btn-danger mt-2"
+                      style={{ marginBottom: "-10px" }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={isCheck}
+                        onChange={handleCheckALL}
+                        style={{
+                          width: "25px",
+                          height: "25px",
+                          transform: "translateY(8px)",
+                        }}
+                      />
+
+                      <button
+                        className="btn btn-danger ml-2"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        onClick={handleDeleteAll}
+                      >
+                        ลบข้อมูลทั้งหมด
+                      </button>
+                    </div>
+                  )}
                 <div className="products">
                   {Slides.length === 0 ? (
                     <h2>No Slides</h2>

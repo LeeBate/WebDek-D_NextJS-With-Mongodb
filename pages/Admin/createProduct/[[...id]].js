@@ -826,7 +826,7 @@ const ProductsManager = (props) => {
                           )}
                           <Link href={`/product/${product._id}`}>
                             <img
-                              className="aspect-square object-fill cursor-pointer"
+                              className="aspect-square object-cover cursor-pointer"
                               src={product.images[0].url}
                               alt={product.images[0].url}
                             />
