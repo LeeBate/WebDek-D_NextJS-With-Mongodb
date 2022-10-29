@@ -69,16 +69,22 @@ function NavBar() {
   const LogoutRouterMobile = () => {
     return (
       <>
-      {/* <Disclosure.Button> */}
-        <Link href="/">
-          <a
+        <span className="sr-only">Open user menu</span>
+        <Link href="/"> 
+       
+         <a className={isActive("/")}> 
+          <Disclosure.Button>
+          <button
             className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
             onClick={handleLogout}
           >
             ออกจากระบบ
+          </button>
+           </Disclosure.Button>
           </a>
+        
         </Link>
-      {/* </Disclosure.Button> */}
+    
       </>
     );
   };

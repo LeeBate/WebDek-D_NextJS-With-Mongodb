@@ -222,6 +222,8 @@ const SlideManager = (props) => {
 
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
     setTabIndex("1");
+    setImages([]);
+    setProduct(initialState);
     return router.push("/Admin/createSlide");
   };
 
