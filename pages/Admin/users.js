@@ -33,13 +33,13 @@ const Users = () => {
         <title>Users</title>
       </Head>
       <FullLayout>
-      <BaseCard title="Users">
+        <div className="bg-white p-2 md:p-3 xl:p-5 rounded-md">
+      <div className ="overflow-x-auto relative shadow-md sm:rounded-lg">
       <Table
         aria-label="simple table"
         sx={{
           mt: 2,
           whiteSpace: "nowrap",
-          
         }}
       >
         <TableHead>
@@ -222,7 +222,9 @@ const Users = () => {
           ))}
         </TableBody>
       </Table>
-    </BaseCard>
+      </div>
+   </div>
+    
       </FullLayout>
     </ThemeProvider>
   );
