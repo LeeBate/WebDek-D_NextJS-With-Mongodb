@@ -65,11 +65,12 @@ const Inform = (props) => {
       <Head>
         <title>ข่าวสาร</title>
       </Head>
-      <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">
+      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
         ข่าวประชาสัมพันธ์
       </h1>
+      <div className="px-4">
       <FilterNews state={state} />
-
+      </div>
       {auth.user && auth.user.role === "admin" && (
         <div
           className="delete_all btn btn-danger mt-2"

@@ -240,7 +240,7 @@ const NewsManager = (props) => {
                 )}
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-center text-gray-900">
+                    <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
                       เพิ่มข้อมูลข่าวสาร
                     </h2>
                     <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
@@ -309,7 +309,7 @@ const NewsManager = (props) => {
                                 คลิกเพื่ออัพโหลด
                               </span>
                             </p>
-                            <p className="text-xs text-gray-500 dark:text-gray-400">
+                            <p className="text-xs text-center text-gray-500 dark:text-gray-400">
                               รองรับ PNG หรือ JPG (สูงสุด. 2024x2024px)
                             </p>
                           </div>
@@ -356,7 +356,7 @@ const NewsManager = (props) => {
                 <Head>
                   <title>ข่าวสาร</title>
                 </Head>
-                <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">
+                <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
                   ข่าวประชาสัมพันธ์
                 </h1>
                 <FilterNews state={state} />

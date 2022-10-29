@@ -101,9 +101,10 @@ let filleredProd = [];
       </Head>
 
 
-      <h1 className="flex justify-center items-center font-bold text-4xl pt-5 pb-4">รายการโปรด</h1>
+      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">รายการโปรด</h1>
+      <div className="px-4">
       <Filter state={state} />
-
+      </div>
 
       {
         auth.user && auth.user.role === 'admin' &&

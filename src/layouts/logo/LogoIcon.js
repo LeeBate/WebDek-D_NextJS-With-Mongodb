@@ -7,8 +7,8 @@ const LogoIcon = () => {
   return (
     <Link href="/">
       <div className="flex items-center">
-      <img className="w-20 h-20" src="/favicon.ico" />
-      <p className="text-black">CALLLAB</p>
+      <img className="w-10 h-10 " src="/favicon.ico"/>
+      <p className="text-black ml-2">CALLLAB</p>
       </div>
     </Link>
   );

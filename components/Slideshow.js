@@ -3,6 +3,7 @@ import React from "react";
 import { Zoom } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 import Image from "next/image";
+import { MdNavigateBefore ,MdNavigateNext } from "react-icons/md";
 
 const Slideshow = (products) => {
 	//Array of Images
@@ -21,24 +22,29 @@ const Slideshow = (products) => {
 		direction: "right",
 		showDescription: true,
 		prevArrow: (
-			<div style={{ width: "45px", marginLeft: "50px", cursor: "pointer" }}>
-				<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm7.58 0l5.988-5.995 1.414 1.416-4.574 4.579 4.574 4.59-1.414 1.416-5.988-6.006z"/></svg>
+			<div style={{ cursor: "pointer" }} className="    ml-2 ">
+				<div className=" bg-slate-50/90 shadow-md rounded-full">
+				<MdNavigateBefore className=""  size={35}/>
+				</div>
 			</div>
 		),
 		nextArrow: (
-			<div style={{ width: "45px", marginRight: "50px", cursor: "pointer" }}>
-				<svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-1.568 18.005l-1.414-1.415 4.574-4.59-4.574-4.579 1.414-1.416 5.988 5.995-5.988 6.005z"/></svg>
+			<div style={{ cursor: "pointer" }}  className="  mr-2" >
+				<div className=" bg-slate-50/90 shadow-md rounded-full">
+				<MdNavigateNext size={35}/>
+				</div>
 			</div>
 		),
 	};
 	return (
-		<section className='max-w-full'>
+		<section className='max-w-[800px] mx-auto'>
 		
-		<div className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 " >
+		{/* <div className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 " > */}
+		<div className=""  >
 			<Zoom {...zoomInProperties}>
 				{products.product.map((each, index) => (
 					<div key={index} className="flex justify-center w-full h-full pt-3">
-						<Image
+						<Image	
 							
                             src={each.images[0].url}
                             width={800}

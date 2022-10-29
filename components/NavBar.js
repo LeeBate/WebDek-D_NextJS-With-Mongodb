@@ -54,6 +54,7 @@ function NavBar() {
   const LogoutRouter = () => {
     return (
       <>
+
         <Link href="/">
           <a
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50"
@@ -68,6 +69,7 @@ function NavBar() {
   const LogoutRouterMobile = () => {
     return (
       <>
+      {/* <Disclosure.Button> */}
         <Link href="/">
           <a
             className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
@@ -76,6 +78,7 @@ function NavBar() {
             ออกจากระบบ
           </a>
         </Link>
+      {/* </Disclosure.Button> */}
       </>
     );
   };
@@ -485,9 +488,11 @@ function NavBar() {
                     <Link href="/signin">
                       <div className="pb-3 px-3">
                         <a className={isActive("/signin")}>
+                        <Disclosure.Button>
                           <button className="bg-gray-700 hover:bg-violet-800 text-white px-1 py-2 rounded-lg">
                             เข้าสู่ระบบ
                           </button>
+                          </Disclosure.Button>
                         </a>
                       </div>
                     </Link>

@@ -51,7 +51,7 @@ const index = (props) => {
 
       <div className="container ">
         
-        <h1 className="text-4xl font-extrabold text-center text-gray-900 pt-4">
+        <h1 className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl font-extrabold text-center text-gray-900 pt-4">
           ข่าวประชาสัมพันธ์
         </h1>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-center  ">

@@ -90,7 +90,7 @@ const machinery = (props) => {
             data-target="#exampleModal"
             onClick={handleDeleteAll}
           >
-            ลบข้อมูลทั้งหมด5555
+            ลบข้อมูลทั้งหมด
           </button>
         </div>
       )}

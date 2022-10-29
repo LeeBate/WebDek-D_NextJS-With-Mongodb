@@ -123,13 +123,13 @@ const Profile = () => {
           </Head>
 
           <section className=" flex items-center justify-center row text-secondary my-3 ">
-            <div className="col-md-3 mt-2">
+            <div className=" mt-2">
             { Object.keys(auth).length !== 0 ? (
-              <h3 className="text-center text-uppercase text-3xl ">
+              <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">
                 {auth.user.role === "user" ? "User Profile" : "Admin Profile"}
               </h3>
             ) : (
-              <h3 className="text-center text-uppercase text-3xl ">No Profile</h3>
+              <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">No Profile</h3>
             )}
 
               <div className="avatar">
