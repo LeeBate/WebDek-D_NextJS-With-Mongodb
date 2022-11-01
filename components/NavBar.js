@@ -319,7 +319,8 @@ function NavBar() {
                               {dropdownMenu.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
-                                    <button
+                                    
+                                    <a
                                       href={item.href}
                                       className={classNames(
                                         active ? "bg-gray-100" : "",
@@ -327,7 +328,7 @@ function NavBar() {
                                       )}
                                     >
                                       {item.name}
-                                    </button>
+                                    </a>
                                   )}
                                 </Menu.Item>
                               ))}

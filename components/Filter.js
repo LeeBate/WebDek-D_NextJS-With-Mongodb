@@ -33,7 +33,7 @@ const Filter = ({ state }) => {
 
 
   return (
-    <div className="px-[8px] pt-4 py-0 max-w-[850px] mx-auto flex flex-col lg:flex-row justify-between gap-3  lg:gap-x-3 relative lg:-top-0 lg:shadow-1 lg:backdrop-blur rounded-lg ">
+    <div className="px-[8px] pt-4 py-0 max-w-[850px] mx-auto flex flex-col md:flex-row justify-between gap-3  lg:gap-x-3 relative lg:-top-0 lg:shadow-1 lg:backdrop-blur rounded-lg ">
       
       <form class="flex items-center mt-2 col-md-8 px-0" autoComplete="off">
         <label for="voice-search" class="sr-only">
