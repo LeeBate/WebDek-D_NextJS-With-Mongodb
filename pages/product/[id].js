@@ -156,13 +156,14 @@ const DetailProduct = (props, query) => {
     if (Object.keys(auth).length === 0)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "loginก่อนนะครับคุณ" },
+        payload: { error: "โปรดเข้าสู่ระบบ" },
+        
       });
 
     if (!title || !en || !prodid || !userid || !category || !images)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "Please add all the fields111." },
+        payload: { error: "โปรดกรอกข้อมูลให้ครบ." },
       });
 
     // console.log(auth.token);
@@ -190,7 +191,7 @@ const DetailProduct = (props, query) => {
     <div className="mb-5">
     <div className="mt-5">
         <Head>
-            <title>Detail product</title>
+            <title>{product.title}</title>
         </Head>
         <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24">
         <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
@@ -268,7 +269,7 @@ const DetailProduct = (props, query) => {
         <div className="mx-4 md:mx-14 xl:mx-24">
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
                     <tr>
                         <th scope="col" className="py-3 px-6">
                         ลำดับ
@@ -310,7 +311,7 @@ const DetailProduct = (props, query) => {
                       <td className="py-4 px-6">
                         <span>{i + 1 || "-"}</span>
                         </td>
-                        <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
                         <span>{obj.ListName || "Unknown"}</span>
                         </th>
                         
@@ -370,7 +371,7 @@ const DetailProduct = (props, query) => {
           >
             {" "}
             <BsHeart className="mr-2" />
-            เพิ่มรายการ
+            เพิ่มรายการโปรด
           </button>
         ) : (
           <button

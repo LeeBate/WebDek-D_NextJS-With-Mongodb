@@ -98,7 +98,7 @@ const Inform = (props) => {
         </div>
       )}
 
-      <div className="products">
+      <div className="products lg:grid-cols-4">
         {products.length === 0 ? (
           <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
         ) : (
@@ -116,7 +116,7 @@ const Inform = (props) => {
         props.result < page * 6 ? ""
         : <button className="btn btn-outline-info d-block mx-auto mb-4"
         onClick={handleLoadmore}>
-          อ่านเพิ่มเติม
+          เพิ่มเติม
         </button>
       }
     </div>

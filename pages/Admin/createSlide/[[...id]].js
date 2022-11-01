@@ -279,6 +279,11 @@ const SlideManager = (props) => {
           display: none;
         }
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <FullLayout>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={tabIndex} isFitted variant="enclosed">
@@ -290,10 +295,10 @@ const SlideManager = (props) => {
               >
                 <Tab
                   value="0"
-                  label={onEdit ? "Edit Slide" : "Add Slide"}
+                  label={onEdit ? "แก้ไขสไลด์" : "เพิ่มสไลด์"}
                 ></Tab>
 
-                <Tab value="1" label="Edit Slide"></Tab>
+                <Tab value="1" label="จัดการสไลด์"></Tab>
               </TabList>
             </Box>
             <TabPanel value="0">
@@ -308,7 +313,7 @@ const SlideManager = (props) => {
                     onClick={handleClearAddNew}
                   >
                     {" "}
-                    Add New{" "}
+                    เพิ่มสไดล์ใหม่{" "}
                   </button>
                 ) : (
                   <></>

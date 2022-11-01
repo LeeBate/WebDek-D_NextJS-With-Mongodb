@@ -25,9 +25,14 @@ export default function Index() {
           display: none;
         }
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       
      <Head>
-        <title>Dashboard</title>
+        <title>แดชบอร์ด</title>
     </Head>
     <Grid container spacing={0}>
       <Grid item xs={12} lg={12}>

@@ -116,6 +116,11 @@ const Profile = () => {
         }
         
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <FullLayout>
         <div className="profile_page">
           <Head>

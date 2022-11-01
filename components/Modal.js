@@ -3,7 +3,7 @@ import { DataContext } from '../store/GlobalState'
 import { deleteItem } from '../store/Actions'
 import { deleteData } from '../utils/fetchData'
 import {useRouter} from 'next/router'
-import Swal from "sweetalert2"
+import { Divider } from '@mui/material'
 
 const Modal = () => {
     const {state, dispatch} = useContext(DataContext)
@@ -98,18 +98,10 @@ const Modal = () => {
         }
     }
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-          confirmButton: 'btn btn-success',
-          cancelButton: 'btn btn-danger'
-        },
-        buttonsStyling: false
-      })
-
 
     return(
         <div className="modal fade" id="exampleModal" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog" role="document">
+            <div className="modal-dialog mt-[20%]" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
                     <h5 className="modal-title text-capitalize" id="exampleModalLabel">
@@ -122,9 +114,10 @@ const Modal = () => {
                 <div className="modal-body">
                     ต้องการลบข้อมูลใช่ไหม?
                 </div>
-                <div className="modal-footer">
-                    <button type="button" className="bg-green-500 hover:bg-green-400 px-4 text-white py-2 rounded-3xl" data-dismiss="modal" onClick={handleSubmit}>ยืนยัน</button>
-                    <button type="button" className="bg-red-500 hover:bg-red-400 px-4 text-white py-2 rounded-3xl" data-dismiss="modal">ยกเลิก</button>
+                <Divider/>
+                <div className="modal-footer mx-auto">
+                    <button type="button" className="bg-green-600 hover:bg-green-400 px-4 text-white py-2 rounded-lg" data-dismiss="modal" onClick={handleSubmit}>ยืนยัน</button>
+                    <button type="button" className="bg-red-600 hover:bg-red-400 px-4 text-white py-2 rounded-lg" data-dismiss="modal">ยกเลิก</button>
                 </div>
                 </div>
             </div>

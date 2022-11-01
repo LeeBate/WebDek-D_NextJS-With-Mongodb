@@ -338,6 +338,11 @@ const ProductsManager = (props) => {
         display: none;
       }
     `}</style>
+    <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
     <FullLayout>
     <Box sx={{ width: '100%', typography: 'body1' }}>
       <TabContext value={tabIndex} isFitted variant="enclosed">
@@ -345,13 +350,13 @@ const ProductsManager = (props) => {
         <TabList mb="1em" onChange={handleChange} aria-label="lab API tabs example">
           <Tab
             value="0"
-            label={onEdit?"Edit Machinery":"Add Machinery"}
+            label={onEdit?"แก้ไขเครื่องมือ":"เพิ่มเครื่องมือ"}
           >
           </Tab>
           
           <Tab 
             value="1"
-            label="Edit Machinery"
+            label="จัดการเครื่องมือ"
           >
             
           </Tab>
@@ -364,7 +369,7 @@ const ProductsManager = (props) => {
               <title>การจัดการเครื่องมือ</title>
             </Head>
           
-            {onEdit?<button  className="btn btn-success d-block ml-10 mb-4" onClick={handleClearAddNew}> Add New </button>:<></>}
+            {onEdit?<button  className="btn btn-success d-block ml-10 mb-4" onClick={handleClearAddNew}> เพิ่มเครื่องมือใหม่ </button>:<></>}
 
                       
             <div className="products_manager">
@@ -780,7 +785,7 @@ const ProductsManager = (props) => {
 
                   {auth.user && auth.user.role === "admin" && (
                     <div
-                      className="delete_all btn btn-danger mt-2"
+                      className="delete_all btn btn-danger mt-2 ml-2.5"
                       style={{ marginBottom: "-10px" }}
                     >
                       <input
@@ -826,7 +831,7 @@ const ProductsManager = (props) => {
                           )}
                           <Link href={`/product/${product._id}`}>
                             <img
-                              className="aspect-square object-cover cursor-pointer"
+                              className="aspect-square object-cover cursor-pointer card-img-top"
                               src={product.images[0].url}
                               alt={product.images[0].url}
                             />

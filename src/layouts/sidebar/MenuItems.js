@@ -1,35 +1,37 @@
 
 const Menuitems = [
   {
-    title: "Dashbaord",
+    title: "แดชบอร์ด",
     icon: "home",
     href: "/Admin",
   },
   {
-    title: "Manage Users",
+    title: "ผู้ใช้",
     icon: "users",
     href: "/Admin/users",
   },
   {
-    title: "Manage Slide",
+    title: "สไลด์ข่าวสาร",
     icon: "sidebar",
     href: "/Admin/createSlide/[[...id]]",
   },
   {
-    title: "Manage Machinery",
+    title: "ข่าวประชาสัมพันธ์",
     icon: "plus-circle",
-    href: "/Admin/createProduct/[[...id]]",
+    href: "/Admin/createInfo/[[...id]]",
   },
   {
-    title: "Manage Category",
+    title: "หมวดหมู่เครื่องมือ",
     icon: "type",
     href: "/Admin/categories",
   },
   {
-    title: "Manage News",
+    title: "เครื่องมือวิทยาศาสตร์",
     icon: "plus-circle",
-    href: "/Admin/createInfo/[[...id]]",
+    href: "/Admin/createProduct/[[...id]]",
   },
+  
+  
 ];
 
 export default Menuitems;

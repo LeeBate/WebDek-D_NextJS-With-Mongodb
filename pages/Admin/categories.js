@@ -63,6 +63,11 @@ const Categories = () => {
         }
         
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <FullLayout>
         <div className="col-md-6 mx-auto my-3">
           <Head>

@@ -208,6 +208,11 @@ const NewsManager = (props) => {
           display: none;
         }
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <FullLayout>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={tabIndex} isFitted variant="enclosed">
@@ -217,9 +222,9 @@ const NewsManager = (props) => {
                 onChange={handleChange}
                 aria-label="lab API tabs example"
               >
-                <Tab value="0" label={onEdit ? "Edit News" : "Add News"}></Tab>
+                <Tab value="0" label={onEdit ? "แก้ไขข่าว" : "เพิ่มข่าว"}></Tab>
 
-                <Tab value="1" label="Edit News"></Tab>
+                <Tab value="1" label="จัดการข่าว"></Tab>
               </TabList>
             </Box>
             <TabPanel value="0">
@@ -233,7 +238,7 @@ const NewsManager = (props) => {
                     onClick={handleClearAddNew}
                   >
                     {" "}
-                    Add New{" "}
+                    เพิ่มข่าวใหม่{" "}
                   </button>
                 ) : (
                   <></>
@@ -409,7 +414,7 @@ const NewsManager = (props) => {
                         )}
                         <Link href={`/productNews/${product._id}`}>
                           <img
-                            className="aspect-square object-fill cursor-pointer"
+                            className="aspect-square object-fill cursor-pointer card-img-top"
                             src={product.images[0].url}
                             alt={product.images[0].url}
                           />

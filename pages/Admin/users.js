@@ -29,6 +29,11 @@ const Users = () => {
         }
         
       `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <Head>
         <title>Users</title>
       </Head>

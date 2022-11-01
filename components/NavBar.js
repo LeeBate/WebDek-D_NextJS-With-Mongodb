@@ -33,9 +33,9 @@ function NavBar() {
     return (
       <>
         <Link href="/Admin">
-          <a className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 ">
-            Dashboard
-          </a>
+          <div className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+            แดชบอร์ด
+          </div>
         </Link>
       </>
     );
@@ -44,9 +44,9 @@ function NavBar() {
     return (
       <>
         <Link href="/Admin">
-          <a className="block px-3 py-2 rounded-md text-base font-medium hover:bg-gray-700 hover:text-white text-white">
-            Dashboard
-          </a>
+          <div className="block px-3 py-2 rounded-md text-base cursor-pointer font-medium hover:bg-gray-700 hover:text-white text-white">
+          แดชบอร์ด
+          </div>
         </Link>
       </>
     );
@@ -55,16 +55,19 @@ function NavBar() {
     return (
       <>
         <Link href="/">
-          <a
-            className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50"
+        
+          <div
+            className="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50 "
             onClick={handleLogout}
           >
             ออกจากระบบ
-          </a>
+          </div>
+          
         </Link>
       </>
     );
   };
+
   const LogoutRouterMobile = () => {
     return (
       <>
@@ -84,18 +87,8 @@ function NavBar() {
       </>
     );
   };
-  // const user = {
-  //   name: "Tom Cook",
-  //   email: "tom@example.com",
-  //   imageUrl:
-  //     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  // };
-  // const navigation = [
-  //   { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
-  //   { name: "บริการวิเคราะห์ทดสอบ", href: "#", current: false },
-  //   { name: "ติดตามผล", href: "#", current: false },
-  //   { name: "เกี่ยวกับเรา", current: false },
-  // ];
+
+ 
   const navigation1 = [
     { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
   ];
@@ -106,9 +99,10 @@ function NavBar() {
     { name: "ติดตามผลวิเคราะห์ทดสอบ", href: "#", current: false },
   ];
   const navigation4 = [{ name: "เกี่ยวกับเรา", current: false }];
+
   const userNavigation = [
-    { name: "โปรไฟล์", href: "/profile" },
-    { name: "เครื่องมือที่ชอบ", href: "/favorite" },
+    { name: "โปรไฟล์", href: "/profile",current: false },
+    { name: "เครื่องมือที่ชอบ", href: "/favorite",current: false },
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
@@ -119,6 +113,49 @@ function NavBar() {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
+
+  const userRouter = () => {
+    return (
+      <>
+        {userNavigation.map((item) => (
+              <Menu.Item key={item.name}>
+                {({ active }) => (
+
+                  <a
+                    href={item.href}
+                    className={classNames(
+                      active ? "bg-gray-100 no-underline  w-full text-start" : "",
+                      "block w-full px-4 text-start py-2 text-sm text-gray-700"
+                    )}
+                  >
+                  <button>{item.name}</button>
+                  </a>
+                )}
+              </Menu.Item>
+            ))}
+      </>
+    );
+  };
+  const userRouterMobile = () => {
+    return (
+      <>
+        {userNavigation.map((item) => (
+              
+                <a
+                key={item.name}
+                as="a"
+                href={item.href}
+                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
+                >
+                  <button>{item.name}</button>
+              </a>
+                
+              
+            ))}
+      </>
+    );
+  };
+
 
   const loggedRouter = () => {
     return (
@@ -144,21 +181,7 @@ function NavBar() {
         >
           <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             {auth.user.role === "admin" && adminRouter()}
-            {userNavigation.map((item) => (
-              <Menu.Item key={item.name}>
-                {({ active }) => (
-                  <a
-                    href={item.href}
-                    className={classNames(
-                      active ? "bg-gray-100" : "",
-                      "block px-4 py-2 text-sm text-gray-700"
-                    )}
-                  >
-                    {item.name}
-                  </a>
-                )}
-              </Menu.Item>
-            ))}
+            {auth.user.role === "user" && userRouter()}
             {auth.user.role === "admin" && LogoutRouter()}
             {auth.user.role === "user" && LogoutRouter()}
           </Menu.Items>
@@ -199,17 +222,7 @@ function NavBar() {
 
           <div className="mt-3 space-y-1 px-2 pb-3">
             {auth.user.role === "admin" && adminRouterMobile()}
-            {userNavigation.map((item) => (
-              <Disclosure.Button
-                key={item.name}
-                as="a"
-                href={item.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-              >
-                {item.name}
-              </Disclosure.Button>
-            ))}
-
+            {auth.user.role === "user" && userRouterMobile()}
             {auth.user.role === "admin" && LogoutRouterMobile()}
             {auth.user.role === "user" && LogoutRouterMobile()}
           </div>
@@ -250,7 +263,7 @@ function NavBar() {
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
-                            {item.name}
+                            <button>{item.name}</button>
                           </a>
                         ))}
                         {navigation2.map((item) => (
@@ -265,7 +278,7 @@ function NavBar() {
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
-                            {item.name}
+                            <button>{item.name}</button>
                           </a>
                         ))}
                         {navigation3.map((item) => (
@@ -280,31 +293,30 @@ function NavBar() {
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
-                            {item.name}
+                            <button>{item.name}</button>
                           </a>
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button>
-                              <span className="sr-only">Open user menu</span>
-                              {navigation4.map((item) => (
-                                <a
-                                  key={item.name}
-                                  href={item.href}
-                                  className={classNames(
-                                    item.current
-                                      ? "bg-gray-900 text-white"
-                                      : "text-white hover:bg-gray-700 hover:text-white",
-                                    "px-3 py-2 rounded-md text-sm font-medium"
-                                  )}
-                                  aria-current={
-                                    item.current ? "page" : undefined
-                                  }
-                                >
-                                  {item.name}
-                                </a>
-                              ))}
-                            </Menu.Button>
+                          <Menu.Button>
+                        <span className="sr-only">Open user menu</span>
+                        {navigation4.map((item) => (
+                          <Disclosure.Button
+                            key={item.name}
+                            as="a"
+                            href={item.href}
+                            className={classNames(
+                              item.current
+                                ? "bg-gray-900 text-white"
+                                : "text-white hover:bg-gray-700 hover:text-white",
+                              "block px-3 py-2 rounded-md text-base font-medium"
+                            )}
+                            aria-current={item.current ? "page" : undefined}
+                          >
+                            {item.name}
+                          </Disclosure.Button>
+                        ))}
+                      </Menu.Button>
                           </div>
                           <Transition
                             as={Fragment}
@@ -327,7 +339,7 @@ function NavBar() {
                                         "block px-4 py-2 text-sm text-gray-700 w-full text-start"
                                       )}
                                     >
-                                      {item.name}
+                                      <button>{item.name}</button>
                                     </a>
                                   )}
                                 </Menu.Item>
@@ -412,7 +424,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      {item.name}
+                      <button>{item.name}</button>
                     </Disclosure.Button>
                   ))}
                   {navigation2.map((item) => (
@@ -428,7 +440,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      {item.name}
+                      <button>{item.name}</button>
                     </Disclosure.Button>
                   ))}
                   {navigation3.map((item) => (
@@ -444,7 +456,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      {item.name}
+                      <button>{item.name}</button>
                     </Disclosure.Button>
                   ))}
                   <Menu as="div" className="relative ">
@@ -464,7 +476,7 @@ function NavBar() {
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
-                            {item.name}
+                            <button>{item.name}</button>
                           </Disclosure.Button>
                         ))}
                       </Menu.Button>
@@ -477,7 +489,7 @@ function NavBar() {
                           href={item.href}
                           className="block rounded-md px-3 py-1 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white "
                         >
-                          {item.name}
+                         <button>{item.name}</button>
                         </Disclosure.Button>
                       ))}
                     </div>

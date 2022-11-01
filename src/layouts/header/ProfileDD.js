@@ -13,14 +13,12 @@ import {
 } from "@mui/material";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
-import Cookie from 'js-cookie'
-import {useRouter} from 'next/router'
+import Cookie from "js-cookie";
+import { useRouter } from "next/router";
 const ProfileDD = () => {
-
-  const router = useRouter()
-  const {state, dispatch} = useContext(DataContext)
-  const {auth} = state
-
+  const router = useRouter();
+  const { state, dispatch } = useContext(DataContext);
+  const { auth } = state;
 
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 
@@ -33,12 +31,12 @@ const ProfileDD = () => {
   };
 
   const handleLogout = () => {
-    Cookie.remove('refreshtoken', {path: 'api/auth/accessToken'})
-    localStorage.removeItem('firstLogin')
-    dispatch({ type: 'AUTH', payload: {} })
-    dispatch({ type: 'NOTIFY', payload: {success: 'ออกจากระบบ!'} })
-    return router.push('/')
-}
+    Cookie.remove("refreshtoken", { path: "api/auth/accessToken" });
+    localStorage.removeItem("firstLogin");
+    dispatch({ type: "AUTH", payload: {} });
+    dispatch({ type: "NOTIFY", payload: { success: "ออกจากระบบ!" } });
+    return router.push("/");
+  };
   return (
     <>
       <Button
@@ -49,18 +47,24 @@ const ProfileDD = () => {
         onClick={handleClick4}
       >
         <Box display="flex" alignItems="center">
-          
-          { Object.keys(auth).length !== 0 ? (
-          <img   src={auth.user.avatar}  width="30"
-          height="30"
-          className="roundedCircle"
-        />
+          {Object.keys(auth).length !== 0 ? (
+            <img
+              src={auth.user.avatar}
+              width="30"
+              height="30"
+              className="roundedCircle"
+            />
           ) : (
-            <img   src={"https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"} width="30"
-           height="30"
-           className="roundedCircle" />
+            <img
+              src={
+                "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
+              }
+              width="30"
+              height="30"
+              className="roundedCircle"
+            />
           )}
-           
+
           <Box
             sx={{
               display: {
@@ -76,7 +80,7 @@ const ProfileDD = () => {
               fontWeight="400"
               sx={{ ml: 1 }}
             >
-              Hi,
+              สวัสดี,
             </Typography>
             <Typography
               variant="h5"
@@ -85,12 +89,11 @@ const ProfileDD = () => {
                 ml: 1,
               }}
             >
-              
-          { Object.keys(auth).length !== 0 ? (
-          auth.user.name
-          ) : (
-           <p>Loading..</p>
-          )}
+              {Object.keys(auth).length !== 0 ? (
+                auth.user.name
+              ) : (
+                <p>Loading..</p>
+              )}
             </Typography>
             <FeatherIcon icon="chevron-down" width="20" height="20" />
           </Box>
@@ -116,9 +119,24 @@ const ProfileDD = () => {
               onClick={handleClose4}
             >
               <ListItemButton href="/Admin/profile">
-                <ListItemText primary="Edit Profile" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                  />
+                </svg>
+
+                <ListItemText primary="โปรไฟล์" />
               </ListItemButton>
-              <ListItemButton>
+              {/* <ListItemButton>
                 <ListItemText primary="Account" />
               </ListItemButton>
               <ListItemButton>
@@ -126,14 +144,20 @@ const ProfileDD = () => {
               </ListItemButton>
               <ListItemButton>
                 <ListItemText primary="My Settings" />
-              </ListItemButton>
+              </ListItemButton> */}
             </List>
           </Box>
           <Divider />
           <Box p={2}>
-              <Button onClick={handleLogout} className="w-full bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded" fullWidth variant="contained" color="primary">
-                Logout
-              </Button>
+            <Button
+              onClick={handleLogout}
+              className="w-full bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              fullWidth
+              variant="contained"
+              color="primary"
+            >
+              ออกจากระบบ
+            </Button>
           </Box>
         </Box>
       </Menu>

@@ -65,7 +65,9 @@ const machinery = (props) => {
       <Head>
         <title>เครื่องมือวิทยาศาสตร์</title>
       </Head>
-      
+      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
+        เครื่องมือวิทยาศาสตร์
+      </h1>
       <Filter state={state} />
 
       {auth.user && auth.user.role === "admin" && (
@@ -97,6 +99,7 @@ const machinery = (props) => {
 
 <div className="products lg:grid-cols-4">
         {products.length === 0 ? (
+         
           <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
         ) : (
           products.map((product) => (
