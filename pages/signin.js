@@ -53,6 +53,11 @@ console.log(res.user)
         <Head>
           <title>เข้าสู่ระบบ</title>
         </Head>
+        <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
           <section className="vh-100 bg-[#f1f1f1]" >
             <div className="container py-0 h-100">
               <div className="row d-flex justify-center items h-100">
@@ -61,7 +66,7 @@ console.log(res.user)
                     <div className="row g-0 items-center pl-4 py-4">
                       <div className="col-md-5 col-lg-5 d-none d-md-block">
                       <img src={"/images/puntest.png"}
-                          className="object-cover rounded-md "  />
+                          className="transform transition duration-700 hover:scale-125 object-cover rounded-md "  />
                       </div>
                       <div className="col-md-6 col-lg-7 d-flex align-items-center">
                         <div className="card-body p-4 p-lg-5 text-black">
@@ -70,7 +75,7 @@ console.log(res.user)
 
                         <div className="d-flex align-items-center mb-3 pb-1">
                           
-                          <span className="h1 fw-bold mb-0">เข้าสู่ระบบ</span>
+                          <span className="h1 font-bold mb-0">เข้าสู่ระบบ</span>
                         </div>
                         <div className="form-outline mb-4">
                           <label className="form-label" htmlFor="form2Example17">อีเมล์</label>
@@ -87,7 +92,7 @@ console.log(res.user)
                         <div className="pt-1 mb-4">
                         <button
                         type="submit"
-                        className="inline-block px-7 py-3 bg-indigo-900 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-indigo-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                        className="inline-block px-7 py-3 bg-[#0070BB] text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-[#208BD4] hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light">เข้าสู่ระบบ
                         </button>

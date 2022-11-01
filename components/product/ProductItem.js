@@ -53,6 +53,7 @@ const ProductItem = ({ product, handleCheck }) => {
     );
   };
   return (
+    
     <div className="card bg-sky-100/75" style={{ width: "18rem" }}>
       {auth.user && auth.user.role === "admin" && (
         <input
@@ -65,7 +66,7 @@ const ProductItem = ({ product, handleCheck }) => {
       )}
       <Link href={`/product/${product._id}`}>
         <img
-          className="transform aspect-square object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125"
+          className="transform aspect-square card-img-top object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125"
           src={product.images[0].url}
           alt={product.images[0].url}
         />
@@ -86,6 +87,7 @@ const ProductItem = ({ product, handleCheck }) => {
         </div>
       </div>
     </div>
+
   );
 };
 

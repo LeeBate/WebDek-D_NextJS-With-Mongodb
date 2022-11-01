@@ -54,7 +54,6 @@ function NavBar() {
   const LogoutRouter = () => {
     return (
       <>
-
         <Link href="/">
           <a
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50"
@@ -70,21 +69,18 @@ function NavBar() {
     return (
       <>
         <span className="sr-only">Open user menu</span>
-        <Link href="/"> 
-       
-         <a className={isActive("/")}> 
-          <Disclosure.Button>
-          <button
-            className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-            onClick={handleLogout}
-          >
-            ออกจากระบบ
-          </button>
-           </Disclosure.Button>
+        <Link href="/">
+          <a className={isActive("/")}>
+            <Disclosure.Button>
+              <button
+                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
+                onClick={handleLogout}
+              >
+                ออกจากระบบ
+              </button>
+            </Disclosure.Button>
           </a>
-        
         </Link>
-    
       </>
     );
   };
@@ -123,7 +119,6 @@ function NavBar() {
   function classNames(...classes) {
     return classes.filter(Boolean).join(" ");
   }
-  
 
   const loggedRouter = () => {
     return (
@@ -226,7 +221,7 @@ function NavBar() {
   return (
     <>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-gray-800">
+        <Disclosure as="nav" className="bg-[#465A93]">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-6 lg:px-8">
@@ -250,7 +245,7 @@ function NavBar() {
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white no-underline"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white no-underline",
+                                : "text-white hover:bg-gray-700 hover:text-white no-underline",
                               "px-3 py-2 rounded-md text-sm font-medium no-underline"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -265,7 +260,7 @@ function NavBar() {
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                : "text-white hover:bg-gray-700 hover:text-white",
                               "px-3 py-2 rounded-md text-sm font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -280,7 +275,7 @@ function NavBar() {
                             className={classNames(
                               item.current
                                 ? "bg-gray-900 text-white"
-                                : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                : "text-white hover:bg-gray-700 hover:text-white",
                               "px-3 py-2 rounded-md text-sm font-medium"
                             )}
                             aria-current={item.current ? "page" : undefined}
@@ -290,7 +285,7 @@ function NavBar() {
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                            <Menu.Button>
                               <span className="sr-only">Open user menu</span>
                               {navigation4.map((item) => (
                                 <a
@@ -299,7 +294,7 @@ function NavBar() {
                                   className={classNames(
                                     item.current
                                       ? "bg-gray-900 text-white"
-                                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                                      : "text-white hover:bg-gray-700 hover:text-white",
                                     "px-3 py-2 rounded-md text-sm font-medium"
                                   )}
                                   aria-current={
@@ -324,15 +319,15 @@ function NavBar() {
                               {dropdownMenu.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
-                                    <a
+                                    <button
                                       href={item.href}
                                       className={classNames(
                                         active ? "bg-gray-100" : "",
-                                        "block px-4 py-2 text-sm text-gray-700"
+                                        "block px-4 py-2 text-sm text-gray-700 w-full text-start"
                                       )}
                                     >
                                       {item.name}
-                                    </a>
+                                    </button>
                                   )}
                                 </Menu.Item>
                               ))}
@@ -346,7 +341,7 @@ function NavBar() {
                     <div className="ml-4 flex items-center md:ml-6">
                       <button
                         type="button"
-                        className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                        className="rounded-full hover:bg-[#1A4789] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -359,7 +354,7 @@ function NavBar() {
                           {Object.keys(auth).length === 0 ? (
                             <Link href="/signin">
                               <a className={isActive("/signin")}>
-                                <button className=" hover:bg-gray-600 text-white px-4 py-2 rounded-lg">
+                                <button className=" hover:bg-gray-700 text-white px-4 py-2 rounded-lg">
                                   เข้าสู่ระบบ
                                 </button>
                               </a>
@@ -383,7 +378,7 @@ function NavBar() {
 
                   {/* Mobile menu button */}
                   <div className="mr-2 flex md:block lg:hidden">
-                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                    <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-gray-200 p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                       <span className="sr-only">Open main menu</span>
                       {open ? (
                         <XMarkIcon
@@ -494,10 +489,10 @@ function NavBar() {
                     <Link href="/signin">
                       <div className="pb-3 px-3">
                         <a className={isActive("/signin")}>
-                        <Disclosure.Button>
-                          <button className="bg-gray-700 hover:bg-violet-800 text-white px-1 py-2 rounded-lg">
-                            เข้าสู่ระบบ
-                          </button>
+                          <Disclosure.Button>
+                            <button className="hover:bg-gray-700 text-white px-1 py-2 rounded-lg">
+                              เข้าสู่ระบบ
+                            </button>
                           </Disclosure.Button>
                         </a>
                       </div>
