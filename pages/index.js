@@ -65,7 +65,7 @@ const index = (props) => {
           ></iframe>
         </div>
         </div>
-        <div className="md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 justify-center  ">
+        <div className="content-wrapper ">
           {Informs.slice(0, 3).map((product) => (
             <InformItemIndex key={product._id} product={product} />
           ))}

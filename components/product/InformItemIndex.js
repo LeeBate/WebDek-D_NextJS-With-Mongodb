@@ -11,12 +11,13 @@ const InformItem = ({ product, handleCheck }) => {
     return (
       <>
         <Link href={`Inform/${product._id}`}>
+          <div className="bg-green-500/40 p-1">
           <a
-            className="btn btn-info mt-2 w-full"
+            className="text-end mt-2 text-base w-full"
             style={{ marginRight: "5px", flex: 1 }}
           >
-            ดูข้อมูล
-          </a>
+           อ่านเพิ่มเติม
+          </a></div>
         </Link>
       </>
     );
@@ -63,27 +64,44 @@ const InformItem = ({ product, handleCheck }) => {
     //      </div>
     //     </div>
 
-    <div className="flex md:flex-col p-3 rounded-lg shadow-lg mt-2">
-      <div className=" w-full h-36 bg-red-500 md:w-full place-items-center">
-        <img
-          src={product.images[0].url}
-          className="rounded-xl w-full h-36 mr-3 object-cover  "
-        ></img>
-      </div>
+    // <div className="flex md:flex-col p-2 rounded-lg shadow-lg mt-2 md:mx-3 lg:mx-4 xl:mx5">
+    //   <div className=" w-full h-36 bg-red-500 md:w-full place-items-center">
+    //     <img
+    //       src={product.images[0].url}
+    //       className=" w-full h-36 mr-3 object-cover  "
+    //     ></img>
+    //   </div>
 
-      <div className="bg-yellow-500 w-full h-auto p-2">
-        <h3 class="font-black text-gray-800 md:text-3xl text-md line-clamp-2">
-          The Majestic and Wonderful Bahamas
-        </h3>
-        <p class="md:text-lg text-gray-500 text-sm line-clamp-2">
-          The best kept secret of The Bahamas is the country’s sheer size and
-          diversity. With 16 major islands, The Bahamas is an unmatched
-          destination
-        </p>
-        {userLink()}
+    //   <div className=" w-full h-auto p-2">
+    //     <h3 class="font-black text-gray-800 md:text-lg text-base line-clamp-2">
+    //      {product.title}
+    //     </h3>
+    //     <p class="md:text-md text-gray-500 text-sm line-clamp-2">
+    //       {product.description}
          
+    //     </p>
+    //     <div className="flex justify-end items-end"> {userLink()}</div>
+       
+         
+    //   </div>
+    // </div>
+
+
+
+
+
+    <div class="news-card">
+    <a href={`Inform/${product._id}`} class="news-card__card-link"></a>
+    <img src={product.images[0].url} alt="" ></img>
+    <div class="news-card__text-wrapper">
+      <h2 class="news-card__title line-clamp-2">{product.title}</h2>
+      <div class="news-card__post-date">{product.creatAt}</div>
+      <div class="news-card__details-wrapper">
+        <p class="text-base line-clamp-3" >{product.description}&hellip;</p>
+        <a href="#" class="news-card__read-more">Read more <i class="fas fa-long-arrow-alt-right"></i></a>
       </div>
     </div>
+  </div>
   );
 };
 
