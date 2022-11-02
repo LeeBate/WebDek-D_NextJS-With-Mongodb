@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 
+
 const InformItem = ({ product, handleCheck }) => {
   const { state, dispatch } = useContext(DataContext);
   const { cart, auth } = state;
@@ -22,80 +23,22 @@ const InformItem = ({ product, handleCheck }) => {
       </>
     );
   };
+  function ConvertDate(date){
+ const data  =  new Date(date).toLocaleString("en-GB", {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit",})
+
+
+  return data
+}
 
   return (
-    // <div className="transform flex flex-col items-center bg-white rounded-lg border shadow-md md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700 transition duration-700 hover:shadow-2xl">
-    //   <img
-    //     className=" max-w-[200px] h-60 object-cover rounded-t-lg hover:rounded-none md:object-center md:object-cover "
-    //     src={product.images[0].url}
-    //     alt={product.images[0].url}
-    //   />
-    //   <div className="flex flex-row justify-between leading-normal">
-    //     <h5
-    //       className="text-2xl font-bold tracking-tight text-gray-900 dark:text-white line-clamp-2"
-    //       title={product.title}
-    //     >
-    //       {product.title}
-    //     </h5>
-    //     <p
-    //       className="font-normal text-gray-700 dark:text-gray-400 line-clamp-2"
-    //       title={product.description}
-    //     >
-    //       {product.description}
-    //     </p>
-
-    //     <div className="row justify-content-between mx-0 mt-4 ">
-    //       {!auth.user || auth.user.role !== "admin" ? userLink() : <></>}
-    //     </div>
-    //   </div>
-    // </div>
-
-    //  <div className="flex flex-row md:flex-col">
-    //     <div class="flex flex-row md:flex-col md:space-x-5 space-y-3 md:space-y-0 m-2 rounded-xl shadow-lg p-3 md:max-w-xl mx-auto border border-white bg-white">
-    //       <div class="w-full h-36 flex flex-col md:flex-row bg-white  place-items-center">
-    //         <img src={product.images[0].url} alt="tailwind logo" class="rounded-xl w-full h-36 mr-3" />
-    //         </div>
-    //         <div className="">
-    //           <h3 class="font-black text-gray-800 md:text-3xl text-xl line-clamp-2">The Majestic and Wonderful Bahamas</h3>
-    //           <p class="md:text-lg text-gray-500 text-base line-clamp-2">The best kept secret of The Bahamas is the country’s sheer
-    //             size and diversity. With 16 major islands, The Bahamas is an unmatched destination</p>
-    //         </div>
-
-    //      </div>
-    //     </div>
-
-    // <div className="flex md:flex-col p-2 rounded-lg shadow-lg mt-2 md:mx-3 lg:mx-4 xl:mx5">
-    //   <div className=" w-full h-36 bg-red-500 md:w-full place-items-center">
-    //     <img
-    //       src={product.images[0].url}
-    //       className=" w-full h-36 mr-3 object-cover  "
-    //     ></img>
-    //   </div>
-
-    //   <div className=" w-full h-auto p-2">
-    //     <h3 class="font-black text-gray-800 md:text-lg text-base line-clamp-2">
-    //      {product.title}
-    //     </h3>
-    //     <p class="md:text-md text-gray-500 text-sm line-clamp-2">
-    //       {product.description}
-         
-    //     </p>
-    //     <div className="flex justify-end items-end"> {userLink()}</div>
-       
-         
-    //   </div>
-    // </div>
-
-
-
-
+   
 
     <div class="news-card">
     <a href={`Inform/${product._id}`} class="news-card__card-link"></a>
     <img src={product.images[0].url} alt="" ></img>
     <div class="news-card__text-wrapper">
       <h2 class="news-card__title line-clamp-2">{product.title}</h2>
-      <div class="news-card__post-date">{product.creatAt}</div>
+      <div class="news-card__post-date">{ConvertDate(product.createdAt)}</div>
       <div class="news-card__details-wrapper">
         <p class="text-base line-clamp-3" >{product.description}&hellip;</p>
         <a href="#" class="news-card__read-more">Read more <i class="fas fa-long-arrow-alt-right"></i></a>
