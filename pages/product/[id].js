@@ -157,7 +157,6 @@ const DetailProduct = (props, query) => {
       return dispatch({
         type: "NOTIFY",
         payload: { error: "โปรดเข้าสู่ระบบ" },
-        
       });
 
     if (!title || !en || !prodid || !userid || !category || !images)
@@ -187,158 +186,189 @@ const DetailProduct = (props, query) => {
     return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
   };
 
-  return(
+  function ConvertDate(date) {
+    const data = new Date(date).toLocaleString("th-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return data;
+  }
+
+  return (
     <div className="mb-5">
-    <div className="mt-5">
+      <div className="mt-5">
         <Head>
-            <title>{product.title}</title>
+          <title>{product.title}</title>
         </Head>
         <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24">
-        <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
-            <h1 className="text-lg sm:text-base font-bold  ">{product.title}</h1>
+          <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
+            <h1 className="text-lg sm:text-base font-bold  ">
+              {product.title}
+            </h1>
             <h1 className="text-lg sm:text-base font-bold  ">{product.en}</h1>
-        </div>
-        <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
-        
-            <div className='mx-3 md:mx-auto'>
-            <img src={ product.images[tab].url } alt={ product.images[tab].url }
-            className="img-thumbnail rounded mt-4 sm:mr-5 sm:max-w-xs sm:max-h-xs md:max-w-2xl md:max-h-fit xl:max-w-xl xl:max-h-fit" />
+          </div>
+          <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
+            <div className="mx-3 md:mx-auto">
+              <img
+                src={product.images[tab].url}
+                alt={product.images[tab].url}
+                className="img-thumbnail rounded mt-4 sm:mr-5 sm:max-w-xs sm:max-h-xs md:max-w-2xl md:max-h-fit xl:max-w-xl xl:max-h-fit"
+              />
 
-            <div className="row mx-0 mt-3 mb-4" style={{cursor: 'pointer'}} >
-
+              <div className="row mx-0 mt-3 mb-4" style={{ cursor: "pointer" }}>
                 {product.images.map((img, index) => (
-                    <img key={index} src={img.url} alt={img.url}
-                    className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(index)}`}
+                  <img
+                    key={index}
+                    src={img.url}
+                    alt={img.url}
+                    className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(
+                      index
+                    )}`}
                     // style={{height: '60px', width: '80px'}}
-                    onClick={() => setTab(index)} />
+                    onClick={() => setTab(index)}
+                  />
                 ))}
-                </div>
+                
+                <div className=" flex justify-end items-end">{ConvertDate(product.createdAt)}</div>
+              </div>
             </div>
-        
-        <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-3 mb-4">
 
-        <div className=" mx-1 my-4">
-            {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
+            <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-3 mb-4">
+              <div className=" mx-1 my-4">
+                {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
                 <h2 className="text font-light text-xl ">{product.title}</h2> */}
-            <div className="flex flex-col">
-              <div className="flex flex-row">
-                <p className="my-2 font-bold">ยี่ห้อ : </p>
-                <p className="my-2 ml-[8px]">{product.brand}</p>
-              </div>
-              <div className="flex flex-row">
-                <p className="my-2 font-bold">รุ่น : </p>
-                <p className="my-2 ml-[8px]">{product.modelName}</p>
+                <div className="flex flex-col">
+                  <div className="flex flex-row">
+                    <p className="my-2 font-bold">ยี่ห้อ : </p>
+                    <p className="my-2 ml-[8px]">{product.brand}</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <p className="my-2 font-bold">รุ่น : </p>
+                    <p className="my-2 ml-[8px]">{product.modelName}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <div className="flex flex-row">
+                    <p className="my-2 font-bold">
+                      ห้องปฏิบัติการ (ภาษาไทย) :{" "}
+                    </p>
+                    <p className="my-2 ml-[8px]">{product.room}</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <p className="my-2 font-bold">
+                      ห้องปฏิบัติการ (ภาษาอังกฤษ) :{" "}
+                    </p>
+                    <p className="my-2 ml-[8px]">{product.roomen}</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <p className="my-2 font-bold">ผู้ดูแลเครื่องมือ : </p>
+                    <p className="my-2 ml-[8px]">{product.manager}</p>
+                  </div>
+                  <p className="my-2 font-bold">รายละเอียดเครื่องมือ :</p>
+                </div>
+                <div className="grid gap-4 grid-cols-2 grid-flow-col">
+                  <div>
+                    <p className="font-semibold">ความสามารถของเครื่องมือ</p>
+                    <p>{product.detailCapability}</p>
+                  </div>
+                  <div>
+                    <p className="font-semibold">ข้อจำกัดของเครื่องมือ</p>
+                    <p>{product.detailRestrictions}</p>
+                  </div>
+                </div>
+
+                <br />
               </div>
             </div>
-            <div className="flex flex-col">
-              <div className="flex flex-row">
-                <p className="my-2 font-bold">ห้องปฏิบัติการ (ภาษาไทย) : </p>
-                <p className="my-2 ml-[8px]">{product.room}</p>
-              </div>
-              <div className="flex flex-row">
-                <p className="my-2 font-bold">ห้องปฏิบัติการ (ภาษาอังกฤษ) : </p>
-                <p className="my-2 ml-[8px]">{product.roomen}</p>
-              </div>
-              <div className="flex flex-row">
-                <p className="my-2 font-bold">ผู้ดูแลเครื่องมือ : </p>
-                <p className="my-2 ml-[8px]">{product.manager}</p>
-              </div>
-              <p className="my-2 font-bold">รายละเอียดเครื่องมือ :</p>
-            </div>
-            <div className="grid gap-4 grid-cols-2 grid-flow-col">
-              <div>
-                <p className="font-semibold">ความสามารถของเครื่องมือ</p>
-                <p>{product.detailCapability}</p>
-              </div>
-              <div>
-                <p className="font-semibold">ข้อจำกัดของเครื่องมือ</p>
-                <p>{product.detailRestrictions}</p>
-              </div>
-            </div>
-
-            <br/>
+          </div>
         </div>
 
-        </div>
-        </div>
-    </div>
-
-    <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-14 mb-3 ">
+        <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-14 mb-3 ">
           <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>
         <div className="mx-4 md:mx-14 xl:mx-24">
-        <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
+          <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
-                    <tr>
-                        <th scope="col" className="py-3 px-6">
-                        ลำดับ
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                        รายการ
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                        อัตรา1
-                        <br />
-                  (100%)
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                        อัตรา2
-                        <br />
-                  (75%)
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                        อัตรา3
-                        <br />
-                  (50%)
-                        </th>
-                        <th scope="col" className="py-3 px-6">
-                        อัตรา4
-                        <br />
-                  (นักวิจัย)
-                        </th>
-                        
-                        <th scope="col" className="py-3 px-6">
-                        อัตรา5
-                        <br />
-                  (บัณฑิต)
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+              <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+                <tr>
+                  <th scope="col" className="py-3 px-6">
+                    ลำดับ
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    รายการ
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    อัตรา1
+                    <br />
+                    (100%)
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    อัตรา2
+                    <br />
+                    (75%)
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    อัตรา3
+                    <br />
+                    (50%)
+                  </th>
+                  <th scope="col" className="py-3 px-6">
+                    อัตรา4
+                    <br />
+                    (นักวิจัย)
+                  </th>
+
+                  <th scope="col" className="py-3 px-6">
+                    อัตรา5
+                    <br />
+                    (บัณฑิต)
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
                 {product.nameRate.map((obj, i) => (
-                    <tr key={i} className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                      <td className="py-4 px-6">
-                        <span>{i + 1 || "-"}</span>
-                        </td>
-                        <th scope="row" className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                        <span>{obj.ListName || "Unknown"}</span>
-                        </th>
-                        
-                        <td className ="py-4 px-6">
-                        <span>{obj.price1 || "-"}</span>
-                        </td>
+                  <tr
+                    key={i}
+                    className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+                  >
+                    <td className="py-4 px-6">
+                      <span>{i + 1 || "-"}</span>
+                    </td>
+                    <th
+                      scope="row"
+                      className="py-4 px-6 font-medium text-gray-900 whitespace-nowrap"
+                    >
+                      <span>{obj.ListName || "Unknown"}</span>
+                    </th>
 
-                        <td className="py-4 px-6">
-                        <span>{obj.price2 || "-"}</span>
-                        </td>
+                    <td className="py-4 px-6">
+                      <span>{obj.price1 || "-"}</span>
+                    </td>
 
-                        <td className="py-4 px-6">
-                        <span>{obj.price3 || "-"}</span>
-                        </td>
+                    <td className="py-4 px-6">
+                      <span>{obj.price2 || "-"}</span>
+                    </td>
 
-                        <td className="py-4 px-6">
-                        <span>{obj.price4 || "-"}</span>
-                        </td>
+                    <td className="py-4 px-6">
+                      <span>{obj.price3 || "-"}</span>
+                    </td>
 
-                        <td className="py-4 px-6">
-                        <span>{obj.price5 || "-"}</span>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
+                    <td className="py-4 px-6">
+                      <span>{obj.price4 || "-"}</span>
+                    </td>
+
+                    <td className="py-4 px-6">
+                      <span>{obj.price5 || "-"}</span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
-        </div>
+          </div>
         </div>
 
         <p className="text-sm xl:text-base mx-7 xl:mx-22 mt-3">
@@ -346,8 +376,7 @@ const DetailProduct = (props, query) => {
         </p>
 
         <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5">
-
-        <button
+          <button
             type="button"
             className=" rounded-xl bg-green-700 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
@@ -360,37 +389,31 @@ const DetailProduct = (props, query) => {
           >
             ติดต่อขอรับบริการ
           </button>
-          
 
           {toggler ? (
-          
-          <button
-            type="button"
-            onClick={handleSubmit}
-            className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
-          >
-            {" "}
-            <BsHeart className="mr-2" />
-            เพิ่มรายการโปรด
-          </button>
-        ) : (
-          <button
-            type="button"
-            // data-toggle="modal" data-target="#exampleModal"
-            onClick={handleRemove}
-            className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
-          >
-            {" "}
-            <BsHeartFill color="fe4141" className="mr-2" />
-            เพิ่มแล้ว
-          </button>
-        )}
-
-
-          
-        
+            <button
+              type="button"
+              onClick={handleSubmit}
+              className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            >
+              {" "}
+              <BsHeart className="mr-2" />
+              เพิ่มรายการโปรด
+            </button>
+          ) : (
+            <button
+              type="button"
+              // data-toggle="modal" data-target="#exampleModal"
+              onClick={handleRemove}
+              className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            >
+              {" "}
+              <BsHeartFill color="fe4141" className="mr-2" />
+              เพิ่มแล้ว
+            </button>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

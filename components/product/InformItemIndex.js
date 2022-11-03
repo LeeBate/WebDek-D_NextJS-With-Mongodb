@@ -24,7 +24,7 @@ const InformItem = ({ product, handleCheck }) => {
     );
   };
   function ConvertDate(date){
- const data  =  new Date(date).toLocaleString("en-GB", {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit",})
+ const data  =  new Date(date).toLocaleString("th-GB", {year: "numeric", month: "long", day: "numeric", hour: "2-digit", minute: "2-digit",})
 
 
   return data
@@ -33,7 +33,7 @@ const InformItem = ({ product, handleCheck }) => {
   return (
    
 
-    <div class="news-card">
+<div class="news-card">
     <a href={`Inform/${product._id}`} class="news-card__card-link"></a>
     <img src={product.images[0].url} alt="" ></img>
     <div class="news-card__text-wrapper">
@@ -41,7 +41,7 @@ const InformItem = ({ product, handleCheck }) => {
       <div class="news-card__post-date">{ConvertDate(product.createdAt)}</div>
       <div class="news-card__details-wrapper">
         <p class="text-base line-clamp-3" >{product.description}&hellip;</p>
-        <a href="#" class="news-card__read-more">Read more <i class="fas fa-long-arrow-alt-right"></i></a>
+        <button href={`Inform/${product._id}`} class="news-card__read-more">อ่านเพิ่มเติม <i class="fas fa-long-arrow-alt-right"></i></button>
       </div>
     </div>
   </div>
