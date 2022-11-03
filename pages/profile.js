@@ -102,7 +102,7 @@ const Profile = () => {
     });
   };
 
-  if (!auth.user) return null;
+  
   return (
     <div className="profile_page">
       <Head>
@@ -127,10 +127,21 @@ const Profile = () => {
           )}
 
           <div className="avatar">
+          {Object.keys(auth).length !== 0 ? (
             <img
               src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
               alt="avatar"
             />
+            ) : (
+              <img
+                src={
+                  "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
+                }
+                width="30"
+                height="30"
+                className="roundedCircle"
+              />
+            )}
             <span>
               <i className="fas fa-camera"></i>
               <p>เปลี่ยน</p>
@@ -157,7 +168,9 @@ const Profile = () => {
           </div>
 
           <div className="form-group">
+          
             <label htmlFor="email">อีเมล์</label>
+            {Object.keys(auth).length !== 0 ? (
             <input
               type="text"
               name="อีมเล์"
@@ -165,6 +178,9 @@ const Profile = () => {
               className="form-control"
               disabled={true}
             />
+            ) : (
+              <p>Loading..</p>
+            )}
           </div>
 
           <div className="form-group">

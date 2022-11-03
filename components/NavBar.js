@@ -6,7 +6,8 @@ import Cookie from "js-cookie";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { Divider } from "@chakra-ui/react";
+import { BeakerIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon } from "@heroicons/react/20/solid";
 
 function NavBar() {
   const router = useRouter();
@@ -45,7 +46,7 @@ function NavBar() {
       <>
         <Link href="/Admin">
           <div className="block px-3 py-2 rounded-md text-base cursor-pointer font-medium hover:bg-gray-700 hover:text-white text-white">
-          แดชบอร์ด
+            แดชบอร์ด
           </div>
         </Link>
       </>
@@ -55,14 +56,12 @@ function NavBar() {
     return (
       <>
         <Link href="/">
-        
           <div
             className="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50 "
             onClick={handleLogout}
           >
             ออกจากระบบ
           </div>
-          
         </Link>
       </>
     );
@@ -88,7 +87,6 @@ function NavBar() {
     );
   };
 
- 
   const navigation1 = [
     { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
   ];
@@ -101,8 +99,8 @@ function NavBar() {
   const navigation4 = [{ name: "เกี่ยวกับเรา", current: false }];
 
   const userNavigation = [
-    { name: "โปรไฟล์", href: "/profile",current: false },
-    { name: "เครื่องมือที่ชอบ", href: "/favorite",current: false },
+    { name: "โปรไฟล์", href: "/profile", current: false },
+    { name: "เครื่องมือที่ชอบ", href: "/favorite", current: false },
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
@@ -118,21 +116,20 @@ function NavBar() {
     return (
       <>
         {userNavigation.map((item) => (
-              <Menu.Item key={item.name}>
-                {({ active }) => (
-
-                  <a
-                    href={item.href}
-                    className={classNames(
-                      active ? "bg-gray-100 no-underline  w-full text-start" : "",
-                      "block w-full px-4 text-start py-2 text-sm text-gray-700"
-                    )}
-                  >
-                  <button>{item.name}</button>
-                  </a>
+          <Menu.Item key={item.name}>
+            {({ active }) => (
+              <a
+                href={item.href}
+                className={classNames(
+                  active ? "bg-gray-100 no-underline  w-full text-start" : "",
+                  "block w-full px-4 text-start py-2 text-sm text-gray-700"
                 )}
-              </Menu.Item>
-            ))}
+              >
+                <button>{item.name}</button>
+              </a>
+            )}
+          </Menu.Item>
+        ))}
       </>
     );
   };
@@ -140,22 +137,18 @@ function NavBar() {
     return (
       <>
         {userNavigation.map((item) => (
-              
-                <a
-                key={item.name}
-                as="a"
-                href={item.href}
-                className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
-                >
-                  <button>{item.name}</button>
-              </a>
-                
-              
-            ))}
+          <a
+            key={item.name}
+            as="a"
+            href={item.href}
+            className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
+          >
+            <button>{item.name}</button>
+          </a>
+        ))}
       </>
     );
   };
-
 
   const loggedRouter = () => {
     return (
@@ -231,19 +224,20 @@ function NavBar() {
     );
   };
 
+
   return (
     <>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-[#465A93]">
           {({ open }) => (
             <>
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-6 lg:px-8">
+              <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
                 <div className="flex h-16 items-center justify-between">
                   <div className="flex items-center">
-                    <div className="flex-shrink w-24">
+                    <div className="flex-shrink w-auto">
                       <a href="/">
                         <img
-                          className="h-16 w-24 cursor-pointer"
+                          className="h-16 w-24 cursor-pointer aspect-square"
                           src={"/images/CALLLAB.png"}
                           alt="logo"
                         />
@@ -298,25 +292,13 @@ function NavBar() {
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                          <Menu.Button>
-                        <span className="sr-only">Open user menu</span>
-                        {navigation4.map((item) => (
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-white hover:bg-gray-700 hover:text-white",
-                              "block px-3 py-2 rounded-md text-base font-medium"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
-                          >
-                            {item.name}
-                          </Disclosure.Button>
-                        ))}
-                      </Menu.Button>
+                            <Menu.Button className="inline-flex w-full justify-center  px-4 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 hover:text-white">
+                              เกี่ยวกับเรา
+                              <ChevronDownIcon
+                                className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+                                aria-hidden="true"
+                              />
+                            </Menu.Button>
                           </div>
                           <Transition
                             as={Fragment}
@@ -331,7 +313,6 @@ function NavBar() {
                               {dropdownMenu.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
-                                    
                                     <a
                                       href={item.href}
                                       className={classNames(
@@ -489,7 +470,7 @@ function NavBar() {
                           href={item.href}
                           className="block rounded-md px-3 py-1 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white "
                         >
-                         <button>{item.name}</button>
+                          <button>{item.name}</button>
                         </Disclosure.Button>
                       ))}
                     </div>

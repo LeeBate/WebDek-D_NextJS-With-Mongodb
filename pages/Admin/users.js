@@ -35,7 +35,7 @@ const Users = () => {
         }
       `}</style>
       <Head>
-        <title>Users</title>
+        <title>ผู้ใช้</title>
       </Head>
       <FullLayout>
         <div className="bg-white p-2 md:p-3 xl:p-5 rounded-md">

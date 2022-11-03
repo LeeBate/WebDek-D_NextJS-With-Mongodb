@@ -71,7 +71,7 @@ const Categories = () => {
       <FullLayout>
         <div className="col-md-6 mx-auto my-3">
           <Head>
-            <title>หมวดหมู่</title>
+            <title>หมวดหมู่เครื่องมือ</title>
           </Head>
 
           <div className="input-group mb-3">

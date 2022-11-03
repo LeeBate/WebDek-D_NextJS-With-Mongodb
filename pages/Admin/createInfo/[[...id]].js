@@ -230,7 +230,7 @@ const NewsManager = (props) => {
             <TabPanel value="0">
               <div className="products_manager">
                 <Head>
-                  <title>การจัดการข่าวสาร</title>
+                  <title>ข่าวประชาสัมพันธ์</title>
                 </Head>
                 {onEdit ? (
                   <button

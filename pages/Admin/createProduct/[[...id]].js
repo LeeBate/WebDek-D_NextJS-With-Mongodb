@@ -777,7 +777,7 @@ const ProductsManager = (props) => {
 
           <TabPanel value= "1">
           <Head>
-              <title>การจัดการเครื่องมือ</title>
+              <title>เครื่องมือวิทยาศาสตร์</title>
             </Head>
            
                 <div className="container">

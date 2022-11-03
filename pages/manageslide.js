@@ -66,7 +66,9 @@ const machinery = (props) => {
       <Head>
         <title>เครื่องมือวิทยาศาสตร์</title>
       </Head>
-
+      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
+        สไดล์ข่าวสาร
+      </h1>
       <Filter state={state} />
 
       {

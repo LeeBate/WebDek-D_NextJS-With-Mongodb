@@ -60,9 +60,6 @@ const InformItem = ({product, handleCheck}) => {
                 <h5 className=" card-title font-bold text-xl mb-2 text-capitalize" title={product.title}>
                     {product.title}
                 </h5>
-                <h5 className="card-title text-capitalize" title={product.description}>
-                    {product.category}
-                </h5>
                     
                 <div className="row justify-content-between mx-0 ">
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}

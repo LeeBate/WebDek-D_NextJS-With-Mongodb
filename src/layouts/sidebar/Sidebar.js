@@ -45,9 +45,9 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
   };
 
   const SidebarContent = (
-    <Box p={2} height="100%">
+    <Box p={2} height="100%" backgroundColor= "#1a237e">
       <LogoIcon />
-      <Box mt={2}>
+      <Box mt={2} >
         <List>
           {Menuitems.map((item, index) => (
             <List component="li" disablePadding key={item.title}>
@@ -57,7 +57,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                   button
                   selected={location === item.href}
                   sx={{
-                    mb: 1,
+                    mb: 1,color: "white",
                     ...(location === item.href && {
                       color: "white",
                       backgroundColor: (theme) =>
@@ -68,7 +68,7 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                   <ListItemIcon>
                     <FeatherIcon
                       style={{
-                        color: `${location === item.href ? "white" : ""} `,
+                        color: "white",
                       }}
                       icon={item.icon}
                       width="20"

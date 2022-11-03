@@ -41,7 +41,9 @@ const InformItem = ({ product, handleCheck }) => {
       <div class="news-card__post-date">{ConvertDate(product.createdAt)}</div>
       <div class="news-card__details-wrapper">
         <p class="text-base line-clamp-3" >{product.description}&hellip;</p>
-        <button href={`Inform/${product._id}`} class="news-card__read-more">อ่านเพิ่มเติม <i class="fas fa-long-arrow-alt-right"></i></button>
+        <a href={`Inform/${product._id}`}>
+        <button class="news-card__read-more">อ่านเพิ่มเติม <i class="fas fa-long-arrow-alt-right"></i></button>
+        </a>
       </div>
     </div>
   </div>

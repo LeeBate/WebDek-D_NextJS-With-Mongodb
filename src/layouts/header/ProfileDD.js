@@ -75,7 +75,7 @@ const ProfileDD = () => {
             }}
           >
             <Typography
-              color="textSecondary"
+              color="white"
               variant="h5"
               fontWeight="400"
               sx={{ ml: 1 }}
@@ -83,6 +83,7 @@ const ProfileDD = () => {
               สวัสดี,
             </Typography>
             <Typography
+            color="white"
               variant="h5"
               fontWeight="700"
               sx={{
