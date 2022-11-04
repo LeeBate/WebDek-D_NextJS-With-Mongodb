@@ -43,6 +43,25 @@ img {
   width: 100%;
   position: absolute;
 }
+/* Video */
+.ParallaxVideo{ 
+  height: 1000px;
+  padding-top: 100px; 
+}
+.ParallaxVideo video{ 
+  min-width: 100%;
+  position: fixed;
+  top:0;
+  z-index: -999;
+}
+.ParallaxVideo h1 {
+color: #fff;
+font-size: 76px;
+font-weight: 700;
+text-align: center;
+text-transform: uppercase;
+margin-top: 25%;
+}
 
 /*Loading page  */
 
@@ -273,7 +292,9 @@ img {
 header {
   position: fixed;
   width: 100%;
-  z-index: 50;
+  z-index: 10;
+  top:0;
+
 }
 html {
   scroll-behavior:smooth;    
@@ -309,7 +330,7 @@ font-size:15px;
 padding:50px;
 }
 .services-container {
-background:#f1f1f1;
+background:#ffffff;
 }
 .service-header, .why-header, .work-header, .pricing-header, .blog-header, .contact-header {
 text-align:center;
@@ -330,10 +351,10 @@ margin-bottom:10px;
 text-align:center;
 padding:30px 20px;
 border:1px solid lightgrey;
-border-radius: 5px;    
+border-radius: 5px;
 }
 .why-cards {
-display: flex;   
+display: flex;
 padding:10px;
 }
 .why-cards i {
@@ -345,11 +366,11 @@ color:var(--text-color);
 margin-bottom:10px;
 }
 .why-cards .why-card-content {
-margin-left:1.5em;    
+margin-left:1.5em;
 }
 .service-cards:hover {
 border:none;
-box-shadow: 10px 10px 15px #ffffff;
+box-shadow: 10px 10px 15px lightgrey;
 transition:200ms ease-in-out;
 }
 .service-cards:hover i {

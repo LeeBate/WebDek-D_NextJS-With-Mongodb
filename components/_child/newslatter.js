@@ -49,7 +49,7 @@ export default function newslatter() {
       <div>
         <div id="main" className="xl:grid lg:grid grid-cols-2 justify-evenly ">
           <div className="bg-gray-100 col-span-2 w-full xl:h-62 h-64 p-2  border-xl ">
-            <h1 className="pb-1 xl:text-xl font-bold md:text-base dark:text-gray-900">ติดต่อสอบถาม</h1>
+            <h1 className="pb-1 xl:text-lg font-bold md:text-lg dark:text-gray-900">ติดต่อสอบถาม</h1>
 
             <div className="mapouter">
               <div className="gmap_canvas">
@@ -68,7 +68,7 @@ export default function newslatter() {
             </div>
           </div>
           <div className="bg-gray-100 w-26 h-48  md:w-26 md:h-44 lg:w-26 lg:h-auto ">
-            <h1 className="text-base font-bold p-2 md:text-lg  lg:mt-2 xl:text-xl  ">ตำแหน่งที่ตั้ง</h1>
+            <h1 className="text-base font-bold p-2 md:text-lg  lg:mt-2 xl:text-lg  ">ตำแหน่งที่ตั้ง</h1>
             <div className="text-sm ml-9 lg:ml-12 xl:text-base">
             <p>111 ถ.มหาวิทยาลัย ต.สุรนารี อ.เมือง จ.นครราชสีมา, 30000</p>
             <div className="flex gap-2">
@@ -103,12 +103,12 @@ export default function newslatter() {
                       src={"/images/ffotterr2.jpg"}
                       
                     />
-                    <div className="text-gray-600 mt-3 ml-4 md:ml-8 md:mt-6 lg:ml-10 xl:ml-16 ">
-                      <div className="text-sm xl:text-xl md:text-lg  font-bold ">
+                    <div className="text-gray-900 mt-3 ml-4 md:ml-8 md:mt-6 lg:ml-10 xl:ml-16 ">
+                      <div className="text-sm xl:text-lg md:text-lg  font-bold ">
                         ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
                        
                       </div>
-                      <div className="text-sm xl:text-xl md:text-lg  font-bold ">
+                      <div className="text-sm xl:text-lg md:text-lg  font-bold ">
                         มหาวิทยาลัยเทคโนโลยีสุรนารี
                       </div>
                       <p className="text-sm">

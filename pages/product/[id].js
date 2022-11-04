@@ -199,24 +199,24 @@ const DetailProduct = (props, query) => {
   }
 
   return (
-    <div className="mb-5">
-      <div className="mt-5">
+    <section className="p-1">
+      
         <Head>
           <title>{product.title}</title>
         </Head>
-        <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24">
+        <div className="flex flex-col bg-indigo-100 mt-24  rounded-xl mx-1 sm:mx-4 md:mx-14 xl:mx-24">
           <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
-            <h1 className="text-lg sm:text-base font-bold  ">
-              {product.title}
+            <h1 className="text-lg md:text-xl ">
+              {product.en}
             </h1>
-            <h1 className="text-lg sm:text-base font-bold  ">{product.en}</h1>
+            <h1 className="text-sm md:text-lg ">{product.title}</h1>
           </div>
           <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
             <div className="mx-3 md:mx-auto">
               <img
                 src={product.images[tab].url}
                 alt={product.images[tab].url}
-                className="img-thumbnail rounded mt-4 sm:mr-5 sm:max-w-xs sm:max-h-xs md:max-w-2xl md:max-h-fit xl:max-w-xl xl:max-h-fit"
+                className="img-thumbnail rounded mt-4 w-[250px] h-[250px] md:w-full md:h-[600px] xl:w-[900vh] xl:h-[ุ600px]"
               />
 
               <div className="row mx-0 mt-3 mb-4" style={{ cursor: "pointer" }}>
@@ -233,64 +233,65 @@ const DetailProduct = (props, query) => {
                   />
                 ))}
                 
-                <div className=" flex justify-end items-end">{ConvertDate(product.createdAt)}</div>
               </div>
+              
             </div>
 
-            <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-3 mb-4">
-              <div className=" mx-1 my-4">
+            <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-1 mb-4">
+              <div className=" mx-1 my-2.5">
                 {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
                 <h2 className="text font-light text-xl ">{product.title}</h2> */}
                 <div className="flex flex-col">
                   <div className="flex flex-row">
-                    <p className="my-2 font-bold">ยี่ห้อ : </p>
-                    <p className="my-2 ml-[8px]">{product.brand}</p>
+                    <p className="my-2 font-bold text-sm md:text-lg">ยี่ห้อ : </p>
+                    <p className="my-2 ml-[8px] text-sm md:text-lg">{product.brand}</p>
                   </div>
                   <div className="flex flex-row">
-                    <p className="my-2 font-bold">รุ่น : </p>
-                    <p className="my-2 ml-[8px]">{product.modelName}</p>
+                    <p className="my-2 font-bold text-sm md:text-lg">รุ่น : </p>
+                    <p className="my-2 ml-[8px] text-sm md:text-lg">{product.modelName}</p>
                   </div>
                 </div>
                 <div className="flex flex-col">
                   <div className="flex flex-row">
-                    <p className="my-2 font-bold">
+                    <p className="my-2 font-bold text-sm md:text-lg">
                       ห้องปฏิบัติการ (ภาษาไทย) :{" "}
                     </p>
-                    <p className="my-2 ml-[8px]">{product.room}</p>
+                    <p className="my-2 ml-[8px] text-sm md:text-lg">{product.room}</p>
                   </div>
                   <div className="flex flex-row">
-                    <p className="my-2 font-bold">
+                    <p className="my-2 font-bold text-sm md:text-lg">
                       ห้องปฏิบัติการ (ภาษาอังกฤษ) :{" "}
                     </p>
-                    <p className="my-2 ml-[8px]">{product.roomen}</p>
+                    <p className="my-2 ml-[8px] text-sm md:text-lg">{product.roomen}</p>
                   </div>
                   <div className="flex flex-row">
-                    <p className="my-2 font-bold">ผู้ดูแลเครื่องมือ : </p>
-                    <p className="my-2 ml-[8px]">{product.manager}</p>
+                    <p className="my-2 font-bold text-sm md:text-lg">ผู้ดูแลเครื่องมือ : </p>
+                    <p className="my-2 ml-[8px] text-sm md:text-lg">{product.manager}</p>
                   </div>
-                  <p className="my-2 font-bold">รายละเอียดเครื่องมือ :</p>
+                  <p className="my-2 font-bold text-sm md:text-lg">รายละเอียดเครื่องมือ :</p>
                 </div>
                 <div className="grid gap-4 grid-cols-2 grid-flow-col">
                   <div>
-                    <p className="font-semibold">ความสามารถของเครื่องมือ</p>
-                    <p>{product.detailCapability}</p>
+                    <p className="font-semibold text-sm md:text-lg">ความสามารถของเครื่องมือ</p>
+                    <p className="text-sm md:text-lg">{product.detailCapability }</p>
                   </div>
                   <div>
-                    <p className="font-semibold">ข้อจำกัดของเครื่องมือ</p>
-                    <p>{product.detailRestrictions}</p>
+                    <p className="font-semibold text-sm md:text-lg">ข้อจำกัดของเครื่องมือ</p>
+                    <p className="text-sm md:text-lg">{product.detailRestrictions}</p>
                   </div>
                 </div>
 
                 <br />
               </div>
+              <div className=" flex justify-end items-end font-bold">โพสต์เมื่อ {ConvertDate(product.createdAt)} น.</div>
             </div>
           </div>
         </div>
 
-        <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-14 mb-3 ">
+        <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-8 mb-3 ">
           <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>
-        <div className="mx-4 md:mx-14 xl:mx-24">
+        <div className="mx-1 md:mx-14 xl:mx-24">
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
               <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
@@ -335,7 +336,7 @@ const DetailProduct = (props, query) => {
                     key={i}
                     className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
                   >
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{i + 1 || "-"}</span>
                     </td>
                     <th
@@ -345,23 +346,23 @@ const DetailProduct = (props, query) => {
                       <span>{obj.ListName || "Unknown"}</span>
                     </th>
 
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{obj.price1 || "-"}</span>
                     </td>
 
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{obj.price2 || "-"}</span>
                     </td>
 
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{obj.price3 || "-"}</span>
                     </td>
 
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{obj.price4 || "-"}</span>
                     </td>
 
-                    <td className="py-4 px-6">
+                    <td className="py-4 px-6 font-medium text-gray-900">
                       <span>{obj.price5 || "-"}</span>
                     </td>
                   </tr>
@@ -412,9 +413,8 @@ const DetailProduct = (props, query) => {
               เพิ่มแล้ว
             </button>
           )}
-        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

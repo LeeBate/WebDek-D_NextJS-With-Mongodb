@@ -49,8 +49,8 @@ const index = (props) => {
 
       <div id="services" class="services-container">
         <div class="service-header">
-            <h2>OUR SERVICES</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quia minus quod aliquid.</p>
+            <h2>บริการวิเคราะห์ทดสอบ</h2>
+            <p>ศูนย์เครื่อมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยี</p>
         </div>
               
         <div class="service-card-container">
@@ -58,42 +58,42 @@ const index = (props) => {
               <i className="fas m1">
                 <img className="fas  h-12 w-12" src={"/images/Artboard 5.png"}/>
               </i>
-                <h3>Content Writing</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+                <h3>บริการวิเคราะห์ด้วยกล้องจุลทรรศน์</h3>
+                <p>วิเคราะห์ทดสอบโดยคล้องถ่ายภาพสมรรถนะสูง รวมถึงวิเคราะห์ธาตุต่าง ๆ ด้วยกล้องจุลทรรศน์อิเล็กตรอน และกล้องจุลทรรศน์แสง</p>
             </div>
             <div class="service-cards">
                 <i class="fas m2">
                 <img className="fas  h-12 w-12" src={"/images/Artboard 6.png"}/>
                 </i>
-                <h3>Web Developement</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+                <h3>บริการวิเคราะห์ทางเคมีและชีวเคมี</h3>
+                <p>วิเคราะห์ธาตุ สารประกอบ และโครงสร้าง ด้วยเทคนิคต่าง ๆ โดยใช้เครื่องมือวิเคราะห์ขั้นสูง</p>
             </div>
             <div class="service-cards">
             <i class="fas m3">
                 <img className="fas  h-12 w-12" src={"/images/Artboard 7.png"}/>
                 </i>
-                <h3>Graphic Design</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+                <h3>บริการวิเคราะห์ทางจุลชีววิทยา</h3>
+                <p>ตรวจวิเคราะห์หาจุลินทรีย์ในตัวอย่างน้ำ ตัวอย่างอาหาร และตัวอย่างอื่น ๆ อย่างมีมาตรฐาน</p>
             </div>
             <div class="service-cards">
             <i class="fas m4">
                 <img className="fas  h-12 w-12" src={"/images/Artboard 8.png"}/>
                 </i>
-                <h3>UI/UX Design</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+                <h3>บริการทดสอบทางกายภาพ</h3>
+                <p>วิเคราะห์พื้นผิวและความพรุน ความชื้นและเถ้า วัดขนาดอนุภาค หาพลังงานของตัวอย่าง ด้วยเครื่องมือวิเคราะห์ทดสอบที่หลากหลาย</p>
             </div>
             <div class="service-cards">
             <i class="fas m5">
                 <img className="fas  h-12 w-12" src={"/images/Artboard 9.png"}/>
                 </i>
-                <h3>App Development</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+                <h3>บริการวิเคราะห์น้ำ</h3>
+                <p>ตรวจวิเคราะห์น่าประเภทต่าง ๆ เช่น นํ้าดื่ม น้ำเสีย ด้วยวิธีตามมาตรฐานสากล</p>
             </div>
-            <div class="service-cards">
+            {/* <div class="service-cards">
                 <i class="fas fa-briefcase"></i>
                 <h3>Digital Marketing</h3>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
-            </div>
+            </div> */}
         </div>
     </div>
     {/* <section className="w-full h-auto">

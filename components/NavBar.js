@@ -157,7 +157,7 @@ function NavBar() {
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
             <span className="sr-only">Open user menu</span>
             <img
-              className="h-8 w-8 rounded-full"
+              className="h-12 w-12 rounded-full"
               src={auth.user.avatar}
               alt={auth.user.avatar}
             />
@@ -203,13 +203,13 @@ function NavBar() {
                   {auth.user.email}
                 </div>
               </div>
-              <button
+              {/* <button
                 type="button"
                 className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
               >
                 <span className="sr-only">View notifications</span>
                 <BellIcon className="h-6 w-6" aria-hidden="true" />
-              </button>
+              </button> */}
             </div>
           </div>
 
@@ -227,7 +227,9 @@ function NavBar() {
 
   return (
     <>
+    
     <header>
+      <div className="min-h-full">
         <Disclosure as="nav" className="bg-[#465A93] z-auto">
           {({ open }) => (
             <>
@@ -237,8 +239,8 @@ function NavBar() {
                     <div className="flex-shrink w-auto mr-10">
                       <a href="/">
                         <img
-                          className="h-8 w-full md:h-16 cursor-pointer aspect-square"
-                          src={"/images/callab2.png"}
+                          className="h-16 w-full md:h-24 cursor-pointer aspect-square"
+                          src={"/images/LOGO.png"}
                           alt="logo"
                         />
                       </a>
@@ -333,13 +335,13 @@ function NavBar() {
                   </div>
                   <div className="hidden lg:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                      <button
+                      {/* <button
                         type="button"
                         className="rounded-full hover:bg-[#1A4789] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
                         <span className="sr-only">View notifications</span>
                         <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button>
+                      </button> */}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -499,8 +501,9 @@ function NavBar() {
             </>
           )}
         </Disclosure>
-
+</div>
       </header>
+      
     </>
   );
 }

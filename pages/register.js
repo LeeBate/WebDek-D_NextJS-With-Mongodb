@@ -72,9 +72,9 @@ return dispatch({ type: 'NOTIFY', payload: {} })
               <div className="row d-flex justify-center center h-100">
                 <div className="col col-xl-9 col-lg-8 my-auto lg:mt-20">
                   <div className="card rounded-[1rem] mt-5" >
-                    <div className="row g-0 items-center pl-4 py-4 ">
+                    <div className="row g-0 items-center py-4 ">
                       <div className="col-md-5 col-lg-5 d-none d-md-block">
-                      <img src={"/images/puntest.png"}
+                      <img src={"/images/2_6.png"}
                           className="transform transition duration-700 hover:scale-125 object-cover rounded-md "  />
                       </div>
                       <div className="col-md-6 col-lg-7 d-flex align-items-center">
@@ -84,7 +84,7 @@ return dispatch({ type: 'NOTIFY', payload: {} })
 
                         <div className="d-flex align-items-center mb-2 pb-1">
                           
-                          <span className="h1 font-bold mb-0">สมัครสมาชิก</span>
+                          <span className="text-2xl md:text-3xl xl:text-4xl font-bold mb-0">สมัครสมาชิก</span>
                         </div>
                         <div className="form-outline mb-2">
                           <label className="form-label" htmlFor="form2Example17">ชื่อ</label>
@@ -112,7 +112,7 @@ return dispatch({ type: 'NOTIFY', payload: {} })
                         <div className="pt-1 mb-2">
                         <button
                         type="submit"
-                        className="inline-block px-7 py-3 bg-[#0070BB] text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-[#208BD4] hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                        className="inline-block px-7 py-3 bg-blue-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light">สมัครสมาชิก
                         </button>

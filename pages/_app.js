@@ -4,6 +4,7 @@ import { DataProvider } from "../store/GlobalState";
 import { ThemeProvider } from "next-themes";
 import { ChakraProvider } from "@chakra-ui/react";
 
+
 function MyApp({ Component, pageProps }) {
   return (
     <DataProvider>
