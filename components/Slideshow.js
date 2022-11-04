@@ -37,18 +37,18 @@ const Slideshow = (products) => {
 		),
 	};
 	return (
-		<section className='max-w-[800px] mx-auto'>
+		<section className='max-w-[1600px] mx-auto'>
 		
 		{/* <div className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 " > */}
-		<div className=""  >
+		<div >
 			<Zoom {...zoomInProperties}>
 				{products.product.map((each, index) => (
-					<div key={index} className="flex justify-center w-full h-full pt-3">
+					<div key={index} className="flex justify-center w-full h-full mt-3">
 						<Image	
 							className="rounded-lg shadow-md object-fill"
                             src={each.images[0].url}
-                            width={800}
-                            height={400}
+                            width={1600}
+                            height={800}
 						/>
 					</div>
 				))}

@@ -9,6 +9,7 @@ import Image from "next/image";
 import InformItemIndex from "../components/product/InformItemIndex";
 import VideoPlayer from "../components/VideoPlayer";
 import Slideshow from "../components/Slideshow";
+import Footer from "../components/footer"
 
 const index = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -45,14 +46,66 @@ const index = (props) => {
         <title>Home - CALLLAB</title>
       </Head>
       <VideoPlayer />
-      <section className="w-full h-auto">
-        <Slideshow product={products} />
-      </section>
 
-      <div className="container mb-5">
-        <h1 className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl font-extrabold text-center text-gray-900 pt-4">
-          ข่าวประชาสัมพันธ์
-        </h1>
+      <div id="services" class="services-container">
+        <div class="service-header">
+            <h2>OUR SERVICES</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quia minus quod aliquid.</p>
+        </div>
+              
+        <div class="service-card-container">
+            <div class="service-cards">
+              <i className="fas m1">
+                <img className="fas  h-12 w-12" src={"/images/Artboard 5.png"}/>
+              </i>
+                <h3>Content Writing</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+            <div class="service-cards">
+                <i class="fas m2">
+                <img className="fas  h-12 w-12" src={"/images/Artboard 6.png"}/>
+                </i>
+                <h3>Web Developement</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+            <div class="service-cards">
+            <i class="fas m3">
+                <img className="fas  h-12 w-12" src={"/images/Artboard 7.png"}/>
+                </i>
+                <h3>Graphic Design</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+            <div class="service-cards">
+            <i class="fas m4">
+                <img className="fas  h-12 w-12" src={"/images/Artboard 8.png"}/>
+                </i>
+                <h3>UI/UX Design</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+            <div class="service-cards">
+            <i class="fas m5">
+                <img className="fas  h-12 w-12" src={"/images/Artboard 9.png"}/>
+                </i>
+                <h3>App Development</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+            <div class="service-cards">
+                <i class="fas fa-briefcase"></i>
+                <h3>Digital Marketing</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vitae accusantium voluptates consectetur adipisci a obcaecati.</p>
+            </div>
+        </div>
+    </div>
+    {/* <section className="w-full h-auto">
+        <Slideshow product={products} />
+      </section> */}
+      <div id="blog" class="blog-container">
+        <div class="blog-header">
+            <h2>ข่าวประชาสัมพันธ์</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
+        </div>
+    
+        <div class="container">
         <div className=" lg:max-w-[50%] mx-auto">
         <div className="iframe-container">
           <iframe
@@ -66,11 +119,12 @@ const index = (props) => {
         </div>
         </div>
         <div className="content-wrapper ">
-          {Informs.slice(0, 3).map((product) => (
+          {Informs.slice(0, 4).map((product) => (
             <InformItemIndex key={product._id} product={product} />
           ))}
         </div>
-      </div>
+        </div>
+    </div>
     </div>
   );
 };

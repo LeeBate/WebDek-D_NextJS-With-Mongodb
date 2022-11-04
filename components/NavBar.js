@@ -227,24 +227,24 @@ function NavBar() {
 
   return (
     <>
-      <div className="min-h-full">
-        <Disclosure as="nav" className="bg-[#465A93]">
+    <header>
+        <Disclosure as="nav" className="bg-[#465A93] z-auto">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
-                <div className="flex h-16 items-center justify-between">
+                <div className="flex h-16 md:h-24 items-center justify-between">
                   <div className="flex items-center">
-                    <div className="flex-shrink w-auto">
+                    <div className="flex-shrink w-auto mr-10">
                       <a href="/">
                         <img
-                          className="h-16 w-24 cursor-pointer aspect-square"
-                          src={"/images/CALLLAB.png"}
+                          className="h-8 w-full md:h-16 cursor-pointer aspect-square"
+                          src={"/images/callab2.png"}
                           alt="logo"
                         />
                       </a>
                     </div>
                     <div className="hidden lg:block">
-                      <div className="ml-10 flex items-baseline space-x-4">
+                      <div className="flex items-baseline space-x-4">
                         {navigation1.map((item) => (
                           <a
                             key={item.name}
@@ -292,7 +292,7 @@ function NavBar() {
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button className="inline-flex w-full justify-center  px-4 py-2 rounded-md text-base font-medium text-white hover:bg-gray-700 hover:text-white">
+                            <Menu.Button className="inline-flex w-full justify-center  px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 hover:text-white">
                               เกี่ยวกับเรา
                               <ChevronDownIcon
                                 className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -499,7 +499,8 @@ function NavBar() {
             </>
           )}
         </Disclosure>
-      </div>
+
+      </header>
     </>
   );
 }

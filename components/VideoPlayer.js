@@ -1,17 +1,16 @@
 import React from 'react'
-import SwiperCore, { Autoplay } from "swiper";
 
 function VideoPlayer() {
-    SwiperCore.use([Autoplay]);
-  return (<>
+  return (
+  <>
 
-  <section className='max-w-full'>
+  <section className='max-w-full max-h-full min-h-screen'>
     <div>
       <video
         autoPlay
         loop
         muted
-        className="w-full max-h-[50%] aspect-video"
+        className="w-full aspect-video "
       >
         <source src="./introvideo.mp4" type="video/mp4" />
       </video>

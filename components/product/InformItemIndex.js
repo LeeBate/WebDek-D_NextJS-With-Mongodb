@@ -34,8 +34,8 @@ const InformItem = ({ product, handleCheck }) => {
    
 
 <div class="news-card">
-    <a href={`Inform/${product._id}`} class="news-card__card-link"></a>
-    <img src={product.images[0].url} alt="" ></img>
+    
+    <img className=" object-fill" src={product.images[0].url} alt="" />
     <div class="news-card__text-wrapper">
       <h2 class="news-card__title line-clamp-2">{product.title}</h2>
       <div class="news-card__post-date">{ConvertDate(product.createdAt)}</div>

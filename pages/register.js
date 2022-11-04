@@ -70,7 +70,7 @@ return dispatch({ type: 'NOTIFY', payload: {} })
           <section className="vh-100 bg-[#f1f1f1]" >
             <div className="container py-0 h-100">
               <div className="row d-flex justify-center center h-100">
-                <div className="col col-xl-9 col-lg-8 ">
+                <div className="col col-xl-9 col-lg-8 my-auto lg:mt-20">
                   <div className="card rounded-[1rem] mt-5" >
                     <div className="row g-0 items-center pl-4 py-4 ">
                       <div className="col-md-5 col-lg-5 d-none d-md-block">

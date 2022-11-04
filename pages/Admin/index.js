@@ -3,6 +3,7 @@ import {  Grid } from "@mui/material";
 import BlogCard from "../../src/components/dashboard/BlogCard";
 import SalesOverview from "../../src/components/dashboard/SalesOverview";
 import DailyActivity from "../../src/components/dashboard/DailyActivity";
+import ReportAll from "../../src/components/dashboard/ReportAll";
 import ProductPerfomance from "../../src/components/dashboard/ProductPerfomance";
 
 import FullLayout from "../../src/layouts/FullLayout";
@@ -48,6 +49,9 @@ export default function Index() {
       </Grid>
       <Grid item xs={12} lg={12}>
         <SalesOverview />
+      </Grid>
+      <Grid item xs={12} lg={12}>
+        <ReportAll />
       </Grid>
     </Grid>
     </FullLayout> 
