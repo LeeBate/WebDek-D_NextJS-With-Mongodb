@@ -82,7 +82,7 @@ const createProduct = async (req, res) => {
 
         if(!title || !en || !brand || !modelName || !room ||!roomen || !manager||
             !detailCapability || !detailRestrictions  || category === 'all' || images.length === 0 || nameRate.length === 0)
-        return res.status(400).json({err: 'Please add all the fields22.'})
+        return res.status(400).json({err: 'Please add all the fields.'})
 
 
         const newProduct = new Products({

@@ -44,7 +44,7 @@ const index = (props) => {
   return (
     <div>
       <Head>
-        <title>Home - CALLLAB</title>
+        <title>CALLLAB</title>
       </Head>
       <VideoPlayer />
       <Services/>
@@ -54,8 +54,8 @@ const index = (props) => {
       </section> */}
       <div id="blog" className="blog-container">
         <div className="blog-header">
-            <h2>ข่าวประชาสัมพันธ์</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
+            <h2 className="text-lg font-bold md:text-xl">ข่าวประชาสัมพันธ์</h2>
+            <p className="text-base font-medium md:text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
         </div>
     
         <div className="container">

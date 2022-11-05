@@ -93,10 +93,15 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
   return (
 
   <section className="bg-white">
+    <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
     <Head><title>ติดต่อเรา</title></Head>
-  <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
+  <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md mt-20">
       <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">ติดต่อเรา</h2>
-      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">หากไม่ดูเป็นการรบกวนกูจะชวนเธอมารักกัน</p>
+      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-md">หากไม่ดูเป็นการรบกวนกูจะชวนเธอมารักกัน</p>
       <form method='post' onSubmit={sendEmail2}  className="space-y-8">
           <div>
               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">เรื่องติดต่อ</label>

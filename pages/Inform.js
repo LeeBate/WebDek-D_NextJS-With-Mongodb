@@ -61,64 +61,80 @@ const Inform = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="">
       <Head>
-        <title>ข่าวสาร</title>
+        <title>CALLLAB</title>
       </Head>
-      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-        ข่าวประชาสัมพันธ์
-      </h1>
-      <div className="px-4">
-      <FilterNews state={state} />
-      </div>
-      {auth.user && auth.user.role === "admin" && (
-        <div
-          className="delete_all btn btn-danger mt-2"
-          style={{ marginBottom: "-10px" }}
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
+      <div></div>
+      <div className="parallax ">
+        <h1
+          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-white"
+          id="header"
         >
-          <input
-            type="checkbox"
-            checked={isCheck}
-            onChange={handleCheckALL}
-            style={{
-              width: "25px",
-              height: "25px",
-              transform: "translateY(8px)",
-            }}
-          />
+          ข่าวประชาสัมพันธ์
+        </h1>
+      </div>
 
-          <button
-            className="btn btn-danger ml-2"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            onClick={handleDeleteAll}
+      <div className="px-4">
+        <FilterNews state={state} />
+
+        {auth.user && auth.user.role === "admin" && (
+          <div
+            className="delete_all btn btn-danger mt-2"
+            style={{ marginBottom: "-10px" }}
           >
-            ลบข้อมูลทั้งหมด
-          </button>
-        </div>
-      )}
-
-      <div className="products lg:grid-cols-4">
-        {products.length === 0 ? (
-          <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
-        ) : (
-          products.map((product) => (
-            <InformItem
-              key={product._id}
-              product={product}
-              handleCheck={handleCheck}
+            <input
+              type="checkbox"
+              checked={isCheck}
+              onChange={handleCheckALL}
+              style={{
+                width: "25px",
+                height: "25px",
+                transform: "translateY(8px)",
+              }}
             />
-          ))
+
+            <button
+              className="btn btn-danger ml-2"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={handleDeleteAll}
+            >
+              ลบข้อมูลทั้งหมด
+            </button>
+          </div>
+        )}
+
+        <div className="products lg:grid-cols-4">
+          {products.length === 0 ? (
+            <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+          ) : (
+            products.map((product) => (
+              <InformItem
+                key={product._id}
+                product={product}
+                handleCheck={handleCheck}
+              />
+            ))
+          )}
+        </div>
+
+        {props.result < page * 6 ? (
+          ""
+        ) : (
+          <button
+            className="btn btn-outline-info d-block mx-auto mb-4"
+            onClick={handleLoadmore}
+          >
+            เพิ่มเติม
+          </button>
         )}
       </div>
-
-      {
-        props.result < page * 6 ? ""
-        : <button className="btn btn-outline-info d-block mx-auto mb-4"
-        onClick={handleLoadmore}>
-          เพิ่มเติม
-        </button>
-      }
     </div>
   );
 };
@@ -130,9 +146,7 @@ export async function getServerSideProps({ query }) {
   const search = query.search || "all";
 
   const res = await getData(
-    `productNews?limit=${
-      page * 6
-    }&sort=${sort}&title=${search}`
+    `productNews?limit=${page * 6}&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {

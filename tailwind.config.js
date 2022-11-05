@@ -24,17 +24,7 @@ darkMode: 'class',
         },
      },
     },
-    fontSize: {
-      sm: ['14px', '20px'],
-      base: ['16px', '24px'],
-      lg: ['22px', '28px'],
-      xl: ['40px', '40px'],
-      '2xl': ['2rem', {
-        lineHeight: '2rem',
-        letterSpacing: '-0.01em',
-        fontWeight: '500',
-      }],
-    }
+
     
   },
   variants:{

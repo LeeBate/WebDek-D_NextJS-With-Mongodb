@@ -7,7 +7,7 @@ function VideoPlayer() {
   SwiperCore.use([Autoplay]);
   return (
 
-    <div className='ParallaxVideo'>
+    
     <div >
       <video
         autoPlay
@@ -16,10 +16,11 @@ function VideoPlayer() {
         className=" aspect-video"
       >
         <source src="./introvideo.mp4" type="video/mp4" />
-      </video>
       <h1>CALLLAB</h1>
+      </video>
     </div>
-</div>
+
+
   )
 }
 

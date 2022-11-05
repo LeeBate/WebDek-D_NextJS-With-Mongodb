@@ -43,45 +43,14 @@ img {
   width: 100%;
   position: absolute;
 }
+/*required*/
+*:required {
+  border: #dc4e41;
+}
 /* Video */
-.ParallaxVideo{ 
-  height: 1000px;
-  padding-top: 100px; 
-}
-.ParallaxVideo video{ 
-  min-width: 100%;
-  position: fixed;
-  top:0;
-  z-index: -999;
-}
-.ParallaxVideo h1 {
-color: #fff;
-font-size: 76px;
-font-weight: 700;
-text-align: center;
-text-transform: uppercase;
-margin-top: 25%;
-}
-@media only screen and (max-width: 600px) {
-  .ParallaxVideo{ 
-    height: 500px;
-  }
-  .ParallaxVideo video{ 
-    min-width: 100%;
-    height: 500px;
-    position: fixed;
-    top:0;
-    z-index: -999;
-  }
-  .ParallaxVideo h1 {
-    color: #fff;
-    font-size: 40px;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
 
-    }
-}
+
+
 
 /*Loading page  */
 
@@ -319,6 +288,52 @@ html {
   scroll-behavior:smooth;    
 }
 
+/* image Parallax*/
+.bodysec {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.parallax{
+  background-image: url("/images/8.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+
+}
+.text-box{
+height: 600px;
+padding: 50px;
+}
+@media only screen and (max-device-width: 300px) {
+  .parallax {
+      background-attachment: scroll;
+  }
+}
+#header{
+position: absolute;
+top: 50%;
+left: 35%;
+right: 35%;
+-webkit-transform: translateY(-50%);
+-ms-transform: translateY(-50%);
+transform: translateY(-50%);
+}
+.box {
+    @apply
+        bg-indigo-200
+        text-gray-100
+        min-w-full
+        h-32
+        min-h-full
+        rounded;
+}
+/* end */
+
 .hero-container {
 background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.4)), url('https://cdn.pixabay.com/photo/2016/05/24/16/48/mountains-1412683_960_720.png');
 background-size:cover;
@@ -350,6 +365,9 @@ font-size:15px;
 }
 .services-container {
 background:#ffffff;
+}
+.blog-container{
+  margin: 100px;
 }
 .service-header, .why-header, .work-header, .pricing-header, .blog-header, .contact-header {
 text-align:center;

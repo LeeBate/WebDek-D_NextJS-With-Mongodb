@@ -226,7 +226,7 @@ const ProductsManager = (props) => {
     )
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "Please add all the fields111." },
+        payload: { error: "กรุณากรอกข้อมูลให้ครบ" },
       });
 
     dispatch({ type: "NOTIFY", payload: { loading: true } });
@@ -277,8 +277,6 @@ const ProductsManager = (props) => {
 
          return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
-    
-  
   setTabIndex('1');
  dispatch({ type: "NOTIFY", payload: { success: res.msg } });
     
@@ -681,6 +679,7 @@ const ProductsManager = (props) => {
                     ></label>
                     <select
                       id="category"
+                      required
                       onChange={handleChangeInput}
                       className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                     focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "

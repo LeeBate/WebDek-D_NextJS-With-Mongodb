@@ -8,6 +8,7 @@ import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { BeakerIcon } from "@heroicons/react/24/solid";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Toolbar from "@mui/material/Toolbar";
 
 function NavBar() {
   const router = useRouter();
@@ -104,7 +105,7 @@ function NavBar() {
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
-    { name: "บุคลากร", href: "#", current: false },
+    { name: "บุคลากร", href: "/about", current: false },
     { name: "ติดต่อเรา", href: "/contactemail", current: false },
   ];
 

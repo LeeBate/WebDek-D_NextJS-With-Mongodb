@@ -1,12 +1,13 @@
-import Head from 'next/head'
-import { useState, useContext, useEffect } from 'react'
-import {DataContext} from '../store/GlobalState'
+import Head from "next/head";
+import { useState, useContext, useEffect } from "react";
+import { DataContext } from "../store/GlobalState";
 
-import { getData } from '../utils/fetchData'
-import ProductItem from '../components/product/ProductItem'
-import filterSearch from '../utils/filterSearch'
-import {useRouter} from 'next/router'
-import Filter from '../components/Filter'
+import { getData } from "../utils/fetchData";
+import ProductItem from "../components/product/ProductItem";
+import filterSearch from "../utils/filterSearch";
+import { useRouter } from "next/router";
+import Filter from "../components/Filter";
+import { Center } from "@chakra-ui/react";
 
 const machinery = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -55,81 +56,95 @@ const machinery = (props) => {
     dispatch({ type: "ADD_MODAL", payload: deleteArr });
   };
 
-   const handleLoadmore = () => {
+  const handleLoadmore = () => {
     setPage(page + 1);
     filterSearch({ router, page: page + 1 });
   };
 
-  return(
-    <div className="container">
+  return (
+    <div className="">
       <Head>
-        <title>เครื่องมือวิทยาศาสตร์</title>
+        <title>CALLLAB</title>
       </Head>
-      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-        เครื่องมือวิทยาศาสตร์
-      </h1>
-      <Filter state={state} />
-
-      {auth.user && auth.user.role === "admin" && (
-        <div
-          className="delete_all btn btn-danger mt-2"
-          style={{ marginBottom: "-10px" }}
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
+      <div></div>
+      <div className="parallax ">
+        <h1
+          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-white"
+          id="header"
         >
-          <input
-            type="checkbox"
-            checked={isCheck}
-            onChange={handleCheckALL}
-            style={{
-              width: "25px",
-              height: "25px",
-              transform: "translateY(8px)",
-            }}
-          />
+          เครื่องมือวิทยศาสตร์
+        </h1>
+      </div>
 
-          <button
-            className="btn btn-danger ml-2"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            onClick={handleDeleteAll}
+      <div className="px-4">
+        <Filter state={state} />
+
+        {auth.user && auth.user.role === "admin" && (
+          <div
+            className="delete_all btn btn-danger mt-2"
+            style={{ marginBottom: "-10px" }}
           >
-            ลบข้อมูลทั้งหมด
-          </button>
-        </div>
-      )}
-
-<div className="products lg:grid-cols-4">
-        {products.length === 0 ? (
-         
-          <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
-        ) : (
-          products.map((product) => (
-            <ProductItem
-              key={product._id}
-              product={product}
-              handleCheck={handleCheck}
+            <input
+              type="checkbox"
+              checked={isCheck}
+              onChange={handleCheckALL}
+              style={{
+                width: "25px",
+                height: "25px",
+                transform: "translateY(8px)",
+              }}
             />
-          ))
+
+            <button
+              className="btn btn-danger ml-2"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={handleDeleteAll}
+            >
+              ลบข้อมูลทั้งหมด
+            </button>
+          </div>
+        )}
+
+        <div className="products lg:grid-cols-4">
+          {products.length === 0 ? (
+            <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+          ) : (
+            products.map((product) => (
+              <ProductItem
+                key={product._id}
+                product={product}
+                handleCheck={handleCheck}
+              />
+            ))
+          )}
+        </div>
+
+        {props.result < page * 6 ? (
+          ""
+        ) : (
+          <button
+            className="btn btn-outline-info d-block mx-auto mb-4"
+            onClick={handleLoadmore}
+          >
+            เพิ่มเติม
+          </button>
         )}
       </div>
-      
-      {
-        props.result < page * 6 ? ""
-        : <button className="btn btn-outline-info d-block mx-auto mb-4"
-        onClick={handleLoadmore}>
-          เพิ่มเติม
-        </button>
-      }
-    
     </div>
   );
 };
 
-
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({ query }) {
   const page = query.page || 1;
-  const category = query.category || 'all';
-  const sort = query.sort || '';
-  const search = query.search || 'all';
+  const category = query.category || "all";
+  const sort = query.sort || "";
+  const search = query.search || "all";
 
   const res = await getData(
     `product?limit=${
@@ -140,11 +155,9 @@ export async function getServerSideProps({query}) {
   return {
     props: {
       products: res.products,
-      result: res.result
+      result: res.result,
     }, // will be passed to the page component as props
   };
 }
 
 export default machinery;
-
-
