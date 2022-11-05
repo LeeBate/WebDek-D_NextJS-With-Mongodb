@@ -200,11 +200,15 @@ const DetailProduct = (props, query) => {
 
   return (
     <section className="p-1">
-      
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
         <Head>
           <title>{product.title}</title>
         </Head>
-        <div className="flex flex-col bg-indigo-100 mt-24  rounded-xl mx-1 sm:mx-4 md:mx-14 xl:mx-24">
+        <div className="flex flex-col bg-indigo-100 mt-20 xl:mt-24 2xl:mt-24  rounded-xl mx-1 sm:mx-4 md:mx-14 xl:mx-24">
           <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
             <h1 className="text-lg md:text-xl ">
               {product.en}
@@ -216,7 +220,7 @@ const DetailProduct = (props, query) => {
               <img
                 src={product.images[tab].url}
                 alt={product.images[tab].url}
-                className="img-thumbnail rounded mt-4 w-[250px] h-[250px] md:w-full md:h-[600px] xl:w-[900vh] xl:h-[ุ600px]"
+                className="img-thumbnail object-fill rounded mt-4 w-full h-[250px] md:w-full md:h-[600px] lg:w-full lg:h-[ุ600px] xl:w-[400vh] xl:h-[ุ600px] 2xl:w-[400vh] 2xl:h-[ุ600px]"
               />
 
               <div className="row mx-0 mt-3 mb-4" style={{ cursor: "pointer" }}>
@@ -288,7 +292,7 @@ const DetailProduct = (props, query) => {
           </div>
         </div>
 
-        <div className="text-xl sm:text-lg mx-7 xl:mx-22 mt-8 mb-3 ">
+        <div className="text-base sm:text-lg mx-7 xl:mx-22 mt-8 mb-3 ">
           <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>
         <div className="mx-1 md:mx-14 xl:mx-24">
@@ -376,7 +380,7 @@ const DetailProduct = (props, query) => {
           หมายเหตุ : เฉพาะเจ้าหน้าที่ทดสอบ ติดต่อสอบถามโดยตรงกับเจ้าหน้าที่
         </p>
 
-        <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5">
+        <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
           <button
             type="button"
             className=" rounded-xl bg-green-700 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
@@ -406,11 +410,10 @@ const DetailProduct = (props, query) => {
               type="button"
               // data-toggle="modal" data-target="#exampleModal"
               onClick={handleRemove}
-              className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+              className=" flex items-center rounded-xl bg-[#ffffffd3] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
             >
               {" "}
-              <BsHeartFill color="fe4141" className="mr-2" />
-              เพิ่มแล้ว
+              <BsHeartFill color="fe4141" className="" />
             </button>
           )}
       </div>

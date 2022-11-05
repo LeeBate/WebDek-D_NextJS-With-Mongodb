@@ -74,12 +74,12 @@ function NavBar() {
         <Link href="/">
           <a className={isActive("/")}>
             <Disclosure.Button>
-              <button
+              <div
                 className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
                 onClick={handleLogout}
               >
                 ออกจากระบบ
-              </button>
+              </div>
             </Disclosure.Button>
           </a>
         </Link>
@@ -91,7 +91,7 @@ function NavBar() {
     { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
   ];
   const navigation2 = [
-    { name: "บริการวิเคราะห์ทดสอบ", href: "#", current: false },
+    { name: "บริการวิเคราะห์ทดสอบ", href: "/#services", current: false },
   ];
   const navigation3 = [
     { name: "ติดตามผลวิเคราะห์ทดสอบ", href: "#", current: false },
@@ -125,7 +125,7 @@ function NavBar() {
                   "block w-full px-4 text-start py-2 text-sm text-gray-700"
                 )}
               >
-                <button>{item.name}</button>
+                <div>{item.name}</div>
               </a>
             )}
           </Menu.Item>
@@ -143,7 +143,7 @@ function NavBar() {
             href={item.href}
             className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
           >
-            <button>{item.name}</button>
+            <div>{item.name}</div>
           </a>
         ))}
       </>
@@ -203,13 +203,6 @@ function NavBar() {
                   {auth.user.email}
                 </div>
               </div>
-              {/* <button
-                type="button"
-                className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-              >
-                <span className="sr-only">View notifications</span>
-                <BellIcon className="h-6 w-6" aria-hidden="true" />
-              </button> */}
             </div>
           </div>
 
@@ -234,12 +227,12 @@ function NavBar() {
           {({ open }) => (
             <>
               <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
-                <div className="flex h-16 md:h-24 items-center justify-between">
+                <div className="flex h-16 md:h-16 lg:h-24 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink w-auto mr-10">
                       <a href="/">
                         <img
-                          className="h-16 w-full md:h-24 cursor-pointer aspect-square"
+                          className="h-16 w-full md:h-16 lg:h-24 cursor-pointer aspect-square"
                           src={"/images/LOGO.png"}
                           alt="logo"
                         />
@@ -264,6 +257,7 @@ function NavBar() {
                         ))}
                         {navigation2.map((item) => (
                           <a
+
                             key={item.name}
                             href={item.href}
                             className={classNames(
@@ -335,13 +329,6 @@ function NavBar() {
                   </div>
                   <div className="hidden lg:block">
                     <div className="ml-4 flex items-center md:ml-6">
-                      {/* <button
-                        type="button"
-                        className="rounded-full hover:bg-[#1A4789] p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                      >
-                        <span className="sr-only">View notifications</span>
-                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                      </button> */}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -407,7 +394,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      <button>{item.name}</button>
+                      <div>{item.name}</div>
                     </Disclosure.Button>
                   ))}
                   {navigation2.map((item) => (
@@ -423,7 +410,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      <button>{item.name}</button>
+                      <div>{item.name}</div>
                     </Disclosure.Button>
                   ))}
                   {navigation3.map((item) => (
@@ -439,7 +426,7 @@ function NavBar() {
                       )}
                       aria-current={item.current ? "page" : undefined}
                     >
-                      <button>{item.name}</button>
+                      <div>{item.name}</div>
                     </Disclosure.Button>
                   ))}
                   <Menu as="div" className="relative ">
@@ -459,7 +446,7 @@ function NavBar() {
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
-                            <button>{item.name}</button>
+                            <div>{item.name}</div>
                           </Disclosure.Button>
                         ))}
                       </Menu.Button>
@@ -472,7 +459,7 @@ function NavBar() {
                           href={item.href}
                           className="block rounded-md px-3 py-1 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white "
                         >
-                          <button>{item.name}</button>
+                          <div>{item.name}</div>
                         </Disclosure.Button>
                       ))}
                     </div>

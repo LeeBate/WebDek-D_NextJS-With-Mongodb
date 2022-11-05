@@ -33,16 +33,16 @@ const InformItem = ({ product, handleCheck }) => {
   return (
    
 
-<div class="news-card">
+<div className="news-card">
     
     <img className=" object-fill" src={product.images[0].url} alt="" />
-    <div class="news-card__text-wrapper">
-      <h2 class="news-card__title line-clamp-2">{product.title}</h2>
-      <div class="news-card__post-date">{ConvertDate(product.createdAt)}</div>
-      <div class="news-card__details-wrapper">
-        <p class="text-base line-clamp-3" >{product.description}&hellip;</p>
-        <a href={`Inform/${product._id}`}>
-        <button class="news-card__read-more">อ่านเพิ่มเติม <i class="fas fa-long-arrow-alt-right"></i></button>
+    <div className="news-card__text-wrapper">
+      <h2 className="news-card__title line-clamp-2">{product.title}</h2>
+      <div className="news-card__post-date">{ConvertDate(product.createdAt)}</div>
+      <div className="news-card__details-wrapper">
+        <p className="text-base line-clamp-3" >{product.description}&hellip;</p>
+        <a aria-hidden href={`Inform/${product._id}`}>
+        <button className="news-card__read-more">อ่านเพิ่มเติม <i aria-hidden className="fas fa-long-arrow-alt-right"></i></button>
         </a>
       </div>
     </div>
