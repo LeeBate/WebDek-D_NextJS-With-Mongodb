@@ -106,7 +106,7 @@ const Profile = () => {
   return (
     <div className="profile_page">
       <Head>
-        <title>โปรไฟล์</title>
+        <title>CALLLAB</title>
       </Head>
       <style jsx global>{`
         footer {

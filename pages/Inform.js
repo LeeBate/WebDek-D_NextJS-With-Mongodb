@@ -71,9 +71,9 @@ const Inform = (props) => {
         }
       `}</style>
       <div></div>
-      <div className="parallax ">
+      <div className="parallax-new">
         <h1
-          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-white"
+          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-gray-900"
           id="header"
         >
           ข่าวประชาสัมพันธ์

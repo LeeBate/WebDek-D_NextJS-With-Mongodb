@@ -295,6 +295,56 @@ html {
 }
 
 .parallax{
+  background-image: url("/images/12.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+.parallax-new{
+  background-image: url("/images/Artboard 1.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+.parallax-1{
+  background-image: url("/images/1.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+.parallax-2{
+  background-image: url("/images/kme.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+.parallax-3{
+  background-image: url("/images/k.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+.parallax-4{
   background-image: url("/images/8.png");
   min-height: 550px; 
   background-attachment: fixed;
@@ -303,8 +353,18 @@ html {
   background-size: cover;
   margin: 0;
   position:relative;
-
 }
+.parallax-5{
+  background-image: url("/images/w.png");
+  min-height: 550px; 
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0;
+  position:relative;
+}
+
 .text-box{
 height: 600px;
 padding: 50px;

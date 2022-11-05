@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Filter from "../components/Filter";
 import { Center } from "@chakra-ui/react";
 
-const machinery = (props) => {
+const Machinery = (props) => {
   const [products, setProducts] = useState(props.products);
 
   const [isCheck, setIsCheck] = useState(false);
@@ -66,11 +66,7 @@ const machinery = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
+      
       <div></div>
       <div className="parallax ">
         <h1
@@ -160,4 +156,4 @@ export async function getServerSideProps({ query }) {
   };
 }
 
-export default machinery;
+export default Machinery;

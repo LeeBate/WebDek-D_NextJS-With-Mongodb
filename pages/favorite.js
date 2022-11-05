@@ -89,7 +89,7 @@ const Favorite = (props) => {
   return (
     <div className="container">
       <Head>
-        <title>รายการโปรด</title>
+        <title>CALLLAB</title>
       </Head>
       <style jsx global>{`
         footer {

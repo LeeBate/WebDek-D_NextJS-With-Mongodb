@@ -60,7 +60,7 @@ return dispatch({ type: 'NOTIFY', payload: {} })
     return(
       <div>
         <Head>
-          <title>สมัครสมาชิก</title>
+          <title>CALLLAB</title>
         </Head>
         <style jsx global>{`
         footer {
@@ -88,24 +88,24 @@ return dispatch({ type: 'NOTIFY', payload: {} })
                         </div>
                         <div className="form-outline mb-2">
                           <label className="form-label" htmlFor="form2Example17">ชื่อ</label>
-                          <input type="text" id="form2Example17" className="form-control form-control-lg" name="name" value={name} onChange={handleChangeInput} />
+                          <input type="text"  className="form-control form-control-lg" name="name" value={name} onChange={handleChangeInput} />
                           
                         </div>
 
                         <div className="form-outline mb-2">
                           <label className="form-label" htmlFor="form2Example17">อีเมล์</label>
-                          <input type="email" id="form2Example17" className="form-control form-control-lg" name="email" value={email} onChange={handleChangeInput} />
+                          <input type="email"  className="form-control form-control-lg" name="email" value={email} onChange={handleChangeInput} />
                         </div>
 
                         <div className="form-outline mb-2">
                         <label className="form-label" htmlFor="form2Example27">รหัสผ่าน</label>
-                        <input type="password" id="form2Example27" className="form-control form-control-lg" name="password" value={password} onChange={handleChangeInput} />
+                        <input type="password"  className="form-control form-control-lg" name="password" value={password} onChange={handleChangeInput} />
                         
                         </div>
 
                         <div className="form-outline mb-3">
                         <label className="form-label" htmlFor="form2Example27">ยืนยันรหัสผ่าน</label>
-                        <input type="password" id="form2Example27" className="form-control form-control-lg" name="cf_password" value={cf_password}   onChange={handleChangeInput} />
+                        <input type="password"  className="form-control form-control-lg" name="cf_password" value={cf_password}   onChange={handleChangeInput} />
                         
                         </div>
                         

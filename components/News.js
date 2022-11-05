@@ -3,16 +3,11 @@ import React from "react";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../store/GlobalState";
 import { getData } from "../utils/fetchData";
-import filterSearch from "../utils/filterSearch";
 import { useRouter } from "next/router";
-import Image from "next/image";
-import InformItemIndex from "../components/product/InformItemIndex";
-import VideoPlayer from "../components/VideoPlayer";
 import Slideshow from "../components/Slideshow";
-import Footer from "../components/footer"
-import Services from '../components/Services';
+import InformItemIndex from "../components/product/InformItemIndex";
 
-const Index = (props) => {
+const News = (props) => {
   const [products, setProducts] = useState(props.products);
   const [Informs, setInforms] = useState(props.Informs);
 
@@ -43,19 +38,13 @@ const Index = (props) => {
 
   return (
     <div>
-      <Head>
-        <title>Home - CALLLAB</title>
-      </Head>
-      <VideoPlayer />
-      <Services/>
-     
     {/* <section className="w-full h-auto">
         <Slideshow product={products} />
       </section> */}
       <div id="blog" className="blog-container">
         <div className="blog-header">
-            <h2 className="text-lg font-bold md:text-xl lg:text-4xl">ข่าวประชาสัมพันธ์</h2>
-            <p className='text-base font-medium md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
+            <h2>ข่าวประชาสัมพันธ์</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
         </div>
     
         <div className="container">
@@ -78,7 +67,6 @@ const Index = (props) => {
         </div>
         </div>
     </div>
-    <Footer/>
     </div>
   );
 };
@@ -105,4 +93,4 @@ export async function getServerSideProps({ query }) {
   };
 }
 
-export default Index;
+export default News;

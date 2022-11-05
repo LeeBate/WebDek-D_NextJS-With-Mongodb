@@ -54,7 +54,7 @@ const Signin = () => {
   return (
     <div>
       <Head>
-        <title>เข้าสู่ระบบ</title>
+        <title>CALLLAB</title>
       </Head>
       <style jsx global>{`
         footer {

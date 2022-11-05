@@ -126,14 +126,7 @@ export default function newslatter() {
             </div>
           </div>
         </div>
-      </div><Box sx={{ p: 1, textAlign: "center",background:'#465A93' }}>
-          <Typography className="text-white">
-            © 2022 All rights reserved by {""}
-            <Link href="/">
-              <a className=" hover:text-gray-300">CALLLAB</a>
-            </Link>
-          </Typography>
-        </Box>
+      </div>
     </div>
   );
 }
