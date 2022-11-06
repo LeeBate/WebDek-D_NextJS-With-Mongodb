@@ -284,6 +284,9 @@ const SlideManager = (props) => {
           display: none;
         }
       `}</style>
+      <Head>
+        <title>CALLLAB</title>
+      </Head>
       <FullLayout>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={tabIndex} isFitted variant="enclosed">
@@ -412,6 +415,7 @@ const SlideManager = (props) => {
                 </section>
               </div>
             </TabPanel>
+
             <TabPanel value="1">
               <div className="container">
                 <Head>
@@ -450,8 +454,9 @@ const SlideManager = (props) => {
                   {Slides.length === 0 ? (
                     <h2>No Slides</h2>
                   ) : (
-                    Slides.map((product) => (
+                    Slides.map((product,ict) => (
                       <ul
+                      key={ict}
                         className="card bg-sky-100/75"
                         style={{ width: "18rem" }}
                       >

@@ -33,11 +33,6 @@ const DetailInform = (props) => {
     return(
         <div className="mb-5">
         <div className="mt-5">
-        <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
             <Head>
                 <title>{product.title}</title>
             </Head>

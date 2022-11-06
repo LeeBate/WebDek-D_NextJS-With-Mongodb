@@ -48,7 +48,15 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(auth).length !== 0) router.push("/");
+    if (Object.keys(auth).length !== 0) 
+    {
+      if(!auth.user || auth.user.role !== "admin"){
+        router.push("/");
+      }else{
+        router.push("/Admin");
+      }
+      
+    }
   }, [auth]);
 
   return (
@@ -56,11 +64,6 @@ const Signin = () => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
       <section className="vh-100 bg-[#f1f1f1]">
         <div className="container py-0 h-100">
           <div className="row d-flex justify-center items h-100">

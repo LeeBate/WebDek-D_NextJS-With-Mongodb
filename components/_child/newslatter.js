@@ -118,9 +118,9 @@ export default function newslatter() {
                       
                     </div>
                   </div>
-                  <div className="absolute bottom-14 right-4 ">
+                  <div className="absolute bottom-20 right-4 ">
                         <FaFacebookSquare size={40} color={"#1a4789"} />
-                      </div>
+                  </div>
                 </div>
               </Link>
             </div>

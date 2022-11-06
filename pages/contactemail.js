@@ -93,11 +93,6 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
   return (
 
   <section className="bg-white">
-    <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
     <Head><title>CALLLAB</title></Head>
   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md mt-20">
       <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">ติดต่อเรา</h2>

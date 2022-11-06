@@ -13,12 +13,6 @@ const Users = () => {
   if (!auth.user) return null;
   return (
     <ThemeProvider theme={theme}>
-      <style jsx global>{`
-        Nav {
-          display: none;
-        }
-        
-      `}</style>
       <FullLayout>
         <div className="table-responsive">
           <Head>

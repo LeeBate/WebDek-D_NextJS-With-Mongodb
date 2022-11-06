@@ -65,11 +65,7 @@ const Inform = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
+      
       <div></div>
       <div className="parallax-new">
         <h1

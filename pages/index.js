@@ -44,7 +44,7 @@ const Index = (props) => {
   return (
     <div>
       <Head>
-        <title>Home - CALLLAB</title>
+        <title>CALLLAB</title>
       </Head>
       <VideoPlayer />
       <Services/>
@@ -52,13 +52,12 @@ const Index = (props) => {
     {/* <section className="w-full h-auto">
         <Slideshow product={products} />
       </section> */}
-      <div id="blog" className="blog-container">
+      <div id="blog" className="services-container">
         <div className="blog-header">
             <h2 className="text-lg font-bold md:text-xl lg:text-4xl">ข่าวประชาสัมพันธ์</h2>
             <p className='text-base font-medium md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
         </div>
     
-        <div className="container">
         <div className=" lg:max-w-[50%] mx-auto">
         <div className="iframe-container">
           <iframe
@@ -77,7 +76,6 @@ const Index = (props) => {
           ))}
         </div>
         </div>
-    </div>
     <Footer/>
     </div>
   );

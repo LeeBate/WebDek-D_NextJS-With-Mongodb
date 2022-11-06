@@ -12,7 +12,7 @@ const InformItem = ({product, handleCheck}) => {
             <>
                 <Link href={`Inform/${product._id}`}>
                     <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>ดูข้อมู,</a>
+                    style={{marginRight: '5px', flex: 1}}>ดูข้อมูล</a>
                 </Link>
                 {/* <button className="btn btn-success"
                 style={{marginLeft: '5px', flex: 1}}

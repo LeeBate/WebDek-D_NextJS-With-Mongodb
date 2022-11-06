@@ -12,13 +12,9 @@ export default function About() {
         <Head>
           <title>CALLLAB</title>
         </Head>
-        <style jsx global>{`
-          footer {
-            display: none;
-          }
-        `}</style>
+        
       </section>
-      <section>
+      <section >
         <div className=" font-bold text-center text-md md:text-xl xl:text-3xl lg:text-2xl my-3 bg-[#E8EDFA]  w-5/6 mx-auto  md:w-11/12 xl:w-10/12 rounded-md">
           <p className="  pt-2  mx-3">บุคลากรฝ่ายวิเคราะห์ด้วยเครื่องมือ</p>
           <p className=" pb-2   mx-3">ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>

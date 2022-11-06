@@ -213,6 +213,9 @@ const NewsManager = (props) => {
           display: none;
         }
       `}</style>
+      <Head>
+        <title>CALLLAB</title>
+      </Head>
       <FullLayout>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={tabIndex} isFitted variant="enclosed">

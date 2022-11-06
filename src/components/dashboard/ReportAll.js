@@ -85,36 +85,6 @@ const SalesOverview = (props) => {
 //  console.log("catother",catnameother)
 
   }
-function checkCate(){
-
-console.log(state.categories)
-console.log(resprod)
-
-if(resprod){
-  const final = {};
-  resprod.forEach((v) => {
-    const cat = v.category;
-    if (cat in final) {
-       final[cat]++;
-    } else {
-       final[cat] = 1;
-    }
-  });
-console.log(final)
-let arrayObj = resprod
-arrayObj = arrayObj.map(item => {
-
-  return {
-    name: item.name,
-    cate: item.category
-  };
-});
-console.log(arrayObj)
-    
-console.log("arrayObj = " + JSON.stringify(arrayObj));
-
-}
-}
   function checkUser(user){
  
     return user.role == "user";

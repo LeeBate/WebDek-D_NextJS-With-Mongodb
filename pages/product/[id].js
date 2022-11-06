@@ -200,11 +200,6 @@ const DetailProduct = (props, query) => {
 
   return (
     <section className="p-1">
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
         <Head>
           <title>{product.title}</title>
         </Head>

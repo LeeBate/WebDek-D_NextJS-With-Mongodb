@@ -21,11 +21,7 @@ export default function Index() {
     <ThemeProvider theme={theme}> 
     
      <FullLayout> 
-     <style jsx global>{`
-        Nav {
-          display: none;
-        }
-      `}</style>
+     
       <style jsx global>{`
         footer {
           display: none;
@@ -33,7 +29,7 @@ export default function Index() {
       `}</style>
       
      <Head>
-        <title>แดชบอร์ด</title>
+        <title>CALLLAB</title>
     </Head>
     <Grid container spacing={0}>
       
@@ -50,9 +46,9 @@ export default function Index() {
       <Grid item xs={12} lg={12}>
         <SalesOverview />
       </Grid>
-      <Grid item xs={12} lg={12}>
+      {/* <Grid item xs={12} lg={12}>
         <ReportAll />
-      </Grid>
+      </Grid> */}
     </Grid>
     </FullLayout> 
      </ThemeProvider>

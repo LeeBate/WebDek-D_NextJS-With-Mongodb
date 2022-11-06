@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Reserved() {
   return (
-    <footer>
+    <footer className="mt-4">
       <Box sx={{ p: 1, textAlign: "center", background: "#465A93" }}>
         <Typography className="text-white">
           © 2022 All rights reserved by {""}

@@ -108,12 +108,6 @@ const Profile = () => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
-
       <section className=" flex items-center justify-center row text-secondary my-3 ">
         <div className=" mt-2">
           {Object.keys(auth).length !== 0 ? (

@@ -9,11 +9,6 @@ export default function Service2() {
             </Head>
 
             <div className="main mt-96">
-            <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
       <div></div>
       <div className="parallax-1">
         <h1

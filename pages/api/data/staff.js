@@ -36,5 +36,23 @@ export const Staff = [
         "email": " komsun@sut.ac.th",
         "phone": "2215",
         "fax": "3260"
+    },
+    {
+        "id":   3,
+        "img": "http://203.158.7.33/profiles/photo/236121.jpg",
+        "name": "นางกอบแก้ว เติมสายทอง",
+        "role": "เจ้าหน้าที่บริหารงานทั่วไป",
+        "email": "kobkaew@sut.ac.th",
+        "phone": "3238",
+        "fax": "3260"
+    },
+    {
+        "id":   4,
+        "img": "http://203.158.7.33/profiles/photo/236121.jpg",
+        "name": "นายคมสันต์ ต่ายทรัพย์",
+        "role": "นักวิทยาศาสตร์",
+        "email": " komsun@sut.ac.th",
+        "phone": "2215",
+        "fax": "3260"
     }
   ]

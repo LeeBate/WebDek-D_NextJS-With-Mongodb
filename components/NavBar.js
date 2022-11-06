@@ -221,7 +221,6 @@ function NavBar() {
 
   return (
     <>
-    
     <header>
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-[#465A93] z-auto">

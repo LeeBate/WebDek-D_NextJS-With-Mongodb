@@ -51,6 +51,9 @@ import React from 'react'
             <p>ตรวจวิเคราะห์น้ำประเภทต่าง ๆ เช่น นํ้าดื่ม น้ำเสีย ด้วยวิธีตามมาตรฐานสากล</p></a>
         </div>
     </div>
+    <section className='mt-[50px]'>
+      <p>55555555</p>
+    </section>
 </div>
   )
 }

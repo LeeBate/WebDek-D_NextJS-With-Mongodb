@@ -124,7 +124,7 @@ const Profile = () => {
       <FullLayout>
         <div className="profile_page">
           <Head>
-            <title>โปรไฟล์</title>
+            <title>CALLLAB</title>
           </Head>
 
           <section className=" flex items-center justify-center row text-secondary my-3 ">
