@@ -441,10 +441,12 @@ grid-gap:40px;
 }
 
 .service-cards {
-text-align:center;
+text-align:left;
 padding:30px 20px;
 border:1px solid lightgrey;
 border-radius: 5px;
+background: rgb(255,255,255);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(226,234,255,1) 100%, rgba(0,212,255,1) 100%);
 }
 .why-cards {
 display: flex;
