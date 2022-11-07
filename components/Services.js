@@ -11,6 +11,7 @@ import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 import { Avatar } from "@mui/material";
+import {  Grid } from "@mui/material";
 
 function Services() {
   //TAB Change
@@ -31,7 +32,8 @@ function Services() {
             ศูนย์เครื่อมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยี
           </p>
         </div>
-
+        <Grid container spacing={0}>
+        <Grid item xs={12} lg={12}>
         <Box sx={{ width: "100%", typography: "body1" }}>
           <TabContext value={tabIndex} isFitted variant="enclosed">
             <Box
@@ -84,14 +86,15 @@ function Services() {
             <div className="service-card-container">
               <TabPanel value="0">
                 <div className="service-cards">
-                  <div className=" flex">
-                    <img className="h-80 w-80" src={"/images/2_6.png"} />
-                    <div className=" mx-5 mt-3">
-                      <h3 className=" text-3xl leading-relaxed">
-                        มีบริการกล้องถ่ายภาพสมรรถภามพสูง เช่น
-                        กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง
+                  <div className="flex flex-col lg:flex-row">
+                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <div className=" mx-2 mt-3">
+                      <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
+                        มีบริการกล้องถ่ายภาพสมรรถภามพสูง เช่น 
+                        <a class="text-pink-500"> กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง</a>
+                        
                       </h3>
-                      <ul class="list-disc text-lg ml-10 leading-relaxed">
+                      <ul className="list-disc text-lg ml-10 leading-relaxed">
                         <li>
                           วิเคราะห์ปริมาณความร้อน,
                           ค่าความจุความร้อนจำเพาะและจุดหลอมเหลวของตัวอย่างต่างๆ
@@ -104,8 +107,8 @@ function Services() {
                           วิเคราะห์องค์ประกอบทางเคมีของวัสดุ ด้วยเทคนิค EDS
                         </li>
                       </ul>
-                      <div className=" pt-3">
-                        <button className=" bg-[#4761AD] text-white px-2 py-2 rounded-xl">
+                      <div className="flex pt-3 justify-center items-center">
+                        <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
                           แบบฟอร์มขอรับบริการ
                         </button>
                       </div>
@@ -115,15 +118,15 @@ function Services() {
               </TabPanel>
               <TabPanel value="1">
                 <div className="service-cards">
-                  <div className=" flex">
-                    <img className="h-80 w-80" src={"/images/2_6.png"} />
+                  <div className=" flex flex-col lg:flex-row">
+                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
                     <div className=" mx-5 mt-3">
                       <h3 className=" text-3xl">
                         มีให้บริการวิเคราะห์ ทดสอบทางด้านเคมีและชีวเคมี
                         เครื่องมือวิเคราะห์ขั้นสูง
                         แบ่งประเภทการวิเคราะห์ทดสอบได้ดังนี้ เช่น
                       </h3>
-                      <ul class="list-disc text-lg ml-10">
+                      <ul className="list-disc text-lg ml-10">
                         <li>
                           การวิเคราะห์องค์ประกอบของธาตุ เช่น
                           วิเคราะห์สารปนเปื้อนประเภทโลหะหนักในตัวอย่างน้ำดื่ม
@@ -150,8 +153,8 @@ function Services() {
                           ตรวจหาองค์ประกอบและโครงสร้างของผลึก ตรวจหาพันธะเคมี
                         </li>
                       </ul>
-                      <div className="  pt-3">
-                        <button className=" bg-[#4761AD] text-white px-2 py-2 rounded-xl">
+                      <div className="  flex pt-3 justify-center items-center">
+                        <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
                           แบบฟอร์มขอรับบริการ
                         </button>
                       </div>
@@ -161,11 +164,11 @@ function Services() {
               </TabPanel>
               <TabPanel value="2">
                 <div className="service-cards">
-                  <div className=" flex">
-                    <img className="h-80 w-80" src={"/images/2_6.png"} />
+                  <div className=" flex flex-col lg:flex-row">
+                    <img className="h-52 md:h-80 md:w-80 lg:h-80 2xl:h-[30rem] 2xl:w-[40rem]  object-cover" src={"/images/2_6.png"} />
                     <div className=" mx-5 mt-3">
                       <h3 className=" text-3xl">บริการทดสอบตัวอย่างทางกายภาพ เช่น</h3>
-                      <ul class="list-disc text-lg ml-10">
+                      <ul className="list-disc text-lg ml-10">
                         <li>ทดสอบความชื้น เถ้า พื้นที่ผิว ความพรุน</li>
                         <li>
                           วัดขนาดของอนุภาค วัดค่าพลังงานความร้อน
@@ -176,8 +179,8 @@ function Services() {
                           ด้วยการเพิ่มหรือลดอุณหภูมิแก่ตัวอย่าง
                         </li>
                       </ul>
-                      <div className="  pt-3">
-                        <button className=" bg-[#4761AD] text-white px-2 py-2 rounded-xl">
+                      <div className="  flex pt-3 justify-center items-center">
+                        <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
                           แบบฟอร์มขอรับบริการ
                         </button>
                       </div>
@@ -187,8 +190,8 @@ function Services() {
               </TabPanel>
               <TabPanel value="3">
                 <div className="service-cards">
-                  <div className=" flex">
-                    <img className="h-80 w-80" src={"/images/2_6.png"} />
+                  <div className=" flex flex-col lg:flex-row">
+                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
                     <div className=" mx-5 mt-3">
                       <h3 className=" text-3xl">
                         มีบริการตรวจวิเคราะห์จุลินทรีย์ในตัวอย่างประเภทต่างๆในขอบข่าย
@@ -196,13 +199,13 @@ function Services() {
                         coliform, Escherichia coli, Clostridium perfringens
                         Clostridium botulinum และแบคทีเรียที่ก่อให้เกิดโรคต่างๆ
                       </h3>
-                      <ul class="list-disc text-lg ml-10">
+                      <ul className="list-disc text-lg ml-10">
                         <li>ชุดที่ 1: Aerobic Plate Count+Coliform+E.coli</li>
                         <li>ชุดที่ 2: Acid หรือ High acid canned food</li>
                         <li>ชุดที่ 3: Low acid canned food</li>
                       </ul>
-                      <div className="  pt-3">
-                        <button className=" bg-[#4761AD] text-white px-2 py-2 rounded-xl">
+                      <div className="  flex pt-3 justify-center items-center">
+                        <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
                           แบบฟอร์มขอรับบริการ
                         </button>
                       </div>
@@ -212,15 +215,15 @@ function Services() {
               </TabPanel>
               <TabPanel value="4">
                 <div className="service-cards">
-                  <div className=" flex">
-                    <img className="h-80 w-80" src={"/images/2_6.png"} />
+                  <div className=" flex flex-col lg:flex-row">
+                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
                     <div className=" mx-5 mt-3">
                       <h3 className=" text-3xl">
                         ให้บริการตรวจวิเคราะห์คุณภาพน้ำประเภทต่างๆตามประกาศที่เกี่ยวข้อง
                         เช่น ประกาศกระทรวงสาธารณสุข ประกาศกรมโรงงานอุตสาหกรรม
                         ด้วยวิธีมาตรฐานสากลในขอบข่ายดังต่อไปนี้ เช่น
                       </h3>
-                      <ul class="list-disc text-3xl ml-10">
+                      <ul className="list-disc text-3xl ml-10">
                         <li>Total Hardness, Chloride, Nitrate</li>
                         <li>
                           Total Solids, Suspended Solids, Total Dissolved Solids
@@ -229,8 +232,8 @@ function Services() {
                           pH, COD, BOD, Total Kjeldahl Nitrogen, Grease&Oil
                         </li>
                       </ul>
-                      <div className="  pt-3">
-                        <button className=" bg-[#4761AD] text-white px-2 py-2 rounded-xl">
+                      <div className="  flex pt-3 justify-center items-center">
+                        <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
                           แบบฟอร์มขอรับบริการ
                         </button>
                       </div>
@@ -241,6 +244,8 @@ function Services() {
             </div>
           </TabContext>
         </Box>
+        </Grid>
+        </Grid>
       </div>
     </ThemeProvider>
   );

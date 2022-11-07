@@ -427,12 +427,13 @@ font-size:15px;
 background:#ffffff;
 }
 .blog-container{
-  margin: 100px;
+  background:#ffffff;
 }
 .service-header, .why-header, .work-header, .pricing-header, .blog-header, .contact-header {
 text-align:center;
 margin:1.3em 0;
-padding-bottom:20px;
+padding-top:20px;
+padding-bottom:10px;
 }
 .service-card-container, .why-card-container, .blog-card-container {
 display:grid;
@@ -448,6 +449,14 @@ border-radius: 5px;
 background: rgb(255,255,255);
 background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(226,234,255,1) 100%, rgba(0,212,255,1) 100%);
 }
+.service-cards-inform {
+  text-align:left;
+  padding:30px 20px;
+  /* border:1px solid lightgrey; */
+  border-radius: 5px;
+  /* background: rgb(255,255,255);
+  background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(226,234,255,1) 100%, rgba(0,212,255,1) 100%); */
+  }
 .why-cards {
 display: flex;
 padding:10px;

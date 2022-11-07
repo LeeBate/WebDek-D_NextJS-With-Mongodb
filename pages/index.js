@@ -9,8 +9,9 @@ import Image from "next/image";
 import InformItemIndex from "../components/product/InformItemIndex";
 import VideoPlayer from "../components/VideoPlayer";
 import Slideshow from "../components/Slideshow";
-import Footer from "../components/footer"
-import Services from '../components/Services';
+import Footer from "../components/footer";
+import Services from "../components/Services";
+
 
 const Index = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -47,36 +48,35 @@ const Index = (props) => {
         <title>CALLLAB</title>
       </Head>
       <VideoPlayer />
-      <Services/>
-     
-    {/* <section className="w-full h-auto">
-        <Slideshow product={products} />
-      </section> */}
-      <div id="blog" className="services-container">
-        <div className="blog-header">
-            <h2 className="text-lg font-bold md:text-xl lg:text-4xl">ข่าวประชาสัมพันธ์</h2>
-            <p className='text-base font-medium md:text-lg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa modi ab ut.</p>                
+      <Services />
+      {/* <div className=" lg:max-w-[50%] mx-auto">
+          <div className="iframe-container">
+            <iframe
+              src="https://www.youtube.com/embed/Ww1UCfx2JjE"
+              width="560"
+              height="315"
+              title="แนะนำฝ่ายวิเคราะห์ด้วยเครื่องมือ มทส."
+              frameBorder="0"
+              allowFullScreen
+            ></iframe>
+          </div>
+        </div> */}
+      <div id="services" className="services-container">
+        <div className="service-header">
+          <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
+            ข่าวประชาสัมพันธ์
+          </h2>
+          <p className="text-base font-medium md:text-lg">
+            ศูนย์เครื่อมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยี
+          </p>
         </div>
-    
-        <div className=" lg:max-w-[50%] mx-auto">
-        <div className="iframe-container">
-          <iframe
-            src="https://www.youtube.com/embed/Ww1UCfx2JjE"
-            width="560"
-            height="315"
-            title="แนะนำฝ่ายวิเคราะห์ด้วยเครื่องมือ มทส."
-            frameBorder="0"
-            allowFullScreen
-          ></iframe>
-        </div>
-        </div>
-        <div className="content-wrapper ">
-          {Informs.slice(0, 4).map((product) => (
+        
+          {Informs.slice(0, 3).map((product) => (
             <InformItemIndex key={product._id} product={product} />
           ))}
-        </div>
-        </div>
-    <Footer/>
+
+      </div>
+      <Footer />
     </div>
   );
 };
