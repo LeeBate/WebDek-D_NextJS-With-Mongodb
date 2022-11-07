@@ -91,6 +91,11 @@ const Favorite = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
       <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
         รายการโปรด
       </h1>

@@ -122,11 +122,11 @@ function NavBar() {
               <a
                 href={item.href}
                 className={classNames(
-                  active ? "bg-gray-100 no-underline  w-full text-start" : "",
+                  active ? "bg-gray-100 w-full text-start" : "",
                   "block w-full px-4 text-start py-2 text-sm text-gray-700"
                 )}
               >
-                <div>{item.name}</div>
+                <button>{item.name}</button>
               </a>
             )}
           </Menu.Item>
@@ -155,7 +155,7 @@ function NavBar() {
     return (
       <Menu as="div" className="relative ml-3 ">
         <div>
-          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none ">
             <span className="sr-only">Open user menu</span>
             <img
               className="h-12 w-12 rounded-full"
@@ -223,7 +223,7 @@ function NavBar() {
     <>
     <header>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-[#465A93] z-auto">
+        <Disclosure as="nav" className="bg-[#1a237e] z-auto">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
@@ -246,9 +246,9 @@ function NavBar() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? "bg-gray-900 text-white no-underline"
-                                : "text-white hover:bg-gray-700 hover:text-white no-underline",
-                              "px-3 py-2 rounded-md text-sm font-medium no-underline"
+                              ? "bg-gray-900 text-white"
+                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
+                            "px-3 py-2  text-sm"
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
@@ -262,9 +262,9 @@ function NavBar() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-white hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
+                              ? "bg-gray-900 text-white"
+                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
+                            "px-3 py-2  text-sm"
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
@@ -277,9 +277,9 @@ function NavBar() {
                             href={item.href}
                             className={classNames(
                               item.current
-                                ? "bg-gray-900 text-white"
-                                : "text-white hover:bg-gray-700 hover:text-white",
-                              "px-3 py-2 rounded-md text-sm font-medium"
+                              ? "bg-gray-900 text-white"
+                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
+                            "px-3 py-2  text-sm"
                             )}
                             aria-current={item.current ? "page" : undefined}
                           >
@@ -288,7 +288,7 @@ function NavBar() {
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
-                            <Menu.Button className="inline-flex w-full justify-center  px-4 py-2 rounded-md text-sm font-medium text-white hover:bg-gray-700 hover:text-white">
+                          <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
                               เกี่ยวกับเรา
                               <ChevronDownIcon
                                 className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"

@@ -21,7 +21,11 @@ export default function Index() {
     <ThemeProvider theme={theme}> 
     
      <FullLayout> 
-     
+     <style jsx global>{`
+        Nav {
+          display: none;
+        }
+      `}</style>
       <style jsx global>{`
         footer {
           display: none;

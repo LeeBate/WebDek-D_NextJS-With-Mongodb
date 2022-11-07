@@ -43,17 +43,18 @@ const InformItem = ({ product, handleCheck }) => {
         <Box sx={{ width: "100%", typography: "body1" }}>
           <div className="service-card-container">
             <div className="service-cards-inform">
-              <div className=" flex flex-col lg:flex-row">
+              <div className=" flex flex-col lg:flex-row ">
+                
                 <img
-                  className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                  className="h-52 w-full rounded-xl md:h-96 md:w-full lg:h-80 lg:w-[55vh] xl:h-80 xl:w-[55vh] 2xl:h-[20rem] 2xl:w-[30rem]  object-cover"
                   src={product.images[0].url}
                   alt={product.images[0].url}
                 />
-                <div className=" lg:mx-5 xl:mx-5 2xl:mx-8">
-                  <h3 className=" text-left text-lg font-bold lg:text-3xl">
+                <div className=" sm:mt-3 md:mt-3 lg:mx-8 ">
+                  <h3 className=" text-left text-lg font-bold lg:text-2xl">
                     {product.title}
                   </h3>
-                  <ul className="list-disc text-lg ml-10 line-clamp-5 leading-relaxed">
+                  <ul className=" indent-8 text-lg  line-clamp-5 leading-relaxed">
                     <li>{product.description}</li>
                   </ul>
                   <a aria-hidden href={`Inform/${product._id}`}>

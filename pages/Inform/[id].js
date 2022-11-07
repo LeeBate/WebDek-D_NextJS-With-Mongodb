@@ -38,7 +38,7 @@ const DetailInform = (props) => {
             </Head>
             <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24 mt-24 lg:mt-28">
             <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
-            <div class="absolute left-2/2 -ml-0.5 w-1.5 rounded-md h-24 md:h-20 lg:h-20 bg-gray-600"></div>
+            <div className="absolute left-2/2 -ml-0.5 w-1.5 rounded-md h-24 md:h-20 lg:h-20 bg-gray-600"></div>
             <div > <h1 className="font-blod text-lg md:text-2xl lg:text-3xl  ml-4">{product.title}</h1></div>
             </div>
             <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">

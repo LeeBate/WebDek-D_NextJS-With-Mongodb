@@ -63,7 +63,7 @@ const Index = (props) => {
         </div> */}
       <div id="services" className="services-container">
         <div className="service-header">
-          <h2 className="text-lg font-bold md:text-xl lg:text-4xl">
+          <h2 className="text-lg font-bold md:text-3xl lg:text-4xl">
             ข่าวประชาสัมพันธ์
           </h2>
           <p className="text-base font-medium md:text-lg">

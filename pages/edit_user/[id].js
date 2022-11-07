@@ -94,7 +94,7 @@ const EditUser = () => {
                           ชื่อผู้ใช้
                         </label>
                         <input
-                          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="name"
                           type="text"
                           defaultValue={editUser.name}
@@ -107,7 +107,7 @@ const EditUser = () => {
                           อีเมล์ผู้ใช้
                         </label>
                         <input
-                          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                           id="name"
                           type="text"
                           defaultValue={editUser.email}

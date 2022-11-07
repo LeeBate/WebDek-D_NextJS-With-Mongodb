@@ -4,6 +4,7 @@ import FullLayout from "../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../src/theme/theme";
 import Tab from "@mui/material/Tab";
+import Tabs from '@mui/material/Tabs';
 
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
@@ -48,7 +49,10 @@ function Services() {
               <TabList
                 mb="1em"
                 onChange={handleChange}
-                aria-label="lab API tabs example"
+                variant="scrollable"
+                aria-label="Tab"
+                scrollButtons
+                allowScrollButtonsMobile
               >
                 <Tab
                   icon={<Avatar alt="" src="/images/Artboard-5.ico" />}
@@ -87,11 +91,11 @@ function Services() {
               <TabPanel value="0">
                 <div className="service-cards">
                   <div className="flex flex-col lg:flex-row">
-                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <img className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
                     <div className=" mx-2 mt-3">
                       <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
                         มีบริการกล้องถ่ายภาพสมรรถภามพสูง เช่น 
-                        <a class="text-pink-500"> กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง</a>
+                        <a className="text-pink-500"> กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง</a>
                         
                       </h3>
                       <ul className="list-disc text-lg ml-10 leading-relaxed">
@@ -119,14 +123,14 @@ function Services() {
               <TabPanel value="1">
                 <div className="service-cards">
                   <div className=" flex flex-col lg:flex-row">
-                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
-                    <div className=" mx-5 mt-3">
-                      <h3 className=" text-3xl">
+                    <img className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <div className=" mx-2 mt-3 ">
+                      <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
                         มีให้บริการวิเคราะห์ ทดสอบทางด้านเคมีและชีวเคมี
                         เครื่องมือวิเคราะห์ขั้นสูง
                         แบ่งประเภทการวิเคราะห์ทดสอบได้ดังนี้ เช่น
                       </h3>
-                      <ul className="list-disc text-lg ml-10">
+                      <ul className="list-disc text-lg ml-10 leading-relaxed">
                         <li>
                           การวิเคราะห์องค์ประกอบของธาตุ เช่น
                           วิเคราะห์สารปนเปื้อนประเภทโลหะหนักในตัวอย่างน้ำดื่ม
@@ -163,21 +167,17 @@ function Services() {
                 </div>
               </TabPanel>
               <TabPanel value="2">
-                <div className="service-cards">
+              <div className="service-cards">
                   <div className=" flex flex-col lg:flex-row">
-                    <img className="h-52 md:h-80 md:w-80 lg:h-80 2xl:h-[30rem] 2xl:w-[40rem]  object-cover" src={"/images/2_6.png"} />
-                    <div className=" mx-5 mt-3">
-                      <h3 className=" text-3xl">บริการทดสอบตัวอย่างทางกายภาพ เช่น</h3>
-                      <ul className="list-disc text-lg ml-10">
-                        <li>ทดสอบความชื้น เถ้า พื้นที่ผิว ความพรุน</li>
-                        <li>
-                          วัดขนาดของอนุภาค วัดค่าพลังงานความร้อน
-                          วัดการเปลี่ยนแปลงน้ำหนักของตัวอย่าง
-                        </li>
-                        <li>
-                          วัดการเปลี่ยนแปลงพลังงาน
-                          ด้วยการเพิ่มหรือลดอุณหภูมิแก่ตัวอย่าง
-                        </li>
+                    <img className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <div className=" mx-2 mt-3">
+                      <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
+                      บริการทดสอบตัวอย่างทางกายภาพ เช่น ทดสอบความชื้น เถ้า พื้นที่ผิว ความพรุน วัดขนาดของอนุภาค 
+                      </h3>
+                      <ul className="list-disc text-lg ml-10 leading-relaxed">
+                        <li>วัดค่าพลังงานความร้อน</li>
+                        <li>วัดการเปลี่ยนแปลงน้ำหนักของตัวอย่าง</li>
+                        <li>วัดการเปลี่ยนแปลงพลังงาน ด้วยการเพิ่มหรือลดอุณหภูมิแก่ตัวอย่าง</li>
                       </ul>
                       <div className="  flex pt-3 justify-center items-center">
                         <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
@@ -191,15 +191,15 @@ function Services() {
               <TabPanel value="3">
                 <div className="service-cards">
                   <div className=" flex flex-col lg:flex-row">
-                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
-                    <div className=" mx-5 mt-3">
-                      <h3 className=" text-3xl">
+                    <img className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <div className="mx-2 mt-3">
+                      <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
                         มีบริการตรวจวิเคราะห์จุลินทรีย์ในตัวอย่างประเภทต่างๆในขอบข่าย
                         Aerobic Plate Count, Yeast and Molds Coliform, Fecal
                         coliform, Escherichia coli, Clostridium perfringens
                         Clostridium botulinum และแบคทีเรียที่ก่อให้เกิดโรคต่างๆ
                       </h3>
-                      <ul className="list-disc text-lg ml-10">
+                      <ul className="list-disc text-lg ml-10 leading-relaxed">
                         <li>ชุดที่ 1: Aerobic Plate Count+Coliform+E.coli</li>
                         <li>ชุดที่ 2: Acid หรือ High acid canned food</li>
                         <li>ชุดที่ 3: Low acid canned food</li>
@@ -216,14 +216,14 @@ function Services() {
               <TabPanel value="4">
                 <div className="service-cards">
                   <div className=" flex flex-col lg:flex-row">
-                    <img className="h-52 w-full md:h-72 lg:h-80 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
-                    <div className=" mx-5 mt-3">
-                      <h3 className=" text-3xl">
+                    <img className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover" src={"/images/2_6.png"} />
+                    <div className=" mx-2 mt-3">
+                      <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
                         ให้บริการตรวจวิเคราะห์คุณภาพน้ำประเภทต่างๆตามประกาศที่เกี่ยวข้อง
                         เช่น ประกาศกระทรวงสาธารณสุข ประกาศกรมโรงงานอุตสาหกรรม
                         ด้วยวิธีมาตรฐานสากลในขอบข่ายดังต่อไปนี้ เช่น
                       </h3>
-                      <ul className="list-disc text-3xl ml-10">
+                      <ul className="list-disc text-lg ml-10 leading-relaxed">
                         <li>Total Hardness, Chloride, Nitrate</li>
                         <li>
                           Total Solids, Suspended Solids, Total Dissolved Solids
