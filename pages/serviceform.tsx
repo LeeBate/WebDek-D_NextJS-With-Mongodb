@@ -93,6 +93,7 @@ const Serviceform: NextPage = () => {
               <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
                 แบบฟอร์มขอรับบริการ
               </h2>
+              <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-md">ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
               <form method="post" onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">

@@ -19,9 +19,9 @@ function Layout({children}) {
             <Notify />
             <Modal />
             <div>
-            {!auth.user || auth.user.role !== "admin" ? <NavBar /> : <></>}
+            {/* {!auth.user || auth.user.role !== "admin" ? <NavBar /> : <></>} */}
             </div>
-            {/* <NavBar />  */}
+            <NavBar /> 
             <div className='container'>
             </div>
             {children} 

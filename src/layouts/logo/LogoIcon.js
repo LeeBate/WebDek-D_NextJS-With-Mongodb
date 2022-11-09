@@ -6,9 +6,9 @@ import LogoDark from "../../../assets/images/logos/CALLLAB.png";
 const LogoIcon = () => {
   return (
     <Link href="/">
-      <div className="flex items-center">
-      <img className="w-10 h-10 " src="/favicon.ico"/>
-      <div className="text-white ml-2">CALLLAB</div>
+      <div className="items-center">
+      <img className="w-36 h-15 " src="/images/LOGO.png"/>
+     
       </div>
     </Link>
   );

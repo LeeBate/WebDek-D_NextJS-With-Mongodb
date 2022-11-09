@@ -203,28 +203,38 @@ const DetailProduct = (props, query) => {
         <Head>
           <title>{product.title}</title>
         </Head>
-        <div className="flex flex-col bg-indigo-100 mt-20 xl:mt-24 2xl:mt-24  rounded-xl mx-1 sm:mx-4 md:mx-14 xl:mx-24">
-          <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
-            <h1 className="text-lg md:text-xl ">
-              {product.en}
-            </h1>
-            <h1 className="text-sm md:text-lg ">{product.title}</h1>
-          </div>
-          <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
-            <div className="mx-3 md:mx-auto">
-              <img
-                src={product.images[tab].url}
-                alt={product.images[tab].url}
-                className="img-thumbnail object-fill rounded mt-4 w-full h-[250px] md:w-full md:h-[600px] lg:w-full lg:h-[ุ600px] xl:w-[400vh] xl:h-[ุ600px] 2xl:w-[400vh] 2xl:h-[ุ600px]"
-              />
+      
 
-              <div className="row mx-0 mt-3 mb-4" style={{ cursor: "pointer" }}>
+
+<div class="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
+ 
+ 
+  <div class=" my-auto col-span-3 lg:col-span-5 "> 
+        <div className="text-capitalize font-bold text-4xl ">
+                  <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
+                    {product.en}
+                  </h1>
+                  <h1 className="text-sm md:text-xl ">{product.title}</h1>
+        </div>
+ </div>
+
+    
+  <div class=" col-span-2 pb-0 xl:pb-3 max-h-[589px]  rounded-md row-span-4 bg-white">
+   
+    {/* <div className="grid grid-cols-1 bg-red-400 grid-rows-7 w-full h-full"> */}
+       {/* <div class=" h-full w-full row-span-5"> */}
+        <img  src={product.images[tab].url}
+        alt={product.images[tab].url}
+        className=" object-fill py-3 rounded h-[80%] max-h-[589px] w-auto mx-auto "/>
+        {/* </div> */}
+        {/* <div class="h-full w-full row-span-2"> */}
+        <div className="" style={{ cursor: "pointer" }}>
                 {product.images.map((img, index) => (
                   <img
                     key={index}
                     src={img.url}
                     alt={img.url}
-                    className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(
+                    className={`img-thumbnail rounded ml-2 mb-2 h-12 md:h-18 xl:-h-18 w-20 xl:min-h-[64px] ${isActive(
                       index
                     )}`}
                     // style={{height: '60px', width: '80px'}}
@@ -233,14 +243,15 @@ const DetailProduct = (props, query) => {
                 ))}
                 
               </div>
-              
-            </div>
 
-            <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-1 mb-4">
-              <div className=" mx-1 my-2.5">
-                {/* <h1 className="text-capitalize font-bold text-2xl font-serif ">{product.en}</h1>
-                <h2 className="text font-light text-xl ">{product.title}</h2> */}
-                <div className="flex flex-col">
+        {/* </div> */}
+    {/* </div> */}
+
+  </div>
+  <div class="col-span-3  row-span-2">
+    
+
+  <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
                   <div className="flex flex-row">
                     <p className="my-2 font-bold text-sm md:text-lg">ยี่ห้อ : </p>
                     <p className="my-2 ml-[8px] text-sm md:text-lg">{product.brand}</p>
@@ -250,7 +261,7 @@ const DetailProduct = (props, query) => {
                     <p className="my-2 ml-[8px] text-sm md:text-lg">{product.modelName}</p>
                   </div>
                 </div>
-                <div className="flex flex-col">
+                <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
                   <div className="flex flex-row">
                     <p className="my-2 font-bold text-sm md:text-lg">
                       ห้องปฏิบัติการ (ภาษาไทย) :{" "}
@@ -267,26 +278,44 @@ const DetailProduct = (props, query) => {
                     <p className="my-2 font-bold text-sm md:text-lg">ผู้ดูแลเครื่องมือ : </p>
                     <p className="my-2 ml-[8px] text-sm md:text-lg">{product.manager}</p>
                   </div>
-                  <p className="my-2 font-bold text-sm md:text-lg">รายละเอียดเครื่องมือ :</p>
-                </div>
-                <div className="grid gap-4 grid-cols-2 grid-flow-col">
-                  <div>
-                    <p className="font-semibold text-sm md:text-lg">ความสามารถของเครื่องมือ</p>
-                    <p className="text-sm md:text-lg">{product.detailCapability }</p>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-sm md:text-lg">ข้อจำกัดของเครื่องมือ</p>
-                    <p className="text-sm md:text-lg">{product.detailRestrictions}</p>
-                  </div>
-                </div>
+               
+                </div>             
 
-                <br />
-              </div>
-              <div className=" flex justify-end items-end font-bold">โพสต์เมื่อ {ConvertDate(product.createdAt)} น.</div>
-            </div>
-          </div>
-        </div>
+  </div>
+  <div class="  col-span-3 ml-2 md:ml-3 xl:ml-4 row-span-2">
+ 
 
+    <div className="grid w-full h-full grid-cols-2 gap-4 grid-rows-1">
+ <div class="..."> 
+ <div>
+       <p className="font-semibold text-sm md:text-lg">ความสามารถของเครื่องมือ</p>
+       <p className="text-sm md:text-lg">{product.detailCapability }</p>
+       </div></div>
+  <div class="...">
+  <div>
+        <p className="font-semibold text-sm md:text-lg">ข้อจำกัดของเครื่องมือ</p>
+        <p className="text-sm md:text-lg">{product.detailRestrictions}</p>
+      </div>
+    </div>
+
+    </div>
+
+
+  </div>
+  
+  {/* <div class=" bg-green-300 row-span-2">09</div>
+  <div class=" bg-green-300 col-span-2">10</div> */}
+  {/* <div class=" bg-green-300">11</div>
+  <div class=" bg-green-300">12</div>
+  <div class=" bg-green-300 ">13</div>
+  <div class=" bg-green-300">14</div> */}
+
+
+</div>
+
+
+
+      
         <div className="text-base sm:text-lg mx-7 xl:mx-22 mt-8 mb-3 ">
           <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
         </div>

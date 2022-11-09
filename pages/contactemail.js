@@ -4,7 +4,7 @@ import emailjs from "@emailjs/browser";
 import Swal from 'sweetalert2'
 import Head from 'next/head';
 
-export default function contactemail() {
+export default function Contactemail() {
 
  async function handleOnSubmit(e){
   e.preventDefault();
@@ -85,8 +85,6 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
     }
   })
 
-
-
 }
 
 
@@ -96,7 +94,7 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
     <Head><title>CALLLAB</title></Head>
   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md mt-20">
       <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">ติดต่อเรา</h2>
-      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-md">หากไม่ดูเป็นการรบกวนกูจะชวนเธอมารักกัน</p>
+      <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-md">ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
       <form method='post' onSubmit={sendEmail2}  className="space-y-8">
           <div>
               <label  className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">เรื่องติดต่อ</label>

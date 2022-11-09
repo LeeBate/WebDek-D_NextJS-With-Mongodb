@@ -62,24 +62,29 @@ const Machinery = (props) => {
   };
 
   return (
-    <div className="">
+    <div className="lg:pt-24  sm:pt-5 lg:mb-80">
       <Head>
         <title>CALLLAB</title>
       </Head>
       
-      <div></div>
-      <div className="parallax ">
+      {/* <div className="parallax ">
         <h1
           className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-white"
           id="header"
         >
-          เครื่องมือวิทยศาสตร์
+          เครื่องมือวิเคราะห์
         </h1>
-      </div>
+      </div> */}
+      {/* <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style> */}
 
-      <div className="px-2.5">
+      
         <Filter state={state} />
-
+<div className="px-4">
+  
         {auth.user && auth.user.role === "admin" && (
           <div
             className="delete_all btn btn-danger mt-2"
@@ -107,21 +112,22 @@ const Machinery = (props) => {
           </div>
         )}
 
-        <div className="products lg:grid-cols-5">
+<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
           ) : (
             products.map((product) => (
+              <div key={product._id} data-aos="fade-up" >
               <ProductItem
-                key={product._id}
                 product={product}
                 handleCheck={handleCheck}
               />
+              </div>
             ))
           )}
         </div>
 
-        {props.result < page * 6 ? (
+        {/* {props.result < page * 6 ? (
           ""
         ) : (
           <button
@@ -130,7 +136,7 @@ const Machinery = (props) => {
           >
             เพิ่มเติม
           </button>
-        )}
+        )} */}
       </div>
     </div>
   );

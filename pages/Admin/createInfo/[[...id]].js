@@ -360,134 +360,123 @@ const NewsManager = (props) => {
               </div>
             </TabPanel>
             <TabPanel value="1">
-              <div className="container">
+              <div className="lg:pt-24  pt-14 lg:mb-80">
                 <Head>
                   <title>ข่าวสาร</title>
                 </Head>
-                <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-                  ข่าวประชาสัมพันธ์
-                </h1>
+
                 <FilterNews state={state} />
-
-                {auth.user && auth.user.role === "admin" && (
-                  <div
-                    className="delete_all btn btn-danger mt-2"
-                    style={{ marginBottom: "-10px" }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isCheck}
-                      onChange={handleCheckALL}
-                      style={{
-                        width: "25px",
-                        height: "25px",
-                        transform: "translateY(8px)",
-                      }}
-                    />
-
-                    <button
-                      className="btn btn-danger ml-2"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                      onClick={handleDeleteAll}
+                <div className="px-4">
+                  {auth.user && auth.user.role === "admin" && (
+                    <div
+                      className="delete_all btn btn-danger mt-2"
+                      style={{ marginBottom: "-10px" }}
                     >
-                      ลบข้อมูลทั้งหมด
-                    </button>
-                  </div>
-                )}
+                      <input
+                        type="checkbox"
+                        checked={isCheck}
+                        onChange={handleCheckALL}
+                        style={{
+                          width: "25px",
+                          height: "25px",
+                          transform: "translateY(0px)",
+                        }}
+                      />
 
-                <div className="products">
-                  {Inform.length === 0 ? (
-                    <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
-                  ) : (
-                    Inform.map((product) => (
-                      <ul
-                        className="card bg-sky-100/75"
-                        style={{ width: "18rem" }}
-                        key={product._id}
+                      <button
+                        className="btn btn-danger ml-2"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        onClick={handleDeleteAll}
                       >
-                        {auth.user && auth.user.role === "admin" && (
-                          <input
-                            type="checkbox"
-                            checked={product.checked}
-                            className="position-absolute"
-                            style={{ height: "20px", width: "20px" }}
-                            onChange={() => handleCheck(product._id)}
-                          />
-                        )}
-                        <Link href={`/productNews/${product._id}`}>
-                          <img
-                            className="aspect-square object-fill cursor-pointer card-img-top"
-                            src={product.images[0].url}
-                            alt={product.images[0].url}
-                          />
-                        </Link>
-                        <div className="card-body">
-                          <h5
-                            className="card-title font-bold text-xl mb-2 text-capitalize"
-                            title={product.en}
-                          >
-                            {product.en}
-                          </h5>
-                          <h5
-                            className="card-title text-capitalize"
-                            title={product.title}
-                          >
-                            {product.title}
-                          </h5>
-
-                          <div className="row justify-content-between mx-0 ">
-                            <>
-                              <Link href={`/Admin/createInfo/${product._id}`}>
-                                <a
-                                  onClick={() => {
-                                    setTabIndex("0");
-                                  }}
-                                  className="btn btn-info"
-                                  style={{ marginRight: "5px", flex: 1 }}
-                                >
-                                  แก้ไขข้อมูล
-                                </a>
-                              </Link>
-                              <button
-                                className="btn btn-danger"
-                                style={{ marginLeft: "5px", flex: 1 }}
-                                data-toggle="modal"
-                                data-target="#exampleModal"
-                                onClick={() =>
-                                  dispatch({
-                                    type: "ADD_MODAL",
-                                    payload: [
-                                      {
-                                        data: "",
-                                        id: product._id,
-                                        title: product.title,
-                                        type: "DELETE_PRODUCTS",
-                                      },
-                                    ],
-                                  })
-                                }
-                              >
-                                ลบข้อมูล
-                              </button>
-                            </>
-                          </div>
-                        </div>
-                      </ul>
-                    ))
+                        ลบข้อมูลทั้งหมด
+                      </button>
+                    </div>
                   )}
-                </div>
 
-                {props.result < page * 6 ? (
-                  ""
-                ) : (
-                  <button
-                    className="btn btn-outline-info d-block mx-auto mb-4"
-                    onClick={handleLoadmore}
-                  >
-                    อ่านเพิ่มเติม
-                  </button>
-                )}
+                  <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
+                    {Inform.length === 0 ? (
+                      <h2>ไม่มีข้อมูลข่าวประชาสัมพันธ์</h2>
+                    ) : (
+                      Inform.map((product) => (
+                        <ul
+                          className="card shadow-md"
+                          style={{ width: "20rem" }}
+                          key={product._id}
+                        >
+                          {auth.user && auth.user.role === "admin" && (
+                            <input
+                              type="checkbox"
+                              checked={product.checked}
+                              className="position-absolute"
+                              style={{ height: "20px", width: "20px" }}
+                              onChange={() => handleCheck(product._id)}
+                            />
+                          )}
+                          <Link href={`/Inform/${product._id}`}>
+                            <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                              <img
+                                className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
+                                src={product.images[0].url}
+                                alt={product.images[0].url}
+                                width="540"
+                                height="303"
+                              />
+                            </figure>
+                          </Link>
+                          <div className="card-body">
+                          <h5
+          className="card-title font-bold text-xl mb-2 text-capitalize"
+          title={product.en}
+        >
+          {product.en}
+        </h5>
+        <h5 className="card-title text-capitalize" title={product.title}>
+          {product.title}
+        </h5>
+
+                            <div className="row justify-content-between mx-0 ">
+                              <>
+                                <Link href={`/Admin/createInfo/${product._id}`}>
+                                  <a
+                                    onClick={() => {
+                                      setTabIndex("0");
+                                    }}
+                                    className="btn btn-info rounded-full"
+                                    style={{ marginRight: "5px", flex: 1 }}
+                                  >
+                                    แก้ไขข้อมูล
+                                  </a>
+                                </Link>
+                                <button
+                                  className="btn btn-danger rounded-full"
+                                  style={{ marginLeft: "5px", flex: 1 }}
+                                  data-toggle="modal"
+                                  data-target="#exampleModal"
+                                  onClick={() =>
+                                    dispatch({
+                                      type: "ADD_MODAL",
+                                      payload: [
+                                        {
+                                          data: "",
+                                          id: product._id,
+                                          title: product.title,
+                                          type: "DELETE_PRODUCTS",
+                                        },
+                                      ],
+                                    })
+                                  }
+                                >
+                                  ลบข้อมูล
+                                </button>
+                              </>
+                            </div>
+                          </div>
+                        </ul>
+                      ))
+                    )}
+                  </div>
+                </div>
               </div>
             </TabPanel>
           </TabContext>

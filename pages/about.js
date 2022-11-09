@@ -15,14 +15,14 @@ export default function About() {
         
       </section>
       <section >
-        <div className=" font-bold text-center text-md md:text-xl xl:text-3xl lg:text-2xl my-3 bg-[#E8EDFA]  w-5/6 mx-auto  md:w-11/12 xl:w-10/12 rounded-md">
+        <div className=" font-bold text-center text-md md:text-xl xl:text-3xl lg:text-2xl my-3  w-5/6 mx-auto  md:w-11/12 xl:w-10/12 rounded-md">
           <p className="  pt-2  mx-3">บุคลากรฝ่ายวิเคราะห์ด้วยเครื่องมือ</p>
           <p className=" pb-2   mx-3">ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
         </div>
 
-        <div className="grid gap-3  grid-cols-1 md:grid-cols-2   w-5/6  md:w-11/12 xl:w-10/12 mx-auto">
-          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3">
-            <div className="lg:flex flex-row sm:items-center mx-auto">
+        <div className="grid gap-3  grid-cols-1 md:grid-cols-2   w-4/6  md:w-11/12 xl:w-10/12 mx-auto" >
+          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
               <img
                 className="mr-3 max-w-[100px] self-center  rounded-md"
                 src={"http://203.158.7.33/profiles/photo/236121.jpg"}
@@ -31,7 +31,7 @@ export default function About() {
                 <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
                   หัวหน้าฝ่ายวิเคราะห์ด้วยเครื่องมือ
                 </p>
-                <p className="pt-2 text-md md:text-xl">
+                <p className="text-md md:text-xl">
                   นางสกาวพรรณ อภิสราพงศ์สกาว
                 </p>
                 <p>อีเมล sakawpan@sut.ac.th</p>
@@ -45,9 +45,9 @@ export default function About() {
               key={staff.id}
               className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
             >
-              <div className="md:flex flex-row">
+              <div className="md:flex flex-row sm:flex">
                 <img
-                  className="mr-3 self-center max-w-[100px] rounded-md"
+                  className="mr-3 self-center max-w-[100px] rounded-md "
                   src={staff.img}
                 />
                 <div className="flex-col">

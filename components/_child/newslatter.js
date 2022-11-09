@@ -5,10 +5,11 @@ import { GrMail } from "react-icons/gr";
 import { IoTimeSharp } from "react-icons/io5";
 import { FaFacebookSquare } from "react-icons/fa";
 import { Box, Typography } from "@mui/material";
+import { BsYoutube } from "react-icons/bs";
 
 import Link from "next/link";
 
-export default function newslatter() {
+export default function Newslatter() {
   async function handleOnSubmit(e) {
     e.preventDefault();
     const formData = {};
@@ -43,13 +44,13 @@ export default function newslatter() {
       );
     e.target.reset();
   }
-  
+
   return (
     <div className="w-full h-full ">
       <div>
         <div id="main" className="xl:grid lg:grid grid-cols-2 justify-evenly ">
-          <div className="bg-gray-100 col-span-2 w-full xl:h-62 h-64 p-2  border-xl ">
-            <h1 className="pb-1 xl:text-lg font-bold md:text-lg dark:text-gray-900">ติดต่อสอบถาม</h1>
+          <div className="bg-white col-span-2 w-full xl:h-58 h-58 p-2  border-xl ">
+
 
             <div className="mapouter">
               <div className="gmap_canvas">
@@ -67,46 +68,46 @@ export default function newslatter() {
                 {height:210px!important;}`}</style>
             </div>
           </div>
-          <div className="bg-gray-100 w-26 h-48  md:w-26 md:h-44 lg:w-26 lg:h-auto ">
-            <h1 className="text-base font-bold p-2 md:text-lg  lg:mt-2 xl:text-lg  ">ตำแหน่งที่ตั้ง</h1>
-            <div className="text-sm ml-9 lg:ml-12 xl:text-base">
-            <p>111 ถ.มหาวิทยาลัย ต.สุรนารี อ.เมือง จ.นครราชสีมา, 30000</p>
-            <div className="flex gap-2">
-              <BsFillTelephoneFill />
-              <p>01-2345-6789</p>
+          <div className="bg-white w-26 h-48  md:w-26 md:h-44 lg:w-26 lg:h-auto ">
+            <h1 className="text-base font-bold p-2 md:text-lg  lg:mt-2 xl:text-lg  ">
+              ตำแหน่งที่ตั้ง
+            </h1>
+            <div className="text-base ml-7 lg:ml-12 xl:text-base">
+              <p>111 ถ.มหาวิทยาลัย ต.สุรนารี อ.เมือง จ.นครราชสีมา, 30000</p>
+              <div className="flex gap-2">
+                <BsFillTelephoneFill />
+                <p>01-2345-6789</p>
+              </div>
+              <div className="flex gap-2">
+                <GrMail />
+                <p>sakawpan@sut.ac.th</p>
+              </div>
+              <div className="flex gap-2">
+                <IoTimeSharp />
+                <h1>เวลาทำการ</h1>
+              </div>
+              <div className="flex ml-4">
+                <p>จันทร์-ศุกร์ : 08:30 - 16:30 น.</p>
+              </div>
+              <div className="flex ml-4">
+                <p>เสาร์-อาทิตย์ : ปิดทำการ</p>
+              </div>
             </div>
-            <div className="flex gap-2">
-              <GrMail />
-              <p>sakawpan@sut.ac.th</p>
-            </div>
-            <div className="flex gap-2">
-              <IoTimeSharp />
-              <h1>เวลาทำการ</h1>
-            </div>
-            <div className="flex ml-4">
-              <p>จันทร์-ศุกร์ : 08:30 - 16:30 น.</p>
-            </div>
-            <div className="flex ml-4">
-              <p>เสาร์-อาทิตย์ : ปิดทำการ</p>
-            </div>
-          </div>
           </div>
 
-        {/* <div className="bg-gray-100 w-26 h-52 xl:h-60 xl:p-7 p-5 pr-8  dark:text-gray-900"></div> */}
-          <div className="bg-gray-100 p-2 w-26 h-32 md:w-26 md:h-40 lg:w-26 lg:h-auto ">
+          {/* <div className="bg-gray-100 w-26 h-52 xl:h-60 xl:p-7 p-5 pr-8  dark:text-gray-900"></div> */}
+          <div className="bg-white p-2 w-26 h-40 md:w-26 md:h-48 lg:w-26 lg:h-auto ">
             <div className="w-full h-full">
-              <Link href={"https://www.facebook.com/cstesut"}>
-                <div className="bg-blue-100  w-full h-full rounded-lg cursor-pointer lg:w-26 lg:h-auto ">
+              
+                <div className="bg-white  w-full h-full rounded-lg cursor-pointer lg:w-26 lg:h-auto ">
                   <div className="text-wight  flex flex-col-2 ">
                     <img
                       className="rounded-full object-cover w-16 h-16 ml-2 mt-4  md:ml-4 md:mt-4 md:w-28 md:h-28 lg:w-36 lg:h-36 lg:mb-2"
                       src={"/images/ffotterr2.jpg"}
-                      
                     />
                     <div className="text-gray-900 mt-3 ml-4 md:ml-8 md:mt-6 lg:ml-10 xl:ml-16 ">
                       <div className="text-sm xl:text-lg md:text-lg  font-bold ">
                         ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
-                       
                       </div>
                       <div className="text-sm xl:text-lg md:text-lg  font-bold ">
                         มหาวิทยาลัยเทคโนโลยีสุรนารี
@@ -115,14 +116,32 @@ export default function newslatter() {
                         ชุมชน · 14.3 km · จะปิดเร็วๆ นี้
                       </p>
                       <p className="text-sm">ผู้ติดตาม 2.6 พัน คน</p>
-                      
+                      <div className="flex">
+                     <a href={"https://www.facebook.com/cstesut"}>
+                  <div >
+                    <FaFacebookSquare size={40} color={"#1a4789"} />
+                  </div>
+                  </a>
+                  {/* <a href={"https://www.youtube.com/watch?v=Ww1UCfx2JjE"}>
+                  <div className="ml-2">
+                      <BsYoutube  size={40} color={"#ff0000"} />
+                  </div>
+                  </a> */}
+                  </div>
                     </div>
+                    
                   </div>
-                  <div className="absolute bottom-20 right-4 ">
-                        <FaFacebookSquare size={40} color={"#1a4789"} />
+                  {/* <Link href={"https://www.facebook.com/cstesut"}>
+                  <div className="absolute bottom-14 right-4 md:left-32 ">
+                    <FaFacebookSquare size={40} color={"#1a4789"} />
                   </div>
+                  </Link>
+                  <Link href={"https://www.youtube.com/watch?v=Ww1UCfx2JjE"}>
+                  <div className="absolute bottom-14 right-16 md:left-8 ">
+                      <BsYoutube size={40} color={"#ff0000"} />
+                  </div>
+                  </Link> */}
                 </div>
-              </Link>
             </div>
           </div>
         </div>

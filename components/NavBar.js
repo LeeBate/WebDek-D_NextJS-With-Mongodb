@@ -89,7 +89,7 @@ function NavBar() {
   };
 
   const navigation1 = [
-    { name: "เครื่องมือวิทยาศาสตร์", href: "/machinery", current: false },
+    { name: "เครื่องมือวิเคราะห์", href: "/machinery", current: false },
   ];
   const navigation2 = [
     { name: "บริการวิเคราะห์ทดสอบ", href: "/#services", current: false },
@@ -221,7 +221,7 @@ function NavBar() {
 
   return (
     <>
-    <header>
+    <div className="navScorll">
       <div className="min-h-full">
         <Disclosure as="nav" className="bg-[#1a237e] ">
           {({ open }) => (
@@ -489,7 +489,7 @@ function NavBar() {
           )}
         </Disclosure>
 </div>
-      </header>
+      </div>
       
     </>
   );

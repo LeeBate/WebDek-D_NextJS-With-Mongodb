@@ -39,40 +39,41 @@ const InformItem = ({ product, handleCheck }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <div id="blog" className="services-container">
-        <Box sx={{ width: "100%", typography: "body1" }}>
-          <div className="service-card-container">
-            <div className="service-cards-inform">
-              <div className=" flex flex-col lg:flex-row ">
-                <img
-                  className="h-52 w-full rounded-xl md:h-96 md:w-full lg:h-80 lg:w-[55vh] xl:h-80 xl:w-[55vh] 2xl:h-[20rem] 2xl:w-[30rem]  object-cover"
-                  src={product.images[0].url}
-                  alt={product.images[0].url}
-                />
-                <div className=" sm:mt-3 md:mt-3 lg:mx-8 ">
-                  <h3 className=" text-left text-lg font-bold lg:text-2xl">
-                    {product.title}
-                  </h3>
-                  <ul className=" indent-8 text-lg  line-clamp-5 leading-relaxed">
-                    <li>{product.description}</li>
-                  </ul>
-                  <a aria-hidden href={`Inform/${product._id}`}>
-                    <div className=" flex pt-3 justify-center items-center"></div>
-                  </a>
-
-                  <div className="flex flex-col lg:flex-row pt-3 justify-center items-center">
-                    <Link href={`Inform/${product._id}`}>
-                      <button className=" bg-[#4761AD] hover:bg-[#627ac2] text-white w-full py-2 rounded-xl">
+      <section className="services-container py-10">
+    <div className=" max-w-7xl mx-auto  sm:px-6 h-full">
+        <article className="max-w-sm mx-auto md:max-w-none grid md:grid-cols-2  md:gap-8 lg:gap-12 xl:gap-16 items-center">
+            <a className="relative block group">
+                <div className="absolute inset-0 bg-gray-800/50 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                    <img className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={product.images[0].url}
+                  alt={product.images[0].url} width="540" height="303" />
+                </figure>
+            </a>
+            <div>
+                <header>
+                    <div className="my-3">
+                        <ul className="flex flex-wrap text-xs font-medium -m-1">
+                            <li className="m-1">
+                                <p className="inline-flex text-center text-gray-100 py-1 px-3 rounded-full bg-blue-500 hover:bg-blue-600 transition duration-150 ease-in-out">ข่าวสาร</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
+                        <p className=" transition duration-150 ease-in-out">{product.title}</p>
+                    </h3>
+                </header>
+                <p className="text-lg text-gray-400 flex-grow indent-8  line-clamp-4 leading-relaxed">{product.description}</p>
+                <footer className="flex items-center mt-4">
+                <Link href={`Inform/${product._id}`}>
+                      <button className=" bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                         อ่านเพิ่มเติม
                       </button>
                     </Link>
-                  </div>
-                </div>
-              </div>
+                </footer>
             </div>
-          </div>
-        </Box>
-      </div>
+        </article>    
+    </div>
+</section>
     </ThemeProvider>
   );
 };

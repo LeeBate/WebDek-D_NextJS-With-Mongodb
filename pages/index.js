@@ -13,6 +13,7 @@ import Footer from "../components/footer";
 import Services from "../components/Services";
 
 
+
 const Index = (props) => {
   const [products, setProducts] = useState(props.products);
   const [Informs, setInforms] = useState(props.Informs);
@@ -42,15 +43,19 @@ const Index = (props) => {
     setProducts([...products]);
   };
 
+
   return (
     <div>
       <Head>
         <title>CALLLAB</title>
       </Head>
       <VideoPlayer />
-      <Services />
-      {/* <div className=" lg:max-w-[50%] mx-auto">
-          <div className="iframe-container">
+      <div ><Services /></div>
+        
+  
+      
+      <div className="w-[84%] sm:w-[75%] lg:max-w-[50%] mx-auto" data-aos="fade-right" >
+          <div className="iframe-container" >
             <iframe
               src="https://www.youtube.com/embed/Ww1UCfx2JjE"
               width="560"
@@ -60,19 +65,21 @@ const Index = (props) => {
               allowFullScreen
             ></iframe>
           </div>
-        </div> */}
-      <div id="services" className="services-container">
-        <div className="service-header">
-          <h2 className="text-lg font-bold md:text-3xl lg:text-4xl">
+        </div>
+      <div id="services" className="services-container" >
+        <div className="service-header" >
+          <h2 className="text-xl font-bold md:text-3xl lg:text-4xl" >
             ข่าวประชาสัมพันธ์
           </h2>
-          <p className="text-base font-medium md:text-lg">
-            ศูนย์เครื่อมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยี
+          <p className="text-lg font-medium md:text-lg" >
+          ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
           </p>
         </div>
         
           {Informs.slice(0, 3).map((product) => (
-            <InformItemIndex key={product._id} product={product} />
+          <div key={product._id} data-aos="fade-up">
+            <InformItemIndex  product={product} />
+            </div>
           ))}
 
       </div>

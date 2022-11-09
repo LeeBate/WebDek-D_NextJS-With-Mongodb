@@ -25,22 +25,24 @@ function Services() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <div id="services" className="services-container">
-        <div className="service-header">
-        
-          <h2 className=" text-lg font-bold md:text-3xl lg:text-4xl">
+    
+    <ThemeProvider theme={theme} >
+       <div className="service-header"  >
+          <h2 className=" text-xl font-bold md:text-3xl lg:text-4xl">
           
             บริการวิเคราะห์ทดสอบ
           </h2>
-          <p className="text-base font-medium md:text-lg">
-            ศูนย์เครื่อมือวิทยาศาสตร์และเทคโนโลยี มหาวิทยาลัยเทคโนโลยี
+          <p className="text-lg font-medium md:text-lg">
+            ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
           </p>
+          
         </div>
-        <Grid container spacing={0}>
+      <div id="services" className="services-container" >
+       
+        <Grid container spacing={0} >
           <Grid item xs={12} lg={12}>
             <Box sx={{ width: "100%", typography: "body1" }}>
-              <TabContext value={tabIndex} isFitted variant="enclosed">
+              <TabContext value={tabIndex} isFitted variant="enclosed" >
                 <Box
                   sx={{
                     borderBottom: 1,
@@ -91,20 +93,20 @@ function Services() {
                   </TabList>
                 </Box>
 
-                <div className="service-card-container">
+                <div className="service-card-container" >
                   <TabPanel value="0">
                     <div className="service-cards">
                       <div className="flex flex-col lg:flex-row">
                         <img
-                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-96 2xl:w-96   object-cover"
                           src={"/images/2_6.png"}
                         />
                         <div className=" mx-2 mt-3">
                           <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                            มีบริการกล้องถ่ายภาพสมรรถภามพสูง เช่น 
-                            <a className="text-[#FFA500]"> กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง
-                            </a>
+                          <a className="text-[#1a237e]">มีบริการกล้องถ่ายภาพสมรรถนะสูง</a> เช่น 
+                             กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง
                           </h3>
+
                           <ul className="list-disc text-lg ml-10 leading-relaxed">
                             <li>
                               วิเคราะห์ปริมาณความร้อน,
@@ -120,7 +122,7 @@ function Services() {
                           </ul>
                           <div className="flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -133,7 +135,7 @@ function Services() {
                     <div className="service-cards">
                       <div className=" flex flex-col lg:flex-row">
                         <img
-                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-96 2xl:w-96  object-cover"
                           src={"/images/2_6.png"}
                         />
                         <div className=" mx-2 mt-3 ">
@@ -173,7 +175,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -186,7 +188,7 @@ function Services() {
                     <div className="service-cards">
                       <div className=" flex flex-col lg:flex-row">
                         <img
-                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-96 2xl:w-96  object-cover"
                           src={"/images/2_6.png"}
                         />
                         <div className=" mx-2 mt-3">
@@ -207,7 +209,7 @@ function Services() {
                           
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -220,7 +222,7 @@ function Services() {
                     <div className="service-cards">
                       <div className=" flex flex-col lg:flex-row">
                         <img
-                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-96 2xl:w-96  object-cover"
                           src={"/images/2_6.png"}
                         />
                         <div className="mx-2 mt-3">
@@ -238,7 +240,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -251,7 +253,7 @@ function Services() {
                     <div className="service-cards">
                       <div className=" flex flex-col lg:flex-row">
                         <img
-                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-[30rem] 2xl:w-[50rem]  object-cover"
+                          className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96   object-cover"
                           src={"/images/2_6.png"}
                         />
                         <div className=" mx-2 mt-3">
@@ -273,7 +275,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className=" bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>

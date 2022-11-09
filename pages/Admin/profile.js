@@ -161,7 +161,7 @@ const Profile = () => {
                   type="text"
                   name="name"
                   value={name}
-                  className="form-control"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="ชื่อของคุณ"
                   onChange={handleChange}
                 />
@@ -173,7 +173,7 @@ const Profile = () => {
                   type="text"
                   name="อีมเล์"
                   defaultValue={auth.user.email}
-                  className="form-control"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   disabled={true}
                 />
               </div>
@@ -184,7 +184,7 @@ const Profile = () => {
                   type="password"
                   name="password"
                   value={password}
-                  className="form-control"
+                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
                   placeholder="รหัสผ่านใหม่ของคุณ"
                   onChange={handleChange}
                 />
@@ -196,14 +196,14 @@ const Profile = () => {
                   type="password"
                   name="cf_password"
                   value={cf_password}
-                  className="form-control"
+                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
                   placeholder="ยืนยันรหัสผ่าน"
                   onChange={handleChange}
                 />
               </div>
 
               <button
-                className="w-full bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded"
+                className="w-full  bg-[#627ac2] hover:bg-[#4761AD] text-white font-bold rounded-lg  py-2 px-4 border-b-4rounded"
                 disabled={notify.loading}
                 onClick={handleUpdateProfile}
               >

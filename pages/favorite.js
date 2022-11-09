@@ -87,7 +87,7 @@ const Favorite = (props) => {
   };
 
   return (
-    <div className="container">
+    <div className="lg:pt-24  pt-12 lg:mb-80">
       <Head>
         <title>CALLLAB</title>
       </Head>
@@ -96,10 +96,9 @@ const Favorite = (props) => {
           display: none;
         }
       `}</style>
-      <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-        รายการโปรด
-      </h1>
+     
         <Filter state={state} />
+        <div className="px-4">
       {auth.user && auth.user.role === "admin" && (
         <div
           className="delete_all btn btn-danger mt-2"
@@ -127,7 +126,7 @@ const Favorite = (props) => {
         </div>
       )}
 
-      <div className="products">
+<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {products.length === 0 ? (
           <center>ไม่มีข้อมูลข่าวประชาสัมพันธ์</center>
         ) : !loading ? (
@@ -164,7 +163,7 @@ const Favorite = (props) => {
         )}
       </div>
 
-      {props.result < page * 6 ? (
+      {/* {props.result < page * 6 ? (
         ""
       ) : (
         <button
@@ -173,7 +172,8 @@ const Favorite = (props) => {
         >
           อ่านเพิ่มเติม
         </button>
-      )}
+      )} */}
+    </div>
     </div>
   );
 };

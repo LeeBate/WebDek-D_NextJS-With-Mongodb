@@ -255,8 +255,7 @@ const ProductsManager = (props) => {
         auth.token
       );
 
-      if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: "" } });
+      if (res.err) return dispatch({ type: "NOTIFY", payload: { error: "" } });
     }
     setTabIndex("1");
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
@@ -588,7 +587,7 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 1"
-                              required
+                                required
                               />
                             </div>
                           </div>
@@ -606,7 +605,6 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 2"
-                                
                               />
                             </div>
                           </div>
@@ -624,7 +622,6 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 3"
-                                
                               />
                             </div>
                           </div>
@@ -642,7 +639,6 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 4"
-                                
                               />
                             </div>
                           </div>
@@ -660,7 +656,6 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 5"
-                                
                               />
                             </div>
                           </div>
@@ -683,7 +678,6 @@ const ProductsManager = (props) => {
                       ></label>
                       <select
                         id="category"
-                        
                         onChange={handleChangeInput}
                         className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
                     focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
@@ -796,7 +790,7 @@ const ProductsManager = (props) => {
                       style={{
                         width: "25px",
                         height: "25px",
-                        transform: "translateY(8px)",
+                        transform: "translateY(0px)",
                       }}
                     />
 
@@ -811,14 +805,13 @@ const ProductsManager = (props) => {
                   </div>
                 )}
 
-                <div className="products">
+                <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-3">
                   {machinery.length === 0 ? (
                     <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
                   ) : (
                     machinery.map((product) => (
                       <ul
-                        className="card bg-sky-100/75"
-                        style={{ width: "18rem" }}
+                      className="card shadow-md" style={{ width: "20rem" }}
                         key={product._id}
                       >
                         {auth.user && auth.user.role === "admin" && (
@@ -831,25 +824,26 @@ const ProductsManager = (props) => {
                           />
                         )}
                         <Link href={`/product/${product._id}`}>
-                          <img
-                            className="aspect-square object-cover cursor-pointer card-img-top"
-                            src={product.images[0].url}
-                            alt={product.images[0].url}
-                          />
+                          <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+                            <img
+                              className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
+                              src={product.images[0].url}
+                              alt={product.images[0].url}
+                              width="540"
+                              height="303"
+                            />
+                          </figure>
                         </Link>
                         <div className="card-body">
-                          <h5
-                            className="card-title font-bold text-xl mb-2 text-capitalize"
-                            title={product.en}
-                          >
-                            {product.en}
-                          </h5>
-                          <h5
-                            className="card-title text-capitalize"
-                            title={product.title}
-                          >
-                            {product.title}
-                          </h5>
+                        <h5
+          className="card-title font-bold text-xl mb-2 text-capitalize"
+          title={product.en}
+        >
+          {product.en}
+        </h5>
+        <h5 className="card-title text-capitalize" title={product.title}>
+          {product.title}
+        </h5>
 
                           <div className="row justify-content-between mx-0 ">
                             <>
@@ -860,14 +854,14 @@ const ProductsManager = (props) => {
                                   onClick={() => {
                                     setTabIndex("0");
                                   }}
-                                  className="btn btn-info"
+                                  className="btn btn-info rounded-full"
                                   style={{ marginRight: "5px", flex: 1 }}
                                 >
                                   แก้ไขข้อมูล
                                 </a>
                               </Link>
                               <button
-                                className="btn btn-danger"
+                                className="btn btn-danger rounded-full"
                                 style={{ marginLeft: "5px", flex: 1 }}
                                 data-toggle="modal"
                                 data-target="#exampleModal"

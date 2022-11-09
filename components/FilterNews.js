@@ -28,9 +28,9 @@ const Filter = ({ state }) => {
 
 
   return (
-    <div className=" py-0 max-w-[850px] mx-auto flex flex-col lg:flex-row justify-between gap-4 lg:gap-x-3 relative lg:-top-0 lg:shadow-1 lg:backdrop-blur rounded-lg">
+    <div className=" pt-4 py-0 container flex flex-col lg:flex-row justify-between gap-3 relative lg:-top-0 lg:shadow-1 lg:backdrop-blur rounded-lg">
       
-      <form className="flex items-center mt-2 col-md-10 px-0" autoComplete="off">
+      <form className="flex items-center relative mt-2 w-full rounded-md shadow-sm" autoComplete="off">
         <label htmlFor="voice-search" className="sr-only">
           ค้นหา
         </label>
@@ -61,7 +61,7 @@ const Filter = ({ state }) => {
         </div>
       </form>
 
-      <div className="input-group-prepend col-md-2 px-0 mt-2">
+      <div className="relative mt-2 w-full lg:w-1/5 rounded-md shadow-sm">
         <select
           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-2 py-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={sort}

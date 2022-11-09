@@ -159,7 +159,7 @@ const BlogCard = () => {
                 }}
               >
                 <Typography
-                  align="left"
+                  align="center"
                   sx={{
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
@@ -169,16 +169,16 @@ const BlogCard = () => {
                   ผู้ใช้ทั้งหมด 
                 </Typography>
                 <Typography
-                  align="left"
+                  align="center"
                   color="white"
                   sx={{
-                    fontSize: "h5.fontSize",
+                    fontSize: "h1.fontSize",
                     fontWeight: "400",
                   }}
                 >
-                  ผู้ใช้ทั้งหมด {allusercount} บัญชี
+                  {allusercount} บัญชี
                 </Typography>
-                <Typography
+                {/* <Typography
                   align="left"
                   color="white"
                   sx={{
@@ -197,7 +197,7 @@ const BlogCard = () => {
                   }}
                 >
                   ผู้ใช้ {usercount} บัญชี
-                </Typography>
+                </Typography> */}
               </CardContent>
             </Card>
           </Grid>
@@ -229,7 +229,7 @@ const BlogCard = () => {
                 }}
               >
                 <Typography
-                  align="left"
+                  align="center"
                   
                   sx={{
                     fontSize: "h1.fontSize",
@@ -238,19 +238,19 @@ const BlogCard = () => {
                     color:"yellow"
                   }}
                 >
-                  เครื่องมือวิทยาศาสตร์
+                  เครื่องมือวิเคราะห์
                 </Typography>
                 <Typography
-                  align="left"
+                  align="center"
                   color="white"
                   sx={{
-                    fontSize: "h5.fontSize",
+                    fontSize: "h1.fontSize",
                     fontWeight: "400",
                   }}
                 >
-                  เครื่องมือวิทยาศาสตร์ทั้งหมด {machincount} ชิ้น
+                   {machincount} เครื่อง
                 </Typography>
-                <Typography
+                {/* <Typography
                   align="left"
                   color="white"
                   sx={{
@@ -259,8 +259,8 @@ const BlogCard = () => {
                   }}
                 >
                   งานวิเคราะห์ด้วยกล้องจุลทรรศน์ {catname1} ชิ้น
-                </Typography>
-                <Typography
+                </Typography> */}
+                {/* <Typography
                   align="left"
                   color="white"
                   sx={{
@@ -299,7 +299,7 @@ const BlogCard = () => {
                   }}
                 >
                   งานวิเคราะห์ทางน้ำ {catname5} ชิ้น
-                </Typography>
+                </Typography> */}
               </CardContent>
             </Card>
           </Grid>
@@ -331,7 +331,7 @@ const BlogCard = () => {
                 }}
               >
                 <Typography
-                  align="left"
+                  align="center"
                   sx={{
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
@@ -342,14 +342,14 @@ const BlogCard = () => {
                    ข่าวประชาสัมพันธ์ 
                 </Typography>
                 <Typography
-                  align="left"
+                  align="center"
                   color="white"
                   sx={{
-                    fontSize: "h5.fontSize",
+                    fontSize: "h1.fontSize",
                     fontWeight: "400",
                   }}
                 >
-                 ข่าวประชาสัมพันธ์ {newscount} รายการ
+                 {newscount} รายการ
                 </Typography>
                 
               </CardContent>

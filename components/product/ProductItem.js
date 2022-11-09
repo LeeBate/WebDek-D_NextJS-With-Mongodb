@@ -14,15 +14,18 @@ const ProductItem = ({ product, handleCheck }) => {
       <>
         <Link href={`product/${product._id}`}>
           <button className=" bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
-          <div className="flex items-center justify-center px-auto "><IoDocumentTextOutline></IoDocumentTextOutline>
-            <div className="mr-1"></div> ดูข้อมูล
+            <div className="flex items-center justify-center px-auto ">
+              <IoDocumentTextOutline></IoDocumentTextOutline>
+              <div className="mr-1"></div> ดูข้อมูล
             </div>
           </button>
         </Link>
         <button className="bg-[#FFA500] hover:bg-[#1a237e] px-3 py-2 rounded-full text-white">
-          <div className="flex items-center justify-center px-auto "><MdOutlineScience></MdOutlineScience>
+          <div className="flex items-center justify-center px-auto ">
+            <MdOutlineScience></MdOutlineScience>
             <div className="mr-1"></div> จองเครื่องมือ
-            </div></button>
+          </div>
+        </button>
       </>
     );
   };
@@ -60,7 +63,6 @@ const ProductItem = ({ product, handleCheck }) => {
     );
   };
   return (
-    
     <div className="card shadow-md" style={{ width: "20rem" }}>
       {auth.user && auth.user.role === "admin" && (
         <input
@@ -72,11 +74,15 @@ const ProductItem = ({ product, handleCheck }) => {
         />
       )}
       <Link href={`/product/${product._id}`}>
-        <img
-          className="transform aspect-square card-img-top object-cover cursor-pointer transition duration-700 scale-90 hover:scale-110"
-          src={product.images[0].url}
-          alt={product.images[0].url}
-        />
+        <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
+          <img
+            className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
+            src={product.images[0].url}
+            alt={product.images[0].url}
+            width="540"
+            height="303"
+          />
+        </figure>
       </Link>
       <div className="card-body">
         <h5
@@ -94,7 +100,6 @@ const ProductItem = ({ product, handleCheck }) => {
         </div>
       </div>
     </div>
-
   );
 };
 

@@ -25,7 +25,7 @@ const updateRole = async (req, res) => {
        const {role} = req.body
 
        await Users.findOneAndUpdate({_id: id}, {role})
-       res.json({msg: 'Update Success!'})
+       res.json({msg: 'อัพเดตสำเร็จ!'})
 
     } catch (err) {
         return res.status(500).json({err: err.message})
