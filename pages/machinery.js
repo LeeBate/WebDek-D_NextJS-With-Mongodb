@@ -77,7 +77,7 @@ const Machinery = (props) => {
         </h1>
       </div>
 
-      <div className="px-4">
+      <div className="px-2.5">
         <Filter state={state} />
 
         {auth.user && auth.user.role === "admin" && (
@@ -107,7 +107,7 @@ const Machinery = (props) => {
           </div>
         )}
 
-        <div className="products lg:grid-cols-4">
+        <div className="products lg:grid-cols-5">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
           ) : (
@@ -144,7 +144,7 @@ export async function getServerSideProps({ query }) {
 
   const res = await getData(
     `product?limit=${
-      page * 6
+      page * 100
     }&category=${category}&sort=${sort}&title=${search}`
   );
   // server side rendering

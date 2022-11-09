@@ -2,6 +2,8 @@ import Link from "next/link";
 import { useContext } from "react";
 import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { MdOutlineScience } from "react-icons/md";
 
 const ProductItem = ({ product, handleCheck }) => {
   const { state, dispatch } = useContext(DataContext);
@@ -11,11 +13,16 @@ const ProductItem = ({ product, handleCheck }) => {
     return (
       <>
         <Link href={`product/${product._id}`}>
-          <a className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
-            ดูข้อมูล
-          </a>
+          <button className=" bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
+          <div className="flex items-center justify-center px-auto "><IoDocumentTextOutline></IoDocumentTextOutline>
+            <div className="mr-1"></div> ดูข้อมูล
+            </div>
+          </button>
         </Link>
-        <button className="btn btn-success">จองเครื่องมือ</button>
+        <button className="bg-[#FFA500] hover:bg-[#1a237e] px-3 py-2 rounded-full text-white">
+          <div className="flex items-center justify-center px-auto "><MdOutlineScience></MdOutlineScience>
+            <div className="mr-1"></div> จองเครื่องมือ
+            </div></button>
       </>
     );
   };
@@ -54,7 +61,7 @@ const ProductItem = ({ product, handleCheck }) => {
   };
   return (
     
-    <div className="card bg-sky-100/75" style={{ width: "18rem" }}>
+    <div className="card shadow-md" style={{ width: "20rem" }}>
       {auth.user && auth.user.role === "admin" && (
         <input
           type="checkbox"
@@ -66,7 +73,7 @@ const ProductItem = ({ product, handleCheck }) => {
       )}
       <Link href={`/product/${product._id}`}>
         <img
-          className="transform aspect-square card-img-top object-fill cursor-pointer transition duration-700 scale-75 hover:scale-125"
+          className="transform aspect-square card-img-top object-cover cursor-pointer transition duration-700 scale-90 hover:scale-110"
           src={product.images[0].url}
           alt={product.images[0].url}
         />

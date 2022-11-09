@@ -67,7 +67,7 @@ return dispatch({ type: 'NOTIFY', payload: {} })
               <div className="row d-flex justify-center center h-100">
                 <div className="col col-xl-9 col-lg-8 my-auto lg:mt-20">
                   <div className="card rounded-[1rem] mt-5" >
-                    <div className="row g-0 items-center py-4 ">
+                    <div className="row g-0 items-center py-4 px-5">
                       <div className="col-md-5 col-lg-5 d-none d-md-block">
                       <img src={"/images/2_6.png"}
                           className="transform transition duration-700 hover:scale-125 object-cover rounded-md "  />
@@ -83,24 +83,28 @@ return dispatch({ type: 'NOTIFY', payload: {} })
                         </div>
                         <div className="form-outline mb-2">
                           <label className="form-label" htmlFor="form2Example17">ชื่อ</label>
-                          <input type="text"  className="form-control form-control-lg" name="name" value={name} onChange={handleChangeInput} />
+                          <input type="text"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required name="name" value={name} onChange={handleChangeInput} />
                           
                         </div>
 
                         <div className="form-outline mb-2">
                           <label className="form-label" htmlFor="form2Example17">อีเมล์</label>
-                          <input type="email"  className="form-control form-control-lg" name="email" value={email} onChange={handleChangeInput} />
+                          <input type="email"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required name="email" value={email} onChange={handleChangeInput} />
                         </div>
 
                         <div className="form-outline mb-2">
                         <label className="form-label" htmlFor="form2Example27">รหัสผ่าน</label>
-                        <input type="password"  className="form-control form-control-lg" name="password" value={password} onChange={handleChangeInput} />
+                        <input type="password"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required name="password" value={password} onChange={handleChangeInput} />
                         
                         </div>
 
                         <div className="form-outline mb-3">
                         <label className="form-label" htmlFor="form2Example27">ยืนยันรหัสผ่าน</label>
-                        <input type="password"  className="form-control form-control-lg" name="cf_password" value={cf_password}   onChange={handleChangeInput} />
+                        <input type="password"  class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required name="cf_password" value={cf_password}   onChange={handleChangeInput} />
                         
                         </div>
                         

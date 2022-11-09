@@ -106,7 +106,7 @@ const Inform = (props) => {
           </div>
         )}
 
-        <div className="products lg:grid-cols-4">
+        <div className="products lg:grid-cols-5">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
           ) : (
@@ -142,7 +142,7 @@ export async function getServerSideProps({ query }) {
   const search = query.search || "all";
 
   const res = await getData(
-    `productNews?limit=${page * 6}&sort=${sort}&title=${search}`
+    `productNews?limit=${page * 100}&sort=${sort}&title=${search}`
   );
   // server side rendering
   return {

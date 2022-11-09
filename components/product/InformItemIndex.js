@@ -44,7 +44,6 @@ const InformItem = ({ product, handleCheck }) => {
           <div className="service-card-container">
             <div className="service-cards-inform">
               <div className=" flex flex-col lg:flex-row ">
-                
                 <img
                   className="h-52 w-full rounded-xl md:h-96 md:w-full lg:h-80 lg:w-[55vh] xl:h-80 xl:w-[55vh] 2xl:h-[20rem] 2xl:w-[30rem]  object-cover"
                   src={product.images[0].url}
@@ -60,14 +59,15 @@ const InformItem = ({ product, handleCheck }) => {
                   <a aria-hidden href={`Inform/${product._id}`}>
                     <div className=" flex pt-3 justify-center items-center"></div>
                   </a>
-                  
+
                   <div className="flex flex-col lg:flex-row pt-3 justify-center items-center">
-                        <button className=" bg-[#4761AD] hover:bg-[#627ac2] text-white w-full py-2 rounded-xl">
-                          อ่านเพิ่มเติม
-                        </button>
-                      </div>
+                    <Link href={`Inform/${product._id}`}>
+                      <button className=" bg-[#4761AD] hover:bg-[#627ac2] text-white w-full py-2 rounded-xl">
+                        อ่านเพิ่มเติม
+                      </button>
+                    </Link>
+                  </div>
                 </div>
-                
               </div>
             </div>
           </div>

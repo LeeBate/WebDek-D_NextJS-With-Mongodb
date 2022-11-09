@@ -17,7 +17,6 @@ module.exports = {
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
     },
-    plugins: [require('@tailwindcss/aspect-ratio')],
     
   }
   

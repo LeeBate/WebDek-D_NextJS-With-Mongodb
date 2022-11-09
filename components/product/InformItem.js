@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useContext } from 'react'
 import { DataContext } from '../../store/GlobalState'
 import { addToCart } from '../../store/Actions'
+import { IoDocumentTextOutline } from "react-icons/io5";
 
 const InformItem = ({product, handleCheck}) => {
     const { state, dispatch } = useContext(DataContext)
@@ -11,9 +12,13 @@ const InformItem = ({product, handleCheck}) => {
         return(
             <>
                 <Link href={`Inform/${product._id}`}>
-                    <a className="btn btn-info"
-                    style={{marginRight: '5px', flex: 1}}>ดูข้อมูล</a>
+                <button className=" bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
+                <div className="flex items-center justify-center px-auto "><IoDocumentTextOutline></IoDocumentTextOutline>
+                <div className="mr-1"></div> ดูข้อมูล
+                </div>
+                </button>
                 </Link>
+
                 {/* <button className="btn btn-success"
                 style={{marginLeft: '5px', flex: 1}}
                 disabled={product.inStock === 0 ? true : false} 
@@ -47,7 +52,7 @@ const InformItem = ({product, handleCheck}) => {
         )
     }
     return(
-        <div className="transform transition duration-700 hover:shadow-2xl card bg-sky-100/75" style={{ width: '18rem' }}>
+        <div className="card shadow-md" style={{ width: '20rem' }}>
             {
                 auth.user && auth.user.role === 'admin' &&
                 <input type="checkbox" checked={product.checked}
@@ -66,7 +71,7 @@ const InformItem = ({product, handleCheck}) => {
                     {product.description}
                 </h5>
                     
-                <div className="row justify-content-between mx-0 ">
+                <div className="row justify-content-center mx-0 ">
                     {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
                 </div>
             </div>

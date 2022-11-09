@@ -48,14 +48,12 @@ const Signin = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(auth).length !== 0) 
-    {
-      if(!auth.user || auth.user.role !== "admin"){
+    if (Object.keys(auth).length !== 0) {
+      if (!auth.user || auth.user.role !== "admin") {
         router.push("/");
-      }else{
+      } else {
         router.push("/Admin");
       }
-      
     }
   }, [auth]);
 
@@ -69,7 +67,7 @@ const Signin = () => {
           <div className="row d-flex justify-center items h-100">
             <div className="col col-xl-9 col-lg-8 my-auto">
               <div className="card rounded-[1rem] mt-5">
-                <div className="row g-0 items-center py-4">
+                <div className="row g-0 items-center py-4 px-5">
                   <div className="col-md-5 col-lg-5 d-none d-md-block">
                     <img
                       src={"/images/2_6.png"}
@@ -80,7 +78,9 @@ const Signin = () => {
                     <div className="card-body p-4 text-black">
                       <form onSubmit={handleSubmit}>
                         <div className="d-flex align-items-center mb-3 pb-1">
-                          <p className="text-2xl md:text-3xl xl:text-4xl font-bold mb-0">เข้าสู่ระบบ</p>
+                          <p className="text-2xl md:text-3xl xl:text-4xl font-bold mb-0">
+                            เข้าสู่ระบบ
+                          </p>
                         </div>
                         <div className="form-outline mb-4">
                           <label
@@ -92,7 +92,9 @@ const Signin = () => {
                           <input
                             type="email"
                             id="form2Example17"
-                            className="form-control form-control-lg"
+                            required
+                            placeholder="Suranaree@g.sut.ac.th"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             name="email"
                             value={email}
                             onChange={handleChangeInput}
@@ -109,7 +111,10 @@ const Signin = () => {
                           <input
                             type="password"
                             id="form2Example27"
-                            className="form-control form-control-lg"
+                            placeholder="********"
+                            
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            required
                             name="password"
                             value={password}
                             onChange={handleChangeInput}

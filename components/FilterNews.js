@@ -32,7 +32,7 @@ const Filter = ({ state }) => {
       
       <form className="flex items-center mt-2 col-md-10 px-0" autoComplete="off">
         <label htmlFor="voice-search" className="sr-only">
-          Search
+          ค้นหา
         </label>
         <div className="relative w-full">
           <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">

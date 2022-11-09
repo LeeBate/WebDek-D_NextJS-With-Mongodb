@@ -223,7 +223,7 @@ function NavBar() {
     <>
     <header>
       <div className="min-h-full">
-        <Disclosure as="nav" className="bg-[#1a237e] z-auto">
+        <Disclosure as="nav" className="bg-[#1a237e] ">
           {({ open }) => (
             <>
               <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
@@ -337,7 +337,7 @@ function NavBar() {
                           {Object.keys(auth).length === 0 ? (
                             <Link href="/signin">
                               <a className={isActive("/signin")}>
-                                <button className=" hover:bg-gray-700 text-white px-4 py-2 rounded-lg">
+                                <button className=" hover:bg-white hover:text-black text-gray-50 px-4 py-2 rounded-lg">
                                   เข้าสู่ระบบ
                                 </button>
                               </a>
