@@ -122,95 +122,113 @@ const Profile = () => {
         }
       `}</style>
       <FullLayout>
-        <div className="profile_page">
+        <div className="profile_page pt-36">
           <Head>
             <title>CALLLAB</title>
           </Head>
 
-          <section className=" flex items-center justify-center row text-secondary my-3 ">
-            <div className=" mt-2">
-            { Object.keys(auth).length !== 0 ? (
-              <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">
-                {auth.user.role === "user" ? "User Profile" : "Admin Profile"}
-              </h3>
+          <section className=" flex items-center justify-center  pb-36 ">
+        <div className="lg:w-1/3 w-4/5">
+          {/* {Object.keys(auth).length !== 0 ? (
+            <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">
+              {auth.user.role === "user" ? "โปรไฟล์" : "โปรไฟล์"}
+            </h3>
+          ) : (
+            <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">
+              No Profile
+            </h3>
+          )} */}
+
+          <div className="avatar">
+          {Object.keys(auth).length !== 0 ? (
+            <img
+              src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
+              alt="avatar"
+            />
             ) : (
-              <h3 className="text-center text-uppercase text-2xl md:text-3xl lg:text:3xl xl:text-4xl ">No Profile</h3>
+              <img
+                src={
+                  "https://res.cloudinary.com/devatchannel/image/upload/v1602752402/avatar/avatar_cugq40.png"
+                }
+                width="30"
+                height="30"
+                className="roundedCircle"
+              />
             )}
+            <span>
+              <i aria-hidden className="fas fa-camera"></i>
+              <p>เปลี่ยน</p>
+              <input
+                type="file"
+                name="file"
+                id="file_up"
+                accept="image/*"
+                onChange={changeAvatar}
+              />
+            </span>
+          </div>
+          
+          <div className="form-group ">
+            <label htmlFor="name">ชื่อ</label>
+            <input
+              type="text"
+              name="name"
+              value={name}
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="ชื่อของคุณ"
+              onChange={handleChange}
+            />
+          </div>
 
-              <div className="avatar">
-                <img
-                  src={avatar ? URL.createObjectURL(avatar) : auth.user.avatar}
-                  alt="avatar"
-                />
-                <span>
-                  <i className="fas fa-camera"></i>
-                  <p>เปลี่ยน</p>
-                  <input
-                    type="file"
-                    name="file"
-                    id="file_up"
-                    accept="image/*"
-                    onChange={changeAvatar}
-                  />
-                </span>
-              </div>
+          <div className="form-group">
+          
+            <label htmlFor="email">อีเมล์</label>
+            {Object.keys(auth).length !== 0 ? (
+            <input
+              type="text"
+              name="อีมเล์"
+              defaultValue={auth.user.email}
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              disabled={true}
+            />
+            ) : (
+              <p>Loading..</p>
+            )}
+          </div>
 
-              <div className="form-group ">
-                <label htmlFor="name">ชื่อ</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={name}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="ชื่อของคุณ"
-                  onChange={handleChange}
-                />
-              </div>
+          <div className="form-group">
+            <label htmlFor="password">รหัสผ่านใหม่</label>
+            <input
+              type="password"
+              name="password"
+              value={password}
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="รหัสผ่านใหม่ของคุณ"
+              onChange={handleChange}
+            />
+          </div>
 
-              <div className="form-group">
-                <label htmlFor="email">อีเมล์</label>
-                <input
-                  type="text"
-                  name="อีมเล์"
-                  defaultValue={auth.user.email}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  disabled={true}
-                />
-              </div>
+          <div className="form-group">
+            <label htmlFor="cf_password">ยืนยันรหัสผ่าน</label>
+            <input
+              type="password"
+              name="cf_password"
+              value={cf_password}
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="ยืนยันรหัสผ่าน"
+              onChange={handleChange}
+            />
+          </div>
 
-              <div className="form-group">
-                <label htmlFor="password">รหัสผ่านใหม่</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={password}
-                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
-                  placeholder="รหัสผ่านใหม่ของคุณ"
-                  onChange={handleChange}
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="cf_password">ยืนยันรหัสผ่าน</label>
-                <input
-                  type="password"
-                  name="cf_password"
-                  value={cf_password}
-                className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  
-                  placeholder="ยืนยันรหัสผ่าน"
-                  onChange={handleChange}
-                />
-              </div>
-
-              <button
-               className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg  rounded-full text-white w-full py-2 "
-                disabled={notify.loading}
-                onClick={handleUpdateProfile}
-              >
-                อัปเดตโปรไฟล์
-              </button>
-            </div>
-          </section>
+          <button
+           className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg  rounded-full text-white w-full py-2 "
+            disabled={notify.loading}
+            onClick={handleUpdateProfile}
+          >
+            อัปเดตโปรไฟล์
+          </button>
+        </div>
+      </section>
         </div>
       </FullLayout>
     </ThemeProvider>
