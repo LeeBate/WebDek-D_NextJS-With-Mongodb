@@ -161,12 +161,12 @@ const Users = () => {
               <TableCell >
                 <Typography variant="h6">{user.role === "admin" ? (
                       user.root ? (
-                        <i aria-hidden className="fas fa-check text-success"> Root</i>
+                        <i aria-hidden="true" className="fas fa-check text-success"> Root</i>
                       ) : (
-                        <i aria-hidden className="fas fa-check text-success"></i>
+                        <i aria-hidden="true" className="fas fa-check text-success"></i>
                       )
                     ) : (
-                      <i aria-hidden className="fas fa-times text-danger"></i>
+                      <i aria-hidden="true" className="fas fa-times text-danger"></i>
                     )}</Typography>
               </TableCell>
               <TableCell align="right" className="cursor-pointer">
@@ -187,7 +187,7 @@ const Users = () => {
                     >
                       <a>
                         <i
-                        aria-hidden
+                        aria-hidden="true"
                           className="fas fa-edit text-info mr-2"
                           title="Edit"
                         ></i>
@@ -196,7 +196,7 @@ const Users = () => {
 
                     {auth.user.root && auth.user.email !== user.email ? (
                       <i
-                      aria-hidden
+                      aria-hidden="true"
                         className="fas fa-trash-alt text-danger ml-2"
                         title="Remove"
                         data-toggle="modal"
@@ -217,7 +217,7 @@ const Users = () => {
                       ></i>
                     ) : (
                       <i
-                      aria-hidden
+                      aria-hidden="true"
                         className="fas fa-trash-alt text-danger ml-2"
                         title="Remove"
                       ></i>
