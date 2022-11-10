@@ -37,7 +37,7 @@ const Users = () => {
         <title>CALLLAB</title>
       </Head>
       <FullLayout>
-        <div className="bg-white p-2 md:p-3 xl:p-5 rounded-md">
+        <div className="bg-black p-2 md:p-3 xl:p-5 rounded-md">
       <div className ="overflow-x-auto relative shadow-md sm:rounded-lg">
       <Table
         aria-label="simple table"
