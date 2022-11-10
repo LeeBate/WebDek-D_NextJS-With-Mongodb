@@ -30,8 +30,8 @@ const InformItem = ({ product, handleCheck }) => {
       year: "numeric",
       month: "long",
       day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+      // hour: "2-digit",
+      // minute: "2-digit",
     });
 
     return data;
@@ -61,6 +61,10 @@ const InformItem = ({ product, handleCheck }) => {
                     <h3 className="text-2xl lg:text-3xl font-bold leading-tight mb-2">
                         <p className=" transition duration-150 ease-in-out">{product.title}</p>
                     </h3>
+                    <div className="news-card__post-date flex"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div className=" ml-2"></div>{ConvertDate(product.createdAt)}</div>
                 </header>
                 <p className="text-lg text-gray-400 flex-grow indent-8  line-clamp-4 leading-relaxed">{product.description}</p>
                 <footer className="flex items-center mt-4">

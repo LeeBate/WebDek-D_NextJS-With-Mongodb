@@ -214,9 +214,9 @@ img {
 }
 
 .news-card__post-date {
-  font-size: 0.7rem;
+  font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: #ccc;
+  color: rgb(158, 156, 156);
 }
 
 .news-card__details-wrapper {

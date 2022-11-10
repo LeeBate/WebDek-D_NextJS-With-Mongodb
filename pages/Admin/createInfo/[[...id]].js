@@ -360,13 +360,13 @@ const NewsManager = (props) => {
               </div>
             </TabPanel>
             <TabPanel value="1">
-              <div className="lg:pt-24  pt-14 lg:mb-80">
+              <div className="">
                 <Head>
                   <title>ข่าวสาร</title>
                 </Head>
 
                 <FilterNews state={state} />
-                <div className="px-4">
+                <div className="">
                   {auth.user && auth.user.role === "admin" && (
                     <div
                       className="delete_all btn btn-danger mt-2"

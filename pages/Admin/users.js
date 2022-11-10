@@ -23,11 +23,10 @@ const Users = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <style jsx global>{`
+     <style jsx global>{`
         Nav {
           display: none;
         }
-        
       `}</style>
       <style jsx global>{`
         footer {
@@ -152,7 +151,7 @@ const Users = () => {
                   sx={{
                     pl: "4px",
                     pr: "4px",
-                    backgroundColor: "primary.main",
+                    backgroundColor: "#1a237e",
                     color: "#fff",
                   }}
                   size="small"

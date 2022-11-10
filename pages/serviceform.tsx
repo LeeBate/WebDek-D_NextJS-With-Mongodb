@@ -107,7 +107,7 @@ const Serviceform: NextPage = () => {
                     name="title"
                     id="title"
                     className="shadow-sm bg-gray-50 focus:ring-indigo-500 focus:border-indigo-500 border border-gray-300 text-gray-900 
-          text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+          text-sm rounded-xl focus:ring-primary-500 focus:border-primary-500
           block w-full p-2.5 "
                     placeholder="เรื่อง..."
                   />
@@ -127,7 +127,7 @@ const Serviceform: NextPage = () => {
                     name="email"
                     id="email"
                     className="shadow-sm bg-gray-50 border border-gray-300 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 
-          text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+          text-sm rounded-xl focus:ring-primary-500 focus:border-primary-500
           block w-full p-2.5 "
                     placeholder="Suranaree@g.sut.ac.th"
                   />
@@ -147,7 +147,7 @@ const Serviceform: NextPage = () => {
                     name="name"
                     id="name"
                     className="shadow-sm bg-gray-50 border focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 text-gray-900 
-          text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+          text-sm rounded-xl focus:ring-primary-500 focus:border-primary-500
           block w-full p-2.5 "
                     placeholder="นายเทคโน สุรนารี"
                   />
@@ -183,7 +183,7 @@ const Serviceform: NextPage = () => {
                     onChange={(e) => setDetail(e.target.value)}
                     id="detail"
                     name="detail"
-                    className="block p-2.5 w-full focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300  "
+                    className="block p-2.5 w-full focus:ring-indigo-500 focus:border-indigo-500 text-sm text-gray-900 bg-gray-50 rounded-xl shadow-sm border border-gray-300  "
                     placeholder="เขียนรายละเอียด..."
                   ></textarea>
                 </div>
@@ -202,7 +202,7 @@ const Serviceform: NextPage = () => {
                     type="text"
                     name="date"
                     className="shadow-sm bg-gray-50 border focus:ring-indigo-500 focus:border-indigo-500 border-gray-300 text-gray-900 
-          text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+          text-sm rounded-xl focus:ring-primary-500 focus:border-primary-500
           block w-full p-2.5 "
                     placeholder="นายเทคโน สุรนารี"
                   />
@@ -210,8 +210,7 @@ const Serviceform: NextPage = () => {
 
                 <button
                   type="submit"
-                  className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
-          block w-full p-1"
+                  className=" bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl"
                 >
                   ส่งแบบฟอร์ม
                 </button>

@@ -72,6 +72,16 @@ const EditUser = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <style jsx global>{`
+        Nav {
+          display: none;
+        }
+      `}</style>
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
         <FullLayout>
       <Head>
         <title>แก้ไขผู้ใช้</title>
