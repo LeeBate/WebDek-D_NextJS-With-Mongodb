@@ -97,7 +97,7 @@ const Categories = () => {
 
                 <div style={{ cursor: "pointer" }}>
                   
-                  <MdEditNote onClick={() => handleEditCategory(catogory)} className=" text-cyan-700" />
+                  <MdEditNote onClick={() => handleEditCategory(catogory)} className=" text-cyan-600" />
 
                   <BsTrash onClick={() =>
                       dispatch({
