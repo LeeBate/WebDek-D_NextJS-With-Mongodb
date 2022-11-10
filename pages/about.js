@@ -4,6 +4,7 @@ import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import Head from "next/head";
 import { Staff } from "./api/data/staff";
+import Image from "next/image";
 
 export default function About() {
   return (
@@ -23,7 +24,7 @@ export default function About() {
         <div className="grid gap-3  grid-cols-1 md:grid-cols-2   w-4/6  md:w-11/12 xl:w-10/12 mx-auto" >
           <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
             <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
-              <img
+              <Image
                 className="mr-3 max-w-[100px] self-center  rounded-md"
                 src={"http://203.158.7.33/profiles/photo/236121.jpg"}
               />
@@ -46,7 +47,7 @@ export default function About() {
               className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
             >
               <div className="md:flex flex-row sm:flex">
-                <img
+                <Image
                   className="mr-3 self-center max-w-[100px] rounded-md "
                   src={staff.img}
                 />
