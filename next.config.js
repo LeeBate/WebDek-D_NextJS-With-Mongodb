@@ -1,7 +1,7 @@
 module.exports = {
   
   env: {
-      "BASE_URL": "https://calllab.vercel.app",
+      "BASE_URL": "http://localhost:3000",
       "MONGODB_URL": "mongodb+srv://AdminX:admin123@project.ljdx6ja.mongodb.net/?retryWrites=true&w=majority",
       "ACCESS_TOKEN_SECRET": "project48615324896761524",
       "REFRESH_TOKEN_SECRET": "project77759664823511548226",
