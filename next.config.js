@@ -16,6 +16,7 @@ module.exports = {
     images: {
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
+      domains: ['http://203.158.7.33']
     },
     
   }
