@@ -61,7 +61,7 @@ const Inform = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-14 lg:mb-80">
+    <div className="lg:pt-24  pt-14 lg:mb-80 h-screen">
       <Head>
         <title>CALLLAB</title>
       </Head>
