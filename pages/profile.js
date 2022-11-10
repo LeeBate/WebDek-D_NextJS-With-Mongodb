@@ -207,7 +207,7 @@ const Profile = () => {
           </div>
 
           <button
-            className="w-full  bg-[#627ac2] hover:bg-[#4761AD] text-white rounded-lg  font-bold py-2 px-4 border-b-4rounded"
+           className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg  rounded-full text-white w-full py-2 "
             disabled={notify.loading}
             onClick={handleUpdateProfile}
           >
