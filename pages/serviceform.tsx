@@ -210,7 +210,7 @@ const Serviceform: NextPage = () => {
 
                 <button
                   type="submit"
-                  className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white rounded-full"
+                  className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-xl"
                 >
                   ส่งแบบฟอร์ม
                 </button>
