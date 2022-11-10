@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Newslatter from "./_child/newslatter";
-import { useContext } from 'react'
+import React,{ useContext } from 'react'
 import { DataContext } from '../store/GlobalState'
 
 export default function footer() {

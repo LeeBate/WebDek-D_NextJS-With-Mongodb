@@ -73,7 +73,7 @@ function NavBar() {
       <>
         <span className="sr-only">Open user menu</span>
         <Link href="/">
-          <a className={isActive("/")}>
+          
             <Disclosure.Button>
               <div
                 className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
@@ -82,7 +82,6 @@ function NavBar() {
                 ออกจากระบบ
               </div>
             </Disclosure.Button>
-          </a>
         </Link>
       </>
     );
@@ -119,7 +118,7 @@ function NavBar() {
         {userNavigation.map((item) => (
           <Menu.Item key={item.name}>
             {({ active }) => (
-              <a
+              <Link
                 href={item.href}
                 className={classNames(
                   active ? "bg-gray-100 w-full text-start" : "",
@@ -127,7 +126,7 @@ function NavBar() {
                 )}
               >
                 <button>{item.name}</button>
-              </a>
+              </Link>
             )}
           </Menu.Item>
         ))}
@@ -138,14 +137,14 @@ function NavBar() {
     return (
       <>
         {userNavigation.map((item) => (
-          <a
+          <Link
             key={item.name}
             as="a"
             href={item.href}
             className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
           >
             <div>{item.name}</div>
-          </a>
+          </Link>
         ))}
       </>
     );
@@ -230,18 +229,18 @@ function NavBar() {
                 <div className="flex h-16 md:h-16 lg:h-24 items-center justify-between">
                   <div className="flex items-center">
                     <div className="flex-shrink w-auto mr-10">
-                      <a href="/">
+                      <Link href="/">
                         <img
                           className="h-16 w-full md:h-16 lg:h-24 cursor-pointer aspect-square"
                           src={"/images/LOGO.png"}
                           alt="logo"
                         />
-                      </a>
+                      </Link>
                     </div>
                     <div className="hidden lg:block">
                       <div className="flex items-baseline space-x-4">
                         {navigation1.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
                             href={item.href}
                             className={classNames(
@@ -253,10 +252,10 @@ function NavBar() {
                             aria-current={item.current ? "page" : undefined}
                           >
                             <button>{item.name}</button>
-                          </a>
+                          </Link>
                         ))}
                         {navigation2.map((item) => (
-                          <a
+                          <Link
 
                             key={item.name}
                             href={item.href}
@@ -269,10 +268,10 @@ function NavBar() {
                             aria-current={item.current ? "page" : undefined}
                           >
                             <button>{item.name}</button>
-                          </a>
+                          </Link>
                         ))}
                         {navigation3.map((item) => (
-                          <a
+                          <Link
                             key={item.name}
                             href={item.href}
                             className={classNames(
@@ -284,7 +283,7 @@ function NavBar() {
                             aria-current={item.current ? "page" : undefined}
                           >
                             <button>{item.name}</button>
-                          </a>
+                          </Link>
                         ))}
                         <Menu as="div" className="relative ml-3">
                           <div>
@@ -309,7 +308,7 @@ function NavBar() {
                               {dropdownMenu.map((item) => (
                                 <Menu.Item key={item.name}>
                                   {({ active }) => (
-                                    <a
+                                    <Link
                                       href={item.href}
                                       className={classNames(
                                         active ? "bg-gray-100" : "",
@@ -317,7 +316,7 @@ function NavBar() {
                                       )}
                                     >
                                       <button>{item.name}</button>
-                                    </a>
+                                    </Link>
                                   )}
                                 </Menu.Item>
                               ))}
@@ -336,11 +335,11 @@ function NavBar() {
                           <span className="sr-only">Open user menu</span>
                           {Object.keys(auth).length === 0 ? (
                             <Link href="/signin">
-                              <a className={isActive("/signin")}>
+                              
                                 <button className=" hover:bg-white hover:text-black text-gray-50 px-4 py-2 rounded-lg">
                                   เข้าสู่ระบบ
                                 </button>
-                              </a>
+                             
                             </Link>
                           ) : (
                             loggedRouter()
@@ -471,13 +470,13 @@ function NavBar() {
                   {Object.keys(auth).length === 0 ? (
                     <Link href="/signin">
                       <div className="pb-3 px-3">
-                        <a className={isActive("/signin")}>
+                        
                           <Disclosure.Button>
                             <button className="hover:bg-gray-700 text-white px-1 py-2 rounded-lg">
                               เข้าสู่ระบบ
                             </button>
                           </Disclosure.Button>
-                        </a>
+                        
                       </div>
                     </Link>
                   ) : (
