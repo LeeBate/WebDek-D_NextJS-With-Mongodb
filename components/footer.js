@@ -3,7 +3,7 @@ import Newslatter from "./_child/newslatter";
 import React,{ useContext } from 'react'
 import { DataContext } from '../store/GlobalState'
 
-export default function footer() {
+export default function Footer() {
   const { state, dispatch } = useContext(DataContext)
     const {  auth } = state
 
