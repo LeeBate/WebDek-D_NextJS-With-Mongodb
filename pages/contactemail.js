@@ -93,7 +93,7 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
   <section className="bg-white">
     <Head><title>CALLLAB</title></Head>
   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md mt-20">
-      <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">ติดต่อเรา</h2>
+      <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-[#1a237e]">ติดต่อเรา</h2>
       <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-md">ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
       <form method='post' onSubmit={sendEmail2}  className="space-y-8">
           <div>
@@ -119,8 +119,7 @@ emailjs.sendForm('service_8qhwn8r', 'template_a0nrq3h', e.target, 'urzLahGarV18K
               <label htmlFor="message" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">รายละเอียดที่ต้องการติดต่อ</label>
               <textarea  rows="6" name='detail' className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 " placeholder="เขียนรายละเอียด..." required></textarea>
           </div>
-          <button type="submit" className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
-              block w-full p-2.5 " >ส่งข้อมูล</button>
+          <button type="submit" className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white rounded-full block w-full p-2.5 " >ส่งข้อมูล</button>
       </form>
   </div>
 </section>

@@ -1,13 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@500&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Noto+Serif+Thai:wght@500&display=swap");
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@300&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 * > * {
-  font-family: "Noto Serif Thai", serif;
+  font-family: 'Prompt', sans-serif;
 }
 
 
@@ -131,7 +128,7 @@ img {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Open Sans";
+  font-family: 'Prompt', sans-serif;
 }
 
 .content-wrapper {
@@ -214,9 +211,9 @@ img {
 }
 
 .news-card__post-date {
-  font-size: 1rem;
+  font-size: 0.7rem;
   margin-bottom: 0.5rem;
-  color: rgb(158, 156, 156);
+  color: #ccc;
 }
 
 .news-card__details-wrapper {
@@ -297,7 +294,7 @@ html {
 /* image Parallax*/
 .bodysec {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Prompt', sans-serif;
 }
 
 .parallax{

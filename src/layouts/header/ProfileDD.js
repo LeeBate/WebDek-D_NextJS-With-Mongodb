@@ -151,7 +151,7 @@ const ProfileDD = () => {
           <Box p={2}>
             <Button
               onClick={handleLogout}
-              className="w-full bg-blue-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+              className="btn bg-red-600 hover:bg-red-800 shadow-md hover:shadow-lg text-white rounded-full"
               fullWidth
               variant="contained"
               color="primary"

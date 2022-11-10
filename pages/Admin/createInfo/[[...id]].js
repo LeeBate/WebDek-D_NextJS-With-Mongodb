@@ -248,11 +248,11 @@ const NewsManager = (props) => {
                 )}
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
-                    <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
+                    <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-[#1a237e]">
                       เพิ่มข้อมูลข่าวสาร
                     </h2>
                     <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
-                      ไม่รู้จะใส่อะไร เผื่ออยากใส่
+                    เพิ่มข้อมูล
                     </p>
                     <form
                       method="post"
@@ -349,8 +349,7 @@ const NewsManager = (props) => {
                       </div>
                       <button
                         type="submit"
-                        className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
-              block w-full p-2.5 "
+                        className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white font-bold py-2 px-4 border-b-4  rounded-full block w-full p-2.5 "
                       >
                         {onEdit ? "อัพเดต" : "สร้าง"}
                       </button>
@@ -413,27 +412,23 @@ const NewsManager = (props) => {
                               onChange={() => handleCheck(product._id)}
                             />
                           )}
-                          <Link href={`/Inform/${product._id}`}>
-                            <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-                              <img
-                                className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
-                                src={product.images[0].url}
-                                alt={product.images[0].url}
-                                width="540"
-                                height="303"
-                              />
-                            </figure>
-                          </Link>
+                          <Link href={`/productNews/${product._id}`}>
+                          <img
+                            className="aspect-square object-fill cursor-pointer card-img-top"
+                            src={product.images[0].url}
+                            alt={product.images[0].url}
+                          />
+                        </Link>
                           <div className="card-body">
                           <h5
-          className="card-title font-bold text-xl mb-2 text-capitalize"
-          title={product.en}
-        >
-          {product.en}
-        </h5>
-        <h5 className="card-title text-capitalize" title={product.title}>
-          {product.title}
-        </h5>
+                            className="card-title font-bold text-xl mb-2 text-capitalize"
+                            title={product.en}
+                          >
+                            {product.en}
+                          </h5>
+                          <h5 className="card-title text-capitalize" title={product.title}>
+                            {product.title}
+                          </h5>
 
                             <div className="row justify-content-between mx-0 ">
                               <>
@@ -442,14 +437,14 @@ const NewsManager = (props) => {
                                     onClick={() => {
                                       setTabIndex("0");
                                     }}
-                                    className="btn btn-info rounded-full"
+                                    className="btn  bg-[#1a237e]  hover:bg-[#111754]  shadow-md hover:shadow-lg text-white rounded-full"
                                     style={{ marginRight: "5px", flex: 1 }}
                                   >
                                     แก้ไขข้อมูล
                                   </a>
                                 </Link>
                                 <button
-                                  className="btn btn-danger rounded-full"
+                                  className="btn bg-red-600 hover:bg-red-800 shadow-md hover:shadow-lg text-white rounded-full"
                                   style={{ marginLeft: "5px", flex: 1 }}
                                   data-toggle="modal"
                                   data-target="#exampleModal"

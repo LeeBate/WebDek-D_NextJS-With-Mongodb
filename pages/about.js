@@ -14,10 +14,10 @@ export default function About() {
         </Head>
         
       </section>
-      <section >
-        <div className=" font-bold text-center text-md md:text-xl xl:text-3xl lg:text-2xl my-3  w-5/6 mx-auto  md:w-11/12 xl:w-10/12 rounded-md">
-          <p className="  pt-2  mx-3">บุคลากรฝ่ายวิเคราะห์ด้วยเครื่องมือ</p>
-          <p className=" pb-2   mx-3">ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
+      <section className="mb-5">
+        <div className=" font-bold text-center text-md md:text-xl xl:text-3xl lg:text-2xl my-3  w-5/6 mx-auto  md:w-11/12 xl:w-10/12 rounded-md text-[#1a237e]">
+          <p className="  pt-2  mx-3 ">บุคลากรฝ่ายวิเคราะห์ด้วยเครื่องมือ</p>
+          <p className=" pb-2   mx-3 ">ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี</p>
         </div>
 
         <div className="grid gap-3  grid-cols-1 md:grid-cols-2   w-4/6  md:w-11/12 xl:w-10/12 mx-auto" >

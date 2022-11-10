@@ -32,39 +32,110 @@ const DetailInform = (props) => {
 
     return(
         <div className="mb-5">
-        <div className="mt-5">
+       
             <Head>
                 <title>{product.title}</title>
             </Head>
-            <div className="flex flex-col bg-indigo-100  rounded-xl mx-4 sm:mx-4 md:mx-14 xl:mx-24 mt-24 lg:mt-28">
-            <div className="text-capitalize font-bold text-3xl mt-[36px] ml-5 mr-5 mx-[20px] md:mx-[40px] xl:mx-[60px]">
-            <div className="absolute left-2/2 -ml-0.5 w-1.5 rounded-md h-24 md:h-20 lg:h-20 bg-gray-600"></div>
-            <div > <h1 className="font-blod text-lg md:text-2xl lg:text-3xl  ml-4">{product.title}</h1></div>
-            </div>
-            <div className="flex flex-col mx-4 sm:flex-col md:flex-col xl:flex-row sm:mx-4 md:mx-14 xl:mx-24 ">
-                <div className='mx-3 md:mx-auto'>
-                <img src={ product.images[tab].url } alt={ product.images[tab].url }
-                className="img-thumbnail rounded mt-4 sm:mr-5 sm:max-w-100 sm:max-h-70 md:max-w-2xl md:max-h-fit xl:max-w-xl xl:max-h-fit" />
+           
 
-                <div className="row mx-0 mt-3 mb-4" style={{cursor: 'pointer'}} >
+{/* <div class="grid grid-cols-1 lg:grid-cols-3 grid-rows-4 mt-28 mx-auto bg-indigo-100 w-[90%] h-auto p-3 gap-6">
+  <div class=" col-span-5">
+     
+  <div class=" my-auto bg-red-300 col-span-3 lg:col-span-5 "> 
+        <div className="text-capitalize font-bold text-4xl ">
+                  <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
+                    {product.title}
+                  </h1>
+               
+        </div>
+    </div>
 
-                    {product.images.map((img, index) => (
-                        <img key={index} src={img.url} alt={img.url}
-                        className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(index)}`}
-                        // style={{height: '60px', width: '80px'}}
-                        onClick={() => setTab(index)} />
-                    ))}
-                    </div>
-                </div>
-            
-            <div className=" mx-3 sm:mx-2 md:mx-3 xl:mx-5 mt-3 mb-4">
-    
-                <div className="my-2 text-base md:text-lg xl:text-lg ">{product.description}</div>
+    </div>
+ <div class=" col-span-2 bg-red-300 row-span-3"> 
+
+  <img  src={product.images[tab].url}
+        alt={product.images[tab].url}
+        className=" object-fill py-3 rounded h-[80%] max-h-[589px] w-auto mx-auto "/>
+
+    <div className="" style={{ cursor: "pointer" }}>
+                {product.images.map((img, index) => (
+                  <img
+                    key={index}
+                    src={img.url}
+                    alt={img.url}
+                    className={`img-thumbnail rounded ml-2 mb-2 h-12 md:h-18 xl:-h-18 w-20 xl:min-h-[64px] ${isActive(
+                      index
+                    )}`}
+                    // style={{height: '60px', width: '80px'}}
+                    onClick={() => setTab(index)}
+                  />
+                ))}
+                
+              </div>
+</div> 
+  <div class=" col-span-3 bg-red-300 row-span-3">
+  <div className="my-2 text-base md:text-lg xl:text-lg whitespace-pre-line">{product.description}</div>
                 <div className=" flex justify-end items-end font-bold xl:text-lg ">{ConvertDate(product.createdAt)} น.</div>
-            </div>
-            </div>
+  </div>
+
+</div>
+ */}
+
+
+
+
+<div class="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-4 lg:px-8  h-auto gap-4">
+ 
+ 
+  <div class=" my-auto col-span-3  lg:col-span-5 "> 
+        <div className="text-capitalize font-bold text-4xl ">
+                  <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
+                  {product.title}
+                  </h1>
+              
         </div>
-        </div>
+ </div>
+
+    
+  <div class=" col-span-2 pb-0 xl:pb-3 max-h-[589px]  rounded-md row-span-4">
+   
+    {/* <div className="grid grid-cols-1 bg-red-400 grid-rows-7 w-full h-full"> */}
+       {/* <div class=" h-full w-full row-span-5"> */}
+        <img  src={product.images[tab].url}
+        alt={product.images[tab].url}
+        className=" object-fill py-3 rounded h-[80%] max-h-[589px] w-auto mx-auto "/>
+        {/* </div> */}
+        {/* <div class="h-full w-full row-span-2"> */}
+        <div className="row mx-0 mt-3 mb-4" style={{cursor: 'pointer'}} >
+
+{product.images.map((img, index) => (
+    <img key={index} src={img.url} alt={img.url}
+    className={`img-thumbnail rounded h-[60px] w-[83px] mx-[2px] md:h-24 md:w-40 ${isActive(index)}`}
+    // style={{height: '60px', width: '80px'}}
+    onClick={() => setTab(index)} />
+))}
+</div>
+        {/* </div> */}
+    {/* </div> */}
+
+  </div>
+  <div class="col-span-3  row-span-4">
+    
+
+  <div>
+      
+        <p className="text-sm whitespace-pre-line md:text-lg">{product.description}</p>
+      </div>
+  
+
+  </div>
+  
+
+
+
+</div>
+
+   
         </div>
     )
 }

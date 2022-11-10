@@ -15,7 +15,11 @@ import {
   TableRow,
   Chip,
 } from "@mui/material";
-import BaseCard from "../../src/components/baseCard/BaseCard";
+import {BsTrash} from 'react-icons/bs'
+import {MdEditNote} from 'react-icons/md'
+import {AiOutlineCheck} from 'react-icons/ai'
+import {GrFormClose} from 'react-icons/gr'
+
 
 const Users = () => {
   const { state, dispatch } = useContext(DataContext);
@@ -161,12 +165,13 @@ const Users = () => {
               <TableCell >
                 <Typography variant="h6">{user.role === "admin" ? (
                       user.root ? (
-                        <i className="fas fa-check text-success"> Root</i>
+                        <div className="flex"><AiOutlineCheck className="fas text-green-700 w-6 h-6 mr-2"></AiOutlineCheck> Root</div>
+                        
                       ) : (
-                        <i className="fas fa-check text-success"></i>
+                        <AiOutlineCheck className="fas text-green-700 w-6 h-6 mr-2"></AiOutlineCheck>
                       )
                     ) : (
-                      <i className="fas fa-times text-danger"></i>
+                      <GrFormClose className="fas text-red-700 w-6 h-6 mr-2"></GrFormClose>
                     )}</Typography>
               </TableCell>
               <TableCell align="right" className="cursor-pointer">
@@ -185,17 +190,13 @@ const Users = () => {
                           : "#!"
                       }
                     >
-                      <a>
-                        <i
-                          className="fas fa-edit text-info mr-2"
-                          title="Edit"
-                        ></i>
-                      </a>
+                      <MdEditNote className="fas text-info mr-2 w-8 h-8"/>
+                      
                     </Link>
 
                     {auth.user.root && auth.user.email !== user.email ? (
-                      <i
-                        className="fas fa-trash-alt text-danger ml-2"
+                      <BsTrash
+                        className="fas text-danger ml-2  w-6 h-6"
                         title="Remove"
                         data-toggle="modal"
                         data-target="#exampleModal"
@@ -212,12 +213,12 @@ const Users = () => {
                             ],
                           })
                         }
-                      ></i>
+                      ></BsTrash>
                     ) : (
-                      <i
-                        className="fas fa-trash-alt text-danger ml-2"
+                      <BsTrash
+                      className="fas text-danger ml-2 w-6 h-6"
                         title="Remove"
-                      ></i>
+                      ></BsTrash>
                     )}
                     </Typography>
                   </Box>

@@ -6,6 +6,8 @@ import { postData, putData } from "../../utils/fetchData";
 import FullLayout from "../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
+import { MdEditNote } from "react-icons/md";
+import {BsTrash} from "react-icons/bs"
 
 const Categories = () => {
   const [name, setName] = useState("");
@@ -94,12 +96,24 @@ const Categories = () => {
                 {catogory.name}
 
                 <div style={{ cursor: "pointer" }}>
-                  <i
-                    className="fas fa-edit mr-2 text-info"
-                    onClick={() => handleEditCategory(catogory)}
-                  ></i>
-
-                  <i
+                  <MdEditNote className="fas fa-edit mr-2 text-info w-6 h-6" onClick={() => handleEditCategory(catogory)} />
+                  
+                  <BsTrash className="fas fa-trash-alt text-danger w-6 h-6" data-toggle="modal"
+                    data-target="#exampleModal"
+                    onClick={() =>
+                      dispatch({
+                        type: "ADD_MODAL",
+                        payload: [
+                          {
+                            data: categories,
+                            id: catogory._id,
+                            title: catogory.name,
+                            type: "ADD_CATEGORIES",
+                          },
+                        ],
+                      })
+                    } />
+                  {/* <i
                     className="fas fa-trash-alt text-danger"
                     data-toggle="modal"
                     data-target="#exampleModal"
@@ -116,7 +130,7 @@ const Categories = () => {
                         ],
                       })
                     }
-                  ></i>
+                  ></i> */}
                 </div>
               </div>
             </div>

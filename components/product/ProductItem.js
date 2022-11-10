@@ -13,14 +13,14 @@ const ProductItem = ({ product, handleCheck }) => {
     return (
       <>
         <Link href={`product/${product._id}`}>
-          <button className=" bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
+          <button className="btn bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
             <div className="flex items-center justify-center px-auto ">
               <IoDocumentTextOutline></IoDocumentTextOutline>
               <div className="mr-1"></div> ดูข้อมูล
             </div>
           </button>
         </Link>
-        <button className="bg-[#FFA500] hover:bg-[#1a237e] px-3 py-2 rounded-full text-white">
+        <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
           <div className="flex items-center justify-center px-auto ">
             <MdOutlineScience></MdOutlineScience>
             <div className="mr-1"></div> จองเครื่องมือ
@@ -86,7 +86,7 @@ const ProductItem = ({ product, handleCheck }) => {
       </Link>
       <div className="card-body">
         <h5
-          className="card-title font-bold text-xl mb-2 text-capitalize"
+          className="card-title font-bold text-xl mb-2 text-capitalize text-[#1a237e]"
           title={product.en}
         >
           {product.en}
@@ -95,7 +95,7 @@ const ProductItem = ({ product, handleCheck }) => {
           {product.title}
         </h5>
 
-        <div className="row justify-content-between mx-0 ">
+        <div className="row justify-between mx-0">
           {!auth.user || auth.user.role !== "admin" ? userLink() : adminLink()}
         </div>
       </div>

@@ -824,15 +824,13 @@ const ProductsManager = (props) => {
                           />
                         )}
                         <Link href={`/product/${product._id}`}>
-                          <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-                            <img
-                              className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
-                              src={product.images[0].url}
-                              alt={product.images[0].url}
-                              width="540"
-                              height="303"
-                            />
-                          </figure>
+                          
+                          <img
+                            className="aspect-square object-fill cursor-pointer card-img-top"
+                            src={product.images[0].url}
+                            alt={product.images[0].url}
+                          />
+                          
                         </Link>
                         <div className="card-body">
                         <h5
@@ -854,14 +852,14 @@ const ProductsManager = (props) => {
                                   onClick={() => {
                                     setTabIndex("0");
                                   }}
-                                  className="btn btn-info rounded-full"
+                                  className="btn  bg-[#1a237e]  hover:bg-[#111754]  shadow-md hover:shadow-lg text-white rounded-full"
                                   style={{ marginRight: "5px", flex: 1 }}
                                 >
                                   แก้ไขข้อมูล
                                 </a>
                               </Link>
                               <button
-                                className="btn btn-danger rounded-full"
+                                className="btn bg-red-600 hover:bg-red-800 shadow-md hover:shadow-lg text-white rounded-full"
                                 style={{ marginLeft: "5px", flex: 1 }}
                                 data-toggle="modal"
                                 data-target="#exampleModal"

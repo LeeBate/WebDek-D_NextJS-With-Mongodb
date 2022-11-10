@@ -147,7 +147,7 @@ const BlogCard = () => {
                 p: 0,
                 width: "100%",
                 boxShadow: "0 2px 5px 1px #5c6bc0",
-                backgroundColor: "#3949ab",
+                backgroundColor: "#1a237e",
               }}
             >
               <CardContent
@@ -218,7 +218,7 @@ const BlogCard = () => {
                 p: 0,
                 width: "100%",
                 boxShadow: "0 2px 5px 1px #5c6bc0",
-                backgroundColor: "#3949ab",
+                backgroundColor: "#1a237e",
               }}
             >
               <CardContent
@@ -320,7 +320,7 @@ const BlogCard = () => {
                 p: 0,
                 width: "100%",
                 boxShadow: "0 2px 5px 1px #5c6bc0",
-                backgroundColor: "#3949ab",
+                backgroundColor: "#1a237e",
               }}
             >
               <CardContent

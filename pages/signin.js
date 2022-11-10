@@ -124,7 +124,7 @@ const Signin = () => {
                         <div className="pt-1 mb-4">
                           <button
                             type="submit"
-                            className="inline-block px-7 py-3 bg-blue-500 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-600 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                            className="inline-block px-7 py-3 bg-[#2735bd] text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-[#232fa8] hover:shadow-lg focus:bg-[#1e2993] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#1a237e] active:shadow-lg transition duration-150 ease-in-out w-full"
                             data-mdb-ripple="true"
                             data-mdb-ripple-color="light"
                           >
@@ -140,7 +140,7 @@ const Signin = () => {
                         <p className="mb-5 pb-lg-2  ">
                           ถ้าคุณยังไม่มีบัญชี?
                           <Link href="/register">
-                            <a className="text-blue-500" href="#!">
+                            <a className="text-[#2735bd]" href="#!">
                               {" "}
                               สมัครที่นี่
                             </a>

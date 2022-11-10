@@ -225,25 +225,9 @@ const DetailProduct = (props, query) => {
        {/* <div class=" h-full w-full row-span-5"> */}
         <img  src={product.images[tab].url}
         alt={product.images[tab].url}
-        className=" object-fill py-3 rounded h-[80%] max-h-[589px] w-auto mx-auto "/>
+        className=" object-fill py-3 rounded h-[100%] max-h-[589px] w-auto mx-auto "/>
         {/* </div> */}
         {/* <div class="h-full w-full row-span-2"> */}
-        <div className="" style={{ cursor: "pointer" }}>
-                {product.images.map((img, index) => (
-                  <img
-                    key={index}
-                    src={img.url}
-                    alt={img.url}
-                    className={`img-thumbnail rounded ml-2 mb-2 h-12 md:h-18 xl:-h-18 w-20 xl:min-h-[64px] ${isActive(
-                      index
-                    )}`}
-                    // style={{height: '60px', width: '80px'}}
-                    onClick={() => setTab(index)}
-                  />
-                ))}
-                
-              </div>
-
         {/* </div> */}
     {/* </div> */}
 
@@ -407,14 +391,14 @@ const DetailProduct = (props, query) => {
         <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
           <button
             type="button"
-            className=" rounded-xl bg-green-700 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            className=" rounded-full bg-green-500 text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
-            จองเข้าใช้เครื่องมือ
+            จองเครื่องมือ
           </button>
 
           <button
             type="button"
-            className=" rounded-xl bg-indigo-900 text-white border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            className=" rounded-full bg-[#1a237e] text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
             ติดต่อขอรับบริการ
           </button>
@@ -423,7 +407,7 @@ const DetailProduct = (props, query) => {
             <button
               type="button"
               onClick={handleSubmit}
-              className=" flex items-center rounded-xl bg-[#f6f6f6] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+              className=" flex items-center rounded-full bg-[#f6f6f6] text-black border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
             >
               {" "}
               <BsHeart className="mr-2" />

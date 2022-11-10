@@ -86,7 +86,7 @@ const InformItem = ({ product, handleCheck }) => {
       </Link>
       <div className="card-body">
         <h5
-          className=" card-title font-bold text-xl mb-2 text-capitalize"
+          className=" card-title font-bold text-xl mb-2 text-capitalize text-[#1a237e]"
           title={product.title}
         >
           {product.title}

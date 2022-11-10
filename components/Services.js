@@ -28,7 +28,7 @@ function Services() {
     
     <ThemeProvider theme={theme} >
        <div className="service-header"  >
-          <h2 className=" text-xl font-bold md:text-3xl lg:text-4xl">
+          <h2 className=" text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]">
           
             บริการวิเคราะห์ทดสอบ
           </h2>
@@ -103,7 +103,7 @@ function Services() {
                         />
                         <div className=" mx-2 mt-3">
                           <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                          <a className="text-[#1a237e]">มีบริการกล้องถ่ายภาพสมรรถนะสูง</a> เช่น 
+                          <a className="text-[#1a237e]">บริการกล้องถ่ายภาพสมรรถนะสูง</a> เช่น 
                              กล้องจุลทรรศน์อิเล็กตรอน กล้องจุลทรรศน์แสง
                           </h3>
 
@@ -122,7 +122,7 @@ function Services() {
                           </ul>
                           <div className="flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-full">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -140,8 +140,8 @@ function Services() {
                         />
                         <div className=" mx-2 mt-3 ">
                           <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                            มีให้บริการวิเคราะห์ ทดสอบทางด้านเคมีและชีวเคมี
-                            เครื่องมือวิเคราะห์ขั้นสูง
+                          <a className="text-[#1a237e]">บริการวิเคราะห์ ทดสอบทางด้านเคมีและชีวเคมี
+                            เครื่องมือวิเคราะห์ขั้นสูง </a>
                             แบ่งประเภทการวิเคราะห์ทดสอบได้ดังนี้ เช่น
                           </h3>
                           <ul className="list-disc text-lg ml-10 leading-relaxed">
@@ -175,7 +175,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-full">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -193,7 +193,7 @@ function Services() {
                         />
                         <div className=" mx-2 mt-3">
                         <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                            มีบริการตรวจวิเคราะห์จุลินทรีย์ในตัวอย่างประเภทต่างๆในขอบข่าย
+                        <a className="text-[#1a237e]">    บริการตรวจวิเคราะห์จุลินทรีย์ในตัวอย่างประเภทต่างๆในขอบข่าย </a>
                             Aerobic Plate Count, Yeast and Molds Coliform, Fecal
                             coliform, Escherichia coli, Clostridium perfringens
                             Clostridium botulinum
@@ -209,7 +209,7 @@ function Services() {
                           
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-full">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -227,7 +227,8 @@ function Services() {
                         />
                         <div className="mx-2 mt-3">
                         <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                            บริการทดสอบตัวอย่างทางกายภาพ เช่น ทดสอบความชื้น เถ้า
+                        <a className="text-[#1a237e]">   บริการทดสอบตัวอย่างทางกายภาพ </a>
+                            เช่น ทดสอบความชื้น เถ้า
                             พื้นที่ผิว ความพรุน วัดขนาดของอนุภาค
                           </h3>
                           <ul className="list-disc text-lg ml-10 leading-relaxed">
@@ -240,7 +241,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className="  bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className="  bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-full">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
@@ -258,7 +259,7 @@ function Services() {
                         />
                         <div className=" mx-2 mt-3">
                           <h3 className=" text-left text-lg font-bold lg:text-3xl leading-relaxed">
-                            ให้บริการตรวจวิเคราะห์คุณภาพน้ำประเภทต่างๆตามประกาศที่เกี่ยวข้อง
+                          <a className="text-[#1a237e]">  บริการตรวจวิเคราะห์คุณภาพน้ำประเภทต่างๆตามประกาศที่เกี่ยวข้อง </a>
                             เช่น ประกาศกระทรวงสาธารณสุข
                             ประกาศกรมโรงงานอุตสาหกรรม
                             ด้วยวิธีมาตรฐานสากลในขอบข่ายดังต่อไปนี้ เช่น
@@ -275,7 +276,7 @@ function Services() {
                           </ul>
                           <div className="  flex pt-3 justify-center items-center">
                             <Link href="/serviceform">
-                              <button className=" bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                              <button className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white w-full py-2 rounded-full">
                                 แบบฟอร์มขอรับบริการ
                               </button>
                             </Link>
