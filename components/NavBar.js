@@ -276,7 +276,7 @@ function NavBar() {
                             <div>
                               <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
                               <Link href="/machinery">
-                                เครื่องมือวิเคราะห์
+                                <button>เครื่องมือวิเคราะห์</button>
                               </Link>
                               </Menu.Button>
                             </div>
@@ -285,7 +285,8 @@ function NavBar() {
                             <div>
                               <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
                                 <Link href="/#services">
-                                บริการวิเคราะห์ทดสอบ
+                                  <button>บริการวิเคราะห์ทดสอบ</button>
+                                
                                 </Link>
                               </Menu.Button>
                             </div>

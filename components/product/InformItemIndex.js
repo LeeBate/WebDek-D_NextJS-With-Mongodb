@@ -43,7 +43,7 @@ const InformItem = ({ product, handleCheck }) => {
     <div className=" max-w-7xl mx-auto  sm:px-6 h-full">
         <article className="max-w-sm mx-auto md:max-w-none grid md:grid-cols-2  md:gap-8 lg:gap-12 xl:gap-16 items-center">
             <a className="relative block group">
-                <div className="absolute inset-0 bg-gray-800/50 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
+                <div className="absolute inset-0 bg-blue-900/50 hidden md:block transform md:translate-y-2 md:translate-x-4 xl:translate-y-4 xl:translate-x-8 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out pointer-events-none" aria-hidden="true"></div>
                 <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[56.25%] overflow-hidden transform md:-translate-y-2 xl:-translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
                     <img className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out" src={product.images[0].url}
                   alt={product.images[0].url} width="540" height="303" />
@@ -69,7 +69,7 @@ const InformItem = ({ product, handleCheck }) => {
                 <p className="text-lg text-gray-400 flex-grow indent-8  line-clamp-4 leading-relaxed">{product.description}</p>
                 <footer className="flex items-center mt-4">
                 <Link href={`Inform/${product._id}`}>
-                      <button className=" bg-[#627ac2] hover:bg-[#4761AD] text-white w-full py-2 rounded-xl">
+                      <button className=" bg-[#1a237e] hover:bg-[#FFA500] text-white w-full py-2 rounded-full">
                         อ่านเพิ่มเติม
                       </button>
                     </Link>

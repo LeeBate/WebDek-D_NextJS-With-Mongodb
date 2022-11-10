@@ -17,6 +17,8 @@ import {
 } from "@mui/material";
 import {BsTrash} from 'react-icons/bs'
 import {MdEditNote} from 'react-icons/md'
+import {AiFillCheckCircle} from 'react-icons/ai'
+import {AiFillCloseCircle} from 'react-icons/ai'
 
 const Users = () => {
   const { state, dispatch } = useContext(DataContext);
@@ -38,7 +40,7 @@ const Users = () => {
         <title>CALLLAB</title>
       </Head>
       <FullLayout>
-        <div className="bg-black p-2 md:p-3 xl:p-5 rounded-md">
+        <div className="bg-white p-2 md:p-3 xl:p-5 rounded-md">
           <div className="overflow-x-auto relative shadow-md sm:rounded-lg">
             <Table
               aria-label="simple table"
@@ -162,24 +164,16 @@ const Users = () => {
                       <Typography variant="h6">
                         {user.role === "admin" ? (
                           user.root ? (
-                            <i
-                              aria-hidden="true"
-                              className="fas fa-check text-success"
-                            >
-                              {" "}
-                              Root
-                            </i>
+                            <div className="flex">
+                            <AiFillCheckCircle>
+                            </AiFillCheckCircle><div className="ml-2">Root</div></div>
                           ) : (
-                            <i
-                              aria-hidden="true"
-                              className="fas fa-check text-success"
-                            ></i>
+                            <div className="flex">
+                            <AiFillCheckCircle>
+                            </AiFillCheckCircle><div className="ml-2">Root</div></div>
                           )
                         ) : (
-                          <i
-                            aria-hidden="true"
-                            className="fas fa-times text-danger"
-                          ></i>
+                         <AiFillCloseCircle className=" text-red-600"></AiFillCloseCircle>
                         )}
                       </Typography>
                     </TableCell>
@@ -199,7 +193,7 @@ const Users = () => {
                             }
                           >
                           
-                              <MdEditNote />
+                              <MdEditNote className=" text-cyan-700" />
                             
                           </Link>
 
@@ -224,7 +218,7 @@ const Users = () => {
                             //     })
                             //   }
                             // ></i>
-                            <BsTrash onClick={() =>
+                            <BsTrash className="text-red-600" onClick={() =>
                                   dispatch({
                                     type: "ADD_MODAL",
                                     payload: [
@@ -244,7 +238,7 @@ const Users = () => {
                             //   className="fas fa-trash-alt text-danger ml-2"
                             //   title="Remove"
                             // ></i>
-                            <BsTrash/>
+                            <BsTrash className="text-red-600"/>
                           )}
                         </Typography>
                       </Box>
