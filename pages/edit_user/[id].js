@@ -144,7 +144,7 @@ const EditUser = () => {
                     <div className="pt-1 mb-4">
                       <button
                         type="submit"
-                        className="inline-block px-7 py-3 bg-[#0070BB] text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-[#208BD4] hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                        className="bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg  rounded-full text-white w-full py-2 "
                         data-mdb-ripple="true"
                         data-mdb-ripple-color="light"
                         onClick={handleSubmit}

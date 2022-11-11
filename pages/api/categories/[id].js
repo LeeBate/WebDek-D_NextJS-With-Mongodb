@@ -53,7 +53,7 @@ const deleteCategory = async (req, res) => {
 
         await Categories.findByIdAndDelete(id)
         
-        res.json({msg: "Success! Deleted a category"})
+        res.json({msg: "ลบข้อมูลสำเร็จ"})
     } catch (err) {
         return res.status(500).json({err: err.message})
     }

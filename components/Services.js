@@ -27,6 +27,7 @@ function Services() {
   return (
     
     <ThemeProvider theme={theme} >
+      <div id="services" className="services-container" >
        <div className="service-header"  >
           <h2 className=" text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]">
           
@@ -37,7 +38,7 @@ function Services() {
           </p>
           
         </div>
-      <div id="services" className="services-container" >
+      
        
         <Grid container spacing={0} >
           <Grid item xs={12} lg={12}>

@@ -28,7 +28,7 @@ const createCategory = async (req, res) => {
 
         await newCategory.save()
         res.json({
-            msg: 'Success! Created a new category.',
+            msg: 'เพิ่มหมวดหมู่สำเร็จ',
             newCategory
         })
 

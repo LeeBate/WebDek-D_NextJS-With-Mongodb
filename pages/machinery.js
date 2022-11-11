@@ -62,7 +62,7 @@ const Machinery = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-14 lg:mb-80">
+    <div className="lg:pt-24  pt-14 lg:mb-96">
       <Head>
         <title>CALLLAB</title>
       </Head>
