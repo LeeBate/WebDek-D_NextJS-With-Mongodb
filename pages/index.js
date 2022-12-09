@@ -11,8 +11,7 @@ import VideoPlayer from "../components/VideoPlayer";
 import Slideshow from "../components/Slideshow";
 import Footer from "../components/footer";
 import Services from "../components/Services";
-
-
+import Link from "next/link";
 
 const Index = (props) => {
   const [products, setProducts] = useState(props.products);
@@ -36,13 +35,6 @@ const Index = (props) => {
     if (Object.keys(router.query).length === 0) setPage(1);
   }, [router.query]);
 
-  const handleCheck = (id) => {
-    products.forEach((product) => {
-      if (product._id === id) product.checked = !product.checked;
-    });
-    setProducts([...products]);
-  };
-
 
   return (
     <div>
@@ -50,38 +42,49 @@ const Index = (props) => {
         <title>CALLLAB</title>
       </Head>
       <VideoPlayer />
-      <div ><Services /></div>
-        
-  
-      
-      <div className="w-[84%] sm:w-[75%] lg:max-w-[50%] mx-auto" data-aos="fade-right" >
-          <div className="iframe-container" >
-            <iframe
-              src="https://www.youtube.com/embed/Ww1UCfx2JjE"
-              width="560"
-              height="315"
-              title="แนะนำฝ่ายวิเคราะห์ด้วยเครื่องมือ มทส."
-              frameBorder="0"
-              allowFullScreen
-            ></iframe>
-          </div>
+      <div>
+        <Services />
+      </div>
+
+      <div
+        className="w-[84%] sm:w-[75%] lg:max-w-[50%] mx-auto"
+        data-aos="fade-right"
+      >
+        <div className="iframe-container">
+          <iframe
+            src="https://www.youtube.com/embed/Ww1UCfx2JjE"
+            width="560"
+            height="315"
+            title="แนะนำฝ่ายวิเคราะห์ด้วยเครื่องมือ มทส."
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
         </div>
-      <div id="services" className="services-container" >
-        <div className="service-header" >
-          <h2 className="text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]" >
+      </div>
+      <div id="services" className="services-container">
+        <div className="service-header">
+          <h2 className="text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]">
             ข่าวประชาสัมพันธ์
           </h2>
-          <p className="text-lg font-medium md:text-lg" >
-          ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
+          <p className="text-lg font-medium md:text-lg">
+            ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
           </p>
         </div>
-        
-          {Informs.slice(0, 3).map((product) => (
-          <div key={product._id} data-aos="fade-up">
-            <InformItemIndex  product={product} />
-            </div>
-          ))}
 
+        {Informs.slice(0, 3).map((product) => (
+          <div key={product._id} data-aos="fade-up">
+            <InformItemIndex product={product} />
+          </div>
+        ))}
+        <div className="service-header ">
+          <div className=" flex justify-center items-center">
+            <Link href="/Inform">
+              <button className=" hover:bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center mr-2 mb-2 w-[25%]">
+                อ่านข่าวทั้งหมด
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
       <Footer />
     </div>

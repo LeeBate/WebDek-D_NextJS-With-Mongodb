@@ -587,7 +587,7 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 1"
-                                required
+                                
                               />
                             </div>
                           </div>

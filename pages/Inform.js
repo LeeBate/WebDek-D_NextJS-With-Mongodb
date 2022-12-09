@@ -95,18 +95,18 @@ const Inform = (props) => {
               }}
             />
 
-            <button
+            {/* <button
               className="btn btn-danger ml-2"
               data-toggle="modal"
               data-target="#exampleModal"
               onClick={handleDeleteAll}
             >
               ลบข้อมูลทั้งหมด
-            </button>
+            </button> */}
           </div>
         )}
 
-<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
           ) : (

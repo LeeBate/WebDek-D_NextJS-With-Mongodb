@@ -5,10 +5,8 @@ import { DataContext } from "../store/GlobalState";
 import Cookie from "js-cookie";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
-import { BeakerIcon } from "@heroicons/react/24/solid";
+import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import Toolbar from "@mui/material/Toolbar";
 
 function NavBar() {
   const router = useRouter();
@@ -46,7 +44,7 @@ function NavBar() {
     return (
       <>
         <Link href="/Admin">
-          <div className="block px-3 py-2 rounded-md text-base cursor-pointer font-medium hover:bg-gray-700 hover:text-white text-white">
+          <div className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
             แดชบอร์ด
           </div>
         </Link>
@@ -75,7 +73,7 @@ function NavBar() {
         <Link href="/">
           <Disclosure.Button>
             <div
-              className="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gray-700 hover:text-white"
+              className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white"
               onClick={handleLogout}
             >
               ออกจากระบบ
@@ -86,16 +84,10 @@ function NavBar() {
     );
   };
 
-  const navigation1 = [
-    { name: "เครื่องมือวิเคราะห์", href: "/machinery", current: false },
+  const dropdownServices = [
+    { name: "ขั้นตอนขอรับบริการ",href: "/images/21.png", current: false },
+    { name: "แบบฟอร์มขอรับบริการ",href:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", current: false },
   ];
-  const navigation2 = [
-    { name: "บริการวิเคราะห์ทดสอบ", href: "/#services", current: false },
-  ];
-  const navigation3 = [
-    { name: "ติดตามผลวิเคราะห์ทดสอบ", href: "#", current: false },
-  ];
-  const navigation4 = [{ name: "เกี่ยวกับเรา", current: false }];
 
   const userNavigation = [
     { name: "โปรไฟล์", href: "/profile", current: false },
@@ -103,6 +95,12 @@ function NavBar() {
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
+    {
+      name: "ภารกิจของฝ่าย",
+      href: "/images/Poster (1).png",
+      current: false,
+      
+    },
     { name: "บุคลากร", href: "/about", current: false },
     { name: "ติดต่อเรา", href: "/contactemail", current: false },
   ];
@@ -226,67 +224,11 @@ function NavBar() {
                       </div>
                       <div className="hidden lg:block">
                         <div className="flex items-baseline space-x-4">
-                          {/* {navigation1.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
-                            "px-3 py-2  text-sm"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
-                          >
-                            <button>{item.name}</button>
-                          </Link>
-                        ))} */}
-                          {/* {navigation2.map((item) => (
-                          <Link
-
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
-                            "px-3 py-2  text-sm"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
-                          >
-                            <button>{item.name}</button>
-                          </Link>
-                        ))} */}
-                          {/* {navigation3.map((item) => (
-                          <Link
-                            key={item.name}
-                            href={item.href}
-                            className={classNames(
-                              item.current
-                              ? "bg-gray-900 text-white"
-                              : "text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2 hover:text-white",
-                            "px-3 py-2  text-sm"
-                            )}
-                            aria-current={item.current ? "page" : undefined}
-                          >
-                            <button>{item.name}</button>
-                          </Link>
-                        ))} */}
                           <Menu as="div" className="relative ml-3">
                             <div>
                               <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
-                              <Link href="/machinery">
-                                <div>เครื่องมือวิเคราะห์</div>
-                              </Link>
-                              </Menu.Button>
-                            </div>
-                          </Menu>
-                          <Menu as="div" className="relative ml-3">
-                            <div>
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
-                                <Link href="/#services">
-                                  <div>บริการวิเคราะห์ทดสอบ</div>
-                                
+                                <Link href="/machinery">
+                                  <div>เครื่องมือวิเคราะห์</div>
                                 </Link>
                               </Menu.Button>
                             </div>
@@ -294,7 +236,45 @@ function NavBar() {
                           <Menu as="div" className="relative ml-3">
                             <div>
                               <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
-                                ติดตามผลวิเคราะห์ทดสอบ
+                                บริการวิเคราะห์ทดสอบ
+                                <ChevronDownIcon
+                                  className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
+                                  aria-hidden="true"
+                                />
+                              </Menu.Button>
+                            </div>
+                            <Transition
+                              as={Fragment}
+                              enter="transition ease-out duration-100 no-underline"
+                              enterFrom="transform opacity-0 scale-95 no-underline"
+                              enterTo="transform opacity-100 scale-100 no-underline"
+                              leave="transition ease-in duration-75 no-underline"
+                              leaveFrom="transform opacity-100 scale-100 no-underline"
+                              leaveTo="transform opacity-0 scale-95 no-underline"
+                            >
+                              <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                                {dropdownServices.map((item) => (
+                                  <Menu.Item key={item.name}>
+                                    <Link href={item.href}>
+                                      <a
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
+                                      >
+                                        <button >
+                                          {item.name}
+                                        </button>
+                                      </a>
+                                    </Link>
+                                  </Menu.Item>
+                                ))}
+                              </Menu.Items>
+                            </Transition>
+                          </Menu>
+                          <Menu as="div" className="relative ml-3">
+                            <div>
+                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                                การติดตามรายงานผลการทดสอบ
                               </Menu.Button>
                             </div>
                           </Menu>
@@ -321,13 +301,17 @@ function NavBar() {
                               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 {dropdownMenu.map((item) => (
                                   <Menu.Item key={item.name}>
-                                    {({ active }) => (
-                                      <Link href={item.href}>
-                                        <div className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+                                    <Link href={item.href}>
+                                      <a
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
+                                      >
+                                        <button >
                                           {item.name}
-                                        </div>
-                                      </Link>
-                                    )}
+                                        </button>
+                                      </a>
+                                    </Link>
                                   </Menu.Item>
                                 ))}
                               </Menu.Items>
@@ -387,85 +371,58 @@ function NavBar() {
 
                 <Disclosure.Panel className="lg:hidden">
                   <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-                    {navigation1.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-white hover:bg-gray-700 hover:text-white",
-                          "block px-3 py-2 rounded-md text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        <div>{item.name}</div>
-                      </Disclosure.Button>
-                    ))}
-                    {navigation2.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-white hover:bg-gray-700 hover:text-white",
-                          "block px-3 py-2 rounded-md text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        <div>{item.name}</div>
-                      </Disclosure.Button>
-                    ))}
-                    {navigation3.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        href={item.href}
-                        className={classNames(
-                          item.current
-                            ? "bg-gray-900 text-white"
-                            : "text-white hover:bg-gray-700 hover:text-white",
-                          "block px-3 py-2 rounded-md text-base font-medium"
-                        )}
-                        aria-current={item.current ? "page" : undefined}
-                      >
-                        <div>{item.name}</div>
-                      </Disclosure.Button>
-                    ))}
+                    <Menu as="div" className="relative ">
+                      <div>
+                        <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
+                          <Link href="/machinery">
+                            <div>เครื่องมือวิเคราะห์</div>
+                          </Link>
+                        </Menu.Button>
+                      </div>
+                    </Menu>
+                    <Menu as="div" className="relative ">
+                      <div>
+                        <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
+                          <Link href="/#services">
+                            <div>บริการวิเคราะห์ทดสอบ</div>
+                          </Link>
+                        </Menu.Button>
+                      </div>
+                    </Menu>
+                    <div>
+                      <Menu as="div" className="relative ">
+                        <div>
+                          <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
+                            <Link href="#">
+                              <div>การติดตามรายงานผลการทดสอบ</div>
+                            </Link>
+                          </Menu.Button>
+                        </div>
+                      </Menu>
+                    </div>
                     <Menu as="div" className="relative ">
                       <div>
                         <Menu.Button>
                           <span className="sr-only">Open user menu</span>
-                          {navigation4.map((item) => (
-                            <Disclosure.Button
-                              key={item.name}
-                              as="a"
-                              href={item.href}
-                              className={classNames(
-                                item.current
-                                  ? "bg-gray-900 text-white"
-                                  : "text-white hover:bg-gray-700 hover:text-white",
-                                "block px-3 py-2 rounded-md text-base font-medium"
-                              )}
-                              aria-current={item.current ? "page" : undefined}
-                            >
-                              <div>{item.name}</div>
-                            </Disclosure.Button>
-                          ))}
+                          <Menu as="div">
+                            <div>
+                              <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
+                                <div>เกี่ยวกับเรา</div>
+                              </Menu.Button>
+                            </div>
+                          </Menu>
                         </Menu.Button>
                       </div>
-                      <div className="mt-1 space-y-1 px-2 ">
+                      <div className=" space-y-1 px-2 ">
                         {dropdownMenu.map((item) => (
                           <Disclosure.Button
                             key={item.name}
                             as="a"
-                            href={item.href}
-                            className="block rounded-md px-3 py-1 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white "
+                            className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-1   focus:outline-none hover:text-white"
                           >
-                            <div>{item.name}</div>
+                            <Link href={item.href}>
+                              <div>{item.name}</div>
+                            </Link>
                           </Disclosure.Button>
                         ))}
                       </div>
@@ -478,7 +435,7 @@ function NavBar() {
                       <Link href="/signin">
                         <div className="pb-3 px-3">
                           <Disclosure.Button>
-                            <button className="hover:bg-gray-700 text-white px-1 py-2 rounded-lg">
+                            <button className="hover:bg-white hover:text-black text-gray-50 px-1 py-2 rounded-lg">
                               เข้าสู่ระบบ
                             </button>
                           </Disclosure.Button>
