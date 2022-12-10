@@ -30,19 +30,19 @@ const Tracking = new Mongoose.Schema({
         require: true,
 
     },
-    LSU: {
+    lsu: {
         type: String,
         require: true,
     },
-    Lab: {
+    lab: {
         type: String,
         require: true,
     },
-    Procedure: {
+    procedure: {
         type: Array,
         require: true,
     },
-    LabPrint: {
+    labPrint: {
         type: Array,
         require: true,
     },
@@ -61,10 +61,14 @@ const Tracking = new Mongoose.Schema({
         require: true,
     },
 
-    ReportLSU: {
+    reportLSU: {
         type: Array,
         require: true,
-    }
+    },
+    note:{
+        type: String,
+        require: true,
+    },
 })
 
 let Dataset = mongoose.models.Tracking || mongoose.model('Tracking', Tracking)
