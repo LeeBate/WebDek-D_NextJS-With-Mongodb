@@ -12,11 +12,6 @@ import theme from "../../../src/theme/theme";
 import filterSearch from "../../../utils/filterSearch";
 import Filter from "../../../components/Filter";
 import Link from "next/link";
-import { RiDeleteBinLine } from "react-icons/ri";
-
-// import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
-import { Button } from "@mui/material";
-import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
@@ -129,10 +124,6 @@ const ProductsManager = (props) => {
     dispatch({ type: "ADD_MODAL", payload: deleteArr });
   };
 
-  const handleLoadmore = () => {
-    setPage(page + 1);
-    filterSearch({ router, page: page + 1 });
-  };
   //end machinery
 
   useEffect(() => {

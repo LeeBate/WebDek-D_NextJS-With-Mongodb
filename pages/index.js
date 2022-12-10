@@ -79,7 +79,7 @@ const Index = (props) => {
         <div className="service-header ">
           <div className=" flex justify-center items-center">
             <Link href="/Inform">
-              <button className=" hover:bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center mr-2 mb-2 w-[25%]">
+              <button className=" hover:bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded text-center mr-2 mb-2 w-[25%]">
                 อ่านข่าวทั้งหมด
               </button>
             </Link>

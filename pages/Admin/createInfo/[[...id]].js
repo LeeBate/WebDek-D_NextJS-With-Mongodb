@@ -135,17 +135,17 @@ const NewsManager = (props) => {
         return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 3) newImages.push(file);
+      if (num <= 10) newImages.push(file);
       return newImages;
     });
 
     if (err) dispatch({ type: "NOTIFY", payload: { error: err } });
 
     const imgCount = images.length;
-    if (imgCount + newImages.length > 3)
+    if (imgCount + newImages.length > 10)
       return dispatch({
         type: "NOTIFY",
-        payload: { error: "อัพโหลดได้ครั้งละ 3 รูปภาพ" },
+        payload: { error: "อัพโหลดได้ครั้งละ 10 รูปภาพ" },
       });
     setImages([...images, ...newImages]);
   };
@@ -293,7 +293,7 @@ const NewsManager = (props) => {
 
                       <div
                         className="flex justify-center items-center w-full"
-                        hidden={images.length > 3 ? true : false}
+                        hidden={images.length >= 10 ? true : false}
                       >
                         <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                           <div className="flex flex-col justify-center items-center pt-5 pb-6">
