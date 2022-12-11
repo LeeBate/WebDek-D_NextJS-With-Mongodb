@@ -140,16 +140,18 @@ const SlideManager = (props) => {
         type: "NOTIFY",
         payload: { error: "Files does not exist." },
       });
+      console.log(files)
 
     files.forEach((file) => {
-      if (file.size > 2024 * 2024)
-        return (err = "The largest image size is 1mb");
+      // if (file.size > 2024 * 2024)
+      //   return (err = "The largest image size is 1mb");
 
-      if (file.type !== "image/jpeg" && file.type !== "image/png")
-        return (err = "Image format is incorrect.");
+      // if (file.type !== "image/jpeg" && file.type !== "image/png")
+      //   return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 1) newImages.push(file);
+      if (num <= 1)
+       newImages.push(file);
       return newImages;
     });
 
