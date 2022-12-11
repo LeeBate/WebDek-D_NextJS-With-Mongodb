@@ -1,7 +1,7 @@
 
-import  Mongoose  from "mongoose";
+import  mongoose  from "mongoose";
 
-const Tracking = new Mongoose.Schema({
+const Tracking = new mongoose.Schema({
     rnb: {
         type: String,
         require: true,
