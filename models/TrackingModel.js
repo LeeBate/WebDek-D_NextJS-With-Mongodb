@@ -25,9 +25,9 @@ const Tracking = new mongoose.Schema({
         require: true,
         trim: true,
     },
-    pdf:{
-        type: String,
-        require: true,
+    images: {
+        type: Array,
+        required: true,
 
     },
     lsu: {
@@ -66,6 +66,10 @@ const Tracking = new mongoose.Schema({
         require: true,
     },
     note:{
+        type: String,
+        require: true,
+    },
+    phone:{
         type: String,
         require: true,
     },
