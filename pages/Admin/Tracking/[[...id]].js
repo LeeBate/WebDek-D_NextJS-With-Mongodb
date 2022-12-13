@@ -54,18 +54,7 @@ const Tracking = (props) => {
   const [Slides, setSlides] = useState(props.products);
   const [isCheck, setIsCheck] = useState(false);
 
-  const [inputFields, setInputFields] = useState([
-    {
-      idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
-    },
-  ]);
-// array 1
+// array 1 ขั้นตอนการดำเนินการ
   const [procedure, setProcedure] = useState([
     {
       idx: uuidv4(),
@@ -77,6 +66,7 @@ const Tracking = (props) => {
       time5: "",
       param: "",
       tool: "",
+      checkwork: false,
     },
     {
       idx: uuidv4(),
@@ -88,6 +78,7 @@ const Tracking = (props) => {
       time5: "",
       param: "",
       tool: "",
+      checkwork: false,
     },
     {
       idx: uuidv4(),
@@ -99,6 +90,7 @@ const Tracking = (props) => {
       time5: "",
       param: "",
       tool: "",
+      checkwork: false,
     },
     {
       idx: uuidv4(),
@@ -110,6 +102,7 @@ const Tracking = (props) => {
       time5: "",
       param: "",
       tool: "",
+      checkwork: false,
     },
     {
       idx: uuidv4(),
@@ -121,66 +114,82 @@ const Tracking = (props) => {
       time5: "",
       param: "",
       tool: "",
+      checkwork: false,
     },
   ]);
-// array 2
+// array 2 ส่งผลการทดสอบพิมพ์
   const [labPrint, setLabPrint] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
+      ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
+      sentlab1: "",
+      finishlab1: "",
+      checkwork: false,
+    },
+    {
+      idx: uuidv4(),
+      ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
+      sentlab1: "",
+      finishlab1: "",
+      checkwork: false,
+    },
+    {
+      idx: uuidv4(),
+      ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
+      sentlab1: "",
+      finishlab1: "",
+      checkwork: false,
+    },
+    {
+      idx: uuidv4(),
+      ListName: "งานวิเคราะห์ทางกายภาพ",
+      sentlab1: "",
+      finishlab1: "",
+      checkwork: false,
+    },
+    {
+      idx: uuidv4(),
+      ListName: "งานวิเคราะห์ทางน้ำ",
+      sentlab1: "",
+      finishlab1: "",
+      checkwork: false,
     },
   ]);
-// array 3
+// array 3 รับรองผล
   const [ensure, setEnsure] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
+      time1: "",
+      time2: "",
+
     },
   ]);
-// array 4
+// array 4 ตรวจรายงานผล
   const [checkReport, setCheckReport] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
+      time1: "",
+      time2: "",
+
     },
   ]);
-// array 5
+// array 5 คศวท รับรองรายงาน
   const [ensureReport, setEnsureReport] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
+      time1: "",
+      time2: "",
+
     },
   ]);
-  // array 6
+  // array 6 นำส่งรายงานผลให้ LSU
   const [reportLSU, setReportLSU] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
-      price1: "",
-      price2: "",
-      price3: "",
-      price4: "",
-      price5: "",
+      time1: "",
+      time2: "",
+      sender: "",
+      recipient: "",
     },
   ]);
 
@@ -362,29 +371,7 @@ const Tracking = (props) => {
     });
     setProcedure(newInputFields);
   };
-  const handleAddFields = () => {
-    setInputFields([
-      ...inputFields,
-      {
-        idx: uuidv4(),
-        ListName: "tt",
-        price1: "tt",
-        price2: "tt",
-        price3: "tt",
-        price4: "tt",
-        price5: "tt",
-      },
-    ]);
-  };
 
-  const handleRemoveFields = (idx) => {
-    const values = [...inputFields];
-    values.splice(
-      values.findIndex((value) => value.idx === idx),
-      1
-    );
-    setInputFields(values);
-  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -566,35 +553,11 @@ const Tracking = (props) => {
 
                       <div
                         className="flex justify-center items-center w-full"
-                        hidden={images.length > 0 ? true : false}
+                       
                       >
                         <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                          <div className="flex flex-col justify-center items-center pt-5 pb-6">
-                            <svg
-                              aria-hidden="true"
-                              className="mb-3 w-10 h-10 text-gray-400"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
-                              ></path>
-                            </svg>
-                            <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
-                              <span className="font-semibold">
-                                คลิกเพื่ออัพโหลด
-                              </span>
-                            </p>
-                            <p className="text-xs text-center text-gray-500 dark:text-gray-400">
-                              รองรับ PNG หรือ JPG (สูงสุด. 2024x2024px)
-                            </p>
-                          </div>
-                          <input
+                          
+                        <input
                             id="dropzone-file"
                             type="file"
                             className="hidden"
@@ -603,19 +566,7 @@ const Tracking = (props) => {
                           />
                         </label>
                       </div>
-                      <div className="row img-up mx-0">
-                        {images.map((img, index) => (
-                          <div key={index} className="file_img my-1">
-                            <img
-                              src={img.url ? img.url : URL.createObjectURL(img)}
-                              alt=""
-                              className="img-thumbnail rounded"
-                            />
-
-                            <span onClick={() => deleteImage(index)}>X</span>
-                          </div>
-                        ))}
-                      </div>
+                      
                       <button
                         type="submit"
                         className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
