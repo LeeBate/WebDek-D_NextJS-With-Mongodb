@@ -22,18 +22,28 @@ import Box from "@mui/material/Box";
 const Tracking = (props) => {
   const initialState = {
     rnb: "",
-    timeIn: "tt",
-    timeOut: "tt",
-    serviceNumber: "tt",
-    reportNumber: "tt",
-    lsu: "tt",
-    lab: "tt",
-    note: "tt",
-    phone: ""
+    timeIn: "",
+    timeOut: "",
+    serviceNumber: "",
+    reportNumber: "",
+    lsu: "",
+    lab: "",
+    note: "",
+    phone: "",
   };
 
   const [product, setProduct] = useState(initialState);
-  const { rnb, timeIn, timeOut, serviceNumber, reportNumber, pdf, lsu, lab, note, phone } = product;
+  const {
+    rnb,
+    timeIn,
+    timeOut,
+    serviceNumber,
+    reportNumber,
+    lsu,
+    lab,
+    note,
+    phone,
+  } = product;
 
   const [images, setImages] = useState([]);
 
@@ -54,7 +64,7 @@ const Tracking = (props) => {
   const [Slides, setSlides] = useState(props.products);
   const [isCheck, setIsCheck] = useState(false);
 
-// array 1 ขั้นตอนการดำเนินการ
+  // array 1 ขั้นตอนการดำเนินการ
   const [procedure, setProcedure] = useState([
     {
       idx: uuidv4(),
@@ -63,7 +73,7 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-      time5: "",
+
       param: "",
       tool: "",
       checkwork: false,
@@ -75,7 +85,7 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-      time5: "",
+
       param: "",
       tool: "",
       checkwork: false,
@@ -87,7 +97,7 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-      time5: "",
+
       param: "",
       tool: "",
       checkwork: false,
@@ -99,7 +109,7 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-      time5: "",
+
       param: "",
       tool: "",
       checkwork: false,
@@ -111,75 +121,71 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-      time5: "",
       param: "",
       tool: "",
       checkwork: false,
     },
   ]);
-// array 2 ส่งผลการทดสอบพิมพ์
+  // array 2 ส่งผลการทดสอบพิมพ์
   const [labPrint, setLabPrint] = useState([
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
-      sentlab1: "",
-      finishlab1: "",
+      timelab1: "",
+      timelab2: "",
       checkwork: false,
     },
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
-      sentlab1: "",
-      finishlab1: "",
+      timelab1: "",
+      timelab2: "",
       checkwork: false,
     },
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
-      sentlab1: "",
-      finishlab1: "",
+      timelab1: "",
+      timelab2: "",
       checkwork: false,
     },
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ทางกายภาพ",
-      sentlab1: "",
-      finishlab1: "",
+      timelab1: "",
+      timelab2: "",
       checkwork: false,
     },
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ทางน้ำ",
-      sentlab1: "",
-      finishlab1: "",
+      timelab1: "",
+      timelab2: "",
       checkwork: false,
     },
-  ]);
-// array 3 รับรองผล
+  ]); 
+  // array 3 รับรองผล
   const [ensure, setEnsure] = useState([
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
-
     },
   ]);
-// array 4 ตรวจรายงานผล
+  // array 4 ตรวจรายงานผล
   const [checkReport, setCheckReport] = useState([
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
-
     },
   ]);
-// array 5 คศวท รับรองรายงาน
+  // array 5 คศวท รับรองรายงาน
   const [ensureReport, setEnsureReport] = useState([
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
-
     },
   ]);
   // array 6 นำส่งรายงานผลให้ LSU
@@ -207,6 +213,138 @@ const Tracking = (props) => {
   const handleClearAddNew = async () => {
     setImages([]);
     setProduct(initialState);
+    setProcedure([
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
+        time1: "",
+        time2: "",
+        time3: "",
+        time4: "",
+        param: "",
+        tool: "",
+        checkwork: false,
+
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
+        time1: "",
+        time2: "",
+        time3: "",
+        time4: "",
+        param: "",
+        tool: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
+        time1: "",
+        time2: "",
+        time3: "",
+        time4: "",
+  
+        param: "",
+        tool: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางกายภาพ",
+        time1: "",
+        time2: "",
+        time3: "",
+        time4: "",
+  
+        param: "",
+        tool: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางน้ำ",
+        time1: "",
+        time2: "",
+        time3: "",
+        time4: "",
+        param: "",
+        tool: "",
+        checkwork: false,
+      },
+    ]);
+    setLabPrint([
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
+        timelab1: "",
+        timelab2: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
+        timelab1: "",
+        timelab2: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
+        timelab1: "",
+        timelab2: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางกายภาพ",
+        timelab1: "",
+        timelab2: "",
+        checkwork: false,
+      },
+      {
+        idx: uuidv4(),
+        ListName: "งานวิเคราะห์ทางน้ำ",
+        timelab1: "",
+        timelab2: "",
+        checkwork: false,
+      },
+    ]);
+    setEnsure([
+      {
+        idx: uuidv4(),
+        time1: "",
+        time2: "",
+      },
+    ]);
+    // array 4 ตรวจรายงานผล
+    setCheckReport([
+      {
+        idx: uuidv4(),
+        time1: "",
+        time2: "",
+      },
+    ]);
+    // array 5 คศวท รับรองรายงาน
+    setEnsureReport([
+      {
+        idx: uuidv4(),
+        time1: "",
+        time2: "",
+      },
+    ]);
+    // array 6 นำส่งรายงานผลให้ LSU
+    setReportLSU([
+      {
+        idx: uuidv4(),
+        time1: "",
+        time2: "",
+        sender: "",
+        recipient: "",
+      },
+    ]);
+
+
     router.replace("/Admin/Tracking");
 
     id = "";
@@ -237,10 +375,15 @@ const Tracking = (props) => {
   useEffect(() => {
     if (id) {
       setOnEdit(true);
-      getData(`teacking/${id}`).then((res) => {
+      getData(`tracking/${id}`).then((res) => {
         setProduct(res.product);
         setImages(res.product.images);
         setProcedure(res.product.procedure);
+        setLabPrint(res.product.labPrint);
+        setEnsure(res.product.ensure);
+        setCheckReport(res.product.checkReport);
+        setEnsureReport(res.product.ensureReport);
+        setReportLSU(res.product.reportLSU);
       });
     } else {
       setOnEdit(false);
@@ -267,7 +410,7 @@ const Tracking = (props) => {
         type: "NOTIFY",
         payload: { error: "Files does not exist." },
       });
-      console.log(files)
+    console.log(files);
 
     files.forEach((file) => {
       // if (file.size > 2024 * 2024)
@@ -277,8 +420,7 @@ const Tracking = (props) => {
       //   return (err = "Image format is incorrect.");
 
       num += 1;
-      if (num <= 1)
-       newImages.push(file);
+      if (num <= 1) newImages.push(file);
       return newImages;
     });
 
@@ -307,7 +449,6 @@ const Tracking = (props) => {
         payload: { error: "Authentication is not valid." },
       });
 
-
     dispatch({ type: "NOTIFY", payload: { loading: true } });
     let media = [];
     const imgNewURL = images.filter((img) => !img.url);
@@ -326,10 +467,10 @@ const Tracking = (props) => {
           procedure: [...procedure],
           images: [...imgOldURL, ...media],
           labPrint: [...labPrint],
-          ensure:[...ensure],
-          checkReport:[...checkReport],
-          ensureReport:[...ensureReport],
-          reportLSU:[...reportLSU],
+          ensure: [...ensure],
+          checkReport: [...checkReport],
+          ensureReport: [...ensureReport],
+          reportLSU: [...reportLSU],
         },
         auth.token
       );
@@ -343,10 +484,10 @@ const Tracking = (props) => {
           procedure: [...procedure],
           images: [...imgOldURL, ...media],
           labPrint: [...labPrint],
-          ensure:[...ensure],
-          checkReport:[...checkReport],
-          ensureReport:[...ensureReport],
-          reportLSU:[...reportLSU],
+          ensure: [...ensure],
+          checkReport: [...checkReport],
+          ensureReport: [...ensureReport],
+          reportLSU: [...reportLSU],
         },
         auth.token
       );
@@ -360,18 +501,57 @@ const Tracking = (props) => {
     setProduct(initialState);
     return router.push("/Admin/Tracking");
   };
-
+  // const handleChangeInput = (e) => {
+  //   const { name, value } = e.target;
+  //   setProduct({ ...product, [name]: value });
+  //   dispatch({ type: "NOTIFY", payload: {} });
+  // };
 
   const handleChangeInput2 = async (idx, event) => {
-    const newInputFields = procedure.map((i) => {
+    const {newInputFields, value} = procedure.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      setProcedure({...procedure, [newInputFields]: value});
+      return i;
+    });
+    const newInputFields1 = labPrint.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+    const newInputFields2 = ensure.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+    const newInputFields3 = checkReport.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+    const newInputFields4 = ensureReport.map((i) => {
+      if (idx === i.idx) {
+        i[event.target.name] = event.target.value;
+      }
+      return i;
+    });
+    const newInputFields5 = reportLSU.map((i) => {
       if (idx === i.idx) {
         i[event.target.name] = event.target.value;
       }
       return i;
     });
     setProcedure(newInputFields);
+    setLabPrint(newInputFields1);
+    setEnsure(newInputFields2);
+    setCheckReport(newInputFields3);
+    setEnsureReport(newInputFields4);
+    setReportLSU(newInputFields5);
   };
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -425,7 +605,7 @@ const Tracking = (props) => {
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-xl md:text-2xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
-                      อัพโหลดสไลด์
+                      ติดตามผลวิเคราะห์ทดสอบ
                     </h2>
                     <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
                       ไม่รู้จะใส่อะไร เผื่ออยากใส่
@@ -437,7 +617,7 @@ const Tracking = (props) => {
                     >
                       <div>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          หัวเรื่อง
+                          อว 7432(3)/Rep :
                         </label>
                         <input
                           type="text"
@@ -447,126 +627,496 @@ const Tracking = (props) => {
               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
               block w-full p-2.5 "
                           onChange={handleChangeInput}
-                          placeholder="ชื่อสไลด์ . . . "
+                          placeholder="Runing Number . . . "
                           required
                         />
-                        <input
-                          type="text"
-                          value={phone}
-                          name="phone"
-                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          วันที่ :
+                          <input
+                            type="date"
+                            value={timeIn}
+                            name="timeIn"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
               block w-full p-2.5 "
-                          onChange={handleChangeInput}
-                          placeholder="เบอร์โทร . . . "
-                          required
-                        />
-                      </div>
-                      {procedure.map((procedure) => (
-                        <div key={procedure.idx}
-                        className=" md:flex g-8 space-y-2 md:space-y-0">
-                            <div>
-                              <input
-                                type="text"
-                                name="ListName"
-                                value={procedure.ListName}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-40 xl:w-[187px]"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                
-                                required
-                              />
-                              <input
-                                type="text"
-                                name="time1"
-                                value={procedure.time1}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                placeholder="อัตราที่ 1"
-                                required
-                              />
-                            
-                              <input
-                                type="text"
-                                name="time2"
-                                value={procedure.time2}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                
-                                required
-                              />
-                              <input
-                                type="text"
-                                name="time3"
-                                value={procedure.time3}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                
-                                required
-                              />
-                              <input
-                                type="text"
-                                name="time4"
-                                value={procedure.time4}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                
-                                required
-                              />
-                              <input
-                                type="text"
-                                name="time5"
-                                value={procedure.time5}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(procedure.idx, event)
-                                }
-                                
-                                required
-                              />
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          วันที่นัดรับผลการทดสอบ :
+                          <input
+                            type="date"
+                            value={timeOut}
+                            name="timeOut"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          หมายเลขใบขอรับบริการ : ฝวคN
+                          <input
+                            type="text"
+                            value={serviceNumber}
+                            name="serviceNumber"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          เบอร์โทรศัพท์ :
+                          <input
+                            type="tel"
+                            id="phone"
+                            value={phone}
+                            name="phone"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          รายงานผลการทดสอบลำดับที่ : RepฝวคN
+                          <input
+                            type="text"
+                            value={reportNumber}
+                            name="reportNumber"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          วันที่ LSU รับตัวอย่าง :
+                          <input
+                            type="date"
+                            value={lsu}
+                            name="lsu"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          วันที่ห้องปฏิบัติการรับตัวอย่าง :
+                          <input
+                            type="date"
+                            value={lab}
+                            name="lab"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
 
+
+                        <div className=" bg-fuchsia-200">
+                          {procedure.map((procedure) => (
+                            <div key={procedure.idx}>
+                              <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                                ขั้นตอนการดำเนินการ :
+                                <input
+                                  type="text"
+                                  name="ListName"
+                                  value={procedure.ListName}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                              block w-full p-2.5"
+                                  disabled
+                                />
+                              </label>
+                              <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  วันที่เริ่มดำเนินการ :
+                                  <input
+                                    type="date"
+                                    name="time1"
+                                    value={procedure.time1}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                    
+                                  />
+                                </label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  ช่วงเวลาที่ทดสอบ
+                                  <input
+                                    type="datetime-local"
+                                    name="time2"
+                                    value={procedure.time2}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                  />
+                                  {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  ช่วงเวลา : 
+                                <input
+                                  type=""
+                                  name="time3"
+                                  value={procedure.time3}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(procedure.idx, event)
+                                  }
+                                  placeholder="13.00-15.00 น."
+                                  required
+                                />
+                                </label> */}
+                                </label>
+
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  วันที่ดำเนินการเสร็จ :
+                                  <input
+                                    type="date"
+                                    name="time4"
+                                    value={procedure.time4}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                  />
+                                </label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  พารามิเตอร์ที่ทดสอบ :
+                                  <input
+                                    type="text"
+                                    name="param"
+                                    value={procedure.param}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                    placeholder="Ex. Color"
+                                  />
+                                </label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  เครื่องมือที่ใช้ทดสอบ :
+                                  <input
+                                    type="text"
+                                    name="tool"
+                                    value={procedure.tool}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                    placeholder="Ex. COD"
+                                  />
+                                </label>
+                              </div>
                             </div>
+                          ))}
                         </div>
-                      )
-                      )}
 
-                      <div
-                        className="flex justify-center items-center w-full"
-                       
-                      >
+
+                        <div className="flex flex-col w-full bg-indigo-500">
+                          <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                            Lab ส่งผลการทดสอบพิมพ์
+                          </label>
+                          {labPrint.map((labPrint) => (
+                            <div key={labPrint.idx}>
+                              <div className=" md:flex space-x-2">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  Lab ส่งผลการทดสอบพิมพ์
+                                  <input
+                                    type="text"
+                                    name="ListName"
+                                    value={labPrint.ListName}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                              block w-full p-2.5"
+                                    disabled
+                                  />
+                                </label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  ส่งพิมพ์วันที่ :
+                                  <input
+                                    type="date"
+                                    name="timelab1"
+                                    value={labPrint.timelab1}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(labPrint.idx, event)
+                                    }
+                                  />
+                                </label>
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  พิมพ์เสร็จวันที่ :
+                                  <input
+                                    type="date"
+                                    name="timelab2"
+                                    value={labPrint.timelab2}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(labPrint.idx, event)
+                                    }
+                                  />
+                                </label>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
+                        {ensure.map((ensure) => (
+                          <div
+                            key={ensure.idx}
+                            className="flex flex-col w-full bg-orange-400"
+                          >
+                            <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                              หน. ฝวค. รับรองผลฯ
+                            </label>
+                            <div className=" md:flex space-x-2">
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                เสนอ หน. ฝวค. วันที่ :
+                                <input
+                                  type="date"
+                                  name="time1"
+                                  value={ensure.time1}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(ensure.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                หน. ฝวค. ลงนามวันที่ :
+                                <input
+                                  type="date"
+                                  name="time2"
+                                  value={ensure.time2}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(ensure.idx, event)
+                                  }
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        ))}
+
+                        {checkReport.map((checkReport) => (
+                          <div
+                            key={checkReport.idx}
+                            className="flex flex-col w-full bg-green-400"
+                          >
+                            <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                              หน. กลุ่มตรวจรายงานผลฯ
+                            </label>
+                            <div className=" md:flex space-x-2">
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                เสนอ หน. กลุ่มวันที่ :
+                                <input
+                                  type="date"
+                                  name="time1"
+                                  value={checkReport.time1}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(checkReport.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                หน. กลุ่มลงนามวันที่ :
+                                <input
+                                  type="date"
+                                  name="time2"
+                                  value={checkReport.time2}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(checkReport.idx, event)
+                                  }
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        ))}
+
+                        {ensureReport.map((ensureReport) => (
+                          <div
+                            key={ensureReport.idx}
+                            className="flex flex-col w-full bg-blue-400"
+                          >
+                            <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                              ผอ ศศวท. รับรองรายงานฯ
+                            </label>
+                            <div className=" md:flex space-x-2">
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                เสนอ ผอ. ศศวท. วันที่ :
+                                <input
+                                  type="date"
+                                  name="time1"
+                                  value={ensureReport.time1}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(ensureReport.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                ผอ. ศศวท. ลงนามวันที่ :
+                                <input
+                                  type="date"
+                                  name="time2"
+                                  value={ensureReport.time2}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(ensureReport.idx, event)
+                                  }
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        ))}
+                        {reportLSU.map((reportLSU) => (
+                          <div
+                            key={reportLSU.idx}
+                            className="flex flex-col w-full bg-rose-500"
+                          >
+                            <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                              ฝวค. นำส่งรายงานผลให้
+                            </label>
+                            <div className=" md:flex space-x-2">
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                ออกเลขวันที่ :
+                                <input
+                                  type="date"
+                                  name="time1"
+                                  value={reportLSU.time1}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(reportLSU.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                ส่ง LSU วันที่ :
+                                <input
+                                  type="date"
+                                  name="time2"
+                                  value={reportLSU.time2}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(reportLSU.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                ผู้ส่ง :
+                                <input
+                                  type="date"
+                                  name="sender"
+                                  value={reportLSU.sender}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(reportLSU.idx, event)
+                                  }
+                                />
+                              </label>
+                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                ผู้รับ :
+                                <input
+                                  type="date"
+                                  name="recipient"
+                                  value={reportLSU.recipient}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                  onChange={(event) =>
+                                    handleChangeInput2(reportLSU.idx, event)
+                                  }
+                                />
+                              </label>
+                            </div>
+                          </div>
+                        ))}
+                        <div className=" bg-rose-300 grid">
+                          <label
+                            htmlFor="message"
+                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                          >
+                            หมายเหตุ
+                          </label>
+                          <input
+                          type="textarea"
+                            value={note}
+                            name="note"
+                            onChange={handleChangeInput}
+                            rows="4"
+                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            placeholder="เขียนหมายเหตุได้ที่นี่ หรือไม่เขียนก็ได้"
+                          ></input>
+                        </div>
+                      </div>
+
+                      <div className="flex justify-center items-center w-full">
                         <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                          
-                        <input
+                          <input
                             id="dropzone-file"
                             type="file"
-                            className="hidden"
                             onChange={handleUploadInput}
                             accept="application/pdf"
                           />
                         </label>
                       </div>
-                      
+                      <div className="row img-up mx-0">
+                        {images.map((img, index) => (
+                          <div key={index} className="file_img my-1">
+                            <a>{img.url}</a>
+
+                            <span onClick={() => deleteImage(index)}>X</span>
+                          </div>
+                        ))}
+                      </div>
+
                       <button
                         type="submit"
                         className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
@@ -586,41 +1136,41 @@ const Tracking = (props) => {
                   <title>สไลด์ข่าวสาร</title>
                 </Head>
                 <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-        สไดล์ข่าวสาร
-      </h1>
+                  สไดล์ข่าวสาร
+                </h1>
                 {auth.user && auth.user.role === "admin" && (
-                    <div
-                      className="delete_all btn btn-danger mt-2"
-                      style={{ marginBottom: "-10px" }}
-                    >
-                      <input
-                        type="checkbox"
-                        checked={isCheck}
-                        onChange={handleCheckALL}
-                        style={{
-                          width: "25px",
-                          height: "25px",
-                          transform: "translateY(8px)",
-                        }}
-                      />
+                  <div
+                    className="delete_all btn btn-danger mt-2"
+                    style={{ marginBottom: "-10px" }}
+                  >
+                    <input
+                      type="checkbox"
+                      checked={isCheck}
+                      onChange={handleCheckALL}
+                      style={{
+                        width: "25px",
+                        height: "25px",
+                        transform: "translateY(8px)",
+                      }}
+                    />
 
-                      <button
-                        className="btn btn-danger ml-2"
-                        data-toggle="modal"
-                        data-target="#exampleModal"
-                        onClick={handleDeleteAll}
-                      >
-                        ลบข้อมูลทั้งหมด
-                      </button>
-                    </div>
-                  )}
+                    <button
+                      className="btn btn-danger ml-2"
+                      data-toggle="modal"
+                      data-target="#exampleModal"
+                      onClick={handleDeleteAll}
+                    >
+                      ลบข้อมูลทั้งหมด
+                    </button>
+                  </div>
+                )}
                 <div className="products">
                   {Slides.length === 0 ? (
                     <h2>No Slides</h2>
                   ) : (
-                    Slides.map((product,ict) => (
+                    Slides.map((product, ict) => (
                       <ul
-                      key={ict}
+                        key={ict}
                         className="card bg-sky-100/75"
                         style={{ width: "18rem" }}
                       >

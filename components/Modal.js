@@ -51,13 +51,13 @@ const Modal = () => {
         })
     } 
 
-    const deleteSlide = (item) => {
+    const deleteTrack = (item) => {
         dispatch({type: 'NOTIFY', payload: {loading: true}})
-        deleteData(`slideimage/${item.id}`, auth.token)
+        deleteData(`tracking/${item.id}`, auth.token)
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
             dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-            return router.push('/Admin/createSlide')
+            return router.push('/Admin/Tracking')
         })
     }
   const deleteFav = (item) => {
@@ -89,7 +89,7 @@ const Modal = () => {
 
                 if(item.type === 'DELETE_PRODUCTS') deleteProduct1(item)
 
-                if(item.type === 'DELETE_SLIDE') deleteSlide(item)  
+                if(item.type === 'DELETE_SLIDE') deleteTrack(item)  
                 
                 if(item.type === 'DELETE_FAV') deleteFav(item)
         

@@ -27,7 +27,7 @@ const SlideItem = ({product, handleCheck}) => {
     const adminLink = () => {
         return(
             <>
-                <Link href={`/Admin/createlide/${product._id}`}>
+                <Link href={`/Admin/Tracking/${product._id}`}>
                     <a className="btn btn-info"
                     style={{marginRight: '5px', flex: 1}}>Edit</a>
                 </Link>

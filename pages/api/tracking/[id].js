@@ -50,9 +50,9 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Informdata.findOneAndUpdate({_id: id}, {
-            serviceNumber : serviceNumber, images,rnb,
-            timeIn,timeOut,reportNumber
-            ,procedure,labPrint,ensure,checkReport,ensureReport,reportLSU, lsu, lab, note, phone
+            rnb, images, timeIn,timeOut,serviceNumber,reportNumber
+            ,procedure,labPrint,ensure,checkReport,ensureReport
+            ,reportLSU, lsu, lab, note, phone
         })
 
         res.json({msg: 'Success! Updated a product'})
