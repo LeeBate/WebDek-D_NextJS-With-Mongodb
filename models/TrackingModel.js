@@ -68,6 +68,7 @@ const Tracking = new mongoose.Schema({
     note:{
         type: String,
         require: true,
+        default: ""
     },
     phone:{
         type: String,
