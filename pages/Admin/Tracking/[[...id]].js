@@ -448,12 +448,6 @@ const Tracking = (props) => {
     console.log(files);
 
     files.forEach((file) => {
-      // if (file.size > 2024 * 2024)
-      //   return (err = "The largest image size is 1mb");
-
-      // if (file.type !== "image/jpeg" && file.type !== "image/png")
-      //   return (err = "Image format is incorrect.");
-
       num += 1;
       if (num <= 1) newImages.push(file);
       return newImages;
@@ -1162,9 +1156,17 @@ const Tracking = (props) => {
                           ></input>
                         </div>
                       </div>
-
+                      <div className=" flex-col">
+<label
+                            htmlFor="message"
+                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                          >
+                            อัพโหลด PDF
+                          </label>
                       <div className="flex justify-center items-center w-full">
-                        <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                      
+                        <label className="flex flex-col justify-center items-center w-full h-20 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                          
                           <input
                             id="dropzone-file"
                             type="file"
@@ -1176,13 +1178,13 @@ const Tracking = (props) => {
                       <div className="row img-up mx-0">
                         {images.map((img, index) => (
                           <div key={index} className="file_img my-1">
-                            <a>{img.url}</a>
+                            <a>{img.url ? img.url : URL.createObjectURL(img)}</a>
 
                             <span onClick={() => deleteImage(index)}>X</span>
                           </div>
                         ))}
                       </div>
-
+</div>
                       <button
                         type="submit"
                         className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded

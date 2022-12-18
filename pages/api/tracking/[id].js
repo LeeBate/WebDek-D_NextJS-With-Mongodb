@@ -46,7 +46,7 @@ const updateProduct = async (req, res) => {
             if(!rnb || images.length === 0 || !timeIn ||!timeOut||!serviceNumber||!reportNumber
                 ||!procedure||!labPrint||!ensure
                 ||!checkReport||!ensureReport||!reportLSU
-                ||!lsu||!lab||!note ||!phone)
+                ||!lsu ||!phone)
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Informdata.findOneAndUpdate({_id: id}, {
