@@ -18,6 +18,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
+import { Checkbox } from '@nextui-org/react';
 
 const Tracking = (props) => {
   const initialState = {
@@ -53,6 +54,13 @@ const Tracking = (props) => {
   const router = useRouter();
   const { id } = router.query;
   const [onEdit, setOnEdit] = useState(false);
+
+  const [checked1, setChecked1] = React.useState(false);
+  const [checked2, setChecked2] = React.useState(false);
+  const [checked3, setChecked3] = React.useState(false);
+  const [checked4, setChecked4] = React.useState(false);
+  const [checked5, setChecked5] = React.useState(false);
+
 
   //TAB Change
   const [tabIndex, setTabIndex] = React.useState("0");
@@ -208,6 +216,33 @@ const Tracking = (props) => {
       if (product._id === id) product.checked = !product.checked;
     });
     setSlides([...Slides]);
+  }; 
+   const hiddenChk = (id) => {
+    id=id+1
+    if(id==1){
+      return !checked1
+    }  if(id==2){
+      return !checked2
+    } if(id==3){
+      return !checked3
+    } if(id==4){
+      return !checked4
+    } if(id==5){
+      return !checked5
+    }
+  };  const defaultChk = (id) => {
+    id=id+1
+    if(id==1){
+      return checked1
+    }  if(id==2){
+      return checked2
+    } if(id==3){
+      return checked3
+    } if(id==4){
+      return checked4
+    } if(id==5){
+      return checked5
+    }
   };
 
   const handleClearAddNew = async () => {
@@ -508,11 +543,11 @@ const Tracking = (props) => {
   // };
 
   const handleChangeInput2 = async (idx, event) => {
-    const {newInputFields, value} = procedure.map((i) => {
+    const newInputFields = procedure.map((i) => {
       if (idx === i.idx) {
         i[event.target.name] = event.target.value;
       }
-      setProcedure({...procedure, [newInputFields]: value});
+   
       return i;
     });
     const newInputFields1 = labPrint.map((i) => {
@@ -724,11 +759,31 @@ const Tracking = (props) => {
                         </label>
 
 
-                        <div className=" bg-fuchsia-200">
-                          {procedure.map((procedure) => (
-                            <div key={procedure.idx}>
+                        <div className=" ">
+                          {procedure.map((procedure,id) => (
+                          <div key={procedure.idx} className="bg- bg-slate-200 px-5 py-2 mb-3 rounded-xl" >
+                          <Checkbox onChange={()=>{
+                            id=id+1
+                            if(id==1){
+                            setChecked1(!checked1)
+                          console.log("chk"+id+":"+!checked1)
+                            }  if(id==2){
+                            setChecked2(!checked2)
+                          console.log("chk"+id+":"+!checked2)
+                            }  if(id==3){
+                            setChecked3(!checked3)
+                          console.log("chk"+id+":"+!checked3)
+                            }  if(id==4){
+                            setChecked4(!checked4)
+                          console.log("chk"+id+":"+!checked4)
+                            }  if(id==5){
+                            setChecked5(!checked5)
+                          console.log("chk"+id+":"+!checked5)
+                            }
+                          }} defaultSelected={defaultChk(id)} size="xl">
+                  
                               <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                                ขั้นตอนการดำเนินการ :
+                               {id+1}. ขั้นตอนการดำเนินการ :
                                 <input
                                   type="text"
                                   name="ListName"
@@ -738,7 +793,14 @@ const Tracking = (props) => {
                               block w-full p-2.5"
                                   disabled
                                 />
-                              </label>
+                              </label>     
+                           </Checkbox>
+      
+                  <div hidden={hiddenChk(id)}  className="bg-slate-300 px-5 py-2 rounded-xl" >
+                            <div  className="bg-slate-300 px-5 py-2 rounded-xl" >
+                            <div >
+                              
+                            
                               <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                   วันที่เริ่มดำเนินการ :
@@ -831,6 +893,10 @@ const Tracking = (props) => {
                                   />
                                 </label>
                               </div>
+                            </div>
+                            </div>
+                            </div>
+                           
                             </div>
                           ))}
                         </div>

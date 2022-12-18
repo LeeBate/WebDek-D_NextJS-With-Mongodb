@@ -6,7 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
-
+import { appWithTranslation } from "next-i18next";
 
 function MyApp({ Component, pageProps }) {
 
@@ -32,4 +32,4 @@ function MyApp({ Component, pageProps }) {
 }
 
 
-export default MyApp;
+export default appWithTranslation (MyApp);
