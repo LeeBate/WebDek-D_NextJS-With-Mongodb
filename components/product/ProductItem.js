@@ -7,7 +7,7 @@ import { MdOutlineScience } from "react-icons/md";
 
 const ProductItem = ({ product, handleCheck }) => {
   const { state, dispatch } = useContext(DataContext);
-  const { cart, auth } = state;
+  const { auth } = state;
 
   const userLink = () => {
     return (
@@ -20,12 +20,14 @@ const ProductItem = ({ product, handleCheck }) => {
             </div>
           </button>
         </Link>
+        <Link href={`booking/${product._id}`}>
         <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
           <div className="flex items-center justify-center px-auto ">
             <MdOutlineScience></MdOutlineScience>
             <div className="mr-1"></div> จองเครื่องมือ
           </div>
         </button>
+        </Link>
       </>
     );
   };

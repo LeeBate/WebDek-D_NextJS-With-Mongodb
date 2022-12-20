@@ -2,9 +2,6 @@ import Head from "next/head";
 import {  Grid } from "@mui/material";
 import BlogCard from "../../src/components/dashboard/BlogCard";
 import SalesOverview from "../../src/components/dashboard/SalesOverview";
-import DailyActivity from "../../src/components/dashboard/DailyActivity";
-import ReportAll from "../../src/components/dashboard/ReportAll";
-import ProductPerfomance from "../../src/components/dashboard/ProductPerfomance";
 
 import FullLayout from "../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";

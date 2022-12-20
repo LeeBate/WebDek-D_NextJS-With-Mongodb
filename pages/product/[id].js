@@ -150,11 +150,7 @@ const DetailProduct = (props, query) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     HandleCheckFavorite();
-    // if()
-    // setToggler(false)
-
     const { auth } = await state;
-
     if (Object.keys(auth).length === 0)
       return dispatch({
         type: "NOTIFY",
@@ -166,8 +162,6 @@ const DetailProduct = (props, query) => {
         type: "NOTIFY",
         payload: { error: "โปรดกรอกข้อมูลให้ครบ." },
       });
-
-    // console.log(auth.token);
     let res;
     if (false) {
       res = await putData(
@@ -206,8 +200,8 @@ const DetailProduct = (props, query) => {
         <title>{product.title}</title>
       </Head>
 
-      <div class="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
-        <div class=" my-auto col-span-3 lg:col-span-5 ">
+      <div className="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
+        <div className=" my-auto col-span-3 lg:col-span-5 ">
           <div className="text-capitalize font-bold text-4xl ">
             <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
               {product.en}
@@ -216,20 +210,20 @@ const DetailProduct = (props, query) => {
           </div>
         </div>
 
-        <div class=" col-span-2 pb-0 xl:pb-3 max-h-[589px]  rounded-md row-span-4 bg-white">
+        <div className=" col-span-2 pb-0 xl:pb-3 max-h-[589px]  rounded-md row-span-4 bg-white">
           {/* <div className="grid grid-cols-1 bg-red-400 grid-rows-7 w-full h-full"> */}
-          {/* <div class=" h-full w-full row-span-5"> */}
+          {/* <div className=" h-full w-full row-span-5"> */}
           <img
             src={product.images[tab].url}
             alt={product.images[tab].url}
             className=" object-fill py-3 rounded h-[100%] max-h-[589px] w-auto mx-auto "
           />
           {/* </div> */}
-          {/* <div class="h-full w-full row-span-2"> */}
+          {/* <div className="h-full w-full row-span-2"> */}
           {/* </div> */}
           {/* </div> */}
         </div>
-        <div class="col-span-3  row-span-2">
+        <div className="col-span-3  row-span-2">
           <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
             <div className="flex flex-row">
               <p className="my-2 font-bold text-sm md:text-lg">ยี่ห้อ : </p>
@@ -269,9 +263,9 @@ const DetailProduct = (props, query) => {
             </div>
           </div>
         </div>
-        <div class="  col-span-3 ml-2 md:ml-3 xl:ml-4 row-span-2">
+        <div className="  col-span-3 ml-2 md:ml-3 xl:ml-4 row-span-2">
           <div className="grid w-full h-full grid-cols-2 gap-4 grid-rows-1">
-            <div class="...">
+            <div className="...">
               <div>
                 <p className="font-semibold text-sm md:text-lg">
                   ความสามารถของเครื่องมือ
@@ -279,7 +273,7 @@ const DetailProduct = (props, query) => {
                 <p className="text-sm md:text-lg">{product.detailCapability}</p>
               </div>
             </div>
-            <div class="...">
+            <div className="...">
               <div>
                 <p className="font-semibold text-sm md:text-lg">
                   ข้อจำกัดของเครื่องมือ
@@ -382,25 +376,25 @@ const DetailProduct = (props, query) => {
       </p>
 
       <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
-        <Link href="#จองเครื่องมือ">
+      <Link href={`/booking/${product._id}`}>
           <button
             type="button"
+            
             className=" rounded-full bg-green-500 text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
             จองเครื่องมือ
           </button>
         </Link>
         <Link href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
-        <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 rounded-full text-center no-underline"
-            >
-          <button
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 rounded-full text-center no-underline"
           >
-            ข้อมูลเครื่องมือ
-            <FaFilePdf className="inline ml-2" />
-          </button>
+            <button>
+              ข้อมูลเครื่องมือ
+              <FaFilePdf className="inline ml-2" />
+            </button>
           </a>
         </Link>
         <Link href="#โหลดแบบฟอร์ม">

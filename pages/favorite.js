@@ -42,7 +42,7 @@ const Favorite = (props) => {
   }, [props.products]);
 
   useEffect(() => {
-    console.log("kuy", products);
+    console.log("fav", products);
     if (Object.keys(router.query).length === 0) setPage(1);
   }, [router.query]);
 

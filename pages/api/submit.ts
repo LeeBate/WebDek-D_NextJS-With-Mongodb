@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import {google} from "googleapis";
-import type{GetStaticProps, InferGetStaticPropsType} from 'next'
 
 type SheetForm = {
     title: string,
