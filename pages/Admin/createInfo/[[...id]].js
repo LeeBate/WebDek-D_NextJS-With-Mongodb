@@ -88,10 +88,6 @@ const NewsManager = (props) => {
     dispatch({ type: "ADD_MODAL", payload: deleteArr });
   };
 
-  const handleLoadmore = () => {
-    setPage(page + 1);
-    filterSearch({ router, page: page + 1 });
-  };
   // end Infomation
 
   useEffect(() => {

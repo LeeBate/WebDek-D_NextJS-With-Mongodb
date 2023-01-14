@@ -72,6 +72,18 @@ const Modal = () => {
           //  return  router.replace(router.asPath);
         })
     }
+    const deleteBooking = (item) => {
+    
+        dispatch({type: 'NOTIFY', payload: {loading: true}})
+        deleteData(`bookingApi/${item.id}`, auth.token)
+        .then(res => {
+            if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
+       return    dispatch({type: 'NOTIFY', payload: {success: res.msg}})
+          
+               //router.push(`/product/${item.pid}`)
+          //  return  router.replace(router.asPath);
+        })
+    }
 
 
     const handleSubmit = () => {
@@ -92,6 +104,8 @@ const Modal = () => {
                 if(item.type === 'DELETE_SLIDE') deleteTrack(item)  
                 
                 if(item.type === 'DELETE_FAV') deleteFav(item)
+
+                if(item.type === 'DELETE_Booking') deleteBooking(item)
         
                 dispatch({ type: 'ADD_MODAL', payload: [] })
             }

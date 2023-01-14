@@ -7,6 +7,8 @@ import { BsHeartFill, BsHeart } from "react-icons/bs";
 import { deleteData } from "../../utils/fetchData";
 import { FaFilePdf } from "react-icons/fa";
 import Link from "next/link";
+import { IoDocumentTextOutline } from "react-icons/io5";
+import { MdOutlineScience } from "react-icons/md";
 
 const DetailProduct = (props, query) => {
   let [fav, setFav] = useState();
@@ -76,11 +78,6 @@ const DetailProduct = (props, query) => {
           filleredProd.push(fav.favorits[i]);
         }
       }
-
-      // setFavoriteData(filleredProd)
-
-      //  console.log("filleredProdFavoriteData",filleredProd)
-      //  console.log("auth.user.email",auth.user.email)
 
       for (let i = 0; i < filleredProd.length; i++) {
         if (filleredProd[i].prodid === product._id) {
@@ -193,6 +190,17 @@ const DetailProduct = (props, query) => {
 
     return data;
   }
+
+  const alert = async (e) => {
+    e.preventDefault();
+    const { auth } = await state;
+    if (Object.keys(auth).length === 0) {
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: "กรุณาเข้าสู่ระบบ" },
+      });
+    }
+  };
 
   return (
     <section className="p-1">
@@ -376,15 +384,28 @@ const DetailProduct = (props, query) => {
       </p>
 
       <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
-      <Link href={`/booking/${product._id}`}>
-          <button
-            type="button"
-            
-            className=" rounded-full bg-green-500 text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
-          >
-            จองเครื่องมือ
-          </button>
-        </Link>
+        {Object.keys(auth).length !== 0 ? (
+          <Link href={`booking/${product._id}`}>
+            <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        ) : (
+          <Link href="#">
+            <button
+              className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white"
+              onClick={alert}
+            >
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        )}
         <Link href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
           <a
             target="_blank"

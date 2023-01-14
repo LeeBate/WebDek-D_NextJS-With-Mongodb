@@ -9,6 +9,16 @@ const ProductItem = ({ product, handleCheck }) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
+  const alert = async (e) => {
+    e.preventDefault();
+    const { auth } = await state;
+    if (Object.keys(auth).length === 0) {
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: "กรุณาเข้าสู่ระบบ" },
+      });
+    }
+  };
   const userLink = () => {
     return (
       <>
@@ -20,14 +30,28 @@ const ProductItem = ({ product, handleCheck }) => {
             </div>
           </button>
         </Link>
-        <Link href={`booking/${product._id}`}>
-        <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
-          <div className="flex items-center justify-center px-auto ">
-            <MdOutlineScience></MdOutlineScience>
-            <div className="mr-1"></div> จองเครื่องมือ
-          </div>
-        </button>
-        </Link>
+        {Object.keys(auth).length !== 0 ? (
+          <Link href={`booking/${product._id}`}>
+            <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        ) : (
+          <Link href="#">
+            <button
+              className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white"
+              onClick={alert}
+            >
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        )}
       </>
     );
   };
@@ -86,6 +110,7 @@ const ProductItem = ({ product, handleCheck }) => {
           />
         </figure>
       </Link>
+
       <div className="card-body">
         <h5
           className="card-title font-bold text-xl mb-2 text-capitalize text-[#1a237e]"

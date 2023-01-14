@@ -7,7 +7,6 @@ import ProductItem from "../components/product/ProductItem";
 import filterSearch from "../utils/filterSearch";
 import { useRouter } from "next/router";
 import Filter from "../components/Filter";
-import { Center } from "@chakra-ui/react";
 
 const Machinery = (props) => {
   const [products, setProducts] = useState(props.products);

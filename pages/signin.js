@@ -50,7 +50,7 @@ const Signin = () => {
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
       if (!auth.user || auth.user.role !== "admin") {
-        router.push("/");
+        router.back();
       } else {
         router.push("/Admin");
       }

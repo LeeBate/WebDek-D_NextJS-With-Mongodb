@@ -578,7 +578,6 @@ const ProductsManager = (props) => {
                                   handleChangeInput2(inputField.idx, event)
                                 }
                                 placeholder="อัตราที่ 1"
-                                
                               />
                             </div>
                           </div>
@@ -802,7 +801,8 @@ const ProductsManager = (props) => {
                   ) : (
                     machinery.map((product) => (
                       <ul
-                      className="card shadow-md" style={{ width: "20rem" }}
+                        className="card shadow-md"
+                        style={{ width: "20rem" }}
                         key={product._id}
                       >
                         {auth.user && auth.user.role === "admin" && (
@@ -815,24 +815,25 @@ const ProductsManager = (props) => {
                           />
                         )}
                         <Link href={`/product/${product._id}`}>
-                          
                           <img
                             className="aspect-square object-fill cursor-pointer card-img-top"
                             src={product.images[0].url}
                             alt={product.images[0].url}
                           />
-                          
                         </Link>
                         <div className="card-body">
-                        <h5
-          className="card-title font-bold text-xl mb-2 text-capitalize"
-          title={product.en}
-        >
-          {product.en}
-        </h5>
-        <h5 className="card-title text-capitalize" title={product.title}>
-          {product.title}
-        </h5>
+                          <h5
+                            className="card-title font-bold text-xl mb-2 text-capitalize"
+                            title={product.en}
+                          >
+                            {product.en}
+                          </h5>
+                          <h5
+                            className="card-title text-capitalize"
+                            title={product.title}
+                          >
+                            {product.title}
+                          </h5>
 
                           <div className="row justify-content-between mx-0 ">
                             <>

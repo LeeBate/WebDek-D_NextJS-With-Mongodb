@@ -10,11 +10,11 @@ const Menuitems = [
     icon: "users",
     href: "/Admin/users",
   },
-  // {
-  //   title: "สไลด์ข่าวสาร",
-  //   icon: "sidebar",
-  //   href: "/Admin/createSlide/[[...id]]",
-  // },
+  {
+    title: "การติดตามผลวิเคราะห์ทดสอบ",
+    icon: "sidebar",
+    href: "/Admin/Tracking/[[...id]]",
+  },
   {
     title: "ข่าวประชาสัมพันธ์",
     icon: "plus-circle",

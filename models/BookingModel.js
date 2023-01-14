@@ -31,6 +31,20 @@ const bookingSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    dateBooking:{
+        type: String,
+        required: true
+        
+    },
+    dateBookingEnd:{
+        type: String,
+        required: true
+    },
+    statusBooking :{
+        type: String,
+        required: true,
+        trim: true
+    }
 },{
     timestamps: true
 })

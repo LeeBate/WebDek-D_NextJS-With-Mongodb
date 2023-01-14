@@ -60,12 +60,12 @@ const getProducts = async (req, res) => {
         const features = new APIfeatures(Products.find(), req.query)
         .filtering().sorting().paginating()
 
-        const favorits = await features.query
+        const booking = await features.query
         
         res.json({
             status: 'success',
-            result: favorits.length,
-            favorits
+            result: booking.length,
+            booking
         })
     } catch (err) {
         return res.status(500).json({err: err.message})
@@ -77,14 +77,14 @@ const createProduct = async (req, res) => {
         const result = await auth(req, res)
         
 
-        const {email, fullname,studentID,phone, prodid,userid} = req.body
+        const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking} = req.body
 
-        if(!email || !fullname ||!phone || !prodid || !userid || !studentID )
+        if(!email || !fullname ||!phone ||!dateBooking ||!dateBookingEnd || !studentID )
         return res.status(400).json({err: 'กรอกข้อมูลให้ครบถ้วนทุกช่อง'})
 
 
         const newProduct = new Products({
-            email, fullname,studentID,phone, prodid,userid
+            email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking
         })
         console.log("new product =",newProduct)
         await newProduct.save()
