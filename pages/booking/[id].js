@@ -12,7 +12,10 @@ const BookingDetail = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
   const id2 = id;
-  id = "";
+  id = ''
+   
+  
+  
 
   const uid = Object.keys(auth).length !== 0 ? (uid = auth.user.email) : "";
   const initialState = {
@@ -40,7 +43,7 @@ const BookingDetail = (props) => {
     statusBooking,
   } = product;
   //แสดงข้อมูลจาก props ที่ส่งมาจาก api เพื่อแสดงโปรดักต์ที่เลือก
-  const [product1] = useState(props.product);
+  // const [product1] = useState(props.product);
 
   const [tab, setTab] = useState(0);
   const [onEdit, setOnEdit] = useState(false);
@@ -96,7 +99,7 @@ const BookingDetail = (props) => {
       delay();
     },
     
-    [props.booking]
+    [props.booking],[id2]
   );
   
   const delay = async () => {
@@ -110,6 +113,7 @@ const BookingDetail = (props) => {
       setOnEdit(true);
       getData(`bookingApi/${id}`).then((res) => {
         setProduct(res.product);
+        setShowBooking(props.booking)
         
       });
     } else {
@@ -119,7 +123,7 @@ const BookingDetail = (props) => {
     }
   }, [id]);
 console.log("1", product)
-
+console.log("onedit", onEdit)
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -153,7 +157,7 @@ console.log("1", product)
 
     let res;
     if (onEdit) {
-      res = await putData(`bookingApi/${id}`, { ...product }, auth.token);
+      res = await putData(`bookingApi/${id}`, { ...product, ...showBooking }, auth.token);
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     } else {
@@ -163,7 +167,7 @@ console.log("1", product)
     }
     setProduct(initialState);
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-    return router.reload();
+    return router.push('/Booking/');
   //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
   };
 
@@ -202,9 +206,7 @@ console.log("1", product)
                         <th scope="col" class="px-6 py-3">
                           วันที่สิ้นสุดการจอง
                         </th>{" "}
-                        <th scope="col" class="px-6 py-3 ">
-                          แก้ไขข้อมูล
-                        </th>
+                        
                         <th scope="col" class="px-6 py-3 ">
                           สถานะการจอง
                         </th>
@@ -217,58 +219,30 @@ console.log("1", product)
                       <center></center>
                     ) : !loading ? (
                       <tbody>
-                        {showBooking.map((booking, index) => (
+                        {showBooking.map((booking) => (
                           <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                            key={index.fullname}
+                            key={booking._id}
                           >
-                            <th
+                            {/* <th
                               scope="row"
                               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                             >
                               {booking.fullname}
-                            </th>
+                            </th> */}
+                            <td class="px-6 py-4">{booking.fullname}</td>
                             <td class="px-6 py-4">{booking.studentID}</td>
                             <td class="px-6 py-4">{booking.email}</td>
                             <td class="px-6 py-4">{booking.dateBooking}</td>
                             <td class="px-6 py-4">{booking.dateBookingEnd}</td>
-                            {booking.userid !== auth.user.email ? (
-                              <td class="px-6 py-4 ">-</td>
-                            ) : (
-                              <td class="px-6 py-4 ">
-                                <Link href={`/booking/${booking._id}`}>
-                                  <a class="font-medium text-blue-600 dark:text-blue-500 hover:underline mr-2">
-                                    แก้ไขข้อมูล
-                                  </a>
-                                </Link>
-                                <a
-                                  
-                                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline "
-                                  onClick={() =>
-                                    dispatch({
-                                      type: "ADD_MODAL",
-                                      payload: [
-                                        {
-                                          data: "",
-                                          id: booking._id,
-                                          title: booking.fullname,
-                                          type: "DELETE_Booking",
-                                        },
-                                      ],
-                                    })
-                                  }
-                                >
-                                  ลบข้อมูล
-                                </a>
-                              </td>
-                            )}
+                            
                             <td class="px-6 py-4">{booking.statusBooking}</td>
                             {booking.userid !== auth.user.email ? (
                               <td class="px-6 py-4 ">-</td>
                             ) : (
-                              <button className="px-6 py-4 bg-black text-white">
+                              <td className="px-4 py-4 bg-black text-white">
                                 จ่ายเงิน
-                              </button>
+                              </td>
                             )}
                           </tr>
                         ))}
@@ -445,7 +419,7 @@ console.log("1", product)
                   <input
                     className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     id="inline-full-name"
-                    type="text"
+                    type="number"
                     name="phone"
                     value={phone}
                     placeholder="08xxxxxxxx"
@@ -503,7 +477,7 @@ console.log("1", product)
   );
 };
 
-export async function getServerSideProps({ params: { id }, query }) {
+export async function getServerSideProps({ query }) {
   // const res = await getData(`product/${id}`);
 
   const page = query.page || 1;

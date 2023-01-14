@@ -34,9 +34,7 @@ const getProduct = async (req, res) => {
 
 const updateProduct = async (req, res) => {
     try {
-        const result = await auth(req, res)
-      
-
+        
         const {id} = req.query
         const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid, statusBooking} = req.body
 
