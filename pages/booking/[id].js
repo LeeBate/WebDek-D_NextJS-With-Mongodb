@@ -76,7 +76,6 @@ const BookingDetail = (props) => {
   //   dispatch({ type: "ADD_MODAL", payload: deleteArr });
   // };
   const [loading, setLoading] = useState(true);
-  let filleredProd = [];
   useEffect(
     () => {
       // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
@@ -92,6 +91,7 @@ const BookingDetail = (props) => {
       //   delay();
 
       // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
+      
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
       delay();
     },
@@ -99,7 +99,6 @@ const BookingDetail = (props) => {
     [props.booking]
   );
   
-  console.log("2", props.booking)
   const delay = async () => {
     setTimeout(() => {
       setLoading(false);
@@ -111,16 +110,15 @@ const BookingDetail = (props) => {
       setOnEdit(true);
       getData(`bookingApi/${id}`).then((res) => {
         setProduct(res.product);
-        setShowBooking(props.booking)
+        
       });
-      return router.reload();
     } else {
       setOnEdit(false);
       setProduct(initialState);
-      setShowBooking(props.booking)
+      // setShowBooking(props.booking)
     }
   }, [id]);
-console.log("1", initialState)
+console.log("1", product)
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -151,8 +149,7 @@ console.log("1", initialState)
         payload: { error: "โปรดกรอกข้อมูลให้ครบ." },
       });
     dispatch({ type: "NOTIFY", payload: { loading: true } });
-    if (Object.keys(auth).length !== 0)
-      setProduct({ ...product, userid: auth.user.email });
+    
 
     let res;
     if (onEdit) {
