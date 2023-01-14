@@ -12,10 +12,7 @@ const BookingDetail = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
   const id2 = id;
-  id = ''
-   
-  
-  
+  id = "";
 
   const uid = Object.keys(auth).length !== 0 ? (uid = auth.user.email) : "";
   const initialState = {
@@ -94,14 +91,15 @@ const BookingDetail = (props) => {
       //   delay();
 
       // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
-      
+
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
       delay();
     },
-    
-    [props.booking],[id2]
+
+    [props.booking],
+    [id2]
   );
-  
+
   const delay = async () => {
     setTimeout(() => {
       setLoading(false);
@@ -113,8 +111,7 @@ const BookingDetail = (props) => {
       setOnEdit(true);
       getData(`bookingApi/${id}`).then((res) => {
         setProduct(res.product);
-        setShowBooking(props.booking)
-        
+        setShowBooking(props.booking);
       });
     } else {
       setOnEdit(false);
@@ -122,8 +119,8 @@ const BookingDetail = (props) => {
       // setShowBooking(props.booking)
     }
   }, [id]);
-console.log("1", product)
-console.log("onedit", onEdit)
+  console.log("1", product);
+  console.log("onedit", onEdit);
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -153,31 +150,33 @@ console.log("onedit", onEdit)
         payload: { error: "โปรดกรอกข้อมูลให้ครบ." },
       });
     dispatch({ type: "NOTIFY", payload: { loading: true } });
-    
 
     let res;
     if (onEdit) {
-      res = await putData(`bookingApi/${id}`, { ...product, ...showBooking }, auth.token);
+      res = await putData(
+        `bookingApi/${id}`,
+        { ...product, ...showBooking },
+        auth.token
+      );
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     } else {
-      res = await postData("bookingApi", { ...product}, auth.token);
+      res = await postData("bookingApi", { ...product }, auth.token);
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
     setProduct(initialState);
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-    return router.push('/Booking/');
-  //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
+    return router.replace(router.asPath);
+    //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
   };
 
   //Function สำหรับแสดงข้อมูล
-  
 
   return (
     <section className="p-1">
       <Head>
-        <title>{product._id}</title>
+        <title>CALLLAB</title>
       </Head>
       <div className="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
         <div className=" my-auto col-span-3 lg:col-span-5 ">
@@ -187,7 +186,6 @@ console.log("onedit", onEdit)
                 {/* แสดงข้อมูลการจอง */}
                 <center>ข้อมูลการจอง</center>
                 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                  
                   <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                       <tr>
@@ -206,7 +204,9 @@ console.log("onedit", onEdit)
                         <th scope="col" class="px-6 py-3">
                           วันที่สิ้นสุดการจอง
                         </th>{" "}
-                        
+                        <th scope="col" class="px-6 py-3 ">
+                          การแก้ไข
+                        </th>
                         <th scope="col" class="px-6 py-3 ">
                           สถานะการจอง
                         </th>
@@ -235,7 +235,27 @@ console.log("onedit", onEdit)
                             <td class="px-6 py-4">{booking.email}</td>
                             <td class="px-6 py-4">{booking.dateBooking}</td>
                             <td class="px-6 py-4">{booking.dateBookingEnd}</td>
-                            
+                            <td
+                              className="btn btn-danger px-4 py-4"
+                              style={{ marginLeft: "5px", flex: 1 }}
+                              data-toggle="modal"
+                              data-target="#exampleModal"
+                              onClick={() =>
+                                dispatch({
+                                  type: "ADD_MODAL",
+                                  payload: [
+                                    {
+                                      data: "",
+                                      id: booking._id,
+                                      title: booking.fullname,
+                                      type: "DELETE_Booking",
+                                    },
+                                  ],
+                                })
+                              }
+                            >
+                              Delete
+                            </td>
                             <td class="px-6 py-4">{booking.statusBooking}</td>
                             {booking.userid !== auth.user.email ? (
                               <td class="px-6 py-4 ">-</td>
@@ -248,12 +268,9 @@ console.log("onedit", onEdit)
                         ))}
                       </tbody>
                     ) : (
-                      <>
-                     
-                      </>
+                      <></>
                     )}
                   </table>
-                  
                 </div>
               </div>
             </div>

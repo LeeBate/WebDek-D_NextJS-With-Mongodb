@@ -92,7 +92,7 @@ function NavBar() {
   const userNavigation = [
     { name: "โปรไฟล์", href: "/profile", current: false },
     { name: "เครื่องมือที่ชอบ", href: "/favorite", current: false },
-    {name: "เครื่องมือที่จอง", href:"/Booking", current:false}
+    {name: "ประวัติจองเครื่องมือ", href:"/Booking", current:false}
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },

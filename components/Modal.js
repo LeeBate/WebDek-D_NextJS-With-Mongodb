@@ -79,7 +79,7 @@ const Modal = () => {
         .then(res => {
             if(res.err) return dispatch({type: 'NOTIFY', payload: {error: res.err}})
           dispatch({type: 'NOTIFY', payload: {success: res.msg}})
-          return router.push('/Booking/')
+          return router.replace(router.asPath);
                //router.push(`/product/${item.pid}`)
           //  return  router.replace(router.asPath);
         })

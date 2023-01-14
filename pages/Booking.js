@@ -132,7 +132,7 @@ const Favorite = (props) => {
 
 <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
         {products1.length === 0 ? (
-          <center>ไม่มีข้อมูลข่าวประชาสัมพันธ์</center>
+          <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
         ) : !loading ? (
           products1.map((product) => (
             <FavoriteItem
