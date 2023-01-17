@@ -36,13 +36,13 @@ const updateProduct = async (req, res) => {
     try {
         
         const {id} = req.query
-        const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid, statusBooking} = req.body
+        const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid, statusBooking,price} = req.body
 
         if(!email || !fullname ||!phone ||!dateBooking ||!dateBookingEnd || !studentID)
         return res.status(400).json({err: 'โปรดกรอกข้อมูลให้ครบถ้วนทุกช่อง'})
 
         await Products.findOneAndUpdate({_id: id}, {
-            email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid, statusBooking
+            email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid, statusBooking,price
         })
 
         res.json({msg: 'Success! Updated a product'})

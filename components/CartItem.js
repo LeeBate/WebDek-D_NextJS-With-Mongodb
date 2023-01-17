@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { decrease, increase } from '../store/Actions'
 
-const CartItem = ({item, dispatch, cart}) => {
+const CartItem = ({item, dispatch, product}) => {
     return (
         <tr>
-            <td style={{width: '100px', overflow: 'hidden'}}>
+            {/* <td style={{width: '100px', overflow: 'hidden'}}>
                 <img src={item.images[0].url} alt={item.images[0].url}
                 className="img-thumbnail w-100"
                 style={{minWidth: '80px', height: '80px'}} />
@@ -18,22 +18,18 @@ const CartItem = ({item, dispatch, cart}) => {
                 </h5>
 
                 <h6 className="text-danger">${item.quantity * item.price}</h6>
-                {
-                    item.inStock > 0
-                    ? <p className="mb-1 text-danger">In Stock: {item.inStock}</p>
-                    : <p className="mb-1 text-danger">Out Stock</p>
-                }
-            </td>
+                
+            </td> */}
 
             <td className="align-middle" style={{minWidth: '150px'}}>
                 <button className="btn btn-outline-secondary"
-                onClick={ () => dispatch(decrease(cart, item._id)) } 
+                onClick={ () => dispatch(decrease(product, item._id)) } 
                 disabled={item.quantity === 1 ? true : false} > - </button>
 
                 <span className="px-3">{item.quantity}</span>
 
                 <button className="btn btn-outline-secondary"
-                onClick={ () => dispatch(increase(cart, item._id)) }
+                onClick={ () => dispatch(increase(product, item._id)) }
                 disabled={item.quantity === item.inStock ? true : false} > + </button>
             </td>
 

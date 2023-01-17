@@ -45,6 +45,9 @@ const bookingSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    price:{
+        type:Number,
+    }
 },{
     timestamps: true
 })

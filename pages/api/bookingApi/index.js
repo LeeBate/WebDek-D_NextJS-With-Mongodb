@@ -77,14 +77,14 @@ const createProduct = async (req, res) => {
         const result = await auth(req, res)
         
 
-        const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking} = req.body
+        const {email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking,price} = req.body
 
         if(!email || !fullname ||!phone ||!dateBooking ||!dateBookingEnd || !studentID )
         return res.status(400).json({err: 'กรอกข้อมูลให้ครบถ้วนทุกช่อง'})
 
 
         const newProduct = new Products({
-            email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking
+            email, fullname,studentID,phone,dateBooking,dateBookingEnd, prodid,userid,statusBooking,price
         })
         console.log("new product =",newProduct)
         await newProduct.save()

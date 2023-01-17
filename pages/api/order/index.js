@@ -36,15 +36,15 @@ const getOrders = async (req, res) => {
 const createOrder = async (req, res) => {
     try {
         const result = await auth(req, res)
-        const { address, mobile, cart, total } = req.body
+        const { address, mobile,  total } = req.body
 
         const newOrder = new Orders({
-            user: result.id, address, mobile, cart, total
+            user: result.id, address, mobile,  total
         })
 
-        cart.filter(item => {
-            return sold(item._id, item.quantity, item.inStock, item.sold)
-        })
+        // cart.filter(item => {
+        //     return sold(item._id, item.quantity, item.inStock, item.sold)
+        // })
 
         await newOrder.save()
 
@@ -58,9 +58,9 @@ const createOrder = async (req, res) => {
     }
 }
 
-const sold = async (id, quantity, oldInStock, oldSold) => {
-    await Products.findOneAndUpdate({_id: id}, {
-        inStock: oldInStock - quantity,
-        sold: quantity + oldSold
-    })
-}
+// const sold = async (id, quantity, oldInStock, oldSold) => {
+//     await Products.findOneAndUpdate({_id: id}, {
+//         inStock: oldInStock - quantity,
+//         sold: quantity + oldSold
+//     })
+// }

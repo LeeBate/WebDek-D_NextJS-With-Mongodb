@@ -5,12 +5,74 @@ import { getData, putData, postData } from "../../utils/fetchData";
 import { DataContext } from "../../store/GlobalState";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import CartItem from "../../components/CartItem";
 
 const BookingDetail = (props) => {
   const router = useRouter();
   let { id } = router.query;
   const { state, dispatch } = useContext(DataContext);
-  const { auth } = state;
+  const { auth, orders } = state;
+
+  const [total, setTotal] = useState(0);
+  const [address, setAddress] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  const [callback, setCallback] = useState(false);
+
+  // useEffect(() => {
+  //   const cartLocal = JSON.parse(localStorage.getItem('ShowAddCart'))
+  //   if(cartLocal && cartLocal.length > 0){
+  //     let newArr = []
+  //     const updateCart = async () => {
+  //       for (const item of cartLocal){
+  //         const res = await getData(`product/${item._id}`)
+  //         const { _id, title, images, price } = res.product
+  //       }
+
+  //       dispatch({ type: 'ADD_CART', payload: newArr })
+  //     }
+
+  //     updateCart()
+  //   }
+  // },[callback])
+
+  const handlePayment = async () => {
+    // if(!address || !mobile)
+    // return dispatch({ type: 'NOTIFY', payload: {error: 'Please add your address and mobile.'}})
+
+    // let newCart = [];
+    // for(const item of cart){
+    //   const res = await getData(`product/${item._id}`)
+    //   if(res.product.inStock - item.quantity >= 0){
+    //     newCart.push(item)
+    //   }
+    // }
+
+    // if(newCart.length < cart.length){
+    //   setCallback(!callback)
+    //   return dispatch({ type: 'NOTIFY', payload: {
+    //     error: 'The product is out of stock or the quantity is insufficient.'
+    //   }})
+    // }
+
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
+
+    postData("order", { address, mobile, total }, auth.token).then((res) => {
+      if (res.err)
+        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+
+      dispatch({ type: "ADD_CART", payload: [] });
+
+      const newOrder = {
+        ...res.newOrder,
+        user: auth.user,
+      };
+      dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
+      dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+      return router.push(`/order/${res.newOrder._id}`);
+    });
+  };
+
   const id2 = id;
   id = "";
 
@@ -25,6 +87,7 @@ const BookingDetail = (props) => {
     dateBooking: "",
     dateBookingEnd: "",
     statusBooking: "รออนุมัติ",
+    price: "",
   };
 
   const [product, setProduct] = useState(initialState);
@@ -38,9 +101,10 @@ const BookingDetail = (props) => {
     prodid,
     userid,
     statusBooking,
+    price,
   } = product;
   //แสดงข้อมูลจาก props ที่ส่งมาจาก api เพื่อแสดงโปรดักต์ที่เลือก
-  // const [product1] = useState(props.product);
+  const [product1] = useState(props.product);
 
   const [tab, setTab] = useState(0);
   const [onEdit, setOnEdit] = useState(false);
@@ -49,7 +113,6 @@ const BookingDetail = (props) => {
   const [showBooking, setShowBooking] = useState(props.booking);
 
   const [isCheck, setIsCheck] = useState(false);
-  console.log("showBooking", showBooking);
   // const handleCheck = (id) => {
   //   showBooking.forEach((product) => {
   //     if (product._id === id) product.checked = !product.checked;
@@ -76,6 +139,20 @@ const BookingDetail = (props) => {
   //   dispatch({ type: "ADD_MODAL", payload: deleteArr });
   // };
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    
+    const getTotal = () => {
+      const res = showBooking.reduce((prev, item) => {
+        return item.price
+      }, price);
+      setTotal(res);
+    };
+    getTotal();
+  
+  }, [showBooking]);
+  console.log(total);
+
   useEffect(
     () => {
       // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
@@ -120,7 +197,7 @@ const BookingDetail = (props) => {
     }
   }, [id]);
   console.log("1", product);
-  console.log("onedit", onEdit);
+
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -205,10 +282,10 @@ const BookingDetail = (props) => {
                           วันที่สิ้นสุดการจอง
                         </th>{" "}
                         <th scope="col" class="px-6 py-3 ">
-                          การแก้ไข
+                        สถานะการจอง
                         </th>
                         <th scope="col" class="px-6 py-3 ">
-                          สถานะการจอง
+                          การแก้ไข
                         </th>
                         <th scope="col" class="px-6 py-3 ">
                           ชำระเงิน
@@ -235,6 +312,8 @@ const BookingDetail = (props) => {
                             <td class="px-6 py-4">{booking.email}</td>
                             <td class="px-6 py-4">{booking.dateBooking}</td>
                             <td class="px-6 py-4">{booking.dateBookingEnd}</td>
+                            
+                            <td class="px-6 py-4">{booking.statusBooking}</td>
                             <td
                               className="btn btn-danger px-4 py-4"
                               style={{ marginLeft: "5px", flex: 1 }}
@@ -256,11 +335,13 @@ const BookingDetail = (props) => {
                             >
                               Delete
                             </td>
-                            <td class="px-6 py-4">{booking.statusBooking}</td>
                             {booking.userid !== auth.user.email ? (
                               <td class="px-6 py-4 ">-</td>
                             ) : (
-                              <td className="px-4 py-4 bg-black text-white">
+                              <td
+                                className="px-4 py-4 bg-black text-white cursor-pointer"
+                                onClick={handlePayment}
+                              >
                                 จ่ายเงิน
                               </td>
                             )}
@@ -276,7 +357,8 @@ const BookingDetail = (props) => {
             </div>
           </div>
         </div>
-        {/* <div className=" my-auto col-span-3 lg:col-span-5 ">
+
+        <div className=" my-auto col-span-3 lg:col-span-5 ">
           <div className="text-capitalize font-bold text-4xl ">
             <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
               {product1.en}
@@ -291,9 +373,9 @@ const BookingDetail = (props) => {
             alt={product1.images[tab].url}
             className=" object-fill py-3 rounded h-[100%] max-h-[589px] w-auto mx-auto "
           />
-        </div> */}
+        </div>
         <div className="col-span-3  row-span-2">
-          {/* <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
+          <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
             <div className="text-base sm:text-lg mx-7 xl:mx-22  mb-3 ">
               <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
             </div>
@@ -377,7 +459,7 @@ const BookingDetail = (props) => {
                 </table>
               </div>
             </div>
-          </div>{" "} */}
+          </div>{" "}
           <form method="post" onSubmit={handleSubmit}>
             <div className="flex flex-col mt-3">
               <p className="my-2 font-bold text-sm md:text-lg">
@@ -480,6 +562,82 @@ const BookingDetail = (props) => {
                   </div>
                 </div>
               </div>
+              <div className="flex flex-col">
+                {/* <p className="my-2 font-bold text-sm md:text-lg">
+                วันและเวลาที่ต้องการจองเครื่องมือ :
+              </p> */}
+                <div className="flex flex-row ">
+                  <div class="ui input focus pr-2">
+                    <label className="my-2 font-bold text-sm md:text-lg">
+                      อัตราค่าบริการ :
+                    </label>
+                    {product1.nameRate.map((item) => (
+                      <select
+                        id="price"
+                        onChange={handleChangeInput}
+                        className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
+                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
+                        name="price"
+                        value={price}
+                      >
+                        <option value="all">เลือกอัตราค่าบริการ</option>
+                        <option key={item._id} value={item._id}>
+                          {item.price1}
+                        </option>
+                        <option key={item._id} value={item._id}>
+                          {item.price2}
+                        </option>
+                        <option key={item._id} value={item._id}>
+                          {item.price3}
+                        </option>
+                        <option key={item._id} value={item._id}>
+                          {item.price4}
+                        </option>
+                        <option key={item._id} value={item._id}>
+                          {item.price5}
+                        </option>
+                      </select>
+                    ))}
+                  </div>
+                  <div className="col-md-8 text-secondary table-responsive my-3">
+                    {/* <h2 className="text-uppercase">Shopping Cart</h2>
+
+          <table className="table my-3">
+            <tbody>
+              {
+                showBooking.map(item => (
+                  <CartItem key={item._id} item={item} dispatch={dispatch} product={product} />
+                
+                  ))
+              }
+            </tbody>
+          </table> */}
+                  </div>
+                </div>
+                {/* <div className="col-md-4 my-3 text-right text-uppercase text-secondary">
+            <form>
+              <h2>Shipping</h2>
+
+              <label htmlFor="address">Address</label>
+              <input type="text" name="address" id="address"
+              className="form-control mb-2" value={address}
+              onChange={e => setAddress(e.target.value)} />
+
+              <label htmlFor="mobile">Mobile</label>
+              <input type="text" name="mobile" id="mobile"
+              className="form-control mb-2" value={mobile}
+              onChange={e => setMobile(e.target.value)} />
+            </form>
+
+            <h3>Total: <span className="text-danger">${total}</span></h3>
+
+            
+            <Link href={auth.user ? '#!' : '/signin'}>
+              <a className="btn btn-dark my-2" onClick={handlePayment}>Proceed with payment</a>
+            </Link>
+            
+        </div> */}
+              </div>
             </div>
             <button
               type="submit"
@@ -494,8 +652,8 @@ const BookingDetail = (props) => {
   );
 };
 
-export async function getServerSideProps({ query }) {
-  // const res = await getData(`product/${id}`);
+export async function getServerSideProps({ query, params: { id } }) {
+  const res = await getData(`product/${id}`);
 
   const page = query.page || 1;
   const category = query.category || "all";
@@ -512,7 +670,7 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      // product: res.product,
+      product: res.product,
       result: resfav.result,
       booking: resfav.booking,
     },

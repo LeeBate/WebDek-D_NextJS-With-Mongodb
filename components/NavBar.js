@@ -11,7 +11,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 function NavBar() {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
-  const { auth } = state;
+  const { auth,cart } = state;
 
   const isActive = (r) => {
     if (r === router.pathname) {
@@ -318,9 +318,11 @@ function NavBar() {
                               </Menu.Items>
                             </Transition>
                           </Menu>
+                          
                         </div>
                       </div>
                     </div>
+                    
                     <div className="hidden lg:block">
                       <div className="ml-4 flex items-center md:ml-6">
                         {/* Profile dropdown */}
