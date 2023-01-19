@@ -11,6 +11,11 @@ const Menuitems = [
     href: "/Admin/users",
   },
   {
+    title: "การจองเครื่องมือ",
+    icon: "sidebar",
+    href: "/Admin/dataBookings/[[...id]]",
+  },
+  {
     title: "การติดตามผลวิเคราะห์ทดสอบ",
     icon: "sidebar",
     href: "/Admin/Tracking/[[...id]]",

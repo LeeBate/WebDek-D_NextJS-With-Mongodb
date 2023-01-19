@@ -9,6 +9,7 @@ import OrderDetail from '../../components/OrderDetail'
 const DetailOrder = () => {
     const {state, dispatch} = useContext(DataContext)
     const {orders, auth} = state
+    console.log(state)
 
     const router = useRouter()
 
@@ -21,12 +22,12 @@ const DetailOrder = () => {
             
     if(!auth.user) return null;
     return(
-        <div className="my-3">
+        <div className="">
             <Head>
-                <title>Detail Orders</title>
+                <title>CALLLAB</title>
             </Head>
 
-            <div>
+            <div className='mt-32'>
                 <button className="btn btn-dark" onClick={() => router.back()}>
                     <i className="fas fa-long-arrow-alt-left"  aria-hidden="true"></i> Go Back
                 </button>

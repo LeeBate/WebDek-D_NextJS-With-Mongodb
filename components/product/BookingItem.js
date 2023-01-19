@@ -32,9 +32,9 @@ const InformItem = ({ product, handleCheck }) => {
   const adminLink = () => {
     return (
       <>
-        <Link href={`booking/${product._id}`}>
+        <Link href={`booking/${product.prodid}`}>
           <a className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
-            Edit
+            ดูข้อมูล
           </a>
         </Link>
         <button
@@ -56,7 +56,7 @@ const InformItem = ({ product, handleCheck }) => {
             })
           }
         >
-          Delete
+          ลบข้อมูล
         </button>
       </>
     );

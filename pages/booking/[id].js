@@ -6,72 +6,13 @@ import { DataContext } from "../../store/GlobalState";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import CartItem from "../../components/CartItem";
+import { TempleBuddhist } from "@mui/icons-material";
 
 const BookingDetail = (props) => {
   const router = useRouter();
   let { id } = router.query;
   const { state, dispatch } = useContext(DataContext);
   const { auth, orders } = state;
-
-  const [total, setTotal] = useState(0);
-  const [address, setAddress] = useState("");
-  const [mobile, setMobile] = useState("");
-
-  const [callback, setCallback] = useState(false);
-
-  // useEffect(() => {
-  //   const cartLocal = JSON.parse(localStorage.getItem('ShowAddCart'))
-  //   if(cartLocal && cartLocal.length > 0){
-  //     let newArr = []
-  //     const updateCart = async () => {
-  //       for (const item of cartLocal){
-  //         const res = await getData(`product/${item._id}`)
-  //         const { _id, title, images, price } = res.product
-  //       }
-
-  //       dispatch({ type: 'ADD_CART', payload: newArr })
-  //     }
-
-  //     updateCart()
-  //   }
-  // },[callback])
-
-  const handlePayment = async () => {
-    // if(!address || !mobile)
-    // return dispatch({ type: 'NOTIFY', payload: {error: 'Please add your address and mobile.'}})
-
-    // let newCart = [];
-    // for(const item of cart){
-    //   const res = await getData(`product/${item._id}`)
-    //   if(res.product.inStock - item.quantity >= 0){
-    //     newCart.push(item)
-    //   }
-    // }
-
-    // if(newCart.length < cart.length){
-    //   setCallback(!callback)
-    //   return dispatch({ type: 'NOTIFY', payload: {
-    //     error: 'The product is out of stock or the quantity is insufficient.'
-    //   }})
-    // }
-
-    dispatch({ type: "NOTIFY", payload: { loading: true } });
-
-    postData("order", { address, mobile, total }, auth.token).then((res) => {
-      if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
-
-      dispatch({ type: "ADD_CART", payload: [] });
-
-      const newOrder = {
-        ...res.newOrder,
-        user: auth.user,
-      };
-      dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
-      dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-      return router.push(`/order/${res.newOrder._id}`);
-    });
-  };
 
   const id2 = id;
   id = "";
@@ -112,46 +53,22 @@ const BookingDetail = (props) => {
   //props.booking มาจาก bookingApi[index]
   const [showBooking, setShowBooking] = useState(props.booking);
 
-  const [isCheck, setIsCheck] = useState(false);
-  // const handleCheck = (id) => {
-  //   showBooking.forEach((product) => {
-  //     if (product._id === id) product.checked = !product.checked;
-  //   });
-  //   setShowBooking([...showBooking]);
-  // };
-  // const handleCheckALL = () => {
-  //   showBooking.forEach((product) => (product.checked = !isCheck));
-  //   setShowBooking([...showBooking]);
-  //   setIsCheck(!isCheck);
-  // };
-  // const handleDeleteAll = () => {
-  //   let deleteArr = [];
-  //   showBooking.forEach((product) => {
-  //     if (product.checked) {
-  //       deleteArr.push({
-  //         data: "",
-  //         id: product._id,
-  //         title: "ลบ?",
-  //         type: "DELETE_PRODUCTS",
-  //       });
-  //     }
-  //   });
-  //   dispatch({ type: "ADD_MODAL", payload: deleteArr });
-  // };
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   const getTotal = () => {
+  //     const res = showBooking.reduce((prev, item) => {
+  //       return prev + (item.price * 1);
+  //     },0)
+
+  //     setTotal(res)
+  //     console.log("res",res)
+  //   }
     
-    const getTotal = () => {
-      const res = showBooking.reduce((prev, item) => {
-        return item.price
-      }, price);
-      setTotal(res);
-    };
-    getTotal();
-  
-  }, [showBooking]);
-  console.log(total);
+  //   getTotal()
+  // },[showBooking])
+  // console.log("price",price)
+
 
   useEffect(
     () => {
@@ -177,6 +94,23 @@ const BookingDetail = (props) => {
     [id2]
   );
 
+  const [total, setTotal] = useState(0);
+  const [address, setAddress] = useState("");
+  const [mobile, setMobile] = useState("");
+
+  useEffect(() => {
+    const getTotal = () => {
+      const res = showBooking.reduce((prev, item) => {
+        return prev + (item.price * 1)
+      },0)
+
+      setTotal(res)
+    }
+
+    getTotal()
+  },[showBooking])
+  console.log("price",total)
+
   const delay = async () => {
     setTimeout(() => {
       setLoading(false);
@@ -197,6 +131,25 @@ const BookingDetail = (props) => {
     }
   }, [id]);
   console.log("1", product);
+
+  const handlePayment = async () => {
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
+
+    postData("order", { address, mobile, total }, auth.token).then((res) => {
+      if (res.err)
+        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+
+      dispatch({ type: "ADD_CART", payload: [] });
+
+      const newOrder = {
+        ...res.newOrder,
+        user: auth.user,
+      };
+      dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
+      dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+      return router.push(`/order/${res.newOrder._id}`);
+    });
+  };
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -282,7 +235,7 @@ const BookingDetail = (props) => {
                           วันที่สิ้นสุดการจอง
                         </th>{" "}
                         <th scope="col" class="px-6 py-3 ">
-                        สถานะการจอง
+                          สถานะการจอง
                         </th>
                         <th scope="col" class="px-6 py-3 ">
                           การแก้ไข
@@ -312,29 +265,34 @@ const BookingDetail = (props) => {
                             <td class="px-6 py-4">{booking.email}</td>
                             <td class="px-6 py-4">{booking.dateBooking}</td>
                             <td class="px-6 py-4">{booking.dateBookingEnd}</td>
-                            
+
                             <td class="px-6 py-4">{booking.statusBooking}</td>
-                            <td
-                              className="btn btn-danger px-4 py-4"
-                              style={{ marginLeft: "5px", flex: 1 }}
-                              data-toggle="modal"
-                              data-target="#exampleModal"
-                              onClick={() =>
-                                dispatch({
-                                  type: "ADD_MODAL",
-                                  payload: [
-                                    {
-                                      data: "",
-                                      id: booking._id,
-                                      title: booking.fullname,
-                                      type: "DELETE_Booking",
-                                    },
-                                  ],
-                                })
-                              }
-                            >
-                              Delete
-                            </td>
+                            {booking.userid !== auth.user.email ? (
+                              <td class="px-6 py-4 ">-</td>
+                            ) : (
+                              <td
+                                className="btn btn-danger px-4 py-4"
+                                style={{ marginLeft: "5px", flex: 1 }}
+                                data-toggle="modal"
+                                data-target="#exampleModal"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD_MODAL",
+                                    payload: [
+                                      {
+                                        data: "",
+                                        id: booking._id,
+                                        title: booking.fullname,
+                                        type: "DELETE_Booking",
+                                      },
+                                    ],
+                                  })
+                                }
+                              >
+                                Delete
+                              </td>
+                            )}
+
                             {booking.userid !== auth.user.email ? (
                               <td class="px-6 py-4 ">-</td>
                             ) : (
@@ -581,19 +539,19 @@ const BookingDetail = (props) => {
                         value={price}
                       >
                         <option value="all">เลือกอัตราค่าบริการ</option>
-                        <option key={item._id} value={item._id}>
+                        <option key={item._id} value={item.price1}>
                           {item.price1}
                         </option>
-                        <option key={item._id} value={item._id}>
+                        <option key={item._id} value={item.price2}>
                           {item.price2}
                         </option>
-                        <option key={item._id} value={item._id}>
+                        <option key={item._id} value={item.price3}>
                           {item.price3}
                         </option>
-                        <option key={item._id} value={item._id}>
+                        <option key={item._id} value={item.price4}>
                           {item.price4}
                         </option>
-                        <option key={item._id} value={item._id}>
+                        <option key={item._id} value={item.price5}>
                           {item.price5}
                         </option>
                       </select>

@@ -7,12 +7,11 @@ import FavoriteItem from "../components/product/BookingItem";
 import filterSearch from "../utils/filterSearch";
 import { useRouter } from "next/router";
 import Filter from "../components/Filter";
+import Link from "next/link";
 
 const Favorite = (props) => {
-  
   const [products, setProducts] = useState(props.products);
   const [products1, setProducts1] = useState(props.booking);
-
 
   const [isCheck, setIsCheck] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -20,7 +19,7 @@ const Favorite = (props) => {
   const router = useRouter();
   let filleredProd = [];
   const { state, dispatch } = useContext(DataContext);
-  const { auth } = state;
+  const { auth, notify, orders } = state;
 
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
@@ -30,7 +29,6 @@ const Favorite = (props) => {
         }
       }
       setProducts1(filleredProd);
-
 
       delay();
 
@@ -44,7 +42,7 @@ const Favorite = (props) => {
     }
   }, [props.booking]);
 
-  console.log("book", products1)
+  console.log("book", products1);
 
   useEffect(() => {
     console.log("fav", products);
@@ -101,73 +99,73 @@ const Favorite = (props) => {
           display: none;
         }
       `}</style>
-     
-        <div className="px-4">
-      {auth.user && auth.user.role === "admin" && (
-        <div
-          className="delete_all btn btn-danger mt-2"
-          style={{ marginBottom: "-10px" }}
-        >
-          <input
-            type="checkbox"
-            checked={isCheck}
-            onChange={handleCheckALL}
-            style={{
-              width: "25px",
-              height: "25px",
-              transform: "translateY(8px)",
-            }}
-          />
 
-          <button
-            className="btn btn-danger ml-2"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            onClick={handleDeleteAll}
-          >
-            ลบข้อมูลทั้งหมด
-          </button>
-        </div>
-      )}
-
-<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {products1.length === 0 ? (
-          <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
-        ) : !loading ? (
-          products1.map((product) => (
-            <FavoriteItem
-              key={product._id}
-              product={product}
-              handleCheck={handleCheck}
-            />
-          ))
-        ) : (
+      <div className="px-4">
+        {auth.user && auth.user.role === "admin" && (
           <div
-            className="position-fixed w-100 h-100 text-center loading"
-            style={{
-              background: "#0008",
-              color: "white",
-              top: 0,
-              left: 0,
-              zIndex: 9,
-            }}
+            className="delete_all btn btn-danger mt-2"
+            style={{ marginBottom: "-10px" }}
           >
-            <svg width="205" height="250" viewBox="0 0 40 50">
-              <polygon
-                strokeWidth="1"
-                stroke="#fff"
-                fill="none"
-                points="20,1 40,40 1,40"
-              ></polygon>
-              <text fill="#fff" x="5" y="47">
-                Loading
-              </text>
-            </svg>
+            <input
+              type="checkbox"
+              checked={isCheck}
+              onChange={handleCheckALL}
+              style={{
+                width: "25px",
+                height: "25px",
+                transform: "translateY(8px)",
+              }}
+            />
+
+            <button
+              className="btn btn-danger ml-2"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={handleDeleteAll}
+            >
+              ลบข้อมูลทั้งหมด
+            </button>
           </div>
         )}
-      </div>
 
-      {/* {props.result < page * 6 ? (
+        <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+          {products1.length === 0 ? (
+            <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
+          ) : !loading ? (
+            products1.map((product) => (
+              <FavoriteItem
+                key={product._id}
+                product={product}
+                handleCheck={handleCheck}
+              />
+            ))
+          ) : (
+            <div
+              className="position-fixed w-100 h-100 text-center loading"
+              style={{
+                background: "#0008",
+                color: "white",
+                top: 0,
+                left: 0,
+                zIndex: 9,
+              }}
+            >
+              <svg width="205" height="250" viewBox="0 0 40 50">
+                <polygon
+                  strokeWidth="1"
+                  stroke="#fff"
+                  fill="none"
+                  points="20,1 40,40 1,40"
+                ></polygon>
+                <text fill="#fff" x="5" y="47">
+                  Loading
+                </text>
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {/* {props.result < page * 6 ? (
         ""
       ) : (
         <button
@@ -177,7 +175,66 @@ const Favorite = (props) => {
           อ่านเพิ่มเติม
         </button>
       )} */}
-    </div>
+      </div>
+      <div className="col-md-8">
+        <h3 className="">Payment</h3>
+
+        <div className="my-3 table-responsive">
+          <table
+            className="table-bordered table-hover w-100 text-uppercase"
+            style={{ minWidth: "600px", cursor: "pointer" }}
+          >
+            <thead className="bg-light font-weight-bold text-center">
+              <tr>
+                <td className="p-2">ID</td>
+                <td className="p-2">วันที่</td>
+                <td className="p-2">จำนวนเงิน</td>
+                <td className="p-2">การอนุมัติการจอง</td>
+                <td className="p-2">การชำระเงิน</td>
+              </tr>
+            </thead>
+
+            <tbody className=" text-center">
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  <td className="p-2">
+                    <Link href={`/order/${order._id}`}>
+                      <a>{order._id}</a>
+                    </Link>
+                  </td>
+                  <td className="p-2">
+                    {new Date(order.createdAt).toLocaleDateString()}
+                  </td>
+                  <td className="p-2">${order.total}</td>
+                  <td className="p-2">
+                    {order.delivered ? (
+                      <i className="fas fa-check text-success"></i>
+                    ) : (
+                      <i className="fas fa-times text-danger"></i>
+                    )}
+                  </td>
+                  <td className="p-2">
+                    {order.paid ? (
+                      <i className="fas fa-check text-success"></i>
+                    ) : (
+                      <i className="fas fa-times text-danger"></i>
+                    )}
+                  </td>
+                  {order.paid ? (
+                    <td><a className="btn btn-success text-white disabled"> ชำระเงินเรียบร้อย </a></td>
+                  ) : (
+                    <td >
+                      <Link href={`/order/${order._id}`}>
+                        <a className="btn btn-warning">ยังไม่ชำระเงิน</a>
+                      </Link>
+                    </td>
+                  )}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   );
 };
@@ -194,17 +251,17 @@ export async function getServerSideProps({ query }) {
     }&category=${category}&sort=${sort}&title=${search}`
   );
 
-//   const res = await getData(
-//     `favorite?limit=${
-//       page * 500
-//     }&category=${category}&sort=${sort}&title=${search}`
-//   );
+  //   const res = await getData(
+  //     `favorite?limit=${
+  //       page * 500
+  //     }&category=${category}&sort=${sort}&title=${search}`
+  //   );
   // server side rendering
   return {
     props: {
-    //   products: res.favorits,
-    //   result: res.result,
-      booking : res1.booking
+      //   products: res.favorits,
+      //   result: res.result,
+      booking: res1.booking,
     }, // will be passed to the page component as props
   };
 }

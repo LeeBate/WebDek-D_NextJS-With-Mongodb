@@ -36,7 +36,7 @@ const deliveredOrder = async(req, res) => {
         }else{
             await Orders.findOneAndUpdate({_id: id}, {
                 paid: true, dateOfPayment: new Date().toISOString(), 
-                method: 'Receive Cash', delivered: true
+                method: 'รับเงินสด', delivered: true
             })
     
             res.json({
@@ -44,7 +44,7 @@ const deliveredOrder = async(req, res) => {
                 result: {
                     paid: true, 
                     dateOfPayment: new Date().toISOString(), 
-                    method: 'Receive Cash', 
+                    method: 'รับเงินสด', 
                     delivered: true
                 }
             })
