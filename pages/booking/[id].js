@@ -64,11 +64,10 @@ const BookingDetail = (props) => {
   //     setTotal(res)
   //     console.log("res",res)
   //   }
-    
+
   //   getTotal()
   // },[showBooking])
   // console.log("price",price)
-
 
   useEffect(
     () => {
@@ -101,15 +100,15 @@ const BookingDetail = (props) => {
   useEffect(() => {
     const getTotal = () => {
       const res = showBooking.reduce((prev, item) => {
-        return prev + (item.price * 1)
-      },0)
+        return prev + item.price * 1;
+      }, 0);
 
-      setTotal(res)
-    }
+      setTotal(res);
+    };
 
-    getTotal()
-  },[showBooking])
-  console.log("price",total)
+    getTotal();
+  }, [showBooking]);
+  console.log("price", total);
 
   const delay = async () => {
     setTimeout(() => {
@@ -204,139 +203,130 @@ const BookingDetail = (props) => {
   //Function สำหรับแสดงข้อมูล
 
   return (
-    <section className="p-1">
+    <section class="text-gray-700 body-font overflow-hidden bg-white">
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div className="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
-        <div className=" my-auto col-span-3 lg:col-span-5 ">
-          <div className="text-capitalize font-bold text-4xl ">
-            <div className=" my-auto col-span-3 lg:col-span-5 ">
-              <div className="text-capitalize font-bold text-4xl ">
-                {/* แสดงข้อมูลการจอง */}
-                <center>ข้อมูลการจอง</center>
-                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                  <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                      <tr>
-                        <th scope="col" class="px-6 py-3">
-                          ชื่อ-นามสกุล
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          รหัสนักศึกษา
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          อีเมล
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          วันที่เริ่มต้นการจอง
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                          วันที่สิ้นสุดการจอง
-                        </th>{" "}
-                        <th scope="col" class="px-6 py-3 ">
-                          สถานะการจอง
-                        </th>
-                        <th scope="col" class="px-6 py-3 ">
-                          การแก้ไข
-                        </th>
-                        <th scope="col" class="px-6 py-3 ">
-                          ชำระเงิน
-                        </th>
-                      </tr>
-                    </thead>
-                    {showBooking.length === 0 ? (
-                      <center></center>
-                    ) : !loading ? (
-                      <tbody>
-                        {showBooking.map((booking) => (
-                          <tr
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                            key={booking._id}
-                          >
-                            {/* <th
+      <div class="container px-5 py-24 mx-auto ">
+        <center className=" py-3 mt-2">
+          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+            ข้อมูลการจอง {product1.title}
+          </h1>
+        </center>
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400 ">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
+              <tr>
+                <th scope="col" class="px-3 py-3">
+                  ชื่อ-นามสกุล
+                </th>
+                <th scope="col" class="px-3 py-3">
+                  รหัสนักศึกษา
+                </th>
+                <th scope="col" class="px-3 py-3">
+                  อีเมล
+                </th>
+                <th scope="col" class="px-3 py-3">
+                  วันที่เริ่มต้นการจอง
+                </th>
+                <th scope="col" class="px-3 py-3">
+                  วันที่สิ้นสุดการจอง
+                </th>{" "}
+                {/* <th scope="col" class="px-3 py-3 ">
+                  สถานะการจอง
+                </th> */}
+                <th scope="col" class="px-3 py-3 ">
+                  การแก้ไข
+                </th>
+                <th scope="col" class="px-3 py-3 ">
+                  ชำระเงิน
+                </th>
+              </tr>
+            </thead>
+            {showBooking.length === 0 ? (
+              <center></center>
+            ) : !loading ? (
+              <tbody>
+                {showBooking.map((booking) => (
+                  <tr
+                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    key={booking._id}
+                  >
+                    {/* <th
                               scope="row"
-                              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                              class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                             >
                               {booking.fullname}
                             </th> */}
-                            <td class="px-6 py-4">{booking.fullname}</td>
-                            <td class="px-6 py-4">{booking.studentID}</td>
-                            <td class="px-6 py-4">{booking.email}</td>
-                            <td class="px-6 py-4">{booking.dateBooking}</td>
-                            <td class="px-6 py-4">{booking.dateBookingEnd}</td>
+                    <td class="px-3 py-4">{booking.fullname}</td>
+                    <td class="px-3 py-4">{booking.studentID}</td>
+                    <td class="px-3 py-4">{booking.email}</td>
+                    <td class="px-3 py-4">{new Date(booking.dateBooking).toLocaleString()}</td>
+                    
+                    <td class="px-3 py-4">{new Date(booking.dateBookingEnd).toLocaleString()}</td>
 
-                            <td class="px-6 py-4">{booking.statusBooking}</td>
-                            {booking.userid !== auth.user.email ? (
-                              <td class="px-6 py-4 ">-</td>
-                            ) : (
-                              <td
-                                className="btn btn-danger px-4 py-4"
-                                style={{ marginLeft: "5px", flex: 1 }}
-                                data-toggle="modal"
-                                data-target="#exampleModal"
-                                onClick={() =>
-                                  dispatch({
-                                    type: "ADD_MODAL",
-                                    payload: [
-                                      {
-                                        data: "",
-                                        id: booking._id,
-                                        title: booking.fullname,
-                                        type: "DELETE_Booking",
-                                      },
-                                    ],
-                                  })
-                                }
-                              >
-                                Delete
-                              </td>
-                            )}
-
-                            {booking.userid !== auth.user.email ? (
-                              <td class="px-6 py-4 ">-</td>
-                            ) : (
-                              <td
-                                className="px-4 py-4 bg-black text-white cursor-pointer"
-                                onClick={handlePayment}
-                              >
-                                จ่ายเงิน
-                              </td>
-                            )}
-                          </tr>
-                        ))}
-                      </tbody>
+                    {/* <td class="px-3 py-4">{booking.statusBooking}</td> */}
+                    {booking.userid !== auth.user.email ? (
+                      <td class="px-3 py-4 ">-</td>
                     ) : (
-                      <></>
+                      <td class="px-2.5 py-4 ">
+                        <button
+                          className=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 border border-blue-700 rounded "
+                          style={{ marginLeft: "5px", flex: 1 }}
+                          data-toggle="modal"
+                          data-target="#exampleModal"
+                          onClick={() =>
+                            dispatch({
+                              type: "ADD_MODAL",
+                              payload: [
+                                {
+                                  data: "",
+                                  id: booking._id,
+                                  title: booking.fullname,
+                                  type: "DELETE_Booking",
+                                },
+                              ],
+                            })
+                          }
+                        >
+                          ลบข้อมูล
+                        </button>
+                      </td>
                     )}
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div className=" my-auto col-span-3 lg:col-span-5 ">
-          <div className="text-capitalize font-bold text-4xl ">
-            <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
-              {product1.en}
-            </h1>
-            <h1 className="text-sm md:text-xl ">{product1.title}</h1>
-          </div>
+                    {booking.userid !== auth.user.email ? (
+                      <td class="px-3 py-4 ">-</td>
+                    ) : (
+                      <td class="px-3 py-4 ">
+                        <button
+                          className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
+                          onClick={handlePayment}
+                        >
+                          จ่ายเงิน
+                        </button>
+                      </td>
+                    )}
+                  </tr>
+                ))}
+              </tbody>
+            ) : (
+              <></>
+            )}
+          </table>
         </div>
-
-        <div className=" col-span-2 pb-0 xl:pb-3 max-h-[589px]  rounded-md row-span-4 bg-white">
+        <div class="lg:w-4/5 mx-auto flex flex-wrap mt-5">
           <img
             src={product1.images[tab].url}
             alt={product1.images[tab].url}
-            className=" object-fill py-3 rounded h-[100%] max-h-[589px] w-auto mx-auto "
+            className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto "
           />
-        </div>
-        <div className="col-span-3  row-span-2">
-          <div className="flex flex-col ml-2 md:ml-3 xl:ml-4">
-            <div className="text-base sm:text-lg mx-7 xl:mx-22  mb-3 ">
-              <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
-            </div>
+          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h2 class="text-sm title-font text-gray-500 tracking-widest">
+              {product1.en}
+            </h2>
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+              {product1.title}
+            </h1>
             <div className="mx-1 md:mx-14 xl:mx-24">
               <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -417,193 +407,163 @@ const BookingDetail = (props) => {
                 </table>
               </div>
             </div>
-          </div>{" "}
-          <form method="post" onSubmit={handleSubmit}>
-            <div className="flex flex-col mt-3">
-              <p className="my-2 font-bold text-sm md:text-lg">
-                ชื่อ-นามสกุล :
-              </p>
-              <div class="ui input focus">
-                <input
-                  className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  type="text"
-                  name="fullname"
-                  value={fullname}
-                  placeholder="นาย ศุภชัย สุขสวัสดิ์"
-                  onChange={handleChangeInput}
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex flex-row">
-              <p className="my-2 font-bold text-sm md:text-lg">
-                รหัสนักศึกษา/รหัสพนักงาน :
-              </p>
-              <div class="ui input focus">
-                <input
-                  className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                  type="text"
-                  name="studentID"
-                  value={studentID}
-                  placeholder="Bxxxxxx"
-                  onChange={handleChangeInput}
-                  required
-                />
-              </div>
-            </div>
-            <div className="flex flex-col ">
-              <div className="flex flex-row">
-                <p className="my-2 font-bold text-sm md:text-lg">
-                  อีเมลมหาวิทยาลัย :
-                </p>
-                <div class="ui input focus">
+
+            <div className=" mt-6">
+              <form method="post" onSubmit={handleSubmit}>
+                <div class="relative z-0 w-full mb-6 group">
                   <input
-                    className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
                     type="text"
-                    name="email"
-                    value={email}
-                    placeholder="Bxxxxxx@g.sut.ac.th"
+                    name="fullname"
+                    id="fullname"
+                    value={fullname}
+                    onChange={handleChangeInput}
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    required
+                  />
+                  <label
+                    for="fullname"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    ชื่อ-นามสกุล :
+                  </label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                  <input
+                    type="text"
+                    name="studentID"
+                    id="studentID"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    value={studentID}
                     onChange={handleChangeInput}
                     required
                   />
+                  <label
+                    for="studentID"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    รหัสนักศึกษา/รหัสพนักงาน :
+                  </label>
                 </div>
-              </div>
-              <div className="flex flex-row">
-                <p className="my-2 font-bold text-sm md:text-lg">
-                  เบอร์โทรศัพท์ :
-                </p>
-                <div class="ui input focus">
+                <div class="relative z-0 w-full mb-6 group">
                   <input
-                    className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                    id="inline-full-name"
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
+                    value={email}
+                    onChange={handleChangeInput}
+                    required
+                  />
+                  <label
+                    for="email"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    อีเมลมหาวิทยาลัย :
+                  </label>
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                  <input
                     type="number"
                     name="phone"
+                    id="phone"
+                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    placeholder=" "
                     value={phone}
-                    placeholder="08xxxxxxxx"
                     onChange={handleChangeInput}
                     required
                   />
+                  <label
+                    for="phone"
+                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                  >
+                    เบอร์โทรศัพท์ :
+                  </label>
                 </div>
-              </div>
-              <div className="flex flex-col">
-                {/* <p className="my-2 font-bold text-sm md:text-lg">
-                วันและเวลาที่ต้องการจองเครื่องมือ :
-              </p> */}
-                <div className="flex flex-row ">
-                  <div class="ui input focus pr-2">
-                    <p className="my-2 font-bold text-sm md:text-lg">
-                      วันที่เริ่มต้น :
-                    </p>
+                <div class="grid md:grid-cols-2 md:gap-6">
+                  <div class="relative z-0 w-full mb-6 group">
                     <input
-                      className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                      id="inline-full-name"
                       type="datetime-local"
                       name="dateBooking"
+                      id="dateBooking"
                       value={dateBooking}
                       onChange={handleChangeInput}
+                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=" "
                       required
                     />
+                    <label
+                      for="dateBooking"
+                      class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >
+                      วันที่ต้องการจองเครื่องมือ :
+                    </label>
                   </div>
-                  <div class="ui input focus">
-                    <p className="my-2 font-bold text-sm md:text-lg">
-                      วันที่สิ้นสุด :
-                    </p>
+                  <div class="relative z-0 w-full mb-6 group">
                     <input
-                      className="bg-white appearance-none border-2 border-white rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"
-                      id="inline-full-name"
                       type="datetime-local"
                       name="dateBookingEnd"
                       value={dateBookingEnd}
                       onChange={handleChangeInput}
+                      id="dateBookingEnd"
+                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      placeholder=" "
                       required
                     />
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col">
-                {/* <p className="my-2 font-bold text-sm md:text-lg">
-                วันและเวลาที่ต้องการจองเครื่องมือ :
-              </p> */}
-                <div className="flex flex-row ">
-                  <div class="ui input focus pr-2">
-                    <label className="my-2 font-bold text-sm md:text-lg">
-                      อัตราค่าบริการ :
+                    <label
+                      for="dateBookingEnd"
+                      class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    >
+                      วันที่สิ้นสุด :
                     </label>
-                    {product1.nameRate.map((item) => (
-                      <select
-                        id="price"
-                        onChange={handleChangeInput}
-                        className=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg 
-                    focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                        name="price"
-                        value={price}
-                      >
-                        <option value="all">เลือกอัตราค่าบริการ</option>
-                        <option key={item._id} value={item.price1}>
-                          {item.price1}
-                        </option>
-                        <option key={item._id} value={item.price2}>
-                          {item.price2}
-                        </option>
-                        <option key={item._id} value={item.price3}>
-                          {item.price3}
-                        </option>
-                        <option key={item._id} value={item.price4}>
-                          {item.price4}
-                        </option>
-                        <option key={item._id} value={item.price5}>
-                          {item.price5}
-                        </option>
-                      </select>
-                    ))}
-                  </div>
-                  <div className="col-md-8 text-secondary table-responsive my-3">
-                    {/* <h2 className="text-uppercase">Shopping Cart</h2>
-
-          <table className="table my-3">
-            <tbody>
-              {
-                showBooking.map(item => (
-                  <CartItem key={item._id} item={item} dispatch={dispatch} product={product} />
-                
-                  ))
-              }
-            </tbody>
-          </table> */}
                   </div>
                 </div>
-                {/* <div className="col-md-4 my-3 text-right text-uppercase text-secondary">
-            <form>
-              <h2>Shipping</h2>
-
-              <label htmlFor="address">Address</label>
-              <input type="text" name="address" id="address"
-              className="form-control mb-2" value={address}
-              onChange={e => setAddress(e.target.value)} />
-
-              <label htmlFor="mobile">Mobile</label>
-              <input type="text" name="mobile" id="mobile"
-              className="form-control mb-2" value={mobile}
-              onChange={e => setMobile(e.target.value)} />
-            </form>
-
-            <h3>Total: <span className="text-danger">${total}</span></h3>
-
-            
-            <Link href={auth.user ? '#!' : '/signin'}>
-              <a className="btn btn-dark my-2" onClick={handlePayment}>Proceed with payment</a>
-            </Link>
-            
-        </div> */}
-              </div>
+                <div class="grid md:grid-cols-2 md:gap-6">
+                  <div class="flex items-center">
+                    <div class="relative">
+                      {product1.nameRate.map((item) => (
+                        <select
+                          id="price"
+                          name="price"
+                          value={price}
+                          onChange={handleChangeInput}
+                          class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"
+                        >
+                          <option value="">เลือกอัตราค่าบริการ</option>
+                          <option key={item.price1} value={item.price1}>
+                            {item.price1}
+                          </option>
+                          <option key={item.price2} value={item.price2}>
+                            {item.price2}
+                          </option>
+                          <option key={item.price3} value={item.price3}>
+                            {item.price3}
+                          </option>
+                          <option key={item.price4} value={item.price4}>
+                            {item.price4}
+                          </option>
+                          <option key={item.price5} value={item.price5}>
+                            {item.price5}
+                          </option>
+                        </select>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
+                <div class="flex">
+                  <span class="title-font font-medium text-2xl text-gray-900">
+                    เป็นจำนวนเงิน {price}฿
+                  </span>
+                  <button class="flex ml-auto text-white bg-[#1a237e] hover:bg-[#FFA500] border-0 py-2 px-6 focus:outline-none rounded">
+                    {onEdit ? "อัพเดตเครื่องมือ" : "จองเครื่องมือ"}
+                  </button>
+                </div>
+              </form>
             </div>
-            <button
-              type="submit"
-              className=" bg-[#1a237e] hover:bg-[#FFA500] shadow-md hover:shadow-lg text-white font-bold py-2 px-4 border-b-4  rounded-full block w-full p-2.5 mt-2"
-            >
-              {onEdit ? "อัพเดต" : "สร้าง"}
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </section>

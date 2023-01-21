@@ -90,45 +90,10 @@ const Favorite = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-12 lg:mb-80">
-      <Head>
-        <title>CALLLAB</title>
-      </Head>
-      <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style>
-
-      <div className="px-4">
-        {auth.user && auth.user.role === "admin" && (
-          <div
-            className="delete_all btn btn-danger mt-2"
-            style={{ marginBottom: "-10px" }}
-          >
-            <input
-              type="checkbox"
-              checked={isCheck}
-              onChange={handleCheckALL}
-              style={{
-                width: "25px",
-                height: "25px",
-                transform: "translateY(8px)",
-              }}
-            />
-
-            <button
-              className="btn btn-danger ml-2"
-              data-toggle="modal"
-              data-target="#exampleModal"
-              onClick={handleDeleteAll}
-            >
-              ลบข้อมูลทั้งหมด
-            </button>
-          </div>
-        )}
-
-        <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
+    <section class="text-gray-700 body-font overflow-hidden bg-white">
+      <div class="container px-5 py-24 mx-auto">
+        <div class="lg:w-5/5 mx-auto flex flex-wrap">
+          <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           {products1.length === 0 ? (
             <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
           ) : !loading ? (
@@ -163,23 +128,15 @@ const Favorite = (props) => {
               </svg>
             </div>
           )}
+          </div>
+
+          
         </div>
-
-        {/* {props.result < page * 6 ? (
-        ""
-      ) : (
-        <button
-          className="btn btn-outline-info d-block mx-auto mb-4"
-          onClick={handleLoadmore}
-        >
-          อ่านเพิ่มเติม
-        </button>
-      )} */}
-      </div>
-      <div className="col-md-8">
-        <h3 className="">Payment</h3>
-
-        <div className="my-3 table-responsive">
+        <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+            การชำระเงิน
+            </h1>
+            <div className="my-3 table-responsive">
           <table
             className="table-bordered table-hover w-100 text-uppercase"
             style={{ minWidth: "600px", cursor: "pointer" }}
@@ -205,7 +162,7 @@ const Favorite = (props) => {
                   <td className="p-2">
                     {new Date(order.createdAt).toLocaleDateString()}
                   </td>
-                  <td className="p-2">${order.total}</td>
+                  <td className="p-2">{order.total}฿</td>
                   <td className="p-2">
                     {order.delivered ? (
                       <i className="fas fa-check text-success"></i>
@@ -234,8 +191,9 @@ const Favorite = (props) => {
             </tbody>
           </table>
         </div>
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

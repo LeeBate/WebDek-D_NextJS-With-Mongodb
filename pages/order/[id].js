@@ -22,12 +22,13 @@ const DetailOrder = () => {
             
     if(!auth.user) return null;
     return(
-        <div className="">
+        <section class="text-gray-700 body-font overflow-hidden bg-white">
+      <div class="container px-5 py-24 mx-auto ">
             <Head>
                 <title>CALLLAB</title>
             </Head>
 
-            <div className='mt-32'>
+            <div className='mt-10'>
                 <button className="btn btn-dark" onClick={() => router.back()}>
                     <i className="fas fa-long-arrow-alt-left"  aria-hidden="true"></i> Go Back
                 </button>
@@ -36,6 +37,7 @@ const DetailOrder = () => {
             <OrderDetail orderDetail={orderDetail} state={state} dispatch={dispatch} />
         
         </div>
+        </section>
     )
 }
 
