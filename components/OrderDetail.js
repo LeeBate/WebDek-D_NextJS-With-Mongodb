@@ -41,16 +41,17 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
         {orderDetail.map((order) => (
           <div
             key={order._id}
-            style={{ margin: "100px auto" }}
+            
             className="row justify-content-around"
           >
-            <div className="text-uppercase my-3 " style={{ maxWidth: "800px" }}>
+            <div className="text-uppercase my-3 ">
               <div className=" text-secondary">
                 <h3>ข้อมูลการจอง</h3>
                 <p>ชื่อ: {order.user.name}</p>
                 <p>อีเมล: {order.user.email}</p>
-                {/* <p>titme: {product.title}</p>
-                        <p>Mobile: {order.mobile}</p> */}
+                <p>ชื่อเครื่องมือ: {order.title}</p>
+                
+                <img className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto " src={order.images}/>
 
                 <div
                   className={`alert ${
@@ -60,8 +61,8 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   role="alert"
                 >
                   {order.delivered
-                    ? `ยืมยันเมื่อ ${order.updatedAt}`
-                    : "รอการติดต่อเพื่ออนุมัติ"}
+                    ? `ยืมยันเมื่อ ${new Date (order.updatedAt).toLocaleString()} น.`
+                    : "รอการชำระเงินเพื่ออนุมัติการจองเครื่องมือ"}
                   {auth.user.role === "admin" && !order.delivered && (
                     <button
                       className="btn btn-dark text-uppercase"
@@ -93,7 +94,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   role="alert"
                 >
                   {order.paid
-                    ? `ชำระเงินเมื่อ ${order.dateOfPayment}`
+                    ? `ชำระเงินเมื่อ ${new Date (order.dateOfPayment).toLocaleString()} น.`
                     : "ยังไม่ได้ชำระเงิน"}
                 </div>
               </div>

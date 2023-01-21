@@ -23,6 +23,18 @@ const orderSchema = new mongoose.Schema(
       default: false,
     },
     dateOfPayment: Date,
+    title:{
+      type: String,
+      required: true,
+    },
+    images: {
+      type: String,
+      required: true
+    },
+    prodOrder: {
+      type: String,
+    },
+
   },
   {
     timestamps: true,

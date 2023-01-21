@@ -91,6 +91,9 @@ const Favorite = (props) => {
 
   return (
     <section class="text-gray-700 body-font overflow-hidden bg-white">
+      <Head>
+        <title>CALLLAB</title>
+      </Head>
       <div class="container px-5 py-24 mx-auto">
         <div class="lg:w-5/5 mx-auto flex flex-wrap">
           <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
@@ -144,7 +147,8 @@ const Favorite = (props) => {
             <thead className="bg-light font-weight-bold text-center">
               <tr>
                 <td className="p-2">ID</td>
-                <td className="p-2">วันที่</td>
+                <td className="p-2">ชื่อเครื่องมือ</td>
+                <td className="p-2">วันที่ชำระเงิน</td>
                 <td className="p-2">จำนวนเงิน</td>
                 <td className="p-2">การอนุมัติการจอง</td>
                 <td className="p-2">การชำระเงิน</td>
@@ -154,13 +158,14 @@ const Favorite = (props) => {
             <tbody className=" text-center">
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td className="p-2">
+                  <td className="p-2 flex justify-center items-center">   
                     <Link href={`/order/${order._id}`}>
-                      <a>{order._id}</a>
+                    <img className=" rounded-full  w-[60px] h-[60px]" src={order.images}/>
                     </Link>
                   </td>
+                  <td className="p-2">{order.title}</td>
                   <td className="p-2">
-                    {new Date(order.createdAt).toLocaleDateString()}
+                    {new Date(order.createdAt).toLocaleString()}
                   </td>
                   <td className="p-2">{order.total}฿</td>
                   <td className="p-2">

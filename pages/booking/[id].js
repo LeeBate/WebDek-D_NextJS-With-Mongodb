@@ -86,6 +86,9 @@ const BookingDetail = (props) => {
       // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
 
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
+      setTitle(product1.title);
+      setImage(product1.images[0].url);
+      setProdOrder(product1._id);
       delay();
     },
 
@@ -96,6 +99,10 @@ const BookingDetail = (props) => {
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
   const [mobile, setMobile] = useState("");
+  const [title, setTitle] = useState("");
+  const [images ,setImage] = useState("");
+  const [prodOrder, setProdOrder] = useState("");
+  console.log("images",images,"title",title,"prodOrder",prodOrder)
 
   useEffect(() => {
     const getTotal = () => {
@@ -126,6 +133,9 @@ const BookingDetail = (props) => {
     } else {
       setOnEdit(false);
       setProduct(initialState);
+      setTitle(product1.title);
+      setImage(product1.images[0].url);
+      setProdOrder(product1._id);
       // setShowBooking(props.booking)
     }
   }, [id]);
@@ -134,7 +144,7 @@ const BookingDetail = (props) => {
   const handlePayment = async () => {
     dispatch({ type: "NOTIFY", payload: { loading: true } });
 
-    postData("order", { address, mobile, total }, auth.token).then((res) => {
+    postData("order", { address, mobile, total,title,images,prodOrder }, auth.token).then((res) => {
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
 

@@ -15,33 +15,38 @@ export default function DataBookings() {
     const { state, dispatch } = useContext(DataContext);
     const { auth, notify, orders } = state;
   return (
-    <div className="col-md-8 mt-48">
+    <section class="text-gray-700 body-font overflow-hidden bg-white">
+      <div class="container px-5 py-24 mx-auto">
         <Head><title>CALLLAB</title></Head>
-        <h3 className="">Payment</h3>
-
+ <disv class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+            การชำระเงิน
+            </h1>
         <div className="my-3 table-responsive">
           <table
             className="table-bordered table-hover w-100 text-uppercase"
             style={{ minWidth: "600px", cursor: "pointer" }}
           >
-            <thead className="bg-light font-weight-bold">
+            <thead className="bg-light font-weight-bold text-center">
               <tr>
                 <td className="p-2">ID</td>
-                <td className="p-2">วันที่</td>
+                <td className="p-2">ชื่อเครื่องมือ</td>
+                <td className="p-2">วันที่ชำระเงิน</td>
                 <td className="p-2">จำนวนเงิน</td>
                 <td className="p-2">การอนุมัติการจอง</td>
                 <td className="p-2">การชำระเงิน</td>
               </tr>
             </thead>
 
-            <tbody>
+            <tbody className=" text-center">
               {orders.map((order) => (
                 <tr key={order._id}>
-                  <td className="p-2">
+                  <td className="p-2 flex justify-center items-center">
                     <Link href={`/order/${order._id}`}>
-                      <a>{order._id}</a>
+                     <img className=" rounded-full  w-[60px] h-[60px]" src={order.images}/>
                     </Link>
                   </td>
+                  <td className="p-2">{order.title}</td>
                   <td className="p-2">
                     {new Date(order.createdAt).toLocaleDateString()}
                   </td>
@@ -72,6 +77,8 @@ export default function DataBookings() {
             </tbody>
           </table>
         </div>
+        </disv>
       </div>
+    </section>
   )
 }
