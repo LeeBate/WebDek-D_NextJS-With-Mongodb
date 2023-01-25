@@ -112,8 +112,9 @@ const Categories = () => {
                           },
                         ],
                       })
-                    } />
-                  {/* <i
+                    } />                  
+                  {/*
+                  <i
                     className="fas fa-trash-alt text-danger"
                     data-toggle="modal"
                     data-target="#exampleModal"
@@ -130,7 +131,9 @@ const Categories = () => {
                         ],
                       })
                     }
-                  ></i> */}
+                  >
+                  </i> 
+                  */}
                 </div>
               </div>
             </div>

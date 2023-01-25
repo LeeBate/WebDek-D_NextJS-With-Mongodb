@@ -55,12 +55,21 @@ const Tracking = (props) => {
   const { id } = router.query;
   const [onEdit, setOnEdit] = useState(false);
 
-  const [checked1, setChecked1] = React.useState(false);
-  const [checked2, setChecked2] = React.useState(false);
-  const [checked3, setChecked3] = React.useState(false);
-  const [checked4, setChecked4] = React.useState(false);
-  const [checked5, setChecked5] = React.useState(false);
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(false);
+  const [checked3, setChecked3] = useState(false);
+  const [checked4, setChecked4] = useState(false);
+  const [checked5, setChecked5] = useState(false);
 
+ const [checkedx1, setCheckedx1] = useState(false);
+  const [checkedx2, setCheckedx2] = useState(false);
+  const [checkedx3, setCheckedx3] = useState(false);
+  const [checkedx4, setCheckedx4] = useState(false);
+  const [checkedx5, setCheckedx5] = useState(false);
+
+useEffect(() => {
+  
+}, []);
 
   //TAB Change
   const [tabIndex, setTabIndex] = React.useState("0");
@@ -93,7 +102,6 @@ const Tracking = (props) => {
       time2: "",
       time3: "",
       time4: "",
-
       param: "",
       tool: "",
       checkwork: false,
@@ -130,7 +138,7 @@ const Tracking = (props) => {
       time3: "",
       time4: "",
       param: "",
-      tool: "",
+      tool:  "",
       checkwork: false,
     },
   ]);
@@ -217,21 +225,22 @@ const Tracking = (props) => {
     });
     setSlides([...Slides]);
   }; 
-   const hiddenChk = (id) => {
-    id=id+1
-    if(id==1){
-      return !checked1
-    }  if(id==2){
+   const hiddenChk =   (idz) => {
+    idz = idz+1
+    if(idz==1){
+      
+      return  !checked1
+    }  if(idz==2){
       return !checked2
-    } if(id==3){
+    } if(idz==3){
       return !checked3
-    } if(id==4){
+    } if(idz==4){
       return !checked4
-    } if(id==5){
+    } if(idz==5){
       return !checked5
     }
-  };  const defaultChk = (id) => {
-    id=id+1
+  };  const defaultChk =  (id) => {
+    id =  id+1
     if(id==1){
       return checked1
     }  if(id==2){
@@ -243,7 +252,82 @@ const Tracking = (props) => {
     } if(id==5){
       return checked5
     }
+    return
+  }; 
+  
+const  getValue =  (value,id)  => {
+  id=id+1
+    if(id==1){
+    setChecked1(value)
+    return checked1
+  }
+    if(id==2){
+    setChecked2(value)
+    return checked2
+  }
+    if(id==3){
+    setChecked3(value)
+    return checked3
+  }
+    if(id==4){
+    setChecked4(value)
+      return checked4
+  }
+    if(id==5){
+    setChecked5(value)
+    return checked5
+  }
+}
+  
+   const hiddenChkx = (id) => {
+ id=id+1
+    if(id==1){
+      return  !checkedx1
+    }  if(id==2){
+      return !checkedx2
+    } if(id==3){
+      return !checkedx3
+    } if(id==4){
+      return !checkedx4
+    } if(id==5){
+      return !checkedx5
+    }
+  };  const defaultChkx =  (id) => {
+    id =  id+1
+    if(id==1){
+      return checkedx1
+    }  if(id==2){
+      return checkedx2
+    } if(id==3){
+      return checkedx3
+    } if(id==4){
+      return checkedx4
+    } if(id==5){
+      return checkedx5
+    }
+   
   };
+  // const defaultselectfn  = async (select,ida) => {
+  //   ida=ida+1
+  //   if(ida==1){
+  //     setChecked1(select)
+  //     return select;
+  //   } else if(ida==2){
+  //     setChecked2(select)
+  //     return select;
+  //   } else if(ida==3){
+  //     setChecked3(select)
+  //     return select;
+  //   } else if(ida==4){
+  //     setChecked4(select)
+  //     return select;
+  //   } else if(ida==5){
+  //     setChecked5(select)
+  //     return select;
+  //   }
+  
+  // };
+
 
   const handleClearAddNew = async () => {
     setImages([]);
@@ -419,13 +503,37 @@ const Tracking = (props) => {
         setCheckReport(res.product.checkReport);
         setEnsureReport(res.product.ensureReport);
         setReportLSU(res.product.reportLSU);
+      
       });
     } else {
       setOnEdit(false);
       setProduct(initialState);
       setImages([]);
+      setChecked1(false)
+      setChecked2(false)
+      setChecked3(false)
+      setChecked4(false)
+      setChecked5(false)
     }
   }, [id]);
+
+  useEffect(() => {
+    if(onEdit){
+    procedure.map((procedure,ids) => {
+      if(ids=0){
+        setChecked1(procedure.checkwork)
+      } if(ids=1){
+        setChecked2(procedure.checkwork)
+      } if(ids=2){
+        setChecked3(procedure.checkwork)
+      } if(ids=3){
+        setChecked4(procedure.checkwork)
+      } if(ids=4){
+        setChecked5(procedure.checkwork)
+      } 
+
+  })}
+  }, [onEdit,id]);
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -542,20 +650,40 @@ const Tracking = (props) => {
   //   dispatch({ type: "NOTIFY", payload: {} });
   // };
 
-  const handleChangeInput2 = async (idx, event) => {
+
+    
+   
+   const handleChangeInput2 = async (idx, event) => {
     const newInputFields = procedure.map((i) => {
       if (idx === i.idx) {
-        i[event.target.name] = event.target.value;
+        const value = event  === true ||  event  === false ? event : event.target.value;
+    
+        event  === true ||  event  === false ? i["checkwork"] = value:  i[event.target.name] = value;
+      //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
+
+      }
+   
+      return i;
+    }); 
+    
+    const newInputFields1 = labPrint.map((i) => {
+      if (idx === i.idx) {
+        const value = event  === true ||  event  === false ? event : event.target.value;
+    
+        event  === true ||  event  === false ? i["checkwork"] = value:  i[event.target.name] = value;
+      //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
+
       }
    
       return i;
     });
-    const newInputFields1 = labPrint.map((i) => {
-      if (idx === i.idx) {
-        i[event.target.name] = event.target.value;
-      }
-      return i;
-    });
+  
+    // const newInputFields1 = labPrint.map((i) => {
+    //   if (idx === i.idx) {
+    //     i[event.target.name] = event.target.value;
+    //   }
+    //   return i;
+    // });
     const newInputFields2 = ensure.map((i) => {
       if (idx === i.idx) {
         i[event.target.name] = event.target.value;
@@ -730,60 +858,104 @@ const Tracking = (props) => {
                             onChange={handleChangeInput}
                             required
                           />
-                        </label>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          วันที่ LSU รับตัวอย่าง :
+
+                        <div className=" bg-rose-300 grid  py-2 px-2 rounded-md  my-3">
+                          <label
+                            htmlFor="message"
+                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
+                           วันที่ LSU รับตัวอย่าง :
+                          </label>
                           <input
-                            type="date"
+                          type="date"
                             value={lsu}
                             name="lsu"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-              block w-full p-2.5 "
                             onChange={handleChangeInput}
-                            required
-                          />
+                            
+                            className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            
+                          ></input>
+                        </div>
                         </label>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          วันที่ห้องปฏิบัติการรับตัวอย่าง :
+
+                        <div className=" bg-indigo-300 grid  py-2 px-2 rounded-md  my-3">
+                          <label
+                            htmlFor="message"
+                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
+                            วันที่ห้องปฏิบัติการรับตัวอย่าง :
+                          </label>
                           <input
-                            type="date"
+                          type="date"
                             value={lab}
                             name="lab"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-              block w-full p-2.5 "
                             onChange={handleChangeInput}
-                            required
-                          />
-                        </label>
+                            
+                            className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            
+                          ></input>
+                        </div>
+
+                      
 
 
                         <div className=" ">
-                          {procedure.map((procedure,id) => (
-                          <div key={procedure.idx} className="bg- bg-slate-200 px-5 py-2 mb-3 rounded-xl" >
-                          <Checkbox onChange={()=>{
-                            id=id+1
-                            if(id==1){
+                          {procedure.map((procedure,ids) => (
+                          <div  key={procedure.idx} className="bg- bg-slate-200 px-5 py-2 mb-3 rounded-xl" >
+                          <Checkbox name="checkwork"
+                          checked={onEdit ? procedure.checkwork : defaultChk(ids)}
+                          type="checkbox"
+                          value={onEdit ? procedure.checkwork : defaultChk(ids)}  
+                           onChange={(event)=>{ 
+                            ids=ids+1
+                            console.log(ids)
+                            if(ids==1){
                             setChecked1(!checked1)
-                          console.log("chk"+id+":"+!checked1)
-                            }  if(id==2){
+                          console.log("chk"+ids+":"+!checked1)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==2){
                             setChecked2(!checked2)
-                          console.log("chk"+id+":"+!checked2)
-                            }  if(id==3){
+                          console.log("chk"+ids+":"+!checked2)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==3){
                             setChecked3(!checked3)
-                          console.log("chk"+id+":"+!checked3)
-                            }  if(id==4){
+                          console.log("chk"+ids+":"+!checked3)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==4){
                             setChecked4(!checked4)
-                          console.log("chk"+id+":"+!checked4)
-                            }  if(id==5){
+                          console.log("chk"+ids+":"+!checked4)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==5){
                             setChecked5(!checked5)
-                          console.log("chk"+id+":"+!checked5)
+                          console.log("chk"+ids+":"+!checked5)
+                           handleChangeInput2(procedure.idx ,event)
                             }
-                          }} defaultSelected={defaultChk(id)} size="xl">
-                  
+                          }} defaultSelected={onEdit ?  ((event)=>{
+                                    const   ida = ids+1                         
+                                    if(ida==1){
+                                      setChecked1(procedure.checkwork)
+                                      defaultChk(ids)
+                                      return procedure.checkwork;
+                                    } else if(ida==2){
+                                      setChecked2(!procedure.checkwork)
+                                      defaultChk(ids)
+                                      return procedure.checkwork;
+                                    } else if(ida==3){
+                                      setChecked3(procedure.checkwork)
+                                      defaultChk(ids)
+                                      return procedure.checkwork;
+                                    } else if(ida==4){
+                                      setChecked4(procedure.checkwork)
+                                      defaultChk(ids)
+                                      return procedure.checkwork;
+                                    } else if(ida==5){
+                                      setChecked5(!procedure.checkwork)
+                                      defaultChk(ids)
+                                      return procedure.checkwork;
+                                    }
+
+                          })  : defaultChk(ids)} size="xl">
+                              
                               <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                               {id+1}. ขั้นตอนการดำเนินการ :
+                               {ids+1}. ขั้นตอนการดำเนินการ :
                                 <input
                                   type="text"
                                   name="ListName"
@@ -792,11 +964,36 @@ const Tracking = (props) => {
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block w-full p-2.5"
                                   disabled
-                                />
+                                /> 
+                                
                               </label>     
                            </Checkbox>
-      
-                  <div hidden={hiddenChk(id)}  className="bg-slate-300 px-5 py-2 rounded-xl" >
+                            
+                  <div hidden={onEdit ?  ((event)=>{
+                                    const   ida = ids+1                         
+                                    if(ida==1){
+                                      setChecked1(procedure.checkwork)
+                                     
+                                      return procedure.checkwork;
+                                    } else if(ida==2){
+                                      setChecked2(procedure.checkwork)
+                                      
+                                      return procedure.checkwork;
+                                    } else if(ida==3){
+                                      setChecked3(procedure.checkwork)
+                                    
+                                      return procedure.checkwork;
+                                    } else if(ida==4){
+                                      setChecked4(procedure.checkwork)
+                                      
+                                      return procedure.checkwork;
+                                    } else if(ida==5){
+                                      setChecked5(!procedure.checkwork)
+                                    
+                                      return procedure.checkwork;
+                                    }
+
+                          }) : hiddenChk(ids)}   className="bg-slate-300 px-5 py-2 rounded-xl" >
                             <div  className="bg-slate-300 px-5 py-2 rounded-xl" >
                             <div >
                               
@@ -820,7 +1017,7 @@ const Tracking = (props) => {
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                   ช่วงเวลาที่ทดสอบ
                                   <input
-                                    type="datetime-local"
+                                    type="date"
                                     name="time2"
                                     value={procedure.time2}
                                     className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
@@ -830,7 +1027,7 @@ const Tracking = (props) => {
                                       handleChangeInput2(procedure.idx, event)
                                     }
                                   />
-                                  {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                   ช่วงเวลา : 
                                 <input
                                   type=""
@@ -842,10 +1039,11 @@ const Tracking = (props) => {
                                   onChange={(event) =>
                                     handleChangeInput2(procedure.idx, event)
                                   }
-                                  placeholder="13.00-15.00 น."
-                                  required
+                                  placeholder="00.00-00.00 น."
+                                 
                                 />
-                                </label> */}
+                                </label>
+
                                 </label>
 
                                 <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -900,9 +1098,105 @@ const Tracking = (props) => {
                             </div>
                           ))}
                         </div>
+                        
+                        {/* Lab ส่งผลการทดสอบพิมพ์ */}
+                        <div className=" ">
+                          {labPrint.map((procedure,ids) => (
+                          <div  key={procedure.idx} className="bg- bg-yellow-200 px-5 py-2 mb-3 rounded-xl" >
+                          <Checkbox name="checkworkx"
+                          checked={onEdit ? procedure.checkwork : defaultChkx(ids)}
+                          type="checkbox"
+                          value={onEdit ? procedure.checkwork : defaultChkx(ids)}  
+                           onChange={(event)=>{ 
+                            ids=ids+1
+                            console.log(ids)
+                            if(ids==1){
+                            setCheckedx1(!checkedx1)
+                          console.log("chkx"+ids+":"+!checkedx1)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==2){
+                            setCheckedx2(!checkedx2)
+                          console.log("chkx"+ids+":"+!checkedx2)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==3){
+                            setCheckedx3(!checkedx3)
+                          console.log("chkx"+ids+":"+!checkedx3)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==4){
+                            setCheckedx4(!checkedx4)
+                          console.log("chkx"+ids+":"+!checkedx4)
+                           handleChangeInput2(procedure.idx ,event)
+                            }  if(ids==5){
+                            setCheckedx5(!checkedx5)
+                          console.log("chkx"+ids+":"+!checkedx5)
+                           handleChangeInput2(procedure.idx ,event)
+                            }
+                          }} defaultSelected={onEdit ? procedure.checkwork : defaultChkx(ids)} size="xl">
+                  
+                              <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                               {ids+1}. ขั้นตอนการดำเนินการ :
+                                <input
+                                  type="text"
+                                  name="ListName"
+                                  value={procedure.ListName}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                              block w-full p-2.5"
+                                  disabled
+                                />
+                              </label>     
+                           </Checkbox>
+      
+                  <div hidden={hiddenChkx(ids)}  className="bg-yellow-300 px-5 py-2 rounded-xl" >
+                            <div  className="bg-yellow-300 px-5 py-2 rounded-xl" >
+                            <div >
+                              
+                            
+                              <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  วันที่เริ่มดำเนินการ :
+                                  <input
+                                    type="date"
+                                    name="timelab1"
+                                    value={procedure.timelab1}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                    
+                                  />
+                                </label>
+                              
+
+                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  วันที่ดำเนินการเสร็จ :
+                                  <input
+                                    type="date"
+                                    name="timelab2"
+                                    value={procedure.timelab2}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                  />
+                                </label>
+                            
+                               
+                              </div>
+                            </div>
+                            </div>
+                            </div>
+                           
+                            </div>
+                          ))}
+                        </div>
 
 
-                        <div className="flex flex-col w-full bg-indigo-500">
+                        {/* <div className="flex flex-col w-full bg-indigo-500">
                           <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
                             Lab ส่งผลการทดสอบพิมพ์
                           </label>
@@ -952,12 +1246,12 @@ const Tracking = (props) => {
                               </div>
                             </div>
                           ))}
-                        </div>
+                        </div> */}
 
                         {ensure.map((ensure) => (
                           <div
                             key={ensure.idx}
-                            className="flex flex-col w-full bg-orange-400"
+                            className="flex flex-col w-full bg-orange-300 py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
                               หน. ฝวค. รับรองผลฯ
@@ -998,7 +1292,7 @@ const Tracking = (props) => {
                         {checkReport.map((checkReport) => (
                           <div
                             key={checkReport.idx}
-                            className="flex flex-col w-full bg-green-400"
+                            className="flex flex-col w-full bg-green-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
                               หน. กลุ่มตรวจรายงานผลฯ
@@ -1039,7 +1333,7 @@ const Tracking = (props) => {
                         {ensureReport.map((ensureReport) => (
                           <div
                             key={ensureReport.idx}
-                            className="flex flex-col w-full bg-blue-400"
+                            className="flex flex-col w-full bg-blue-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
                               ผอ ศศวท. รับรองรายงานฯ
@@ -1079,7 +1373,7 @@ const Tracking = (props) => {
                         {reportLSU.map((reportLSU) => (
                           <div
                             key={reportLSU.idx}
-                            className="flex flex-col w-full bg-rose-500"
+                            className="flex flex-col w-full bg-rose-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
                               ฝวค. นำส่งรายงานผลให้
@@ -1116,7 +1410,7 @@ const Tracking = (props) => {
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ผู้ส่ง :
                                 <input
-                                  type="date"
+                                  type=""
                                   name="sender"
                                   value={reportLSU.sender}
                                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
@@ -1130,12 +1424,12 @@ const Tracking = (props) => {
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ผู้รับ :
                                 <input
-                                  type="date"
+                                  type=""
                                   name="recipient"
                                   value={reportLSU.recipient}
                                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                                   text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
+                                   w-full p-2.5"
                                   onChange={(event) =>
                                     handleChangeInput2(reportLSU.idx, event)
                                   }
@@ -1144,7 +1438,7 @@ const Tracking = (props) => {
                             </div>
                           </div>
                         ))}
-                        <div className=" bg-rose-300 grid">
+                        <div className=" bg-indigo-300 grid  py-2 px-2 rounded-md mb-3">
                           <label
                             htmlFor="message"
                             className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
@@ -1156,7 +1450,7 @@ const Tracking = (props) => {
                             value={note}
                             name="note"
                             onChange={handleChangeInput}
-                            rows="4"
+                            rows="8"
                             className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="เขียนหมายเหตุได้ที่นี่ หรือไม่เขียนก็ได้"
                           ></input>
@@ -1164,22 +1458,24 @@ const Tracking = (props) => {
                       </div>
 
                       <div className="flex justify-center items-center w-full">
-                        <label className="flex flex-col justify-center items-center w-full h-64 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                        <label className="flex flex-col justify-center items-center w-full h-24 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                           <input
-                            id="dropzone-file"
+                           
                             type="file"
                             onChange={handleUploadInput}
                             accept="application/pdf"
                           />
                         </label>
                       </div>
-                      <div className="row img-up mx-0">
+                      <div className="row  mx-0">
                         {images.map((img, index) => (
-                          <div key={index} className="file_img my-1">
-                            <a>{img.url}</a>
-
-                            <span onClick={() => deleteImage(index)}>X</span>
-                          </div>
+                          <p href={img.url} key={index} className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200">
+                            <a href={img.url ?img.url:"#"}><img className="h-15 w-10" src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"  /></a>
+                             <p className="pl-2 pr-3">{false ? img.url : "Uploaded PDF" }</p>
+                               
+                                   
+                            <span className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8" onClick={() => deleteImage(index)}>X</span>
+                          </p>
                         ))}
                       </div>
 
@@ -1254,6 +1550,7 @@ const Tracking = (props) => {
                           src={product.images[0].url}
                           alt={product.images[0].url}
                         />
+                        <p>{product.serviceNumber}</p>
                         <div className="card-body">
                           <div className="row justify-content-between mx-0 ">
                             <>

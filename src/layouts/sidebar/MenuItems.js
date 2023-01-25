@@ -30,6 +30,11 @@ const Menuitems = [
     icon: "plus-circle",
     href: "/Admin/createProduct/[[...id]]",
   },
+   {
+    title: "ติดตามผล",
+    icon: "plus-circle",
+    href: "/Admin/Tracking/[[...id]]",
+  },
   
   
 ];
