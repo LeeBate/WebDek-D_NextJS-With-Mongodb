@@ -148,7 +148,7 @@ function Services() {
                     </div>
                   </TabPanel>
                   <TabPanel value="1">
-                    <div className="service-cards">
+                    <div className="service-cards ">
                       <div className=" flex flex-col lg:flex-row">
                         <img
                           className="h-52 w-full md:h-72 lg:h-80 lg:w-80 xl:h-96 xl:w-96 2xl:h-96 2xl:w-96  object-cover"
