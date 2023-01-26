@@ -21,6 +21,7 @@ const Favorite = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth, notify, orders } = state;
 
+  console.log("orders", orders);
   useEffect(() => {
     if (Object.keys(auth).length !== 0) {
       for (let i = 0; i < props.booking.length; i++) {
@@ -95,7 +96,7 @@ const Favorite = (props) => {
         <title>CALLLAB</title>
       </Head>
       <div class="container px-5 py-24 mx-auto">
-        <div class="lg:w-5/5 mx-auto flex flex-wrap">
+        {/* <div class="lg:w-5/5 mx-auto flex flex-wrap">
           <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
           {products1.length === 0 ? (
             <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
@@ -134,7 +135,8 @@ const Favorite = (props) => {
           </div>
 
           
-        </div>
+        </div> */}
+
         <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
             <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
             การชำระเงิน
@@ -148,6 +150,9 @@ const Favorite = (props) => {
               <tr>
                 <td className="p-2">ID</td>
                 <td className="p-2">ชื่อเครื่องมือ</td>
+                
+                <td className="p-2">รหัสนักศึกษา</td>
+                <td className="p-2">วันที่เริ่ม-สิ้นสุด:</td>
                 <td className="p-2">วันที่ชำระเงิน</td>
                 <td className="p-2">จำนวนเงิน</td>
                 <td className="p-2">การอนุมัติการจอง</td>
@@ -164,6 +169,10 @@ const Favorite = (props) => {
                     </Link>
                   </td>
                   <td className="p-2">{order.title}</td>
+                  
+                  <td className="p-2">{order.prodOrder[0].studentID}</td>
+                  <td className="p-2">{new Date(order.prodOrder[0].dateBooking).toLocaleString()} - {" "}
+                      {new Date(order.prodOrder[0].dateBookingEnd).toLocaleString()}</td>
                   <td className="p-2">
                     {new Date(order.createdAt).toLocaleString()}
                   </td>

@@ -32,7 +32,7 @@ const orderSchema = new mongoose.Schema(
       required: true
     },
     prodOrder: {
-      type: String,
+      type: Array,
     },
 
   },

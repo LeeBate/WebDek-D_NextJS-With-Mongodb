@@ -69,6 +69,13 @@ const BookingDetail = (props) => {
   // },[showBooking])
   // console.log("price",price)
 
+  const [total, setTotal] = useState(0);
+  const [address, setAddress] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [title, setTitle] = useState("");
+  const [images, setImage] = useState("");
+  const [prodOrder, setProdOrder] = useState("");
+
   useEffect(
     () => {
       // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
@@ -88,33 +95,26 @@ const BookingDetail = (props) => {
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
       setTitle(product1.title);
       setImage(product1.images[0].url);
-      setProdOrder(product1._id);
+      setProdOrder(props.booking.filter((item) => item.userid === auth.user.email));
       delay();
     },
 
     [props.booking],
     [id2]
   );
-
-  const [total, setTotal] = useState(0);
-  const [address, setAddress] = useState("");
-  const [mobile, setMobile] = useState("");
-  const [title, setTitle] = useState("");
-  const [images ,setImage] = useState("");
-  const [prodOrder, setProdOrder] = useState("");
-  console.log("images",images,"title",title,"prodOrder",prodOrder)
+  console.log("images", images, "title", title, "prodOrder", prodOrder);
 
   useEffect(() => {
     const getTotal = () => {
-      const res = showBooking.reduce((prev, item) => {
-        return prev + item.price * 1;
+      const res = props.booking.reduce((prev, item) => {
+        return price
       }, 0);
 
       setTotal(res);
     };
 
     getTotal();
-  }, [showBooking]);
+  }, [price]);
   console.log("price", total);
 
   const delay = async () => {
@@ -135,29 +135,45 @@ const BookingDetail = (props) => {
       setProduct(initialState);
       setTitle(product1.title);
       setImage(product1.images[0].url);
-      setProdOrder(product1._id);
+
       // setShowBooking(props.booking)
     }
   }, [id]);
-  console.log("1", product);
+  console.log("1", props.booking[0]._id);
 
-  const handlePayment = async () => {
-    dispatch({ type: "NOTIFY", payload: { loading: true } });
+  const handlePayment = async (i,p) => {
+    console.log("i", i);
 
-    postData("order", { address, mobile, total,title,images,prodOrder }, auth.token).then((res) => {
-      if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+    const pay = async () => {
+      setTotal(p);
+      if(prodOrder.length === 1){
+        postData(
+          "order",
+          { address, mobile, total, title, images, prodOrder },
+          auth.token
+        ).then((res) => {
+          if (res.err)
+            return dispatch({ type: "NOTIFY", payload: { error: res.err } });
 
-      dispatch({ type: "ADD_CART", payload: [] });
+          const newOrder = {
+            ...res.newOrder,
+            user: auth.user,
+          };
+          dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
+          dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+          return router.push(`/order/${res.newOrder._id}`);
+        });
+      }
+      else if(prodOrder.length > 1){
+        let newOrder1 = await prodOrder.filter((item) => i === item._id);
+      setProdOrder(newOrder1);
+      console.log("2", newOrder1)
+      
+       
+      }
+    };
 
-      const newOrder = {
-        ...res.newOrder,
-        user: auth.user,
-      };
-      dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
-      dispatch({ type: "NOTIFY", payload: { success: res.msg } });
-      return router.push(`/order/${res.newOrder._id}`);
-    });
+    pay();
   };
 
   const handleChangeInput = (e) => {
@@ -205,6 +221,7 @@ const BookingDetail = (props) => {
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
     setProduct(initialState);
+    setProdOrder(product._id);
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
     return router.replace(router.asPath);
     //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
@@ -271,9 +288,13 @@ const BookingDetail = (props) => {
                     <td class="px-3 py-4">{booking.fullname}</td>
                     <td class="px-3 py-4">{booking.studentID}</td>
                     <td class="px-3 py-4">{booking.email}</td>
-                    <td class="px-3 py-4">{new Date(booking.dateBooking).toLocaleString()}</td>
-                    
-                    <td class="px-3 py-4">{new Date(booking.dateBookingEnd).toLocaleString()}</td>
+                    <td class="px-3 py-4">
+                      {new Date(booking.dateBooking).toLocaleString()}
+                    </td>
+
+                    <td class="px-3 py-4">
+                      {new Date(booking.dateBookingEnd).toLocaleString()}
+                    </td>
 
                     {/* <td class="px-3 py-4">{booking.statusBooking}</td> */}
                     {booking.userid !== auth.user.email ? (
@@ -310,7 +331,11 @@ const BookingDetail = (props) => {
                       <td class="px-3 py-4 ">
                         <button
                           className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
-                          onClick={handlePayment}
+                          onClick={() => 
+                            {   let newOrder1 = props.booking.filter((item) => booking._id === item._id);
+                              setProdOrder(newOrder1);
+                            handlePayment(booking._id, booking.price)}}
+
                         >
                           จ่ายเงิน
                         </button>

@@ -23,14 +23,13 @@ const Index = (props) => {
 
   useEffect(() => {
     setProducts(props.products);
-  }, [props.products]);
-  useEffect(() => {
     setInforms(props.Informs);
-  }, [props.Informs]);
+  }, [props.products],[props.Informs]);
 
-  useEffect(() => {
-    if (Object.keys(router.query).length === 0) setPage(1);
-  }, [router.query]);
+
+  // useEffect(() => {
+  //   if (Object.keys(router.query).length === 0) setPage(1);
+  // }, [router.query]);
 
 
   return (

@@ -39,19 +39,30 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
     <section class="text-gray-700 body-font overflow-hidden bg-white">
       <div class="container px-5 py-5 mx-auto ">
         {orderDetail.map((order) => (
-          <div
-            key={order._id}
-            
-            className="row justify-content-around"
-          >
+          <div key={order._id} className="row justify-content-around">
             <div className="text-uppercase my-3 ">
               <div className=" text-secondary">
-                <h3>ข้อมูลการจอง</h3>
-                <p>ชื่อ: {order.user.name}</p>
-                <p>อีเมล: {order.user.email}</p>
+                <h2 className=" text-black text-xl">ข้อมูลการจอง</h2>
+
                 <p>ชื่อเครื่องมือ: {order.title}</p>
-                
-                <img className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto " src={order.images}/>
+                {order.prodOrder.map((item) => (
+                  <div key={item._id}>
+                    <p>ชื่อ-นามสกุล: {item.fullname}</p>
+                    <p>รหัสนักศึกษา: {item.studentID}</p>
+                    <p>อีเมลมหาวิทยาลัย: {item.email}</p>
+                    <p>เบอร์โทรศัพท์: {item.phone}</p>
+                    <p>
+                      วันที่เริ่ม-สิ้นสุด:{" "}
+                      {new Date(item.dateBooking).toLocaleString()} - {" "}
+                      {new Date(item.dateBookingEnd).toLocaleString()}
+                    </p>
+                  </div>
+                ))}
+
+                <img
+                  className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto "
+                  src={order.images}
+                />
 
                 <div
                   className={`alert ${
@@ -61,7 +72,9 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   role="alert"
                 >
                   {order.delivered
-                    ? `ยืมยันเมื่อ ${new Date (order.updatedAt).toLocaleString()} น.`
+                    ? `ยืมยันเมื่อ ${new Date(
+                        order.updatedAt
+                      ).toLocaleString()} น.`
                     : "รอการชำระเงินเพื่ออนุมัติการจองเครื่องมือ"}
                   {auth.user.role === "admin" && !order.delivered && (
                     <button
@@ -94,7 +107,9 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   role="alert"
                 >
                   {order.paid
-                    ? `ชำระเงินเมื่อ ${new Date (order.dateOfPayment).toLocaleString()} น.`
+                    ? `ชำระเงินเมื่อ ${new Date(
+                        order.dateOfPayment
+                      ).toLocaleString()} น.`
                     : "ยังไม่ได้ชำระเงิน"}
                 </div>
               </div>
@@ -102,7 +117,9 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
 
             {!order.paid && auth.user.role !== "admin" && (
               <div className="p-4">
-                <h2 className="mb-4 text-uppercase">จำนวนเงิน: {order.total} ฿</h2>
+                <h2 className="mb-4 text-uppercase">
+                  จำนวนเงิน: {order.total} ฿
+                </h2>
                 <PaypalBtn order={order} />
               </div>
             )}
