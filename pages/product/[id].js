@@ -398,7 +398,7 @@ const DetailProduct = (props, query) => {
             >
           <button
           >
-            ข้อมูลเครื่องมือ
+            คู่มือการใช้งาน
             <FaFilePdf className="inline ml-2" />
           </button>
           </a>

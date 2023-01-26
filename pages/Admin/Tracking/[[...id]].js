@@ -18,7 +18,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
-import { Checkbox } from '@nextui-org/react';
+import { Checkbox } from "@nextui-org/react";
 
 const Tracking = (props) => {
   const initialState = {
@@ -61,15 +61,13 @@ const Tracking = (props) => {
   const [checked4, setChecked4] = useState(false);
   const [checked5, setChecked5] = useState(false);
 
- const [checkedx1, setCheckedx1] = useState(false);
+  const [checkedx1, setCheckedx1] = useState(false);
   const [checkedx2, setCheckedx2] = useState(false);
   const [checkedx3, setCheckedx3] = useState(false);
   const [checkedx4, setCheckedx4] = useState(false);
   const [checkedx5, setCheckedx5] = useState(false);
 
-useEffect(() => {
-  
-}, []);
+  useEffect(() => {}, []);
 
   //TAB Change
   const [tabIndex, setTabIndex] = React.useState("0");
@@ -120,7 +118,7 @@ useEffect(() => {
     },
     {
       idx: uuidv4(),
-      ListName: "งานวิเคราะห์ทางกายภาพ",
+      ListName: "งานทดสอบทางกายภาพ",
       time1: "",
       time2: "",
       time3: "",
@@ -132,13 +130,13 @@ useEffect(() => {
     },
     {
       idx: uuidv4(),
-      ListName: "งานวิเคราะห์ทางน้ำ",
+      ListName: "งานวิเคราะห์น้ำ",
       time1: "",
       time2: "",
       time3: "",
       time4: "",
       param: "",
-      tool:  "",
+      tool: "",
       checkwork: false,
     },
   ]);
@@ -167,19 +165,19 @@ useEffect(() => {
     },
     {
       idx: uuidv4(),
-      ListName: "งานวิเคราะห์ทางกายภาพ",
+      ListName: "งานทดสอบทางกายภาพ",
       timelab1: "",
       timelab2: "",
       checkwork: false,
     },
     {
       idx: uuidv4(),
-      ListName: "งานวิเคราะห์ทางน้ำ",
+      ListName: "งานวิเคราะห์น้ำ",
       timelab1: "",
       timelab2: "",
       checkwork: false,
     },
-  ]); 
+  ]);
   // array 3 รับรองผล
   const [ensure, setEnsure] = useState([
     {
@@ -224,88 +222,104 @@ useEffect(() => {
       if (product._id === id) product.checked = !product.checked;
     });
     setSlides([...Slides]);
-  }; 
-   const hiddenChk =   (idz) => {
-    idz = idz+1
-    if(idz==1){
-      
-      return  !checked1
-    }  if(idz==2){
-      return !checked2
-    } if(idz==3){
-      return !checked3
-    } if(idz==4){
-      return !checked4
-    } if(idz==5){
-      return !checked5
+  };
+  const hiddenChk = (idz) => {
+    idz = idz + 1;
+    if (idz == 1) {
+      return !checked1;
     }
-  };  const defaultChk =  (id) => {
-    id =  id+1
-    if(id==1){
-      return checked1
-    }  if(id==2){
-      return checked2
-    } if(id==3){
-      return checked3
-    } if(id==4){
-      return checked4
-    } if(id==5){
-      return checked5
+    if (idz == 2) {
+      return !checked2;
     }
-    return
-  }; 
-  
-const  getValue =  (value,id)  => {
-  id=id+1
-    if(id==1){
-    setChecked1(value)
-    return checked1
-  }
-    if(id==2){
-    setChecked2(value)
-    return checked2
-  }
-    if(id==3){
-    setChecked3(value)
-    return checked3
-  }
-    if(id==4){
-    setChecked4(value)
-      return checked4
-  }
-    if(id==5){
-    setChecked5(value)
-    return checked5
-  }
-}
-  
-   const hiddenChkx = (id) => {
- id=id+1
-    if(id==1){
-      return  !checkedx1
-    }  if(id==2){
-      return !checkedx2
-    } if(id==3){
-      return !checkedx3
-    } if(id==4){
-      return !checkedx4
-    } if(id==5){
-      return !checkedx5
+    if (idz == 3) {
+      return !checked3;
     }
-  };  const defaultChkx =  (id) => {
-    id =  id+1
-    if(id==1){
-      return checkedx1
-    }  if(id==2){
-      return checkedx2
-    } if(id==3){
-      return checkedx3
-    } if(id==4){
-      return checkedx4
-    } if(id==5){
-      return checkedx5
+    if (idz == 4) {
+      return !checked4;
     }
-   
+    if (idz == 5) {
+      return !checked5;
+    }
+  };
+  const defaultChk = (id) => {
+    id = id + 1;
+    if (id == 1) {
+      return checked1;
+    }
+    if (id == 2) {
+      return checked2;
+    }
+    if (id == 3) {
+      return checked3;
+    }
+    if (id == 4) {
+      return checked4;
+    }
+    if (id == 5) {
+      return checked5;
+    }
+    return;
+  };
+
+  const getValue = (value, id) => {
+    id = id + 1;
+    if (id == 1) {
+      setChecked1(value);
+      return checked1;
+    }
+    if (id == 2) {
+      setChecked2(value);
+      return checked2;
+    }
+    if (id == 3) {
+      setChecked3(value);
+      return checked3;
+    }
+    if (id == 4) {
+      setChecked4(value);
+      return checked4;
+    }
+    if (id == 5) {
+      setChecked5(value);
+      return checked5;
+    }
+  };
+
+  const hiddenChkx = (id) => {
+    id = id + 1;
+    if (id == 1) {
+      return !checkedx1;
+    }
+    if (id == 2) {
+      return !checkedx2;
+    }
+    if (id == 3) {
+      return !checkedx3;
+    }
+    if (id == 4) {
+      return !checkedx4;
+    }
+    if (id == 5) {
+      return !checkedx5;
+    }
+  };
+  const defaultChkx = (id) => {
+    id = id + 1;
+    if (id == 1) {
+      return checkedx1;
+    }
+    if (id == 2) {
+      return checkedx2;
+    }
+    if (id == 3) {
+      return checkedx3;
+    }
+    if (id == 4) {
+      return checkedx4;
+    }
+    if (id == 5) {
+      return checkedx5;
+    }
   };
   // const defaultselectfn  = async (select,ida) => {
   //   ida=ida+1
@@ -325,9 +339,8 @@ const  getValue =  (value,id)  => {
   //     setChecked5(select)
   //     return select;
   //   }
-  
-  // };
 
+  // };
 
   const handleClearAddNew = async () => {
     setImages([]);
@@ -343,7 +356,6 @@ const  getValue =  (value,id)  => {
         param: "",
         tool: "",
         checkwork: false,
-
       },
       {
         idx: uuidv4(),
@@ -363,26 +375,26 @@ const  getValue =  (value,id)  => {
         time2: "",
         time3: "",
         time4: "",
-  
+
         param: "",
         tool: "",
         checkwork: false,
       },
       {
         idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางกายภาพ",
+        ListName: "งานทดสอบทางกายภาพ",
         time1: "",
         time2: "",
         time3: "",
         time4: "",
-  
+
         param: "",
         tool: "",
         checkwork: false,
       },
       {
         idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางน้ำ",
+        ListName: "งานวิเคราะห์น้ำ",
         time1: "",
         time2: "",
         time3: "",
@@ -416,14 +428,14 @@ const  getValue =  (value,id)  => {
       },
       {
         idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางกายภาพ",
+        ListName: "งานทดสอบทางกายภาพ",
         timelab1: "",
         timelab2: "",
         checkwork: false,
       },
       {
         idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางน้ำ",
+        ListName: "งานวิเคราะห์น้ำ",
         timelab1: "",
         timelab2: "",
         checkwork: false,
@@ -462,7 +474,6 @@ const  getValue =  (value,id)  => {
         recipient: "",
       },
     ]);
-
 
     router.replace("/Admin/Tracking");
 
@@ -503,37 +514,40 @@ const  getValue =  (value,id)  => {
         setCheckReport(res.product.checkReport);
         setEnsureReport(res.product.ensureReport);
         setReportLSU(res.product.reportLSU);
-      
       });
     } else {
       setOnEdit(false);
       setProduct(initialState);
       setImages([]);
-      setChecked1(false)
-      setChecked2(false)
-      setChecked3(false)
-      setChecked4(false)
-      setChecked5(false)
+      setChecked1(false);
+      setChecked2(false);
+      setChecked3(false);
+      setChecked4(false);
+      setChecked5(false);
     }
   }, [id]);
 
   useEffect(() => {
-    if(onEdit){
-    procedure.map((procedure,ids) => {
-      if(ids=0){
-        setChecked1(procedure.checkwork)
-      } if(ids=1){
-        setChecked2(procedure.checkwork)
-      } if(ids=2){
-        setChecked3(procedure.checkwork)
-      } if(ids=3){
-        setChecked4(procedure.checkwork)
-      } if(ids=4){
-        setChecked5(procedure.checkwork)
-      } 
-
-  })}
-  }, [onEdit,id]);
+    if (onEdit) {
+      procedure.map((procedure, ids) => {
+        if ((ids = 0)) {
+          setChecked1(procedure.checkwork);
+        }
+        if ((ids = 1)) {
+          setChecked2(procedure.checkwork);
+        }
+        if ((ids = 2)) {
+          setChecked3(procedure.checkwork);
+        }
+        if ((ids = 3)) {
+          setChecked4(procedure.checkwork);
+        }
+        if ((ids = 4)) {
+          setChecked5(procedure.checkwork);
+        }
+      });
+    }
+  }, [onEdit, id]);
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -650,34 +664,35 @@ const  getValue =  (value,id)  => {
   //   dispatch({ type: "NOTIFY", payload: {} });
   // };
 
-
-    
-   
-   const handleChangeInput2 = async (idx, event) => {
+  const handleChangeInput2 = async (idx, event) => {
     const newInputFields = procedure.map((i) => {
       if (idx === i.idx) {
-        const value = event  === true ||  event  === false ? event : event.target.value;
-    
-        event  === true ||  event  === false ? i["checkwork"] = value:  i[event.target.name] = value;
-      //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
+        const value =
+          event === true || event === false ? event : event.target.value;
 
+        event === true || event === false
+          ? (i["checkwork"] = value)
+          : (i[event.target.name] = value);
+        //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
       }
-   
-      return i;
-    }); 
-    
-    const newInputFields1 = labPrint.map((i) => {
-      if (idx === i.idx) {
-        const value = event  === true ||  event  === false ? event : event.target.value;
-    
-        event  === true ||  event  === false ? i["checkwork"] = value:  i[event.target.name] = value;
-      //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
 
-      }
-   
       return i;
     });
-  
+
+    const newInputFields1 = labPrint.map((i) => {
+      if (idx === i.idx) {
+        const value =
+          event === true || event === false ? event : event.target.value;
+
+        event === true || event === false
+          ? (i["checkwork"] = value)
+          : (i[event.target.name] = value);
+        //  console.log("defaultSelected:",event.target.type,"checked:", event.target.checked?event.target.checked:"fuck")
+      }
+
+      return i;
+    });
+
     // const newInputFields1 = labPrint.map((i) => {
     //   if (idx === i.idx) {
     //     i[event.target.name] = event.target.value;
@@ -778,47 +793,8 @@ const  getValue =  (value,id)  => {
                       onSubmit={handleSubmit}
                       className="space-y-8"
                     >
+                      {/* เพิ่มวันที่ต่อท้ายหมายเลขใบขอรับบริการ "เก็บข้อมูลเพิ่ม โดยใช้ชื่อว่า วันที่รับใบขอรับบริการ" */}
                       <div>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          อว 7432(3)/Rep :
-                        </label>
-                        <input
-                          type="text"
-                          value={rnb}
-                          name="rnb"
-                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-              block w-full p-2.5 "
-                          onChange={handleChangeInput}
-                          placeholder="Runing Number . . . "
-                          required
-                        />
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          วันที่ :
-                          <input
-                            type="date"
-                            value={timeIn}
-                            name="timeIn"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-              block w-full p-2.5 "
-                            onChange={handleChangeInput}
-                            required
-                          />
-                        </label>
-                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          วันที่นัดรับผลการทดสอบ :
-                          <input
-                            type="date"
-                            value={timeOut}
-                            name="timeOut"
-                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-              block w-full p-2.5 "
-                            onChange={handleChangeInput}
-                            required
-                          />
-                        </label>
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                           หมายเลขใบขอรับบริการ : ฝวคN
                           <input
@@ -832,8 +808,9 @@ const  getValue =  (value,id)  => {
                             required
                           />
                         </label>
+                        
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                          เบอร์โทรศัพท์ :
+                          เบอร์โทรศัพท์ผู้ขอรับบริการ :
                           <input
                             type="tel"
                             id="phone"
@@ -846,6 +823,286 @@ const  getValue =  (value,id)  => {
                             required
                           />
                         </label>
+                        
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          <div className=" bg-rose-300 grid  py-2 px-2 rounded-md  my-3">
+                            <label
+                              htmlFor="message"
+                              className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                            >
+                              วันที่ LSU รับตัวอย่าง :
+                            </label>
+                            <input
+                              type="date"
+                              value={lsu}
+                              name="lsu"
+                              onChange={handleChangeInput}
+                              className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                            ></input>
+                          </div>
+                        </label>
+
+                        <div className=" bg-indigo-300 grid  py-2 px-2 rounded-md  my-3">
+                          <label
+                            htmlFor="message"
+                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                          >
+                            วันที่ห้องปฏิบัติการรับตัวอย่าง :
+                          </label>
+                          <input
+                            type="date"
+                            value={lab}
+                            name="lab"
+                            onChange={handleChangeInput}
+                            className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                          ></input>
+                        </div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          วันที่นัดรับรายงานผลการทดสอบ :
+                          <input
+                            type="date"
+                            value={timeOut}
+                            name="timeOut"
+                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                            onChange={handleChangeInput}
+                            required
+                          />
+                        </label>
+
+                        <div className=" ">
+                          {procedure.map((procedure, ids) => (
+                            <div
+                              key={procedure.idx}
+                              className="bg- bg-slate-200 px-5 py-2 mb-3 rounded-xl"
+                            >
+                              <Checkbox
+                                name="checkwork"
+                                checked={
+                                  onEdit ? procedure.checkwork : defaultChk(ids)
+                                }
+                                type="checkbox"
+                                value={
+                                  onEdit ? procedure.checkwork : defaultChk(ids)
+                                }
+                                onChange={(event) => {
+                                  ids = ids + 1;
+                                  console.log(ids);
+                                  if (ids == 1) {
+                                    setChecked1(!checked1);
+                                    console.log("chk" + ids + ":" + !checked1);
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 2) {
+                                    setChecked2(!checked2);
+                                    console.log("chk" + ids + ":" + !checked2);
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 3) {
+                                    setChecked3(!checked3);
+                                    console.log("chk" + ids + ":" + !checked3);
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 4) {
+                                    setChecked4(!checked4);
+                                    console.log("chk" + ids + ":" + !checked4);
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 5) {
+                                    setChecked5(!checked5);
+                                    console.log("chk" + ids + ":" + !checked5);
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                }}
+                                defaultSelected={
+                                  onEdit
+                                    ? (event) => {
+                                        const ida = ids + 1;
+                                        if (ida == 1) {
+                                          setChecked1(procedure.checkwork);
+                                          defaultChk(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 2) {
+                                          setChecked2(!procedure.checkwork);
+                                          defaultChk(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 3) {
+                                          setChecked3(procedure.checkwork);
+                                          defaultChk(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 4) {
+                                          setChecked4(procedure.checkwork);
+                                          defaultChk(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 5) {
+                                          setChecked5(!procedure.checkwork);
+                                          defaultChk(ids);
+                                          return procedure.checkwork;
+                                        }
+                                      }
+                                    : defaultChk(ids)
+                                }
+                                size="xl"
+                              >
+                                <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                                  {ids + 1}. ขั้นตอนการดำเนินการ :
+                                  <input
+                                    type="text"
+                                    name="ListName"
+                                    value={procedure.ListName}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                              block w-full p-2.5"
+                                    disabled
+                                  />
+                                </label>
+                              </Checkbox>
+
+                              <div
+                                hidden={
+                                  onEdit
+                                    ? (event) => {
+                                        const ida = ids + 1;
+                                        if (ida == 1) {
+                                          setChecked1(procedure.checkwork);
+
+                                          return procedure.checkwork;
+                                        } else if (ida == 2) {
+                                          setChecked2(procedure.checkwork);
+
+                                          return procedure.checkwork;
+                                        } else if (ida == 3) {
+                                          setChecked3(procedure.checkwork);
+
+                                          return procedure.checkwork;
+                                        } else if (ida == 4) {
+                                          setChecked4(procedure.checkwork);
+
+                                          return procedure.checkwork;
+                                        } else if (ida == 5) {
+                                          setChecked5(!procedure.checkwork);
+
+                                          return procedure.checkwork;
+                                        }
+                                      }
+                                    : hiddenChk(ids)
+                                }
+                                className="bg-slate-300 px-5 py-2 rounded-xl"
+                              >
+                                <div className="bg-slate-300 px-5 py-2 rounded-xl">
+                                  <div>
+                                    <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        วันที่เริ่มดำเนินการทดสอบ :
+                                        <input
+                                          type="date"
+                                          name="time1"
+                                          value={procedure.time1}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                        />
+                                      </label>
+                                      {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                  วันที่ทดสอบ
+                                  <input
+                                    type="date"
+                                    name="time2"
+                                    value={procedure.time2}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                    onChange={(event) =>
+                                      handleChangeInput2(procedure.idx, event)
+                                    }
+                                  /></label> */}
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        วันที่ดำเนินการทดสอบเสร็จ :
+                                        <input
+                                          type="date"
+                                          name="time4"
+                                          value={procedure.time4}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                        />
+                                      </label>
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        รวมเวลาดำเนินการทั้งหมด(ชั่วโมง) :
+                                        <input
+                                          type=""
+                                          name="time3"
+                                          value={procedure.time3}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                          placeholder="กรอกจำนวนชั่วโมง"
+                                        />
+                                      </label>
+
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        พารามิเตอร์ที่ทดสอบ :
+                                        <input
+                                          type="text"
+                                          name="param"
+                                          value={procedure.param}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                          placeholder="Ex. Color"
+                                        />
+                                      </label>
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        เครื่องมือที่ใช้ทดสอบ :
+                                        <input
+                                          type="text"
+                                          name="tool"
+                                          value={procedure.tool}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                          placeholder="Ex. COD"
+                                        />
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                           รายงานผลการทดสอบลำดับที่ : RepฝวคN
                           <input
@@ -858,343 +1115,137 @@ const  getValue =  (value,id)  => {
                             onChange={handleChangeInput}
                             required
                           />
-
-                        <div className=" bg-rose-300 grid  py-2 px-2 rounded-md  my-3">
-                          <label
-                            htmlFor="message"
-                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
-                           วันที่ LSU รับตัวอย่าง :
-                          </label>
-                          <input
-                          type="date"
-                            value={lsu}
-                            name="lsu"
-                            onChange={handleChangeInput}
-                            
-                            className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            
-                          ></input>
-                        </div>
                         </label>
 
-                        <div className=" bg-indigo-300 grid  py-2 px-2 rounded-md  my-3">
-                          <label
-                            htmlFor="message"
-                            className="block mb-2 text-xl font-medium text-gray-900 dark:text-white">
-                            วันที่ห้องปฏิบัติการรับตัวอย่าง :
-                          </label>
-                          <input
-                          type="date"
-                            value={lab}
-                            name="lab"
-                            onChange={handleChangeInput}
-                            
-                            className="block p-2.5 w-[20%] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            
-                          ></input>
-                        </div>
-
-                      
-
-
-                        <div className=" ">
-                          {procedure.map((procedure,ids) => (
-                          <div  key={procedure.idx} className="bg- bg-slate-200 px-5 py-2 mb-3 rounded-xl" >
-                          <Checkbox name="checkwork"
-                          checked={onEdit ? procedure.checkwork : defaultChk(ids)}
-                          type="checkbox"
-                          value={onEdit ? procedure.checkwork : defaultChk(ids)}  
-                           onChange={(event)=>{ 
-                            ids=ids+1
-                            console.log(ids)
-                            if(ids==1){
-                            setChecked1(!checked1)
-                          console.log("chk"+ids+":"+!checked1)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==2){
-                            setChecked2(!checked2)
-                          console.log("chk"+ids+":"+!checked2)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==3){
-                            setChecked3(!checked3)
-                          console.log("chk"+ids+":"+!checked3)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==4){
-                            setChecked4(!checked4)
-                          console.log("chk"+ids+":"+!checked4)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==5){
-                            setChecked5(!checked5)
-                          console.log("chk"+ids+":"+!checked5)
-                           handleChangeInput2(procedure.idx ,event)
-                            }
-                          }} defaultSelected={onEdit ?  ((event)=>{
-                                    const   ida = ids+1                         
-                                    if(ida==1){
-                                      setChecked1(procedure.checkwork)
-                                      defaultChk(ids)
-                                      return procedure.checkwork;
-                                    } else if(ida==2){
-                                      setChecked2(!procedure.checkwork)
-                                      defaultChk(ids)
-                                      return procedure.checkwork;
-                                    } else if(ida==3){
-                                      setChecked3(procedure.checkwork)
-                                      defaultChk(ids)
-                                      return procedure.checkwork;
-                                    } else if(ida==4){
-                                      setChecked4(procedure.checkwork)
-                                      defaultChk(ids)
-                                      return procedure.checkwork;
-                                    } else if(ida==5){
-                                      setChecked5(!procedure.checkwork)
-                                      defaultChk(ids)
-                                      return procedure.checkwork;
-                                    }
-
-                          })  : defaultChk(ids)} size="xl">
-                              
-                              <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                               {ids+1}. ขั้นตอนการดำเนินการ :
-                                <input
-                                  type="text"
-                                  name="ListName"
-                                  value={procedure.ListName}
-                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                              block w-full p-2.5"
-                                  disabled
-                                /> 
-                                
-                              </label>     
-                           </Checkbox>
-                            
-                  <div hidden={onEdit ?  ((event)=>{
-                                    const   ida = ids+1                         
-                                    if(ida==1){
-                                      setChecked1(procedure.checkwork)
-                                     
-                                      return procedure.checkwork;
-                                    } else if(ida==2){
-                                      setChecked2(procedure.checkwork)
-                                      
-                                      return procedure.checkwork;
-                                    } else if(ida==3){
-                                      setChecked3(procedure.checkwork)
-                                    
-                                      return procedure.checkwork;
-                                    } else if(ida==4){
-                                      setChecked4(procedure.checkwork)
-                                      
-                                      return procedure.checkwork;
-                                    } else if(ida==5){
-                                      setChecked5(!procedure.checkwork)
-                                    
-                                      return procedure.checkwork;
-                                    }
-
-                          }) : hiddenChk(ids)}   className="bg-slate-300 px-5 py-2 rounded-xl" >
-                            <div  className="bg-slate-300 px-5 py-2 rounded-xl" >
-                            <div >
-                              
-                            
-                              <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  วันที่เริ่มดำเนินการ :
-                                  <input
-                                    type="date"
-                                    name="time1"
-                                    value={procedure.time1}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                    
-                                  />
-                                </label>
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  ช่วงเวลาที่ทดสอบ
-                                  <input
-                                    type="date"
-                                    name="time2"
-                                    value={procedure.time2}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                  />
-                                  <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  ช่วงเวลา : 
-                                <input
-                                  type=""
-                                  name="time3"
-                                  value={procedure.time3}
-                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                  onChange={(event) =>
-                                    handleChangeInput2(procedure.idx, event)
-                                  }
-                                  placeholder="00.00-00.00 น."
-                                 
-                                />
-                                </label>
-
-                                </label>
-
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  วันที่ดำเนินการเสร็จ :
-                                  <input
-                                    type="date"
-                                    name="time4"
-                                    value={procedure.time4}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                  />
-                                </label>
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  พารามิเตอร์ที่ทดสอบ :
-                                  <input
-                                    type="text"
-                                    name="param"
-                                    value={procedure.param}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                    placeholder="Ex. Color"
-                                  />
-                                </label>
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  เครื่องมือที่ใช้ทดสอบ :
-                                  <input
-                                    type="text"
-                                    name="tool"
-                                    value={procedure.tool}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                    placeholder="Ex. COD"
-                                  />
-                                </label>
-                              </div>
-                            </div>
-                            </div>
-                            </div>
-                           
-                            </div>
-                          ))}
-                        </div>
-                        
                         {/* Lab ส่งผลการทดสอบพิมพ์ */}
                         <div className=" ">
-                          {labPrint.map((procedure,ids) => (
-                          <div  key={procedure.idx} className="bg- bg-yellow-200 px-5 py-2 mb-3 rounded-xl" >
-                          <Checkbox name="checkworkx"
-                          checked={onEdit ? procedure.checkwork : defaultChkx(ids)}
-                          type="checkbox"
-                          value={onEdit ? procedure.checkwork : defaultChkx(ids)}  
-                           onChange={(event)=>{ 
-                            ids=ids+1
-                            console.log(ids)
-                            if(ids==1){
-                            setCheckedx1(!checkedx1)
-                          console.log("chkx"+ids+":"+!checkedx1)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==2){
-                            setCheckedx2(!checkedx2)
-                          console.log("chkx"+ids+":"+!checkedx2)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==3){
-                            setCheckedx3(!checkedx3)
-                          console.log("chkx"+ids+":"+!checkedx3)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==4){
-                            setCheckedx4(!checkedx4)
-                          console.log("chkx"+ids+":"+!checkedx4)
-                           handleChangeInput2(procedure.idx ,event)
-                            }  if(ids==5){
-                            setCheckedx5(!checkedx5)
-                          console.log("chkx"+ids+":"+!checkedx5)
-                           handleChangeInput2(procedure.idx ,event)
-                            }
-                          }} defaultSelected={onEdit ? procedure.checkwork : defaultChkx(ids)} size="xl">
-                  
-                              <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                               {ids+1}. ขั้นตอนการดำเนินการ :
-                                <input
-                                  type="text"
-                                  name="ListName"
-                                  value={procedure.ListName}
-                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                          {labPrint.map((procedure, ids) => (
+                            <div
+                              key={procedure.idx}
+                              className="bg- bg-yellow-200 px-5 py-2 mb-3 rounded-xl"
+                            >
+                              <Checkbox
+                                name="checkworkx"
+                                checked={
+                                  onEdit
+                                    ? procedure.checkwork
+                                    : defaultChkx(ids)
+                                }
+                                type="checkbox"
+                                value={
+                                  onEdit
+                                    ? procedure.checkwork
+                                    : defaultChkx(ids)
+                                }
+                                onChange={(event) => {
+                                  ids = ids + 1;
+                                  console.log(ids);
+                                  if (ids == 1) {
+                                    setCheckedx1(!checkedx1);
+                                    console.log(
+                                      "chkx" + ids + ":" + !checkedx1
+                                    );
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 2) {
+                                    setCheckedx2(!checkedx2);
+                                    console.log(
+                                      "chkx" + ids + ":" + !checkedx2
+                                    );
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 3) {
+                                    setCheckedx3(!checkedx3);
+                                    console.log(
+                                      "chkx" + ids + ":" + !checkedx3
+                                    );
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 4) {
+                                    setCheckedx4(!checkedx4);
+                                    console.log(
+                                      "chkx" + ids + ":" + !checkedx4
+                                    );
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                  if (ids == 5) {
+                                    setCheckedx5(!checkedx5);
+                                    console.log(
+                                      "chkx" + ids + ":" + !checkedx5
+                                    );
+                                    handleChangeInput2(procedure.idx, event);
+                                  }
+                                }}
+                                defaultSelected={
+                                  onEdit
+                                    ? procedure.checkwork
+                                    : defaultChkx(ids)
+                                }
+                                size="xl"
+                              >
+                                <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
+                                  {ids + 1}. ขั้นตอนการจัดทำรายงานผลการทดสอบ :
+                                  <input
+                                    type="text"
+                                    name="ListName"
+                                    value={procedure.ListName}
+                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block w-full p-2.5"
-                                  disabled
-                                />
-                              </label>     
-                           </Checkbox>
-      
-                  <div hidden={hiddenChkx(ids)}  className="bg-yellow-300 px-5 py-2 rounded-xl" >
-                            <div  className="bg-yellow-300 px-5 py-2 rounded-xl" >
-                            <div >
-                              
-                            
-                              <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  วันที่เริ่มดำเนินการ :
-                                  <input
-                                    type="date"
-                                    name="timelab1"
-                                    value={procedure.timelab1}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                    
+                                    disabled
                                   />
                                 </label>
-                              
+                              </Checkbox>
 
-                                <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  วันที่ดำเนินการเสร็จ :
-                                  <input
-                                    type="date"
-                                    name="timelab2"
-                                    value={procedure.timelab2}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                              <div
+                                hidden={hiddenChkx(ids)}
+                                className="bg-yellow-300 px-5 py-2 rounded-xl"
+                              >
+                                <div className="bg-yellow-300 px-5 py-2 rounded-xl">
+                                  <div>
+                                    <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        ส่งพิมพ์วันที่ :
+                                        <input
+                                          type="date"
+                                          name="timelab1"
+                                          value={procedure.timelab1}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                                   text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                                   block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                  />
-                                </label>
-                            
-                               
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                        />
+                                      </label>
+
+                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                        พิมพ์เสร็จวันที่ :
+                                        <input
+                                          type="date"
+                                          name="timelab2"
+                                          value={procedure.timelab2}
+                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                          onChange={(event) =>
+                                            handleChangeInput2(
+                                              procedure.idx,
+                                              event
+                                            )
+                                          }
+                                        />
+                                      </label>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                            </div>
-                            </div>
-                           
                             </div>
                           ))}
                         </div>
-
 
                         {/* <div className="flex flex-col w-full bg-indigo-500">
                           <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
@@ -1254,7 +1305,7 @@ const  getValue =  (value,id)  => {
                             className="flex flex-col w-full bg-orange-300 py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                              หน. ฝวค. รับรองผลฯ
+                              หน. ฝวค. รับรองผลการทดสอบ
                             </label>
                             <div className=" md:flex space-x-2">
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1295,7 +1346,7 @@ const  getValue =  (value,id)  => {
                             className="flex flex-col w-full bg-green-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                              หน. กลุ่มตรวจรายงานผลฯ
+                              หน. กลุ่มตรวจสอบรายงานผลการทดสอบ
                             </label>
                             <div className=" md:flex space-x-2">
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1336,7 +1387,7 @@ const  getValue =  (value,id)  => {
                             className="flex flex-col w-full bg-blue-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                              ผอ ศศวท. รับรองรายงานฯ
+                              ผอ ศศวท. รับรองรายงานผลการทดสอบ
                             </label>
                             <div className=" md:flex space-x-2">
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1370,16 +1421,49 @@ const  getValue =  (value,id)  => {
                             </div>
                           </div>
                         ))}
+                        <div className=" flex">
+                          <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                              อว 7432(3)/Rep :
+                            </label>
+                            <input
+                              type="text"
+                              value={rnb}
+                              name="rnb"
+                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                              onChange={handleChangeInput}
+                              placeholder="Runing Number . . . "
+                              required
+                            />
+                          </div>
+                          <div>
+                            <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                              วันที่ :
+                              <input
+                                type="date"
+                                value={timeIn}
+                                name="timeIn"
+                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+              text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+              block w-full p-2.5 "
+                                onChange={handleChangeInput}
+                                required
+                              />
+                            </label>
+                          </div>
+                        </div>
                         {reportLSU.map((reportLSU) => (
                           <div
                             key={reportLSU.idx}
                             className="flex flex-col w-full bg-rose-300  py-2 px-2 rounded-md mb-3"
                           >
                             <label className="block mb-2 text-xl font-medium text-gray-900 dark:text-gray-800">
-                              ฝวค. นำส่งรายงานผลให้
+                              ฝวค. นำส่งรายงานผลให้ LSU
                             </label>
                             <div className=" md:flex space-x-2">
-                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                              {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ออกเลขวันที่ :
                                 <input
                                   type="date"
@@ -1392,7 +1476,7 @@ const  getValue =  (value,id)  => {
                                     handleChangeInput2(reportLSU.idx, event)
                                   }
                                 />
-                              </label>
+                              </label> */}
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ส่ง LSU วันที่ :
                                 <input
@@ -1438,6 +1522,7 @@ const  getValue =  (value,id)  => {
                             </div>
                           </div>
                         ))}
+
                         <div className=" bg-indigo-300 grid  py-2 px-2 rounded-md mb-3">
                           <label
                             htmlFor="message"
@@ -1446,7 +1531,7 @@ const  getValue =  (value,id)  => {
                             หมายเหตุ
                           </label>
                           <input
-                          type="textarea"
+                            type="textarea"
                             value={note}
                             name="note"
                             onChange={handleChangeInput}
@@ -1460,7 +1545,6 @@ const  getValue =  (value,id)  => {
                       <div className="flex justify-center items-center w-full">
                         <label className="flex flex-col justify-center items-center w-full h-24 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
                           <input
-                           
                             type="file"
                             onChange={handleUploadInput}
                             accept="application/pdf"
@@ -1469,12 +1553,27 @@ const  getValue =  (value,id)  => {
                       </div>
                       <div className="row  mx-0">
                         {images.map((img, index) => (
-                          <p href={img.url} key={index} className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200">
-                            <a href={img.url ?img.url:"#"}><img className="h-15 w-10" src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"  /></a>
-                             <p className="pl-2 pr-3">{false ? img.url : "Uploaded PDF" }</p>
-                               
-                                   
-                            <span className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8" onClick={() => deleteImage(index)}>X</span>
+                          <p
+                            href={img.url}
+                            key={index}
+                            className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200"
+                          >
+                            <a href={img.url ? img.url : "#"}>
+                              <img
+                                className="h-15 w-10"
+                                src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
+                              />
+                            </a>
+                            <p className="pl-2 pr-3">
+                              {false ? img.url : "Uploaded PDF"}
+                            </p>
+
+                            <span
+                              className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8"
+                              onClick={() => deleteImage(index)}
+                            >
+                              X
+                            </span>
                           </p>
                         ))}
                       </div>
