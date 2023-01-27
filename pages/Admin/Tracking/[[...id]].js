@@ -80,7 +80,7 @@ const Tracking = (props) => {
   const [isCheck, setIsCheck] = useState(false);
 
   // array 1 ขั้นตอนการดำเนินการ
-  const [procedure, setProcedure] = useState([
+  let saveProcedure = [
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
@@ -102,6 +102,12 @@ const Tracking = (props) => {
       time4: "",
       param: "",
       tool: "",
+      time1_2: "",
+      time2_2: "",
+      time3_2: "",
+      time4_2: "",
+      param_2: "",
+      tool_2: "",
       checkwork: false,
     },
     {
@@ -139,9 +145,11 @@ const Tracking = (props) => {
       tool: "",
       checkwork: false,
     },
-  ]);
+  ];
+  const [procedure, setProcedure] = useState(saveProcedure);
+
   // array 2 ส่งผลการทดสอบพิมพ์
-  const [labPrint, setLabPrint] = useState([
+  let saveLabPrint = [
     {
       idx: uuidv4(),
       ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
@@ -154,6 +162,8 @@ const Tracking = (props) => {
       ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
       timelab1: "",
       timelab2: "",
+      timelab1_2: "",
+      timelab2_2: "",
       checkwork: false,
     },
     {
@@ -177,33 +187,38 @@ const Tracking = (props) => {
       timelab2: "",
       checkwork: false,
     },
-  ]);
+  ];
+  const [labPrint, setLabPrint] = useState(saveLabPrint);
   // array 3 รับรองผล
-  const [ensure, setEnsure] = useState([
+  let saveEnsure = [
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
     },
-  ]);
+  ];
+  const [ensure, setEnsure] = useState(saveEnsure);
   // array 4 ตรวจรายงานผล
-  const [checkReport, setCheckReport] = useState([
+  let saveCheckReport = [
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
     },
-  ]);
+  ];
+
+  const [checkReport, setCheckReport] = useState(saveCheckReport);
   // array 5 คศวท รับรองรายงาน
-  const [ensureReport, setEnsureReport] = useState([
+  let saveEnsureReport = [
     {
       idx: uuidv4(),
       time1: "",
       time2: "",
     },
-  ]);
+  ];
+  const [ensureReport, setEnsureReport] = useState(saveEnsureReport);
   // array 6 นำส่งรายงานผลให้ LSU
-  const [reportLSU, setReportLSU] = useState([
+  let saveReportLSU = [
     {
       idx: uuidv4(),
       time1: "",
@@ -211,7 +226,8 @@ const Tracking = (props) => {
       sender: "",
       recipient: "",
     },
-  ]);
+  ];
+  const [reportLSU, setReportLSU] = useState(saveReportLSU);
 
   useEffect(() => {
     setSlides(props.products);
@@ -345,135 +361,15 @@ const Tracking = (props) => {
   const handleClearAddNew = async () => {
     setImages([]);
     setProduct(initialState);
-    setProcedure([
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
-        time1: "",
-        time2: "",
-        time3: "",
-        time4: "",
-        param: "",
-        tool: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
-        time1: "",
-        time2: "",
-        time3: "",
-        time4: "",
-        param: "",
-        tool: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
-        time1: "",
-        time2: "",
-        time3: "",
-        time4: "",
-
-        param: "",
-        tool: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานทดสอบทางกายภาพ",
-        time1: "",
-        time2: "",
-        time3: "",
-        time4: "",
-
-        param: "",
-        tool: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์น้ำ",
-        time1: "",
-        time2: "",
-        time3: "",
-        time4: "",
-        param: "",
-        tool: "",
-        checkwork: false,
-      },
-    ]);
-    setLabPrint([
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
-        timelab1: "",
-        timelab2: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางเคมีและชีวเคมี",
-        timelab1: "",
-        timelab2: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์ทางจุลชีววิทยา",
-        timelab1: "",
-        timelab2: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานทดสอบทางกายภาพ",
-        timelab1: "",
-        timelab2: "",
-        checkwork: false,
-      },
-      {
-        idx: uuidv4(),
-        ListName: "งานวิเคราะห์น้ำ",
-        timelab1: "",
-        timelab2: "",
-        checkwork: false,
-      },
-    ]);
-    setEnsure([
-      {
-        idx: uuidv4(),
-        time1: "",
-        time2: "",
-      },
-    ]);
+    setProcedure(saveProcedure);
+    setLabPrint(saveLabPrint);
+    setEnsure(saveEnsure);
     // array 4 ตรวจรายงานผล
-    setCheckReport([
-      {
-        idx: uuidv4(),
-        time1: "",
-        time2: "",
-      },
-    ]);
+    setCheckReport(saveCheckReport);
     // array 5 คศวท รับรองรายงาน
-    setEnsureReport([
-      {
-        idx: uuidv4(),
-        time1: "",
-        time2: "",
-      },
-    ]);
+    setEnsureReport(saveEnsureReport);
     // array 6 นำส่งรายงานผลให้ LSU
-    setReportLSU([
-      {
-        idx: uuidv4(),
-        time1: "",
-        time2: "",
-        sender: "",
-        recipient: "",
-      },
-    ]);
+    setReportLSU(saveReportLSU);
 
     router.replace("/Admin/Tracking");
 
@@ -524,6 +420,15 @@ const Tracking = (props) => {
       setChecked3(false);
       setChecked4(false);
       setChecked5(false);
+      setProcedure(saveProcedure);
+      setLabPrint(saveLabPrint);
+      setEnsure(saveEnsure);
+      // array 4 ตรวจรายงานผล
+      setCheckReport(saveCheckReport);
+      // array 5 คศวท รับรองรายงาน
+      setEnsureReport(saveEnsureReport);
+      // array 6 นำส่งรายงานผลให้ LSU
+      setReportLSU(saveReportLSU);
     }
   }, [id]);
 
@@ -656,6 +561,15 @@ const Tracking = (props) => {
     setTabIndex("1");
     setImages([]);
     setProduct(initialState);
+    setProcedure(saveProcedure);
+    setLabPrint(saveLabPrint);
+    setEnsure(saveEnsure);
+    // array 4 ตรวจรายงานผล
+    setCheckReport(saveCheckReport);
+    // array 5 คศวท รับรองรายงาน
+    setEnsureReport(saveEnsureReport);
+    // array 6 นำส่งรายงานผลให้ LSU
+    setReportLSU(saveReportLSU);
     return router.push("/Admin/Tracking");
   };
   // const handleChangeInput = (e) => {
@@ -808,7 +722,7 @@ const Tracking = (props) => {
                             required
                           />
                         </label>
-                        
+
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                           เบอร์โทรศัพท์ผู้ขอรับบริการ :
                           <input
@@ -823,7 +737,7 @@ const Tracking = (props) => {
                             required
                           />
                         </label>
-                        
+
                         <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                           <div className=" bg-rose-300 grid  py-2 px-2 rounded-md  my-3">
                             <label
@@ -988,116 +902,304 @@ const Tracking = (props) => {
                                       }
                                     : hiddenChk(ids)
                                 }
-                                className="bg-slate-300 px-5 py-2 rounded-xl"
                               >
-                                <div className="bg-slate-300 px-5 py-2 rounded-xl">
+                                {procedure.ListName ===
+                                "งานวิเคราะห์ทางเคมีและชีวเคมี" ? (
                                   <div>
-                                    <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        วันที่เริ่มดำเนินการทดสอบ :
-                                        <input
-                                          type="date"
-                                          name="time1"
-                                          value={procedure.time1}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                        />
-                                      </label>
-                                      {/* <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                  วันที่ทดสอบ
-                                  <input
-                                    type="date"
-                                    name="time2"
-                                    value={procedure.time2}
-                                    className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                    onChange={(event) =>
-                                      handleChangeInput2(procedure.idx, event)
-                                    }
-                                  /></label> */}
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        วันที่ดำเนินการทดสอบเสร็จ :
-                                        <input
-                                          type="date"
-                                          name="time4"
-                                          value={procedure.time4}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                        />
-                                      </label>
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        รวมเวลาดำเนินการทั้งหมด(ชั่วโมง) :
-                                        <input
-                                          type=""
-                                          name="time3"
-                                          value={procedure.time3}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                          placeholder="กรอกจำนวนชั่วโมง"
-                                        />
-                                      </label>
+                                    <div className="bg-slate-300 px-5 py-2 rounded-xl">
+                                      <div>
+                                      <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">ช่องสำหรับนักวิจัยคนที่ 1</label>
+                                        <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            วันที่เริ่มดำเนินการทดสอบ :
+                                            <input
+                                              type="date"
+                                              name="time1"
+                                              value={procedure.time1}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
 
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        พารามิเตอร์ที่ทดสอบ :
-                                        <input
-                                          type="text"
-                                          name="param"
-                                          value={procedure.param}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                          placeholder="Ex. Color"
-                                        />
-                                      </label>
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        เครื่องมือที่ใช้ทดสอบ :
-                                        <input
-                                          type="text"
-                                          name="tool"
-                                          value={procedure.tool}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                          placeholder="Ex. COD"
-                                        />
-                                      </label>
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            วันที่ดำเนินการทดสอบเสร็จ :
+                                            <input
+                                              type="date"
+                                              name="time4"
+                                              value={procedure.time4}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            รวมเวลาดำเนินการทั้งหมด(ชั่วโมง) :
+                                            <input
+                                              type=""
+                                              name="time3"
+                                              value={procedure.time3}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="กรอกจำนวนชั่วโมง"
+                                            />
+                                          </label>
+
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            พารามิเตอร์ที่ทดสอบ :
+                                            <input
+                                              type="text"
+                                              name="param"
+                                              value={procedure.param}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="Ex. Color"
+                                            />
+                                          </label>
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            เครื่องมือที่ใช้ทดสอบ :
+                                            <input
+                                              type="text"
+                                              name="tool"
+                                              value={procedure.tool}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="Ex. COD"
+                                            />
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="bg-slate-300 px-5 py-2 rounded-xl mt-3">
+                                      <div>
+                                      <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">ช่องสำหรับนักวิจัยคนที่ 1</label>
+                                        <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            วันที่เริ่มดำเนินการทดสอบ :
+                                            <input
+                                              type="date"
+                                              name="time1_2"
+                                              value={procedure.time1_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            วันที่ดำเนินการทดสอบเสร็จ :
+                                            <input
+                                              type="date"
+                                              name="time4_2"
+                                              value={procedure.time4_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            รวมเวลาดำเนินการทั้งหมด(ชั่วโมง) :
+                                            <input
+                                              type="Number"
+                                              name="time3_2"
+                                              value={procedure.time3_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="กรอกจำนวนชั่วโมง"
+                                            />
+                                          </label>
+
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            พารามิเตอร์ที่ทดสอบ :
+                                            <input
+                                              type="text"
+                                              name="param_2"
+                                              value={procedure.param_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="Ex. Color"
+                                            />
+                                          </label>
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            เครื่องมือที่ใช้ทดสอบ :
+                                            <input
+                                              type="text"
+                                              name="tool_2"
+                                              value={procedure.tool_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                    block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                              placeholder="Ex. COD"
+                                            />
+                                          </label>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                                ) : (
+                                  <div className="bg-slate-300 px-5 py-2 rounded-xl">
+                                    <div>
+                                    
+                                      <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          วันที่เริ่มดำเนินการทดสอบ :
+                                          <input
+                                            type="date"
+                                            name="time1"
+                                            value={procedure.time1}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                          />
+                                        </label>
+
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          วันที่ดำเนินการทดสอบเสร็จ :
+                                          <input
+                                            type="date"
+                                            name="time4"
+                                            value={procedure.time4}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          รวมเวลาดำเนินการทั้งหมด(ชั่วโมง) :
+                                          <input
+                                            type=""
+                                            name="time3"
+                                            value={procedure.time3}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                            placeholder="กรอกจำนวนชั่วโมง"
+                                          />
+                                        </label>
+
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          พารามิเตอร์ที่ทดสอบ :
+                                          <input
+                                            type="text"
+                                            name="param"
+                                            value={procedure.param}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                            placeholder="Ex. Color"
+                                          />
+                                        </label>
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          เครื่องมือที่ใช้ทดสอบ :
+                                          <input
+                                            type="text"
+                                            name="tool"
+                                            value={procedure.tool}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                            placeholder="Ex. COD"
+                                          />
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           ))}
@@ -1118,7 +1220,7 @@ const Tracking = (props) => {
                         </label>
 
                         {/* Lab ส่งผลการทดสอบพิมพ์ */}
-                        <div className=" ">
+                        <div>
                           {labPrint.map((procedure, ids) => (
                             <div
                               key={procedure.idx}
@@ -1197,51 +1299,139 @@ const Tracking = (props) => {
                                 </label>
                               </Checkbox>
 
-                              <div
-                                hidden={hiddenChkx(ids)}
-                                className="bg-yellow-300 px-5 py-2 rounded-xl"
-                              >
-                                <div className="bg-yellow-300 px-5 py-2 rounded-xl">
+                              <div hidden={hiddenChkx(ids)}>
+                                {procedure.ListName ===
+                                "งานวิเคราะห์ทางเคมีและชีวเคมี" ? (
                                   <div>
-                                    <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        ส่งพิมพ์วันที่ :
-                                        <input
-                                          type="date"
-                                          name="timelab1"
-                                          value={procedure.timelab1}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                    <div className="bg-yellow-300 px-5 py-2 rounded-xl">
+                                      <div>
+                                      <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">ช่องสำหรับนักวิจัยคนที่ 1</label>
+                                        <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                        
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            ส่งพิมพ์วันที่ :
+                                            <input
+                                              type="date"
+                                              name="timelab1"
+                                              value={procedure.timelab1}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                                   text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                                   block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                        />
-                                      </label>
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
 
-                                      <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                        พิมพ์เสร็จวันที่ :
-                                        <input
-                                          type="date"
-                                          name="timelab2"
-                                          value={procedure.timelab2}
-                                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            พิมพ์เสร็จวันที่ :
+                                            <input
+                                              type="date"
+                                              name="timelab2"
+                                              value={procedure.timelab2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                                   text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                                   block w-full p-2.5"
-                                          onChange={(event) =>
-                                            handleChangeInput2(
-                                              procedure.idx,
-                                              event
-                                            )
-                                          }
-                                        />
-                                      </label>
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div className="bg-yellow-300 px-5 py-2 rounded-xl mt-3">
+                                      <div>
+                                      <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">ช่องสำหรับนักวิจัยคนที่ 2</label>
+                                        <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            ส่งพิมพ์วันที่ :
+                                            <input
+                                              type="date"
+                                              name="timelab1_2"
+                                              value={procedure.timelab1_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+
+                                          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                            พิมพ์เสร็จวันที่ :
+                                            <input
+                                              type="date"
+                                              name="timelab2_2"
+                                              value={procedure.timelab2_2}
+                                              className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                              onChange={(event) =>
+                                                handleChangeInput2(
+                                                  procedure.idx,
+                                                  event
+                                                )
+                                              }
+                                            />
+                                          </label>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                                ) : (
+                                  <div className="bg-yellow-300 px-5 py-2 rounded-xl">
+                                    <div>
+                                      <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          ส่งพิมพ์วันที่ :
+                                          <input
+                                            type="date"
+                                            name="timelab1"
+                                            value={procedure.timelab1}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                          />
+                                        </label>
+
+                                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                                          พิมพ์เสร็จวันที่ :
+                                          <input
+                                            type="date"
+                                            name="timelab2"
+                                            value={procedure.timelab2}
+                                            className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                                  block w-full p-2.5"
+                                            onChange={(event) =>
+                                              handleChangeInput2(
+                                                procedure.idx,
+                                                event
+                                              )
+                                            }
+                                          />
+                                        </label>
+                                      </div>
+                                    </div>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           ))}
