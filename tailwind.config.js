@@ -24,7 +24,6 @@ darkMode: 'class',
         },
      },
     },
-
     
   },
   variants:{

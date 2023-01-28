@@ -21,26 +21,27 @@ const deliveredOrder = async(req, res) => {
 
 
         const order = await Orders.findOne({_id: id})
-        if(order.paid){
+        if(!order.delivered && !order.paid){
             await Orders.findOneAndUpdate({_id: id}, {delivered: true})
     
             res.json({
-                msg: 'Updated success!',
+                msg: 'ยืนยันการจองสำเร็จ!',
                 result: {
-                    paid: true, 
-                    dateOfPayment: order.dateOfPayment, 
-                    method: order.method, 
+                    // paid: true, 
+                    // dateOfPayment: order.dateOfPayment, 
+                    // method: order.method, 
                     delivered: true
                 }
             })
-        }else{
+        }
+        else {
             await Orders.findOneAndUpdate({_id: id}, {
                 paid: true, dateOfPayment: new Date().toISOString(), 
                 method: 'รับเงินสด', delivered: true
             })
     
             res.json({
-                msg: 'Updated success!',
+                msg: 'สำเร็จยืนยัน!',
                 result: {
                     paid: true, 
                     dateOfPayment: new Date().toISOString(), 

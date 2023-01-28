@@ -115,7 +115,7 @@ const BookingDetail = (props) => {
 
     getTotal();
   }, [price]);
-  console.log("price", total);
+  console.log("total", total);
 
   const delay = async () => {
     setTimeout(() => {
@@ -139,13 +139,13 @@ const BookingDetail = (props) => {
       // setShowBooking(props.booking)
     }
   }, [id]);
-  console.log("1", props.booking[0]._id);
+  
 
   const handlePayment = async (i,p) => {
     console.log("i", i);
-
+setTotal(p);
     const pay = async () => {
-      setTotal(p);
+      
       if(prodOrder.length === 1){
         postData(
           "order",

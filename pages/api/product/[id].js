@@ -40,14 +40,15 @@ const updateProduct = async (req, res) => {
 
         const {id} = req.query
         const {title,en, brand, modelName, room,roomen, manager,
-            detailCapability, detailRestrictions, category, images, nameRate} = req.body
+            detailCapability, detailRestrictions, category, images, nameRate,pdf,video} = req.body
 
         if(!title || !en  || !brand || !modelName || !room ||!roomen || !manager||
             !detailCapability || !detailRestrictions || category === 'all' || images.length === 0 || nameRate.length === 0)
-        return res.status(400).json({err: 'Please add all the fields.'})
+        return res.status(400).json({err: 'กรุณากรอกข้อมูลให้ครบถ้วน.'})
 
         await Products.findOneAndUpdate({_id: id}, {
-            en : en.toLowerCase(),title, brand, modelName, room,roomen, manager, detailCapability, detailRestrictions, category, images, nameRate
+            en : en.toLowerCase(),title, brand, modelName, room,roomen, manager, detailCapability,
+             detailRestrictions, category, images, nameRate,pdf,video
         })
 
         res.json({msg: 'Success! Updated a product'})

@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import { BsHeartFill, BsHeart } from "react-icons/bs";
 import { deleteData } from "../../utils/fetchData";
 import { FaFilePdf } from "react-icons/fa";
+import {AiFillVideoCamera} from "react-icons/ai";
+import {MdContactMail} from "react-icons/md";
 import Link from "next/link";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { MdOutlineScience } from "react-icons/md";
@@ -385,18 +387,24 @@ const DetailProduct = (props, query) => {
 
       <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
         {Object.keys(auth).length !== 0 ? (
-          <Link href={`booking/${product._id}`}>
-            <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
+          <Link href={`/booking/${product._id}`}>
+            <a
+              rel="noopener noreferrer"
+            className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 mr-1.5 rounded-full text-white">
+
+            
+            <button >
               <div className="flex items-center justify-center px-auto ">
                 <MdOutlineScience></MdOutlineScience>
                 <div className="mr-1"></div> จองเครื่องมือ
               </div>
             </button>
+            </a>
           </Link>
         ) : (
           <Link href="#">
             <button
-              className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white"
+              className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 mr-1.5 rounded-full text-white"
               onClick={alert}
             >
               <div className="flex items-center justify-center px-auto ">
@@ -406,11 +414,12 @@ const DetailProduct = (props, query) => {
             </button>
           </Link>
         )}
-        <Link href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">
+        
+        <Link href={product.pdf[0].url}>
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 rounded-full text-center no-underline"
+            className="  bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
           >
             <button>
               ข้อมูลเครื่องมือ
@@ -418,14 +427,55 @@ const DetailProduct = (props, query) => {
             </button>
           </a>
         </Link>
-        <Link href="#โหลดแบบฟอร์ม">
+         
+       
+        
+        
+        
+        <Link href="https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing">
+        <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" rounded-full bg-[#1a237e] text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            >
           <button
             type="button"
-            className=" rounded-full bg-[#1a237e] text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            
           >
             ติดต่อขอรับบริการ
+            <MdContactMail className=" inline ml-2" />
           </button>
+          </a>
         </Link>
+
+        {product.video.length !==0 ? (
+          <Link href={product.video}>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+          >
+            <button >
+              วิดีโอเครื่องมือ
+              <AiFillVideoCamera className="inline ml-2" />
+            </button>
+          </a>
+        </Link>
+        ) : (
+         
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" hover:bg-[#8e8e8e] bg-[#8e8e8e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+            
+          >
+            <button disabled>
+              ไม่มีวิดีโอเครื่องมือ
+              <FaFilePdf className="inline ml-2" />
+            </button>
+          </a>
+        
+        )}
         {toggler ? (
           <button
             type="button"

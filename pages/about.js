@@ -4,6 +4,13 @@ import emailjs from "@emailjs/browser";
 import Swal from "sweetalert2";
 import Head from "next/head";
 import { Staff } from "./api/data/staff";
+import { p } from "./api/data/staff_p";
+import { w } from "./api/data/staff_w";
+import { c } from "./api/data/staff_c";
+import { j } from "./api/data/staff_j";
+import { k } from "./api/data/staff_k";
+
+
 
 export default function About() {
   return (
@@ -40,9 +47,29 @@ export default function About() {
               </div>
             </div>
           </div>
-          {Staff.map((staff) => (
+          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/260021.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายวิเคราะห์ด้วยกล้องจุลทรรศน์
+                </p>
+                <p className="text-md md:text-xl">
+                น.ส.เกวลี พร้อมพิพัฒนพร
+                </p>
+                <p>ตำแหน่ง: นักวิทยาศาสตร์</p>
+                <p>อีเมล: kewalee@sut.ac.th</p>
+                <p>โทร: 3193</p>
+                
+              </div>
+            </div>
+          </div>
+          {c.map((staff) => (
             <div
-              key={staff.id}
+              key={Staff.id}
               className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
             >
               <div className="md:flex flex-row sm:flex">
@@ -52,9 +79,193 @@ export default function About() {
                 />
                 <div className="flex-col">
                   <p className="pt-2 text-md md:text-xl">{staff.name}</p>
+                  <p>ตำแหน่ง: {staff.role}</p>
                   <p>อีเมล {staff.email}</p>
                   <p>โทร. {staff.phone}</p>
-                  <p>แฟกซ์. {staff.fax}</p>
+                 
+                </div>
+              </div>
+            </div>
+          ))}
+                    <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/239056.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายวิเคราะห์ทางเคมีและชีววิทยา
+                </p>
+                <p className="text-md md:text-xl">
+                  น.ส.จรรจิรา วงศ์วิวัฒนา
+                </p>
+                <p>ตำแหน่ง: นักวิทยาศาสตร์</p>
+                <p>อีเมล: jan@sut.ac.th</p>
+                <p>โทร: 3273</p>
+                
+              </div>
+            </div>
+          </div>
+          {k.map((staff) => (
+            <div
+              key={Staff.id}
+              className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
+            >
+              <div className="md:flex flex-row sm:flex">
+                <img
+                  className="mr-3 self-center max-w-[100px] rounded-md "
+                  src={staff.img}
+                />
+                <div className="flex-col">
+                  <p className="pt-2 text-md md:text-xl">{staff.name}</p>
+                  <p>ตำแหน่ง: {staff.role}</p>
+                  <p>อีเมล {staff.email}</p>
+                  <p>โทร. {staff.phone}</p>
+                 
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/237049.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายวิเคราะห์ทางกายภาพ
+                </p>
+                <p className="text-md md:text-xl">
+                น.ส.วิมลพร โสภณ
+                </p>
+                <p>ตำแหน่ง: พนักงานห้องทดลอง</p>
+                <p>อีเมล: vim@sut.ac.th</p>
+                <p>โทร: 3293</p>
+                
+              </div>
+            </div>
+          </div>
+          {p.map((staff) => (
+            <div
+              key={Staff.id}
+              className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
+            >
+              <div className="md:flex flex-row sm:flex">
+                <img
+                  className="mr-3 self-center max-w-[100px] rounded-md "
+                  src={staff.img}
+                />
+                <div className="flex-col">
+                  <p className="pt-2 text-md md:text-xl">{staff.name}</p>
+                  <p>ตำแหน่ง: {staff.role}</p>
+                  <p>อีเมล {staff.email}</p>
+                  <p>โทร. {staff.phone}</p>
+                 
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/253002.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายวิเคราะห์ทางจุลชีววิทยา
+                </p>
+                <p className="text-md md:text-xl">
+                น.ส.นิตยา สมพงษ์
+                </p>
+                <p>ตำแหน่ง: นักวิทยาศาสตร์</p>
+                <p>อีเมล: nittaya_s@sut.ac.th</p>
+                <p>โทร: 3260</p>
+                
+              </div>
+            </div>
+          </div>
+          {j.map((staff) => (
+            <div
+              key={Staff.id}
+              className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
+            >
+              <div className="md:flex flex-row sm:flex">
+                <img
+                  className="mr-3 self-center max-w-[100px] rounded-md "
+                  src={staff.img}
+                />
+                <div className="flex-col">
+                  <p className="pt-2 text-md md:text-xl">{staff.name}</p>
+                  <p>ตำแหน่ง: {staff.role}</p>
+                  <p>อีเมล {staff.email}</p>
+                  <p>โทร. {staff.phone}</p>
+                 
+                </div>
+              </div>
+            </div>
+          ))}
+
+<div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/260025.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายวิเคราะห์น้ำ
+                </p>
+                <p className="text-md md:text-xl">
+                น.ส.ชุติมณฑน์ ชูพุดซา
+                </p>
+                <p>ตำแหน่ง: นักวิทยาศาสตร์</p>
+                <p>อีเมล: chutimon@sut.ac.th</p>
+                <p>โทร: 3273</p>
+                
+              </div>
+            </div>
+          </div>
+          
+
+          <div className="bg-[#E8EDFA] rounded-md md:col-span-2 px-3 sm:px-auto py-3" >
+            <div className="md:flex lg:flex flex-row sm:flex mx-auto" >
+              <img
+                className="mr-3 max-w-[100px] self-center  rounded-md"
+                src={"http://203.158.7.33/profiles/photo/260031.jpg"}
+              />
+              <div className="flex-col">
+                <p className="text-md md:text-xl font-semibold mt-2 md:mt-0">
+                  หัวหน้าฝ่ายงานระบบคุณภาพห้องปฏิบัติการ
+                </p>
+                <p className="text-md md:text-xl">
+                น.ส.กรรณิการ์ กันทะวงศ์
+                </p>
+                <p>ตำแหน่ง: นักวิทยาศาสตร์</p>
+                <p>อีเมล: kunnikar@sut.ac.th</p>
+                <p>โทร: 3280</p>
+                
+              </div>
+            </div>
+          </div>
+          {Staff.map((staff) => (
+            <div
+              key={Staff.id}
+              className="bg-[#E8EDFA] rounded-md  px-3 sm:px-auto py-3"
+            >
+              <div className="md:flex flex-row sm:flex">
+                <img
+                  className="mr-3 self-center max-w-[100px] rounded-md "
+                  src={staff.img}
+                />
+                <div className="flex-col">
+                  <p className="pt-2 text-md md:text-xl">{staff.name}</p>
+                  <p>ตำแหน่ง: {staff.role}</p>
+                  <p>อีเมล {staff.email}</p>
+                  <p>โทร. {staff.phone}</p>
+                 
                 </div>
               </div>
             </div>

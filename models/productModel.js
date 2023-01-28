@@ -62,6 +62,12 @@ const productSchema = new mongoose.Schema({
         type: Array,
         required: true
     },
+    pdf: {
+        type: Array,
+    },
+    video:{
+        type: String,
+    }
     
 }, {
     timestamps: true

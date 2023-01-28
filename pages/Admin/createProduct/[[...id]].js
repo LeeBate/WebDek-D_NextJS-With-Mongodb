@@ -3,6 +3,7 @@ import * as React from "react";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
 import { imageUpload } from "../../../utils/imageUpload";
+import { PDFUpload } from "../../../utils/imageUpload";
 import { postData, getData, putData } from "../../../utils/fetchData";
 import { useRouter } from "next/router";
 import { v4 as uuidv4 } from "uuid";
@@ -20,6 +21,7 @@ import Box from "@mui/material/Box";
 
 const ProductsManager = (props) => {
   const [images, setImages] = useState([]);
+  const [pdf, setPDF] = useState([]);
 
   const { state, dispatch } = useContext(DataContext);
   const { categories, auth } = state;
@@ -38,6 +40,7 @@ const ProductsManager = (props) => {
     detailCapability: "",
     detailRestrictions: "",
     category: "",
+    video:"",
   };
 
   const [product, setProduct] = useState(initialState);
@@ -52,6 +55,7 @@ const ProductsManager = (props) => {
     detailCapability,
     detailRestrictions,
     category,
+    video,
   } = product;
 
   //TAB Change
@@ -70,6 +74,7 @@ const ProductsManager = (props) => {
   useEffect(() => {
     setMachinery(props.products);
   }, [props.products]);
+  console.log("products", props.products);
 
   useEffect(() => {
     if (Object.keys(router.query).length === 0) setPage(1);
@@ -84,6 +89,7 @@ const ProductsManager = (props) => {
 
   const handleClearAddNew = async () => {
     setImages([]);
+    setPDF([]);
     setInputFields([
       {
         idx: uuidv4(),
@@ -133,13 +139,17 @@ const ProductsManager = (props) => {
         setProduct(res.product);
         setImages(res.product.images);
         setInputFields(res.product.nameRate);
+        setPDF(res.product.pdf);
       });
     } else {
       setOnEdit(false);
       setProduct(initialState);
       setImages([]);
+      setPDF([]);
     }
   }, [id]);
+  console.log("pdf", pdf);
+  console.log("images", images);
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
@@ -183,6 +193,42 @@ const ProductsManager = (props) => {
     setImages([...images, ...newImages]);
   };
 
+  const handleUploadInputPDF = (e) => {
+    dispatch({ type: "NOTIFY", payload: {} });
+    let newImages = [];
+    let num = 0;
+    let err = "";
+    const files = [...e.target.files];
+
+    if (files.length === 0)
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: "ไฟล์ไม่มีอยู่." },
+      });
+
+    files.forEach((file) => {
+      num += 1;
+      if (num <= 1) newImages.push(file);
+      return newImages;
+    });
+
+    if (err) dispatch({ type: "NOTIFY", payload: { error: err } });
+
+    const imgCount = pdf.length;
+    if (imgCount + newImages.length > 1)
+      return dispatch({
+        type: "NOTIFY",
+        payload: { error: "อัพโหลดได้ครั้งละ 1 ไฟล์โปรดลบไฟล์ออกก่อน" },
+      });
+    setPDF([...pdf, ...newImages]);
+  };
+
+  const deletePDF = (index) => {
+    const newArr = [...pdf];
+    newArr.splice(index, 1);
+    setPDF(newArr);
+  };
+
   const deleteImage = (index) => {
     const newArr = [...images];
     newArr.splice(index, 1);
@@ -217,10 +263,16 @@ const ProductsManager = (props) => {
 
     dispatch({ type: "NOTIFY", payload: { loading: true } });
     let media = [];
+    let pdfmedia = [];
     const imgNewURL = images.filter((img) => !img.url);
     const imgOldURL = images.filter((img) => img.url);
+    const PDFNewURL = pdf.filter((img) => !img.url);
+    const PDFOldURL = pdf.filter((img) => img.url);
+
+    console.log("url", pdf)
 
     if (imgNewURL.length > 0) media = await imageUpload(imgNewURL);
+    if (PDFNewURL.length > 0) pdfmedia = await PDFUpload(PDFNewURL);
 
     let res;
     if (onEdit) {
@@ -230,6 +282,7 @@ const ProductsManager = (props) => {
           ...product,
           nameRate: [...inputFields],
           images: [...imgOldURL, ...media],
+          pdf: [...PDFOldURL, ...pdfmedia],
         },
         auth.token
       );
@@ -242,6 +295,7 @@ const ProductsManager = (props) => {
           ...product,
           nameRate: [...inputFields],
           images: [...imgOldURL, ...media],
+          pdf: [...PDFOldURL, ...pdfmedia],
         },
         auth.token
       );
@@ -252,6 +306,7 @@ const ProductsManager = (props) => {
     dispatch({ type: "NOTIFY", payload: { success: res.msg } });
 
     setImages([]);
+    setPDF([]);
     setInputFields([
       {
         idx: uuidv4(),
@@ -369,9 +424,9 @@ const ProductsManager = (props) => {
                     <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
                       การจัดการเครื่องมือ
                     </h2>
-                    <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+                    {/* <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
                       ไม่รู้จะใส่อะไร เผื่ออยากใส่
-                    </p>
+                    </p> */}
                     <form
                       method="post"
                       onSubmit={handleSubmit}
@@ -538,6 +593,24 @@ const ProductsManager = (props) => {
                             value={detailRestrictions}
                           ></textarea>
                         </div>
+                        
+                      </div>
+
+                      <div>
+                        <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
+                          ลิ้งวิดีโอเครื่องมือ
+                        </label>
+                        <input
+                          type="text"
+                          name="video"
+                          value={video}
+                          className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                        text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
+                        block w-full md:w-[710px] xl:w-[710px] p-2.5 "
+                          onChange={handleChangeInput}
+                          
+                          
+                        />
                       </div>
                       <div className="mr-8"></div>
                       <label>อัตราค่าบริการ : บาท/ตัวอย่าง</label>
@@ -729,7 +802,7 @@ const ProductsManager = (props) => {
                       </div>
                       <div className="row img-up mx-0">
                         {images.map((img, index) => (
-                          <div key={index} className="file_img my-1">
+                          <div key={index} className="file_img ">
                             <img
                               src={img.url ? img.url : URL.createObjectURL(img)}
                               alt=""
@@ -739,6 +812,53 @@ const ProductsManager = (props) => {
                             <span onClick={() => deleteImage(index)}>X</span>
                           </div>
                         ))}
+                      </div>
+
+                      {/* PDF */}
+                      <div className=" flex-col">
+                        <label
+                          htmlFor="message"
+                          className="block mb-2 text-xl font-medium text-gray-900 dark:text-white"
+                        >
+                          อัพโหลด PDF
+                        </label>
+                        <div className="flex justify-center items-center w-full">
+                          <label className="flex flex-col justify-center items-center w-full h-20 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
+                            <input
+                              id="dropzone-file"
+                              type="file"
+                              
+                              onChange={handleUploadInputPDF}
+                              accept="application/pdf"
+                            />
+                          </label>
+                        </div>
+                        <div className="row  mx-0">
+                        {pdf.map((img, index) => (
+                          <p
+                            href={img.url}
+                            key={index}
+                            className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200"
+                          >
+                            <a href={img.url ? img.url : "#"}>
+                              <img
+                                className="h-15 w-10"
+                                src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
+                              />
+                            </a>
+                            <p className="pl-2 pr-3">
+                              {false ? img.url : "Uploaded PDF"}
+                            </p>
+
+                            <span
+                              className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8"
+                              onClick={() => deletePDF(index)}
+                            >
+                              X
+                            </span>
+                          </p>
+                        ))}
+                      </div>
                       </div>
                       <button
                         type="submit"

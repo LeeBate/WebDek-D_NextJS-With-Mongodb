@@ -13,6 +13,34 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
 
+      const { delivered } = res.result;
+
+      dispatch(
+        updateItem(
+          orders,
+          order._id,
+          {
+            ...order,
+            // paid,
+            // dateOfPayment,
+            // method,
+            delivered,
+          },
+          "ADD_ORDERS"
+        )
+      );
+
+      return dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+    });
+  };
+
+  const handlePaid = (order) => {
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
+
+    patchData(`order/delivered/${order._id}`, null, auth.token).then((res) => {
+      if (res.err)
+        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+
       const { paid, dateOfPayment, method, delivered } = res.result;
 
       dispatch(
@@ -24,7 +52,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
             paid,
             dateOfPayment,
             method,
-            delivered,
+            // delivered,
           },
           "ADD_ORDERS"
         )
@@ -72,10 +100,10 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   role="alert"
                 >
                   {order.delivered
-                    ? `ยืมยันเมื่อ ${new Date(
+                    ? `อนุมัติการจองเมื่อ ${new Date(
                         order.updatedAt
                       ).toLocaleString()} น.`
-                    : "รอการชำระเงินเพื่ออนุมัติการจองเครื่องมือ"}
+                    : "โปรดรออนุมัติการจองเครื่องมือ"}
                   {auth.user.role === "admin" && !order.delivered && (
                     <button
                       className="btn btn-dark text-uppercase"
@@ -89,7 +117,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                 <h3>การชำระเงิน</h3>
                 {order.method && (
                   <h6>
-                    Method: <em>{order.method}</em>
+                    ชำระเงินด้วย: <em>{order.method}จำนวน {order.total} ฿</em>
                   </h6>
                 )}
 
@@ -111,10 +139,18 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                         order.dateOfPayment
                       ).toLocaleString()} น.`
                     : "ยังไม่ได้ชำระเงิน"}
+                  {auth.user.role === "admin" && !order.paid && (
+                     <button
+                      className="btn btn-dark text-uppercase"
+                      onClick={() => handlePaid(order)}
+                    >
+                      ยืนยันการรับเงินสด
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
-
+            <div>
             {!order.paid && auth.user.role !== "admin" && (
               <div className="p-4">
                 <h2 className="mb-4 text-uppercase">
@@ -123,6 +159,9 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                 <PaypalBtn order={order} />
               </div>
             )}
+            </div>
+
+
           </div>
         ))}
       </div>

@@ -980,4 +980,5 @@ background:#dc4e41;
 /* ----------- Products Manager ------------- */
 @import url("./products_manager.css");
 
-/* ----------- Swiper ------------- */
+/* ----------- loader ------------- */
+@import url("./loader.css");

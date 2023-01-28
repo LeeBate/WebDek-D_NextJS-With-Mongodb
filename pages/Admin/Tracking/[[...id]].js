@@ -1365,20 +1365,7 @@ const Tracking = (props) => {
                               ฝวค. นำส่งรายงานผลให้
                             </label>
                             <div className=" md:flex space-x-2">
-                              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
-                                ออกเลขวันที่ :
-                                <input
-                                  type="date"
-                                  name="time1"
-                                  value={reportLSU.time1}
-                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
-                                  text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
-                                  block w-full p-2.5"
-                                  onChange={(event) =>
-                                    handleChangeInput2(reportLSU.idx, event)
-                                  }
-                                />
-                              </label>
+                              
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ส่ง LSU วันที่ :
                                 <input
@@ -1393,10 +1380,12 @@ const Tracking = (props) => {
                                   }
                                 />
                               </label>
+                              <div className=" flex flex-row ">
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ผู้ส่ง :
+                              </label>
                                 <input
-                                  type="date"
+                                  type="text"
                                   name="sender"
                                   value={reportLSU.sender}
                                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
@@ -1406,11 +1395,12 @@ const Tracking = (props) => {
                                     handleChangeInput2(reportLSU.idx, event)
                                   }
                                 />
-                              </label>
+                              
                               <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
                                 ผู้รับ :
+                                </label>
                                 <input
-                                  type="date"
+                                  type="text"
                                   name="recipient"
                                   value={reportLSU.recipient}
                                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
@@ -1420,7 +1410,7 @@ const Tracking = (props) => {
                                     handleChangeInput2(reportLSU.idx, event)
                                   }
                                 />
-                              </label>
+                              </div>
                             </div>
                           </div>
                         ))}
@@ -1442,6 +1432,7 @@ const Tracking = (props) => {
                           ></input>
                         </div>
                       </div>
+                      {/* PDF */}
                       <div className=" flex-col">
                         <label
                           htmlFor="message"

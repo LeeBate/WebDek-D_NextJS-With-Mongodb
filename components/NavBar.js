@@ -86,7 +86,7 @@ function NavBar() {
 
   const dropdownServices = [
     { name: "ขั้นตอนขอรับบริการ",href: "/images/21.png", current: false },
-    { name: "แบบฟอร์มขอรับบริการ",href:"https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", current: false },
+    { name: "แบบฟอร์มขอรับบริการ",href:"https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing", current: false },
   ];
 
   const userNavigation = [
@@ -304,8 +304,8 @@ function NavBar() {
                                   <Menu.Item key={item.name}>
                                     <Link href={item.href}>
                                       <a
-                                        target="_blank"
-                                        rel="noopener noreferrer"
+                                        
+                                        
                                         className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
                                       >
                                         <button >

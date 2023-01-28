@@ -83,33 +83,6 @@ const Machinery = (props) => {
       
         <Filter state={state} />
 <div className="px-4">
-  
-        {auth.user && auth.user.role === "admin" && (
-          <div
-            className="delete_all btn btn-danger mt-2"
-            style={{ marginBottom: "-10px" }}
-          >
-            <input
-              type="checkbox"
-              checked={isCheck}
-              onChange={handleCheckALL}
-              style={{
-                width: "25px",
-                height: "25px",
-                transform: "translateY(8px)",
-              }}
-            />
-
-            <button
-              className="btn btn-danger ml-2"
-              data-toggle="modal"
-              data-target="#exampleModal"
-              onClick={handleDeleteAll}
-            >
-              ลบข้อมูลทั้งหมด
-            </button>
-          </div>
-        )}
 
 <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (

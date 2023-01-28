@@ -75,19 +75,19 @@ const getProducts = async (req, res) => {
 const createProduct = async (req, res) => {
     try {
         const result = await auth(req, res)
-        if(result.role !== 'admin') return res.status(400).json({err: 'Authentication is not valid.'})
+        if(result.role !== 'admin') return res.status(400).json({err: 'การเข้าสู่ระบบไม่ถูกต้อง โปรดเข้าสู่ระบบ.'})
 
         const {title, en, brand, modelName, room,roomen, manager,
-            detailCapability, detailRestrictions, category, images, nameRate} = req.body
+            detailCapability, detailRestrictions, category, images, nameRate,pdf,video} = req.body
 
         if(!title || !en || !brand || !modelName || !room ||!roomen || !manager||
             !detailCapability || !detailRestrictions  || category === 'all' || images.length === 0 || nameRate.length === 0)
-        return res.status(400).json({err: 'Please add all the fields.'})
+        return res.status(400).json({err: 'กรุณากรอกข้อมูลให้ครบถ้วน.'})
 
 
         const newProduct = new Products({
             title : title,en, brand, modelName, room,roomen, manager, detailCapability, 
-            detailRestrictions, category, images, nameRate
+            detailRestrictions, category, images, nameRate,pdf,video
         })
         console.log(newProduct)
         await newProduct.save()
