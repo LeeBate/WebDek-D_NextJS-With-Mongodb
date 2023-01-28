@@ -39,20 +39,22 @@ const updateProduct = async (req, res) => {
         return res.status(400).json({err: 'Authentication is not valid.'})
 
         const {id} = req.query
-        const {rnb, images, timeIn,timeOut,serviceNumber,reportNumber
+        const { images,timeOut
             ,procedure,labPrint,ensure,checkReport,ensureReport
-            ,reportLSU, lsu, lab, note, phone} = req.body
+            ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber,
+            repListDate,lastedit} = req.body
 
-            if(!rnb || images.length === 0 || !timeIn ||!timeOut||!serviceNumber||!reportNumber
+            if( images.length === 0  ||!timeOut||!serviceNumber
                 ||!procedure||!labPrint||!ensure
                 ||!checkReport||!ensureReport||!reportLSU
                 ||!lsu ||!phone)
         return res.status(400).json({err: 'Please add all the fields.'})
 
         await Informdata.findOneAndUpdate({_id: id}, {
-            rnb, images, timeIn,timeOut,serviceNumber,reportNumber
+            images,timeOut
             ,procedure,labPrint,ensure,checkReport,ensureReport
-            ,reportLSU, lsu, lab, note, phone
+            ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber,
+            repListDate,lastedit
         })
 
         res.json({msg: 'Success! Updated a product'})

@@ -78,21 +78,23 @@ const createProduct = async (req, res) => {
         const result = await auth(req, res)
         if(result.role !== 'admin') return res.status(400).json({err: 'Authentication is not valid.'})
 
-        const {rnb, images, timeIn,timeOut,serviceNumber,reportNumber
+        const { images,timeOut
             ,procedure,labPrint,ensure,checkReport,ensureReport
-            ,reportLSU, lsu, lab, note, phone} = req.body
+            ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber,
+            repListDate,lastedit} = req.body
 
-        if(!rnb || images.length === 0 || !timeIn ||!timeOut||!serviceNumber||!reportNumber
-            ||!procedure||!labPrint||!ensure
-            ||!checkReport||!ensureReport||!reportLSU
-            ||!lsu ||!phone)
-        return res.status(400).json({err: 'Please add all the fields22.'})
+        // if(images.length === 0 ||!timeOut
+        //     ||!procedure||!labPrint||!ensure|| !serviceNumber
+        //     ||!checkReport||!ensureReport||!reportLSU
+        //     ||!lsu||!lab||!note ||!phone||!sntime||!repList||!repListDate)
+        // return res.status(400).json({err: 'Please add all the fields22.'})
 
 
         const newProduct = new Tracked({
-            serviceNumber : serviceNumber, images,rnb,
-            timeIn,timeOut,reportNumber
-            ,procedure,labPrint,ensure,checkReport,ensureReport,reportLSU, lsu, lab, note, phone
+            images,
+           timeOut
+            ,procedure,labPrint,ensure,checkReport,ensureReport,serviceNumber,
+            reportLSU, lsu, lab, note, phone,sntime,repList,repListDate,lastedit
         })
         
         await newProduct.save()

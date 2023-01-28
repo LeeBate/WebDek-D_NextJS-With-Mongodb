@@ -2,15 +2,16 @@
 import  mongoose  from "mongoose";
 
 const Tracking = new mongoose.Schema({
-    rnb: {
-        type: String,
-        require: true,
-        trim: true,
-    },
-    timeIn: {
-        type: String,
-        require: true,
-    },
+    // rnb: {
+    //     type: String,
+    //     require: true,
+    //     trim: true,
+    // },
+    // timeIn: {
+    //     type: String,
+    //     require: true,
+    // },
+
     timeOut: {
         type: String,
         require: true,
@@ -20,11 +21,11 @@ const Tracking = new mongoose.Schema({
         require: true,
         trim: true,
     },
-    reportNumber: {
-        type: String,
-        require: true,
-        trim: true,
-    },
+    // reportNumber: {
+    //     type: String,
+    //     require: true,
+    //     trim: true,
+    // },
     images: {
         type: Array,
         required: true,
@@ -74,6 +75,20 @@ const Tracking = new mongoose.Schema({
         type: String,
         require: true,
     },
+
+    lastedit: {
+        type: String,
+    },
+    repList: {
+        type: Array,
+    },
+    repListDate: {
+        type: Array,
+    },
+    sntime: {
+        type: String,
+    }
+
 })
 
 let Dataset = mongoose.models.Tracking || mongoose.model('Tracking', Tracking)
