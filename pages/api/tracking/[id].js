@@ -53,7 +53,7 @@ const updateProduct = async (req, res) => {
         await Informdata.findOneAndUpdate({_id: id}, {
             images,timeOut
             ,procedure,labPrint,ensure,checkReport,ensureReport
-            ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber,
+            ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber:serviceNumber.toUpperCase(),
             repListDate,lastedit
         })
 

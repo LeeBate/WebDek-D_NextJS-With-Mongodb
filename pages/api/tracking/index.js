@@ -27,8 +27,8 @@ class APIfeatures {
         const excludeFields = ['page', 'sort', 'limit']
         excludeFields.forEach(el => delete(queryObj[el]))
 
-        if(queryObj.title !== 'all')
-            this.query.find({title: {$regex: queryObj.title}})
+        if(queryObj.serviceNumber !== 'all')
+            this.query.find({serviceNumber: {$regex: queryObj.serviceNumber}})
 
         this.query.find()
         return this;
@@ -93,7 +93,7 @@ const createProduct = async (req, res) => {
         const newProduct = new Tracked({
             images,
            timeOut
-            ,procedure,labPrint,ensure,checkReport,ensureReport,serviceNumber,
+            ,procedure,labPrint,ensure,checkReport,ensureReport,serviceNumber:serviceNumber.toUpperCase(),
             reportLSU, lsu, lab, note, phone,sntime,repList,repListDate,lastedit
         })
         

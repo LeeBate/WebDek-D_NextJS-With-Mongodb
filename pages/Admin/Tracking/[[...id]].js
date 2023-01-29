@@ -10,7 +10,7 @@ import FullLayout from "../../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../../src/theme/theme";
 import filterSearch from "../../../utils/filterSearch";
-import FilterNews from "../../../components/FilterNews";
+import Filter from "../../../components/FilterNews copy";
 import Link from "next/link";
 import { IoIosAddCircleOutline } from "react-icons/io";
 import Tab from "@mui/material/Tab";
@@ -290,48 +290,23 @@ const Tracking = (props) => {
     if (id == 5) {
       return checked5;
     }
-    return;
   };
 
-  const getValue = (value, id) => {
-    id = id + 1;
-    if (id == 1) {
-      setChecked1(value);
-      return checked1;
-    }
-    if (id == 2) {
-      setChecked2(value);
-      return checked2;
-    }
-    if (id == 3) {
-      setChecked3(value);
-      return checked3;
-    }
-    if (id == 4) {
-      setChecked4(value);
-      return checked4;
-    }
-    if (id == 5) {
-      setChecked5(value);
-      return checked5;
-    }
-  };
-
-  const hiddenChkx = (id) => {
-    id = id + 1;
-    if (id == 1) {
+  const hiddenChkx = (idz) => {
+    idz = idz + 1;
+    if (idz == 1) {
       return !checkedx1;
     }
-    if (id == 2) {
+    if (idz == 2) {
       return !checkedx2;
     }
-    if (id == 3) {
+    if (idz == 3) {
       return !checkedx3;
     }
-    if (id == 4) {
+    if (idz == 4) {
       return !checkedx4;
     }
-    if (id == 5) {
+    if (idz == 5) {
       return !checkedx5;
     }
   };
@@ -757,6 +732,18 @@ const Tracking = (props) => {
     setReportLSU(newInputFields5);
   };
 
+  function ConvertDate(date) {
+    const data = new Date(date).toLocaleString("th-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return data;
+  }
+
   return (
     <ThemeProvider theme={theme}>
       <style jsx global>{`
@@ -961,7 +948,7 @@ const Tracking = (props) => {
                                           defaultChk(ids);
                                           return procedure.checkwork;
                                         } else if (ida == 2) {
-                                          setChecked2(!procedure.checkwork);
+                                          setChecked2(procedure.checkwork);
                                           defaultChk(ids);
                                           return procedure.checkwork;
                                         } else if (ida == 3) {
@@ -973,7 +960,7 @@ const Tracking = (props) => {
                                           defaultChk(ids);
                                           return procedure.checkwork;
                                         } else if (ida == 5) {
-                                          setChecked5(!procedure.checkwork);
+                                          setChecked5(procedure.checkwork);
                                           defaultChk(ids);
                                           return procedure.checkwork;
                                         }
@@ -998,32 +985,7 @@ const Tracking = (props) => {
 
                               <div
                                 hidden={
-                                  onEdit
-                                    ? (event) => {
-                                        const ida = ids + 1;
-                                        if (ida == 1) {
-                                          setChecked1(procedure.checkwork);
-
-                                          return procedure.checkwork;
-                                        } else if (ida == 2) {
-                                          setChecked2(procedure.checkwork);
-
-                                          return procedure.checkwork;
-                                        } else if (ida == 3) {
-                                          setChecked3(procedure.checkwork);
-
-                                          return procedure.checkwork;
-                                        } else if (ida == 4) {
-                                          setChecked4(procedure.checkwork);
-
-                                          return procedure.checkwork;
-                                        } else if (ida == 5) {
-                                          setChecked5(!procedure.checkwork);
-
-                                          return procedure.checkwork;
-                                        }
-                                      }
-                                    : hiddenChk(ids)
+                                  hiddenChk(ids)
                                 }
                               >
                                 {procedure.ListName ===
@@ -1139,7 +1101,7 @@ const Tracking = (props) => {
                                     <div className="bg-slate-300 px-5 py-2 rounded-xl mt-3">
                                       <div>
                                         <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">
-                                          ช่องสำหรับนักวิจัยคนที่ 1
+                                          ช่องสำหรับนักวิจัยคนที่ 2
                                         </label>
                                         <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-2">
                                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1411,6 +1373,7 @@ const Tracking = (props) => {
                                     ? procedure.checkwork
                                     : defaultChkx(ids)
                                 }
+                                
                                 type="checkbox"
                                 value={
                                   onEdit
@@ -1458,7 +1421,30 @@ const Tracking = (props) => {
                                 }}
                                 defaultSelected={
                                   onEdit
-                                    ? procedure.checkwork
+                                    ? (event) => {
+                                        const ida = ids + 1;
+                                        if (ida == 1) {
+                                          setCheckedx1(procedure.checkwork);
+                                          defaultChkx(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 2) {
+                                          setCheckedx2(procedure.checkwork);
+                                          defaultChkx(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 3) {
+                                          setCheckedx3(procedure.checkwork);
+                                          defaultChkx(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 4) {
+                                          setCheckedx4(procedure.checkwork);
+                                          defaultChkx(ids);
+                                          return procedure.checkwork;
+                                        } else if (ida == 5) {
+                                          setCheckedx5(procedure.checkwork);
+                                          defaultChkx(ids);
+                                          return procedure.checkwork;
+                                        }
+                                      }
                                     : defaultChkx(ids)
                                 }
                                 size="xl"
@@ -1997,26 +1983,37 @@ const Tracking = (props) => {
 
                
                     <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                      <Filter />
                       <TableContainer sx={{ maxHeight: 640 }}>
                         <Table stickyHeader aria-label="sticky table">
                           <TableHead>
                             <TableRow>
                               <TableCell>หมายเลขใบขอรับบริการ</TableCell>
                               <TableCell>ชื่อผู้แก้ไขล่าสุด</TableCell>
+                              <TableCell>วันและเวลาแก้ไขล่าสุด</TableCell>
                               <TableCell>จัดการข้อมูล</TableCell>
                             </TableRow>
                           </TableHead>
                           {Slides.length === 0 ? (
-                  <h2>ไม่มีข้อมูลการติดตามผลวิเคราะห์ทดสอบ</h2>
+                  <div className="alert alert-warning my-auto">
+                  <div>
+                    <div className="swap-off">
+                      😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
+                    </div>
+                  </div>
+                </div>
                 ) : (
                   Slides.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((product, ict) => (
-                          <TableBody>
+                          <TableBody key={product._id}>
                             <TableRow hover role="checkbox" tabIndex={-1}>
                               <TableCell key={product.id}>
                                 {product.serviceNumber}
                               </TableCell>
                               <TableCell key={product.id}>
                                 {product.lastedit}
+                              </TableCell>
+                              <TableCell key={product.id}>
+                                {ConvertDate(product.updatedAt)}
                               </TableCell>
                               <TableCell key={product.id}>
                               <Link href={`/Admin/Tracking/${product._id}`}>
@@ -2062,7 +2059,7 @@ export async function getServerSideProps({ query }) {
   const res = await getData(
     `tracking?limit=${
       page * 100
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&category=${category}&sort=${sort}&serviceNumber=${search}`
   );
   // server side rendering
   return {

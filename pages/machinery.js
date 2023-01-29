@@ -65,35 +65,21 @@ const Machinery = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      
-      {/* <div className="parallax ">
-        <h1
-          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-white"
-          id="header"
-        >
-          เครื่องมือวิเคราะห์
-        </h1>
-      </div> */}
-      {/* <style jsx global>{`
-        footer {
-          display: none;
-        }
-      `}</style> */}
-
-      
-        <Filter state={state} />
-<div className="px-4">
-
-<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+      <Filter state={state} />
+      <div className="px-4">
+        <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (
-            <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
+            <div className="alert alert-warning my-auto">
+              <div>
+                <div className="swap-off">
+                  😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้งหรือ ค้นหาโดยใช้ภาษาอังกฤษ</span>
+                </div>
+              </div>
+            </div>
           ) : (
             products.map((product) => (
-              <div key={product._id} data-aos="fade-up" >
-              <ProductItem
-                product={product}
-                handleCheck={handleCheck}
-              />
+              <div key={product._id} data-aos="fade-up">
+                <ProductItem product={product} handleCheck={handleCheck} />
               </div>
             ))
           )}
@@ -123,7 +109,7 @@ export async function getServerSideProps({ query }) {
   const res = await getData(
     `product?limit=${
       page * 100
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&category=${category}&sort=${sort}&en=${search}`
   );
   // server side rendering
   return {

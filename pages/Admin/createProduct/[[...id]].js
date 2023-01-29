@@ -1016,7 +1016,7 @@ export async function getServerSideProps({ query }) {
   const res = await getData(
     `product?limit=${
       page * 100
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&category=${category}&sort=${sort}&en=${search}`
   );
   // server side rendering
   return {

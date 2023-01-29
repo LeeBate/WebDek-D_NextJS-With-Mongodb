@@ -75,7 +75,7 @@ const BlogCard = () => {
     const resprod = await getData(
       `product?limit=${
         page * 500
-      }&category=${category}&sort=${sort}&title=${search}`
+      }&category=${category}&sort=${sort}&en=${search}`
     );
     const resnews = await getData(
       `productNews?limit=${
