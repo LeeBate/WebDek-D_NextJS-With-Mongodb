@@ -273,11 +273,13 @@ function NavBar() {
                             </Transition>
                           </Menu>
                           <Menu as="div" className="relative ml-3">
-                            <div>
+                            
                               <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
-                                การติดตามรายงานผลการทดสอบ
+                                <Link className="" href="/Track">
+                                  <div>การติดตามรายงานผลการทดสอบ</div>
+                              </Link>
                               </Menu.Button>
-                            </div>
+                            
                           </Menu>
 
                           <Menu as="div" className="relative ml-3">
@@ -396,7 +398,7 @@ function NavBar() {
                       <Menu as="div" className="relative ">
                         <div>
                           <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
-                            <Link href="#">
+                            <Link href="/Track">
                               <div>การติดตามรายงานผลการทดสอบ</div>
                             </Link>
                           </Menu.Button>
