@@ -17,6 +17,7 @@ class MyDocument extends Document{
                     <script src="../path/to/flatpickr.min.js"></script>
                     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
                     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+                    
 
                 </Head>
                 <body>

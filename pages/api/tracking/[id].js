@@ -44,11 +44,11 @@ const updateProduct = async (req, res) => {
             ,reportLSU, lsu, lab, note, phone,sntime,repList ,serviceNumber,
             repListDate,lastedit} = req.body
 
-            if( images.length === 0  ||!timeOut||!serviceNumber
-                ||!procedure||!labPrint||!ensure
-                ||!checkReport||!ensureReport||!reportLSU
-                ||!lsu ||!phone)
-        return res.status(400).json({err: 'Please add all the fields.'})
+        //     if( images.length === 0  ||!timeOut||!serviceNumber
+        //         ||!procedure||!labPrint||!ensure
+        //         ||!checkReport||!ensureReport||!reportLSU
+        //         ||!lsu ||!phone)
+        // return res.status(400).json({err: 'Please add all the fields.'})
 
         await Informdata.findOneAndUpdate({_id: id}, {
             images,timeOut
@@ -57,7 +57,7 @@ const updateProduct = async (req, res) => {
             repListDate,lastedit
         })
 
-        res.json({msg: 'Success! Updated a product'})
+        res.json({msg: 'แก้ไขข้อมูลสำเร็จ!'})
     } catch (err) {
         return res.status(500).json({err: err.message})
         

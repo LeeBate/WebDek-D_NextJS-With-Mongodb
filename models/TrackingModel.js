@@ -89,6 +89,8 @@ const Tracking = new mongoose.Schema({
         type: String,
     }
 
+}, {
+    timestamps: true
 })
 
 let Dataset = mongoose.models.Tracking || mongoose.model('Tracking', Tracking)

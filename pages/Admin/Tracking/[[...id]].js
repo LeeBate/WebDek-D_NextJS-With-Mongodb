@@ -20,6 +20,16 @@ import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
 import { Checkbox } from "@nextui-org/react";
 
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+
+
 const Tracking = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { categories, auth } = state;
@@ -28,10 +38,6 @@ const Tracking = (props) => {
     Object.keys(auth).length !== 0 ? (nameadmin = auth.user.name) : "no data";
 
   // const [nameadmin2, setNameadmin2] = useState(nameadmin);
-
-  useEffect(() => {
-    
-  }, []);
 
   const initialState = {
     timeOut: "",
@@ -67,6 +73,17 @@ const Tracking = (props) => {
   const [checkedx4, setCheckedx4] = useState(false);
   const [checkedx5, setCheckedx5] = useState(false);
 
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
+  };
 
   //TAB Change
   const [tabIndex, setTabIndex] = React.useState("0");
@@ -485,7 +502,7 @@ const Tracking = (props) => {
     if (id) {
       setOnEdit(true);
       getData(`tracking/${id}`).then((res) => {
-        setProduct({...res.product , ["lastedit"]: nameadmin});
+        setProduct({ ...res.product, ["lastedit"]: nameadmin });
         setImages(res.product.images);
         setProcedure(res.product.procedure);
         setLabPrint(res.product.labPrint);
@@ -602,9 +619,9 @@ const Tracking = (props) => {
     const imgOldURL = images.filter((img) => img.url);
 
     if (imgNewURL.length > 0) media = await imageUpload(imgNewURL);
-    setProduct({ ...product, ["lastedit"] : nameadmin });
+    setProduct({ ...product, ["lastedit"]: nameadmin });
     console.log("url=", media);
-    console.log('nameadmin=', nameadmin)
+    console.log("nameadmin=", nameadmin);
 
     let res;
     if (onEdit) {
@@ -766,10 +783,10 @@ const Tracking = (props) => {
               >
                 <Tab
                   value="0"
-                  label={onEdit ? "แก้ไขสไลด์" : "เพิ่มสไลด์"}
+                  label={onEdit ? "แก้ไขข้อมูล" : "เพิ่มข้อมูล"}
                 ></Tab>
 
-                <Tab value="1" label="จัดการสไลด์"></Tab>
+                <Tab value="1" label="จัดการข้อมูล"></Tab>
               </TabList>
             </Box>
             <TabPanel value="0">
@@ -1972,89 +1989,61 @@ const Tracking = (props) => {
             <TabPanel value="1">
               <div className="container">
                 <Head>
-                  <title>สไลด์ข่าวสาร</title>
+                  <title>ติดตามผลวิเคราะห์ทดสอบ</title>
                 </Head>
                 <h1 className="flex justify-center items-center font-bold text-2xl md:text-3xl lg:text:3xl xl:text-4xl pt-5 pb-4">
-                  สไดล์ข่าวสาร
+                  ติดตามผลวิเคราะห์ทดสอบ
                 </h1>
-                {auth.user && auth.user.role === "admin" && (
-                  <div
-                    className="delete_all btn btn-danger mt-2"
-                    style={{ marginBottom: "-10px" }}
-                  >
-                    <input
-                      type="checkbox"
-                      checked={isCheck}
-                      onChange={handleCheckALL}
-                      style={{
-                        width: "25px",
-                        height: "25px",
-                        transform: "translateY(8px)",
-                      }}
-                    />
 
-                    <button
-                      className="btn btn-danger ml-2"
-                      data-toggle="modal"
-                      data-target="#exampleModal"
-                      onClick={handleDeleteAll}
-                    >
-                      ลบข้อมูลทั้งหมด
-                    </button>
-                  </div>
-                )}
-                <div className="products">
-                  {Slides.length === 0 ? (
-                    <h2>ไม่มีข้อมูลการติดตามผล</h2>
-                  ) : (
-                    Slides.map((product, ict) => (
-                      <ul
-                        key={ict}
-                        className="card bg-sky-100/75"
-                        style={{ width: "18rem" }}
-                      >
-                        <p>{product.serviceNumber}</p>
-                        <p>{product.lastedit}</p>
-                        <div className="card-body">
-                          <div className="row justify-content-between mx-0 ">
-                            <Link href={`/Admin/Tracking/${product._id}`}>
-                              <a
-                                onClick={() => {
-                                  setTabIndex("0");
-                                }}
-                                className="btn btn-info"
-                                style={{ marginRight: "5px", flex: 1 }}
-                              >
-                                แก้ไขข้อมูล
-                              </a>
-                            </Link>
-                            <button
-                              className="btn btn-danger"
-                              style={{ marginLeft: "5px", flex: 1 }}
-                              data-toggle="modal"
-                              data-target="#exampleModal"
-                              onClick={() =>
-                                dispatch({
-                                  type: "ADD_MODAL",
-                                  payload: [
-                                    {
-                                      data: "",
-                                      id: product._id,
-                                      title: product.title,
-                                      type: "DELETE_SLIDE",
-                                    },
-                                  ],
-                                })
-                              }
-                            >
-                              ลบข้อมูล
-                            </button>
-                          </div>
-                        </div>
-                      </ul>
-                    ))
-                  )}
-                </div>
+               
+                    <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                      <TableContainer sx={{ maxHeight: 640 }}>
+                        <Table stickyHeader aria-label="sticky table">
+                          <TableHead>
+                            <TableRow>
+                              <TableCell>หมายเลขใบขอรับบริการ</TableCell>
+                              <TableCell>ชื่อผู้แก้ไขล่าสุด</TableCell>
+                              <TableCell>จัดการข้อมูล</TableCell>
+                            </TableRow>
+                          </TableHead>
+                          {Slides.length === 0 ? (
+                  <h2>ไม่มีข้อมูลการติดตามผลวิเคราะห์ทดสอบ</h2>
+                ) : (
+                  Slides.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((product, ict) => (
+                          <TableBody>
+                            <TableRow hover role="checkbox" tabIndex={-1}>
+                              <TableCell key={product.id}>
+                                {product.serviceNumber}
+                              </TableCell>
+                              <TableCell key={product.id}>
+                                {product.lastedit}
+                              </TableCell>
+                              <TableCell key={product.id}>
+                              <Link href={`/Admin/Tracking/${product._id}`}>
+          <a onClick={() => {
+                                    setTabIndex("0");
+                                  }} className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
+            แก้ไขข้อมูล
+          </a>
+        </Link>
+                              </TableCell>
+                            </TableRow>
+                          </TableBody>
+                          ))
+                          )}
+                        </Table>
+                      </TableContainer>
+                      <TablePagination
+                        rowsPerPageOptions={[5, 10, 100]}
+                        component="div"
+                        count={Slides.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                      />
+                    </Paper>
+                  
               </div>
             </TabPanel>
           </TabContext>
@@ -2067,7 +2056,7 @@ const Tracking = (props) => {
 export async function getServerSideProps({ query }) {
   const page = query.page || 1;
   const category = query.category || "all";
-  const sort = query.sort || "";
+  const sort = "-updatedAt" || "";
   const search = query.search || "all";
 
   const res = await getData(
