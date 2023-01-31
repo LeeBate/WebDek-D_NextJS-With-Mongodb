@@ -95,7 +95,9 @@ const BookingDetail = (props) => {
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
       setTitle(product1.title);
       setImage(product1.images[0].url);
-      setProdOrder(props.booking.filter((item) => item.userid === auth.user.email));
+      setProdOrder(
+        props.booking.filter((item) => item.userid === auth.user.email)
+      );
       delay();
     },
 
@@ -107,7 +109,7 @@ const BookingDetail = (props) => {
   useEffect(() => {
     const getTotal = () => {
       const res = props.booking.reduce((prev, item) => {
-        return price
+        return price;
       }, 0);
 
       setTotal(res);
@@ -139,14 +141,12 @@ const BookingDetail = (props) => {
       // setShowBooking(props.booking)
     }
   }, [id]);
-  
 
-  const handlePayment = async (i,p) => {
+  const handlePayment = async (i, p) => {
     console.log("i", i);
-setTotal(p);
+    setTotal(p);
     const pay = async () => {
-      
-      if(prodOrder.length === 1){
+      if (prodOrder.length === 1) {
         postData(
           "order",
           { address, mobile, total, title, images, prodOrder },
@@ -163,13 +163,10 @@ setTotal(p);
           dispatch({ type: "NOTIFY", payload: { success: res.msg } });
           return router.push(`/order/${res.newOrder._id}`);
         });
-      }
-      else if(prodOrder.length > 1){
+      } else if (prodOrder.length > 1) {
         let newOrder1 = await prodOrder.filter((item) => i === item._id);
-      setProdOrder(newOrder1);
-      console.log("2", newOrder1)
-      
-       
+        setProdOrder(newOrder1);
+        console.log("2", newOrder1);
       }
     };
 
@@ -297,49 +294,59 @@ setTotal(p);
                     </td>
 
                     {/* <td class="px-3 py-4">{booking.statusBooking}</td> */}
-                    {booking.userid !== auth.user.email ? (
-                      <td class="px-3 py-4 ">-</td>
+                    {Object.keys(auth).length !== 0 ? (
+                      booking.userid !== auth.user.email ? (
+                        <td class="px-3 py-4 ">-</td>
+                      ) : (
+                        <td class="px-2.5 py-4 ">
+                          <button
+                            className=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 border border-blue-700 rounded "
+                            style={{ marginLeft: "5px", flex: 1 }}
+                            data-toggle="modal"
+                            data-target="#exampleModal"
+                            onClick={() =>
+                              dispatch({
+                                type: "ADD_MODAL",
+                                payload: [
+                                  {
+                                    data: "",
+                                    id: booking._id,
+                                    title: booking.fullname,
+                                    type: "DELETE_Booking",
+                                  },
+                                ],
+                              })
+                            }
+                          >
+                            ลบข้อมูล
+                          </button>
+                        </td>
+                      )
                     ) : (
-                      <td class="px-2.5 py-4 ">
-                        <button
-                          className=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 border border-blue-700 rounded "
-                          style={{ marginLeft: "5px", flex: 1 }}
-                          data-toggle="modal"
-                          data-target="#exampleModal"
-                          onClick={() =>
-                            dispatch({
-                              type: "ADD_MODAL",
-                              payload: [
-                                {
-                                  data: "",
-                                  id: booking._id,
-                                  title: booking.fullname,
-                                  type: "DELETE_Booking",
-                                },
-                              ],
-                            })
-                          }
-                        >
-                          ลบข้อมูล
-                        </button>
-                      </td>
+                      <div></div>
                     )}
 
-                    {booking.userid !== auth.user.email ? (
-                      <td class="px-3 py-4 ">-</td>
-                    ) : (
-                      <td class="px-3 py-4 ">
-                        <button
-                          className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
-                          onClick={() => 
-                            {   let newOrder1 = props.booking.filter((item) => booking._id === item._id);
+                    {Object.keys(auth).length !== 0 ? (
+                      booking.userid !== auth.user.email ? (
+                        <td class="px-3 py-4 ">-</td>
+                      ) : (
+                        <td class="px-3 py-4 ">
+                          <button
+                            className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
+                            onClick={() => {
+                              let newOrder1 = props.booking.filter(
+                                (item) => booking._id === item._id
+                              );
                               setProdOrder(newOrder1);
-                            handlePayment(booking._id, booking.price)}}
-
-                        >
-                          จ่ายเงิน
-                        </button>
-                      </td>
+                              handlePayment(booking._id, booking.price);
+                            }}
+                          >
+                            จ่ายเงิน
+                          </button>
+                        </td>
+                      )
+                    ) : (
+                      <div></div>
                     )}
                   </tr>
                 ))}

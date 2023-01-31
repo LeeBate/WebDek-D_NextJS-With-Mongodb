@@ -49,7 +49,7 @@ const createOrder = async (req, res) => {
         await newOrder.save()
 
         res.json({
-            msg: 'โปรดดำเนินการต่อเพื่อชำระเงิน.',
+            msg: 'สำเร็จการจอง! โปรดรอการอนุมัติจากแอดมินทางอีเมล์.',
             newOrder
         })
 

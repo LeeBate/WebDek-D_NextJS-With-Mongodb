@@ -40,7 +40,7 @@ const FullLayout = ({ children }) => {
         sx={{
           paddingLeft: isSidebarOpen && lgUp ? "265px" : "",
           backgroundColor: "#1a237e",
-          opacity: 0.1
+          opacity: 0.5
           
         }}
         toggleMobileSidebar={() => setMobileSidebarOpen(true)}

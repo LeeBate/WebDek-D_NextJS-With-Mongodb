@@ -755,7 +755,7 @@ export async function getServerSideProps({ query }) {
   const res = await getData(
     `tracking?limit=${
       page * 100
-    }&category=${category}&sort=${sort}&title=${search}`
+    }&category=${category}&sort=${sort}&serviceNumber=${search}`
   );
   // server side rendering
   return {

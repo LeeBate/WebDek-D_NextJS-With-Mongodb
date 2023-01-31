@@ -22,7 +22,7 @@ const login = async (req, res) => {
         if(!user) return res.status(400).json({err: 'ไม่มีผู้ใช้รายนี้'})
 
         const isMatch = await bcrypt.compare(password, user.password)
-        if(!isMatch) return res.status(400).json({err: 'Incorrect password.'})
+        if(!isMatch) return res.status(400).json({err: 'รหัสผ่านผิด.'})
 
         const access_token = createAccessToken({id: user._id})
         const refresh_token = createRefreshToken({id: user._id})
