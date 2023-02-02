@@ -364,23 +364,23 @@ const Tracking = (props) => {
               {!founddata ? (
                 <h2>เกิดข้อผิดพลาด โปรดติดต่อเจ้าหน้าที่</h2>
               ) : (
-                founddata.map((product) => (
+                founddata.map((product,key) => (
                   <div
                     className="text-2xl flex flex-col mx-28"
-                    key={product._id}
+                    key={key}
                   >
                     <div className="flex flex-col justify-between">
                       <p className=" font-bold">ลำดับเส้นทางของตัวอย่าง</p>
-                      <ui className=" flex flex-col ml-5">
-                        {product.repListDate.map((repListDate) => (
-                          <p className="">
+                      <ul className=" flex flex-col ml-5">
+                        {product.repListDate.map((repListDate,key) => (
+                          <p key={key}>
                             <li>
                             อว 7432(3)/Rep : {repListDate.ListName}{" "}
                             
                             {repListDate.date ? ConvertDate(repListDate.date) : "-"}
                           </li></p>
                         ))}
-                      </ui>
+                      </ul>
                     </div>
                     <div className="flex flex-col ">
                         <div className=" flex flex-row ">
@@ -407,21 +407,21 @@ const Tracking = (props) => {
                     <div className="flex flex-col ">
                       <p className="font-semibold ">รายงานผลการทดสอบลำดับที่ </p>
                       
-                      <ui className=" flex flex-col text-left ml-5">
+                      <ul className=" flex flex-col text-left ml-5">
                        
-                            {product.repList.map((repList) => ( 
-                          <p><li>RepฝวคN{repList.ListName}</li></p>
+                            {product.repList.map((repList,key) => ( 
+                          <p key={key}><li>RepฝวคN{repList.ListName}</li></p>
                         ))}
                         
                         
-                      </ui>
+                      </ul>
                     </div>
                     <p>หมายโทรศัพท์ : {product.phone}</p>
                     <div className="flex flex-row ">
                       <p className="mr-2">ดาวโหลดใบขอรับบริการ </p>
                       <a
                         href={product.images[0].url}
-                        target="_blank"
+                        rel="noopener"
                         download="file"
                       >
                         {" "}
@@ -440,7 +440,7 @@ const Tracking = (props) => {
               )}
             </div>
             {founddata.map((track, ict) => (
-              <div className="mx-28 pt-10 pl-48 mt-5 rounded-md bg-slate-200">
+              <div className="mx-28 pt-10 pl-48 mt-5 rounded-md bg-slate-200" key={ict}>
                 {track.lsu.length != 0 ? (
                   <div className="flex flex-row">
                     <div className="flex flex-col items-center">
@@ -722,7 +722,7 @@ const Tracking = (props) => {
                 <div className="my-18"></div>
                 {founddata.map((product, ict) =>
                   product.note ? (
-                    <p className=" mt-14 text-red-600">
+                    <p className=" mt-14 text-red-600" key={ict}>
                       หมายเหตุ : {product.note}
                     </p>
                   ) : (

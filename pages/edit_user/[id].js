@@ -9,16 +9,6 @@ import { patchData } from "../../utils/fetchData";
 import FullLayout from "../../src/layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
-import {
-  Typography,
-  Box,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Chip,
-} from "@mui/material";
 
 const EditUser = () => {
   const router = useRouter();

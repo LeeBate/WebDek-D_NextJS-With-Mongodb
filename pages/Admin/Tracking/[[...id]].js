@@ -29,7 +29,6 @@ import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
 
-
 const Tracking = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { categories, auth } = state;
@@ -779,7 +778,7 @@ const Tracking = (props) => {
             <TabPanel value="0">
               <div className="products_manager">
                 <Head>
-                  <title>การจัดการสไลด์</title>
+                  <title>การติดตามผลวิเคราะห์ทดสอบ</title>
                 </Head>
 
                 {onEdit ? (
@@ -983,11 +982,7 @@ const Tracking = (props) => {
                                 </label>
                               </Checkbox>
 
-                              <div
-                                hidden={
-                                  hiddenChk(ids)
-                                }
-                              >
+                              <div hidden={hiddenChk(ids)}>
                                 {procedure.ListName ===
                                 "งานวิเคราะห์ทางเคมีและชีวเคมี" ? (
                                   <div>
@@ -1373,7 +1368,6 @@ const Tracking = (props) => {
                                     ? procedure.checkwork
                                     : defaultChkx(ids)
                                 }
-                                
                                 type="checkbox"
                                 value={
                                   onEdit
@@ -1981,31 +1975,37 @@ const Tracking = (props) => {
                   ติดตามผลวิเคราะห์ทดสอบ
                 </h1>
 
-               
-                    <Paper sx={{ width: "100%", overflow: "hidden" }}>
-                      <Filter />
-                      <TableContainer sx={{ maxHeight: 640 }}>
-                        <Table stickyHeader aria-label="sticky table">
-                          <TableHead>
-                            <TableRow>
-                              <TableCell>หมายเลขใบขอรับบริการ</TableCell>
-                              <TableCell>ชื่อผู้แก้ไขล่าสุด</TableCell>
-                              <TableCell>วันและเวลาแก้ไขล่าสุด</TableCell>
-                              <TableCell>จัดการข้อมูล</TableCell>
-                            </TableRow>
-                          </TableHead>
-                          {Slides.length === 0 ? (
-                  <div className="alert alert-warning my-auto">
-                  <div>
-                    <div className="swap-off">
-                      😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
-                    </div>
-                  </div>
-                </div>
-                ) : (
-                  Slides.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((product, ict) => (
+                <Paper sx={{ width: "100%", overflow: "hidden" }}>
+                  <Filter />
+                  <TableContainer sx={{ maxHeight: 640 }}>
+                    <Table stickyHeader aria-label="sticky table">
+                      <TableHead>
+                        <TableRow>
+                          <TableCell>ID</TableCell>
+                          <TableCell>หมายเลขใบขอรับบริการ</TableCell>
+                          <TableCell>ชื่อผู้แก้ไขล่าสุด</TableCell>
+                          <TableCell>วันและเวลาแก้ไขล่าสุด</TableCell>
+                          <TableCell>จัดการข้อมูล</TableCell>
+                        </TableRow>
+                      </TableHead>
+                      {Slides.length === 0 ? (
+                        <div className="alert alert-warning my-auto">
+                          <div>
+                            <div className="swap-off">
+                              😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        Slides.slice(
+                          page * rowsPerPage,
+                          page * rowsPerPage + rowsPerPage
+                        ).map((product, ict) => (
                           <TableBody key={product._id}>
                             <TableRow hover role="checkbox" tabIndex={-1}>
+                            <TableCell key={product.id}>
+                                {ict + 1 + page * rowsPerPage}
+                              </TableCell>
                               <TableCell key={product.id}>
                                 {product.serviceNumber}
                               </TableCell>
@@ -2016,31 +2016,34 @@ const Tracking = (props) => {
                                 {ConvertDate(product.updatedAt)}
                               </TableCell>
                               <TableCell key={product.id}>
-                              <Link href={`/Admin/Tracking/${product._id}`}>
-          <a onClick={() => {
-                                    setTabIndex("0");
-                                  }} className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
-            แก้ไขข้อมูล
-          </a>
-        </Link>
+                                <Link href={`/Admin/Tracking/${product._id}`}>
+                                  <a
+                                    onClick={() => {
+                                      setTabIndex("0");
+                                    }}
+                                    className="btn btn-info"
+                                    style={{ marginRight: "5px", flex: 1 }}
+                                  >
+                                    แก้ไขข้อมูล
+                                  </a>
+                                </Link>
                               </TableCell>
                             </TableRow>
                           </TableBody>
-                          ))
-                          )}
-                        </Table>
-                      </TableContainer>
-                      <TablePagination
-                        rowsPerPageOptions={[5, 10, 100]}
-                        component="div"
-                        count={Slides.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                      />
-                    </Paper>
-                  
+                        ))
+                      )}
+                    </Table>
+                  </TableContainer>
+                  <TablePagination
+                    rowsPerPageOptions={[5, 10, 100]}
+                    component="div"
+                    count={Slides.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                  />
+                </Paper>
               </div>
             </TabPanel>
           </TabContext>
@@ -2071,3 +2074,5 @@ export async function getServerSideProps({ query }) {
 }
 
 export default Tracking;
+
+

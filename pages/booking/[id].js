@@ -81,7 +81,7 @@ const BookingDetail = (props) => {
       // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
       // setProduct(props.product);
       // if (Object.keys(auth).length !== 0) {
-      //   for (let i = 0; i < props.booking.length; i++) {
+      //   htmlFor (let i = 0; i < props.booking.length; i++) {
       //     if (props.booking[i].userid === auth.user.email) {
       //       filleredProd.push(props.booking[i]);
       //     }
@@ -227,42 +227,42 @@ const BookingDetail = (props) => {
   //Function สำหรับแสดงข้อมูล
 
   return (
-    <section class="text-gray-700 body-font overflow-hidden bg-white">
+    <section className="text-gray-700 body-font overflow-hidden bg-white">
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div class="container px-5 py-24 mx-auto ">
+      <div className="container px-5 py-24 mx-auto ">
         <center className=" py-3 mt-2">
-          <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
             ข้อมูลการจอง {product1.title}
           </h1>
         </center>
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400 ">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
+        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
+          <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400 ">
+            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
               <tr>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   ชื่อ-นามสกุล
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   รหัสนักศึกษา
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   อีเมล
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   วันที่เริ่มต้นการจอง
                 </th>
-                <th scope="col" class="px-3 py-3">
+                <th scope="col" className="px-3 py-3">
                   วันที่สิ้นสุดการจอง
                 </th>{" "}
-                {/* <th scope="col" class="px-3 py-3 ">
+                {/* <th scope="col" className="px-3 py-3 ">
                   สถานะการจอง
                 </th> */}
-                <th scope="col" class="px-3 py-3 ">
+                <th scope="col" className="px-3 py-3 ">
                   การแก้ไข
                 </th>
-                <th scope="col" class="px-3 py-3 ">
+                <th scope="col" className="px-3 py-3 ">
                   ชำระเงิน
                 </th>
               </tr>
@@ -271,34 +271,34 @@ const BookingDetail = (props) => {
               <center></center>
             ) : !loading ? (
               <tbody>
-                {showBooking.map((booking) => (
+                {showBooking.map((booking,key) => (
                   <tr
-                    class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    key={booking._id}
+                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+                    key={key}
                   >
                     {/* <th
                               scope="row"
-                              class="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                              className="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
                             >
                               {booking.fullname}
                             </th> */}
-                    <td class="px-3 py-4">{booking.fullname}</td>
-                    <td class="px-3 py-4">{booking.studentID}</td>
-                    <td class="px-3 py-4">{booking.email}</td>
-                    <td class="px-3 py-4">
+                    <td className="px-3 py-4">{booking.fullname}</td>
+                    <td className="px-3 py-4">{booking.studentID}</td>
+                    <td className="px-3 py-4">{booking.email}</td>
+                    <td className="px-3 py-4">
                       {new Date(booking.dateBooking).toLocaleString()}
                     </td>
 
-                    <td class="px-3 py-4">
+                    <td className="px-3 py-4">
                       {new Date(booking.dateBookingEnd).toLocaleString()}
                     </td>
 
-                    {/* <td class="px-3 py-4">{booking.statusBooking}</td> */}
+                    {/* <td className="px-3 py-4">{booking.statusBooking}</td> */}
                     {Object.keys(auth).length !== 0 ? (
                       booking.userid !== auth.user.email ? (
-                        <td class="px-3 py-4 ">-</td>
+                        <td className="px-3 py-4 ">-</td>
                       ) : (
-                        <td class="px-2.5 py-4 ">
+                        <td className="px-2.5 py-4 ">
                           <button
                             className=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 border border-blue-700 rounded "
                             style={{ marginLeft: "5px", flex: 1 }}
@@ -328,9 +328,9 @@ const BookingDetail = (props) => {
 
                     {Object.keys(auth).length !== 0 ? (
                       booking.userid !== auth.user.email ? (
-                        <td class="px-3 py-4 ">-</td>
+                        <td className="px-3 py-4 ">-</td>
                       ) : (
-                        <td class="px-3 py-4 ">
+                        <td className="px-3 py-4 ">
                           <button
                             className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
                             onClick={() => {
@@ -356,17 +356,17 @@ const BookingDetail = (props) => {
             )}
           </table>
         </div>
-        <div class="lg:w-4/5 mx-auto flex flex-wrap mt-5">
+        <div className="lg:w-4/5 mx-auto flex flex-wrap mt-5">
           <img
             src={product1.images[tab].url}
             alt={product1.images[tab].url}
             className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto "
           />
-          <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h2 class="text-sm title-font text-gray-500 tracking-widest">
+          <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+            <h2 className="text-sm title-font text-gray-500 tracking-widest">
               {product1.en}
             </h2>
-            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
+            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {product1.title}
             </h1>
             <div className="mx-1 md:mx-14 xl:mx-24">
@@ -452,126 +452,127 @@ const BookingDetail = (props) => {
 
             <div className=" mt-6">
               <form method="post" onSubmit={handleSubmit}>
-                <div class="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-6 group">
                   <input
                     type="text"
                     name="fullname"
                     id="fullname"
                     value={fullname}
                     onChange={handleChangeInput}
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
                   />
                   <label
-                    for="fullname"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="fullname"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     ชื่อ-นามสกุล :
                   </label>
                 </div>
-                <div class="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-6 group">
                   <input
                     type="text"
                     name="studentID"
                     id="studentID"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     value={studentID}
                     onChange={handleChangeInput}
                     required
                   />
                   <label
-                    for="studentID"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="studentID"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     รหัสนักศึกษา/รหัสพนักงาน :
                   </label>
                 </div>
-                <div class="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-6 group">
                   <input
                     type="email"
                     name="email"
                     id="email"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     value={email}
                     onChange={handleChangeInput}
                     required
                   />
                   <label
-                    for="email"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="email"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     อีเมลมหาวิทยาลัย :
                   </label>
                 </div>
-                <div class="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-6 group">
                   <input
                     type="number"
                     name="phone"
                     id="phone"
-                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     value={phone}
                     onChange={handleChangeInput}
                     required
                   />
                   <label
-                    for="phone"
-                    class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                    htmlFor="phone"
+                    className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                   >
                     เบอร์โทรศัพท์ :
                   </label>
                 </div>
-                <div class="grid md:grid-cols-2 md:gap-6">
-                  <div class="relative z-0 w-full mb-6 group">
+                <div className="grid md:grid-cols-2 md:gap-6">
+                  <div className="relative z-0 w-full mb-6 group">
                     <input
                       type="datetime-local"
                       name="dateBooking"
                       id="dateBooking"
                       value={dateBooking}
                       onChange={handleChangeInput}
-                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                       placeholder=" "
                       required
                     />
                     <label
-                      for="dateBooking"
-                      class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      htmlFor="dateBooking"
+                      className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
                       วันที่ต้องการจองเครื่องมือ :
                     </label>
                   </div>
-                  <div class="relative z-0 w-full mb-6 group">
+                  <div className="relative z-0 w-full mb-6 group">
                     <input
                       type="datetime-local"
                       name="dateBookingEnd"
                       value={dateBookingEnd}
                       onChange={handleChangeInput}
                       id="dateBookingEnd"
-                      class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                      className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                       placeholder=" "
                       required
                     />
                     <label
-                      for="dateBookingEnd"
-                      class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                      htmlFor="dateBookingEnd"
+                      className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                     >
                       วันที่สิ้นสุด :
                     </label>
                   </div>
                 </div>
-                <div class="grid md:grid-cols-2 md:gap-6">
-                  <div class="flex items-center">
-                    <div class="relative">
-                      {product1.nameRate.map((item) => (
+                <div className="grid md:grid-cols-2 md:gap-6">
+                  <div className="flex items-center">
+                    <div className="relative">
+                      {product1.nameRate.map((item,i) => (
                         <select
+                          key={i}
                           id="price"
                           name="price"
                           value={price}
                           onChange={handleChangeInput}
-                          class="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"
+                          className="rounded border appearance-none border-gray-400 py-2 focus:outline-none focus:border-red-500 text-base pl-3 pr-10"
                         >
                           <option value="">เลือกอัตราค่าบริการ</option>
                           <option key={item.price1} value={item.price1}>
@@ -594,12 +595,12 @@ const BookingDetail = (props) => {
                     </div>
                   </div>
                 </div>
-                <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
-                <div class="flex">
-                  <span class="title-font font-medium text-2xl text-gray-900">
+                <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
+                <div className="flex">
+                  <span className="title-font font-medium text-2xl text-gray-900">
                     เป็นจำนวนเงิน {price}฿
                   </span>
-                  <button class="flex ml-auto text-white bg-[#1a237e] hover:bg-[#FFA500] border-0 py-2 px-6 focus:outline-none rounded">
+                  <button className="flex ml-auto text-white bg-[#1a237e] hover:bg-[#FFA500] border-0 py-2 px-6 focus:outline-none rounded">
                     {onEdit ? "อัพเดตเครื่องมือ" : "จองเครื่องมือ"}
                   </button>
                 </div>
