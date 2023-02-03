@@ -327,16 +327,16 @@ const NewsManager = (props) => {
                           />
                         </label>
                       </div>
-                      <div className="row img-up mx-0 object-cover">
+                      <div className="row img-up mx-0 ">
                         {images.map((img, index) => (
                           <div
                             key={index}
-                            className="file_img my-1 object-cover"
+                            className="file_img mr-1"
                           >
                             <img
                               src={img.url ? img.url : URL.createObjectURL(img)}
                               alt=""
-                              className="img-thumbnail rounded object-cover"
+                              className="img-thumbnail rounded "
                             />
 
                             <span onClick={() => deleteImage(index)}>X</span>
@@ -408,7 +408,7 @@ const NewsManager = (props) => {
                               onChange={() => handleCheck(product._id)}
                             />
                           )}
-                          <Link href={`/productNews/${product._id}`}>
+                          <Link href={`/Inform/${product._id}`}>
                           <img
                             className="aspect-square object-fill cursor-pointer card-img-top"
                             src={product.images[0].url}

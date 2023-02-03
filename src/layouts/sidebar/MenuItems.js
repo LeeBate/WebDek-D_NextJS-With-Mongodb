@@ -16,7 +16,7 @@ const Menuitems = [
     href: "/Admin/dataBookings/[[...id]]",
   },
   {
-    title: "การติดตามผลวิเคราะห์ทดสอบ",
+    title: "ติดตามรายงานผลการทดสอบ",
     icon: "sidebar",
     href: "/Admin/Tracking/[[...id]]",
   },

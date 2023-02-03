@@ -205,12 +205,12 @@ const DetailProduct = (props, query) => {
   };
 
   return (
-    <section className="p-1">
+    <section >
       <Head>
         <title>{product.title}</title>
       </Head>
 
-      <div className="grid bg-[#e0e7ff] pb-8 rounded-md  mt-28 mx-auto w-[95%] content-center    grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4">
+      <div className="grid bg-[#e0e7ff] pb-8 rounded-md mx-auto w-[95%] content-center grid-cols-1 lg:grid-cols-5 grid-rows-5  px-8 h-auto gap-4 my-5">
         <div className=" my-auto col-span-3 lg:col-span-5 ">
           <div className="text-capitalize font-bold text-4xl ">
             <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl ">
@@ -277,10 +277,10 @@ const DetailProduct = (props, query) => {
           <div className="grid w-full h-full grid-cols-2 gap-4 grid-rows-1">
             <div className="...">
               <div>
-                <p className="font-semibold text-sm md:text-lg">
+                <p className="font-semibold  text-sm md:text-lg">
                   ความสามารถของเครื่องมือ
                 </p>
-                <p className="text-sm md:text-lg">{product.detailCapability}</p>
+                <p className="text-sm whitespace-pre-line md:text-lg">{product.detailCapability}</p>
               </div>
             </div>
             <div className="...">
@@ -288,7 +288,7 @@ const DetailProduct = (props, query) => {
                 <p className="font-semibold text-sm md:text-lg">
                   ข้อจำกัดของเครื่องมือ
                 </p>
-                <p className="text-sm md:text-lg">
+                <p className="text-sm whitespace-pre-line md:text-lg">
                   {product.detailRestrictions}
                 </p>
               </div>
@@ -297,13 +297,14 @@ const DetailProduct = (props, query) => {
         </div>
       </div>
 
-      <div className="text-base sm:text-lg mx-7 xl:mx-22 mt-8 mb-3 ">
+      <div className="text-base xl:text-3xl sm:text-lg mx-7 xl:mx-22 mb-3 px-8 gap-4">
         <p>อัตราค่าบริการ : บาท/ชั่วโมง (Baht / Hour)</p>
       </div>
-      <div className="mx-1 md:mx-14 xl:mx-24">
+
+      <div className="mx-1 md:mx-14 xl:mx-24 px-8 gap-4">
         <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
           <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead className="text-sm text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
+            <thead className="text-sm xl:text-lg text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-200">
               <tr>
                 <th scope="col" className="py-3 px-6">
                   ลำดับ
@@ -343,7 +344,7 @@ const DetailProduct = (props, query) => {
               {product.nameRate.map((obj, i) => (
                 <tr
                   key={i}
-                  className="bg-white border-b dark:bg-gray-900 dark:border-gray-700"
+                  className="bg-white border-b dark:bg-gray-900 dark:border-gray-700 text-lg"
                 >
                   <td className="py-4 px-6 font-medium text-gray-900">
                     <span>{i + 1 || "-"}</span>
@@ -379,13 +380,14 @@ const DetailProduct = (props, query) => {
             </tbody>
           </table>
         </div>
-      </div>
-
-      <p className="text-sm xl:text-base mx-7 xl:mx-22 mt-3">
+        <p className="text-sm xl:text-base  xl:mx-22 mt-3 ">
         หมายเหตุ : เฉพาะเจ้าหน้าที่ทดสอบ ติดต่อสอบถามโดยตรงกับเจ้าหน้าที่
       </p>
+      </div>
 
-      <div className="flex justify-center xl:justify-end md:justify-end mt-3 md:mr-5 xl:mr-5 mb-8">
+      
+
+      <div className="flex justify-start xl:justify-end md:justify-end mt-3 mb-8 px-8 ">
         {Object.keys(auth).length !== 0 ? (
           <Link href={`/booking/${product._id}`}>
             <a
@@ -414,24 +416,34 @@ const DetailProduct = (props, query) => {
             </button>
           </Link>
         )}
-        
-        <Link href={product.pdf[0].url}>
+        {product.pdf.length > 0 ? (
+            <Link href={ product.pdf[0].url}>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              className="  bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+            >
+              <button>
+                คู่มือการใช้งาน
+                <FaFilePdf className="inline ml-2" />
+              </button>
+            </a>
+          </Link>
+        ) : (
+          
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className="  bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+            className="  hover:bg-[#8e8e8e] bg-[#8e8e8e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
           >
-            <button>
-              ข้อมูลเครื่องมือ
+            <button disabled>
+              ไม่มีคู่มือการใช้งาน
               <FaFilePdf className="inline ml-2" />
             </button>
           </a>
-        </Link>
-         
-       
         
-        
-        
+        )}
+
         <Link href="https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing">
         <a
             target="_blank"
@@ -442,7 +454,7 @@ const DetailProduct = (props, query) => {
             type="button"
             
           >
-            ติดต่อขอรับบริการ
+            ใบคำขอรับบริการ
             <MdContactMail className=" inline ml-2" />
           </button>
           </a>
@@ -456,7 +468,7 @@ const DetailProduct = (props, query) => {
             className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
           >
             <button >
-              วิดีโอเครื่องมือ
+              วิดีโอการใช้งาน
               <AiFillVideoCamera className="inline ml-2" />
             </button>
           </a>

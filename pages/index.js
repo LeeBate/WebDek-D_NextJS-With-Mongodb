@@ -62,16 +62,19 @@ const Index = (props) => {
           <h2 className="text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]">
             ข่าวประชาสัมพันธ์
           </h2>
-          <p className="text-lg font-medium md:text-lg">
-            ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
+          <p className="text-lg font-medium md:text-lg whitespace-pre-line">
+            ฝ่ายวิเคราะห์ด้วยเครื่องมือ 
+            
+            ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
           </p>
         </div>
-
-        {Informs.slice(0, 3).map((product) => (
+<div className=" grid md:grid-cols-2">
+        {Informs.slice(0, 4).map((product) => (
           <div key={product._id} data-aos="fade-up">
             <InformItemIndex product={product} />
           </div>
         ))}
+</div>
         <div className="services-container ">
           <div className=" flex justify-center items-center">
             <Link href="/Inform">

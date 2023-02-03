@@ -34,7 +34,7 @@ function Services() {
           </Link>
         </div>
         <div className="flex pt-3 justify-center items-center">
-          <Link href="https://res.cloudinary.com/dvktk1a8x/image/upload/v1670927699/clound-uploads/ymzazqf0uzizntznrc1w.pdf">
+          <Link href="https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing">
             <a
               target="_blank"
               rel="noopener noreferrer"

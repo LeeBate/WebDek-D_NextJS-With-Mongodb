@@ -95,7 +95,7 @@ export default function Contactemail() {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md mt-20">
+      <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md ">
         <h2 className="mb-4 text-2xl md:text-3xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-[#1a237e]">
           ติดต่อเรา
         </h2>

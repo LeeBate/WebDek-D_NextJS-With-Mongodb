@@ -11,7 +11,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 function NavBar() {
   const router = useRouter();
   const { state, dispatch } = useContext(DataContext);
-  const { auth,cart } = state;
+  const { auth, cart } = state;
 
   const isActive = (r) => {
     if (r === router.pathname) {
@@ -85,14 +85,18 @@ function NavBar() {
   };
 
   const dropdownServices = [
-    { name: "ขั้นตอนขอรับบริการ",href: "/images/21.png", current: false },
-    { name: "แบบฟอร์มขอรับบริการ",href:"https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing", current: false },
+    { name: "ขั้นตอนขอรับบริการ", href: "/images/21.png", current: false },
+    {
+      name: "แบบฟอร์มขอรับบริการ",
+      href: "https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing",
+      current: false,
+    },
   ];
 
   const userNavigation = [
     { name: "โปรไฟล์", href: "/profile", current: false },
     { name: "เครื่องมือที่ชอบ", href: "/favorite", current: false },
-    {name: "ประวัติจองเครื่องมือ", href:"/Booking", current:false}
+    { name: "ประวัติจองเครื่องมือ", href: "/Booking", current: false },
   ];
   const dropdownMenu = [
     { name: "ข่าวประชาสัมพันธ์", href: "/Inform", current: false },
@@ -100,7 +104,6 @@ function NavBar() {
       name: "ภารกิจของฝ่าย",
       href: "/images/Poster (1).png",
       current: false,
-      
     },
     { name: "บุคลากร", href: "/about", current: false },
     { name: "ติดต่อเรา", href: "/contactemail", current: false },
@@ -262,9 +265,7 @@ function NavBar() {
                                         rel="noopener noreferrer"
                                         className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
                                       >
-                                        <button >
-                                          {item.name}
-                                        </button>
+                                        <button>{item.name}</button>
                                       </a>
                                     </Link>
                                   </Menu.Item>
@@ -273,13 +274,11 @@ function NavBar() {
                             </Transition>
                           </Menu>
                           <Menu as="div" className="relative ml-3">
-                            
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
-                                <Link className="" href="/Track">
-                                  <div>การติดตามรายงานผลการทดสอบ</div>
+                            <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                              <Link className="" href="/Track">
+                                <div>การติดตามรายงานผลการทดสอบ</div>
                               </Link>
-                              </Menu.Button>
-                            
+                            </Menu.Button>
                           </Menu>
 
                           <Menu as="div" className="relative ml-3">
@@ -305,14 +304,8 @@ function NavBar() {
                                 {dropdownMenu.map((item) => (
                                   <Menu.Item key={item.name}>
                                     <Link href={item.href}>
-                                      <a
-                                        
-                                        
-                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
-                                      >
-                                        <button >
-                                          {item.name}
-                                        </button>
+                                      <a className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+                                        <button>{item.name}</button>
                                       </a>
                                     </Link>
                                   </Menu.Item>
@@ -320,11 +313,10 @@ function NavBar() {
                               </Menu.Items>
                             </Transition>
                           </Menu>
-                          
                         </div>
                       </div>
                     </div>
-                    
+
                     <div className="hidden lg:block">
                       <div className="ml-4 flex items-center md:ml-6">
                         {/* Profile dropdown */}
@@ -419,16 +411,19 @@ function NavBar() {
                         </Menu.Button>
                       </div>
                       <div className=" space-y-1 px-2 ">
+                        
                         {dropdownMenu.map((item) => (
-                          <Disclosure.Button
-                            key={item.name}
-                            as="a"
-                            className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-1   focus:outline-none hover:text-white"
-                          >
-                            <Link href={item.href}>
-                              <div>{item.name}</div>
-                            </Link>
-                          </Disclosure.Button>
+                          <Link href={item.href}>
+                            <div>
+                              <Disclosure.Button
+                                key={item.name}
+                                as="a"
+                                className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-1   focus:outline-none hover:text-white"
+                              >
+                                <button>{item.name}</button>
+                              </Disclosure.Button>
+                            </div>
+                          </Link>
                         ))}
                       </div>
                     </Menu>

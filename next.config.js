@@ -17,8 +17,11 @@ module.exports = {
       "GOOGLE_SHEET_ID":"1XcKOKflekVfWK0nczbaDi7OcF3TjEO4NkIhhDea_Xes",
     },
     images: {
+      domains: ['http://www.sut.ac.th/'],
+      domains: ['http://203.158.7.33/'],
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
+      
     },
 
     

@@ -32,7 +32,7 @@ const Users = () => {
   const {users, auth, modal } = state;
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(10);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -210,7 +210,7 @@ const Users = () => {
             </Table>
           </TableContainer>
           <TablePagination
-            rowsPerPageOptions={[5, 10, 100]}
+            rowsPerPageOptions={[10, 50, 100]}
             component="div"
             count={users.length}
             rowsPerPage={rowsPerPage}

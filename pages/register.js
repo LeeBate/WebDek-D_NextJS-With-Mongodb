@@ -62,9 +62,9 @@ return dispatch({ type: 'NOTIFY', payload: {} })
         <Head>
           <title>CALLLAB</title>
         </Head>
-          <section className="vh-100 bg-[#f1f1f1]" >
-            <div className="container py-0 h-100">
-              <div className="row d-flex justify-center center h-100">
+          <section className=" h-screen bg-[#f1f1f1]" >
+            <div className="container py-0">
+              <div className="row d-flex justify-center center">
                 <div className="col col-xl-9 col-lg-8 my-auto lg:mt-20">
                   <div className="card rounded-[1rem] mt-5" >
                     <div className="row g-0 items-center py-4 px-5">

@@ -40,7 +40,7 @@ const Tracking = (props) => {
 
   const initialState = {
     timeOut: "",
-    serviceNumber: "",
+    serviceNumber: "ฝวคN",
     lastedit: nameadmin,
     lsu: "",
     lab: "",
@@ -73,7 +73,7 @@ const Tracking = (props) => {
   const [checkedx5, setCheckedx5] = useState(false);
 
   const [page, setPage] = React.useState(0);
-  const [rowsPerPage, setRowsPerPage] = React.useState(5);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -351,7 +351,7 @@ const Tracking = (props) => {
   const [replist, setReplist] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
+      ListName: "RepฝวคN",
     },
   ]);
 
@@ -369,7 +369,7 @@ const Tracking = (props) => {
       ...replist,
       {
         idx: uuidv4(),
-        ListName: "",
+        ListName: "RepฝวคN",
       },
     ]);
   };
@@ -385,7 +385,7 @@ const Tracking = (props) => {
   const [replist_date, setReplist_date] = useState([
     {
       idx: uuidv4(),
-      ListName: "",
+      ListName: "อว 7432(3)/Rep.",
       date: "",
     },
   ]);
@@ -404,7 +404,7 @@ const Tracking = (props) => {
       ...replist_date,
       {
         idx: uuidv4(),
-        ListName: "",
+        ListName: "อว 7432(3)/Rep.",
         date: "",
       },
     ]);
@@ -434,13 +434,13 @@ const Tracking = (props) => {
     setReplist([
       {
         idx: uuidv4(),
-        ListName: "",
+        ListName: "RepฝวคN",
       },
     ]);
     setReplist_date([
       {
         idx: uuidv4(),
-        ListName: "",
+        ListName: "อว 7432(3)/Rep.",
         date: "",
       },
     ]);
@@ -450,27 +450,6 @@ const Tracking = (props) => {
     id = "";
   };
 
-  const handleCheckALL = () => {
-    Slides.forEach((product) => (product.checked = !isCheck));
-    setSlides([...Slides]);
-    setIsCheck(!isCheck);
-  };
-
-  const handleDeleteAll = () => {
-    let deleteArr = [];
-    Slides.forEach((product) => {
-      if (product.checked) {
-        deleteArr.push({
-          data: "",
-          id: product._id,
-          title: "ลบ?",
-          type: "DELETE_SLIDE",
-        });
-      }
-    });
-
-    dispatch({ type: "ADD_MODAL", payload: deleteArr });
-  };
 
   useEffect(() => {
     if (id) {
@@ -654,8 +633,8 @@ const Tracking = (props) => {
     setEnsureReport(saveEnsureReport);
     // array 6 นำส่งรายงานผลให้ LSU
     setReportLSU(saveReportLSU);
-    setReplist_date([{ idx: uuidv4(), ListName: "", date: "" }]);
-    setReplist([{ idx: uuidv4(), ListName: "" }]);
+    setReplist_date([{ idx: uuidv4(), ListName: "อว 7432(3)/Rep.", date: "" }]);
+    setReplist([{ idx: uuidv4(), ListName: "RepฝวคN" }]);
     return router.push("/Admin/Tracking");
   };
   // const handleChangeInput = (e) => {
@@ -778,7 +757,7 @@ const Tracking = (props) => {
             <TabPanel value="0">
               <div className="products_manager">
                 <Head>
-                  <title>การติดตามผลวิเคราะห์ทดสอบ</title>
+                  <title>ติดตามรายงานผลการทดสอบ</title>
                 </Head>
 
                 {onEdit ? (
@@ -787,7 +766,7 @@ const Tracking = (props) => {
                     onClick={handleClearAddNew}
                   >
                     {" "}
-                    เพิ่มสไดล์ใหม่{" "}
+                    เพิ่มรายการใหม่{" "}
                   </button>
                 ) : (
                   <div></div>
@@ -795,11 +774,11 @@ const Tracking = (props) => {
                 <section className="bg-white">
                   <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
                     <h2 className="mb-4 text-xl md:text-2xl lg:text:3xl xl:text-4xl tracking-tight font-extrabold text-center text-gray-900">
-                      ติดตามผลวิเคราะห์ทดสอบ
+                    ติดตามรายงานผลการทดสอบ
                     </h2>
-                    <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
+                    {/* <p className="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">
                       ไม่รู้จะใส่อะไร เผื่ออยากใส่
-                    </p>
+                    </p> */}
                     <form
                       method="post"
                       onSubmit={handleSubmit}
@@ -989,7 +968,7 @@ const Tracking = (props) => {
                                     <div className="bg-slate-300 px-5 py-2 rounded-xl">
                                       <div>
                                         <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">
-                                          ช่องสำหรับนักวิจัยคนที่ 1
+                                          ห้องปฏิบัติการที่ 1
                                         </label>
                                         <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-2">
                                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1096,7 +1075,7 @@ const Tracking = (props) => {
                                     <div className="bg-slate-300 px-5 py-2 rounded-xl mt-3">
                                       <div>
                                         <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">
-                                          ช่องสำหรับนักวิจัยคนที่ 2
+                                        ห้องปฏิบัติการที่  2
                                         </label>
                                         <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-2">
                                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1464,7 +1443,7 @@ const Tracking = (props) => {
                                     <div className="bg-yellow-300 px-5 py-2 rounded-xl">
                                       <div>
                                         <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">
-                                          ช่องสำหรับนักวิจัยคนที่ 1
+                                        ห้องปฏิบัติการที่ 1
                                         </label>
                                         <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
                                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1508,7 +1487,7 @@ const Tracking = (props) => {
                                     <div className="bg-yellow-300 px-5 py-2 rounded-xl mt-3">
                                       <div>
                                         <label className=" mb-2 text-xl font-bold text-gray-900 dark:text-gray-800">
-                                          ช่องสำหรับนักวิจัยคนที่ 2
+                                        ห้องปฏิบัติการที่ 2
                                         </label>
                                         <div className=" md:grid  space-y-2 space-x-2 md:space-y-0 grid-cols-3">
                                           <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-800">
@@ -1918,7 +1897,7 @@ const Tracking = (props) => {
 
                       <div className="flex flex-row justify-center items-center w-full">
                         <label className="flex flex-col justify-center items-center w-full h-24 bg-gray-50 rounded-lg border-2 border-gray-300 border-dashed cursor-pointer dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600">
-                          <p className=" font-bold mb-3">อัพโหลดเอกสาร (PDF)</p>
+                          <p className=" font-bold mb-3">บันทึกใบคำขอรับบริการ (PDF)</p>
                           <input
                             type="file"
                             onChange={handleUploadInput}
@@ -1958,7 +1937,7 @@ const Tracking = (props) => {
                         className="shadow-sm bg-blue-500 hover:bg-green-600 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-green-500 rounded
               block w-full p-2.5 "
                       >
-                        {onEdit ? "อัพเดต" : "สร้าง"}
+                        {onEdit ? "อัพเดต" : "บันทึก"}
                       </button>
                     </form>
                   </div>
@@ -2035,7 +2014,7 @@ const Tracking = (props) => {
                     </Table>
                   </TableContainer>
                   <TablePagination
-                    rowsPerPageOptions={[5, 10, 100]}
+                    rowsPerPageOptions={[20, 50, 100]}
                     component="div"
                     count={Slides.length}
                     rowsPerPage={rowsPerPage}

@@ -61,11 +61,11 @@ const Inform = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-14 lg:mb-80">
+    <div >
       <Head>
         <title>CALLLAB</title>
       </Head>
-      
+
       <div></div>
       {/* <div className="parallax-new">
         <h1
@@ -76,9 +76,8 @@ const Inform = (props) => {
         </h1>
       </div> */}
 
-      
-        <FilterNews state={state} />
-<div className="px-4">
+      <FilterNews state={state} />
+      <div className="px-4">
         {auth.user && auth.user.role === "admin" && (
           <div
             className="delete_all btn btn-danger mt-2"
@@ -106,7 +105,7 @@ const Inform = (props) => {
           </div>
         )}
 
-<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+        <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
           ) : (

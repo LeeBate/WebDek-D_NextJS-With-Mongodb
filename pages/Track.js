@@ -283,13 +283,13 @@ const Tracking = (props) => {
       </Head>
       {isfound === false ? (
         <center>
-          <div className="mt-[20%] bg-[#c6c9ea] ">
+          <div className=" bg-[#c6c9ea] ">
             <div className="col-md-6 col-lg-7 d-flex align-items-center ">
               <div className="card-body p-4 text-black">
                 <form onSubmit={handleSubmit}>
                   <div className="d-flex align-items-center mb-3 pb-1">
                     <p className="text-2xl md:text-3xl xl:text-4xl font-bold mb-0">
-                      กรอกหมายเลขใบขอรับบริการ
+                      กรอกหมายเลขใบคำขอรับบริการ
                     </p>
                   </div>
                   <div className="form-outline mb-4">
@@ -385,7 +385,7 @@ const Tracking = (props) => {
                     <div className="flex flex-col ">
                         <div className=" flex flex-row ">
                       <p className="font-semibold">
-                        หมายเลขใบขอรับบริการ : 
+                        หมายเลขใบคำขอรับบริการ : 
                       </p>
                       <p className="mx-2">{product.serviceNumber}</p>
                       <p className="ml-5">
@@ -393,10 +393,42 @@ const Tracking = (props) => {
                           
                         </p>
                         {product.sntime ? ConvertDate(product.sntime) : "-"}
+                        {product.images.length > 0 ? (
+                          <a
+                          href={product.images[0].url}
+                          rel="noopener"
+                          download="file"
+                        >
+                          {" "}
+                          <img
+                            className="max-w-[130px]"
+                            src={
+                              "https://www.pngall.com/wp-content/uploads/2/Downloadable-PDF-Button-PNG-File.png"
+                            }
+                            alt="pdf"
+                          />
+                        </a>
+                        ) : (
+                          <a
+                        
+                        rel="noopener"
+                        download="file"
+                      >
+                        {" "}
+                        <img
+                          className="max-w-[130px] filter grayscale "
+                          src={
+                            "https://www.pngall.com/wp-content/uploads/2/Downloadable-PDF-Button-PNG-File.png"
+                          }
+                          alt="pdf"
+                        />
+                      </a>
+                        )}
+                      
                      </div>
                      <div className=" flex flex-row ">
                         <p className=" font-semibold mr-2">
-                          วันที่นัดรับผลการทดสอบ : {" "}
+                          วันที่นัดรับรายงานผลการทดสอบ : {" "}
                          
                         </p> 
                         {product.timeOut ? ConvertDate(product.timeOut) : "-"}
@@ -416,8 +448,8 @@ const Tracking = (props) => {
                         
                       </ul>
                     </div>
-                    <p>หมายโทรศัพท์ : {product.phone}</p>
-                    <div className="flex flex-row ">
+                    {/* <p>หมายโทรศัพท์ : {product.phone}</p> */}
+                    {/* <div className="flex flex-row ">
                       <p className="mr-2">ดาวโหลดใบขอรับบริการ </p>
                       <a
                         href={product.images[0].url}
@@ -433,7 +465,7 @@ const Tracking = (props) => {
                           alt="pdf"
                         />
                       </a>
-                    </div>
+                    </div> */}
                     <hr className="mt-5"></hr>
                   </div>
                 ))

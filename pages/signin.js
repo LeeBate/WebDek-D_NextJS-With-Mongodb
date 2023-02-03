@@ -62,9 +62,10 @@ const Signin = () => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <section className="vh-100 bg-[#f1f1f1]" >
-        <div className="container py-0 h-100" >
-          <div className="row d-flex justify-center items h-100" >
+
+      <section className="  h-screen bg-[#f1f1f1]" >
+        <div className="container " >
+          <div className="row d-flex justify-center items" >
             <div className="col col-xl-9 col-lg-8 my-auto">
               <div className="card rounded-[1rem] mt-5">
                 <div className="row g-0 items-center py-4 px-5">
@@ -137,7 +138,7 @@ const Signin = () => {
                           </p>
                         </div>
 
-                        <p className="mb-5 pb-lg-2  ">
+                        <p className="mb-5  ">
                           ถ้าคุณยังไม่มีบัญชี?
                           <Link href="/register">
                             <a className="text-[#2735bd]" href="#!">
@@ -155,6 +156,71 @@ const Signin = () => {
           </div>
         </div>
       </section>
+
+      {/* <section className="h-screen">
+        <div className="container px-6  h-full">
+          <div className="flex justify-center items-center flex-wrap h-full g-6 text-gray-800 card">
+            <div className="md:w-8/12 lg:w-6/12 mb-12 md:mb-0">
+              <img
+                src={"/images/2_6.png"}
+                className=" transform transition duration-700 scale-75 hover:scale-100"
+                alt="Phone image"
+              />
+            </div>
+            <div className="md:w-8/12 lg:w-5/12 lg:ml-20">
+              <form onSubmit={handleSubmit}>
+                <div className="d-flex align-items-center mb-3 pb-1">
+                  <p className="text-2xl md:text-3xl xl:text-4xl font-bold mb-0">
+                    เข้าสู่ระบบ
+                  </p>
+                </div>
+
+                <div className="mb-6">
+                  <input
+                    type="email"
+                    value={email}
+                    name="email"
+                    onChange={handleChangeInput}
+                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    placeholder="อีเมล"
+                  />
+                </div>
+
+                <div className="mb-6">
+                  <input
+                    type="password"
+                    value={password}
+                    name="password"
+                    onChange={handleChangeInput}
+                    className="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+                    placeholder="รหัสผ่าน"
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="inline-block px-7 py-3 bg-blue-600 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out w-full"
+                  data-mdb-ripple="true"
+                  data-mdb-ripple-color="light"
+                >
+                  เข้าสู่ระบบ
+                </button>
+
+                <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
+                  <p className="text-center font-semibold mx-4 mb-0">OR</p>
+                </div>
+
+                <a
+                  className="bg-[#3b5998] px-7 py-3 text-white font-medium text-sm leading-snug uppercase rounded shadow-md hover:shadow-lg focus:shadow-lg focus:outline-none focus:ring-0 active:shadow-lg transition duration-150 ease-in-out w-full flex justify-center items-center mb-3"
+                  
+                  
+                >
+                  ถ้าคุณยังไม่มีบัญชี? สมัครที่นี่!
+                </a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section> */}
     </div>
   );
 };

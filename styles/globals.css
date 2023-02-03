@@ -277,9 +277,9 @@ img {
 /* -----------end card new ------------- */
 
 .navScorll {
-  position: fixed;
+  position: sticky;
   width: 100%;
-  z-index: 50;
+  z-index: 20;
   top:0;
 }
 html {
@@ -426,9 +426,7 @@ justify-self:center;
 margin-top:1em;
 font-size:15px;
 }
-.hero-container a:hover {
 
-}
 .services-container, .why-container, .blog-container, .contact-container{
   background:#ffffff;
   padding:10px 20px 20px 20px;

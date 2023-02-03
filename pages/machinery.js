@@ -61,7 +61,7 @@ const Machinery = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-14 lg:mb-80">
+    <div >
       <Head>
         <title>CALLLAB</title>
       </Head>
@@ -84,17 +84,6 @@ const Machinery = (props) => {
             ))
           )}
         </div>
-
-        {/* {props.result < page * 6 ? (
-          ""
-        ) : (
-          <button
-            className="btn btn-outline-info d-block mx-auto mb-4"
-            onClick={handleLoadmore}
-          >
-            เพิ่มเติม
-          </button>
-        )} */}
       </div>
     </div>
   );
