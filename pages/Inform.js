@@ -61,50 +61,13 @@ const Inform = (props) => {
   };
 
   return (
-    <div >
+    <div>
       <Head>
         <title>CALLLAB</title>
       </Head>
 
-      <div></div>
-      {/* <div className="parallax-new">
-        <h1
-          className="text-2xl md:text-3xl lg:text:3xl xl:text-4xl text-center text-gray-900"
-          id="header"
-        >
-          ข่าวประชาสัมพันธ์
-        </h1>
-      </div> */}
-
       <FilterNews state={state} />
       <div className="px-4">
-        {auth.user && auth.user.role === "admin" && (
-          <div
-            className="delete_all btn btn-danger mt-2"
-            style={{ marginBottom: "-10px" }}
-          >
-            <input
-              type="checkbox"
-              checked={isCheck}
-              onChange={handleCheckALL}
-              style={{
-                width: "25px",
-                height: "25px",
-                transform: "translateY(8px)",
-              }}
-            />
-
-            {/* <button
-              className="btn btn-danger ml-2"
-              data-toggle="modal"
-              data-target="#exampleModal"
-              onClick={handleDeleteAll}
-            >
-              ลบข้อมูลทั้งหมด
-            </button> */}
-          </div>
-        )}
-
         <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (
             <h2>ไม่มีข้อมูลเครื่องมือวิทยาศาสตร์</h2>
@@ -118,17 +81,6 @@ const Inform = (props) => {
             ))
           )}
         </div>
-
-        {/* {props.result < page * 6 ? (
-          ""
-        ) : (
-          <button
-            className="btn btn-outline-info d-block mx-auto mb-4"
-            onClick={handleLoadmore}
-          >
-            เพิ่มเติม
-          </button>
-        )} */}
       </div>
     </div>
   );

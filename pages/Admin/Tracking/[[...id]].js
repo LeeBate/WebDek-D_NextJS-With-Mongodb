@@ -385,7 +385,7 @@ const Tracking = (props) => {
   const [replist_date, setReplist_date] = useState([
     {
       idx: uuidv4(),
-      ListName: "อว 7432(3)/Rep.",
+      repName: "อว 7432(3)/Rep.",
       date: "",
     },
   ]);
@@ -404,7 +404,7 @@ const Tracking = (props) => {
       ...replist_date,
       {
         idx: uuidv4(),
-        ListName: "อว 7432(3)/Rep.",
+        repName: "อว 7432(3)/Rep.",
         date: "",
       },
     ]);
@@ -440,7 +440,7 @@ const Tracking = (props) => {
     setReplist_date([
       {
         idx: uuidv4(),
-        ListName: "อว 7432(3)/Rep.",
+        repName: "อว 7432(3)/Rep.",
         date: "",
       },
     ]);
@@ -633,7 +633,7 @@ const Tracking = (props) => {
     setEnsureReport(saveEnsureReport);
     // array 6 นำส่งรายงานผลให้ LSU
     setReportLSU(saveReportLSU);
-    setReplist_date([{ idx: uuidv4(), ListName: "อว 7432(3)/Rep.", date: "" }]);
+    setReplist_date([{ idx: uuidv4(), repName: "อว 7432(3)/Rep.", date: "" }]);
     setReplist([{ idx: uuidv4(), ListName: "RepฝวคN" }]);
     return router.push("/Admin/Tracking");
   };
@@ -1762,8 +1762,8 @@ const Tracking = (props) => {
                               <div className="flex mb-3">
                                 <input
                                   type="text"
-                                  name="ListName"
-                                  value={rep.ListName}
+                                  name="repName"
+                                  value={rep.repName}
                                   className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                                 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                                 w-[70%] p-2.5 mr-2"

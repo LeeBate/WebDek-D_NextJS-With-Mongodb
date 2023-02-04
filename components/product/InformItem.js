@@ -64,15 +64,7 @@ const InformItem = ({ product, handleCheck }) => {
   };
   return (
     <div className="card shadow-md" style={{ width: "20rem" }}>
-      {auth.user && auth.user.role === "admin" && (
-        <input
-          type="checkbox"
-          checked={product.checked}
-          className="position-absolute"
-          style={{ height: "20px", width: "20px" }}
-          onChange={() => handleCheck(product._id)}
-        />
-      )}
+      
       <Link href={`Inform/${product._id}`}>
         <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
           <img
