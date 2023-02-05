@@ -231,7 +231,7 @@ const BookingDetail = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div className="container px-5 py-24 mx-auto ">
+      <div className="container px-5  mx-auto ">
         <center className=" py-3 mt-2">
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
             ข้อมูลการจอง {product1.title}
@@ -459,7 +459,7 @@ const BookingDetail = (props) => {
                     id="fullname"
                     value={fullname}
                     onChange={handleChangeInput}
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent  border-b-4 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
                   />

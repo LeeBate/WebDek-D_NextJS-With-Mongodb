@@ -18,6 +18,7 @@ import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
 import TabContext from "@mui/lab/TabContext";
 import Box from "@mui/material/Box";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 const ProductsManager = (props) => {
   const [images, setImages] = useState([]);
@@ -40,7 +41,7 @@ const ProductsManager = (props) => {
     detailCapability: "",
     detailRestrictions: "",
     category: "",
-    video:"",
+    video: "",
   };
 
   const [product, setProduct] = useState(initialState);
@@ -269,7 +270,7 @@ const ProductsManager = (props) => {
     const PDFNewURL = pdf.filter((img) => !img.url);
     const PDFOldURL = pdf.filter((img) => img.url);
 
-    console.log("url", pdf)
+    console.log("url", pdf);
 
     if (imgNewURL.length > 0) media = await imageUpload(imgNewURL);
     if (PDFNewURL.length > 0) pdfmedia = await PDFUpload(PDFNewURL);
@@ -593,7 +594,6 @@ const ProductsManager = (props) => {
                             value={detailRestrictions}
                           ></textarea>
                         </div>
-                        
                       </div>
 
                       <div>
@@ -608,122 +608,120 @@ const ProductsManager = (props) => {
                         text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                         block w-full md:w-[710px] xl:w-[710px] p-2.5 "
                           onChange={handleChangeInput}
-                          
-                          
                         />
                       </div>
-                      <div className="mr-8"></div>
-                      <label>อัตราค่าบริการ : บาท/ตัวอย่าง</label>
 
-                      {inputFields.map((inputField) => (
-                        <div
-                          key={inputField.idx}
-                          className=" md:flex g-8 space-y-2 md:space-y-0"
-                        >
-                          <div className="">
-                            <div>
-                              <input
-                                type="text"
-                                name="ListName"
-                                value={inputField.ListName}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                      <div className=" bg-cyan-200 mb-3 rounded-md px-3 py-3">
+                        <div className="mr-8"></div>
+                        <label>อัตราค่าบริการ : บาท/ตัวอย่าง</label>
+                        {inputFields.map((inputField) => (
+                          <div
+                            key={inputField.idx}
+                            className=" md:flex g-8 space-y-2 md:space-y-0 py-1.5"
+                          >
+                            
+                              <div>
+                                <input
+                                  type="text"
+                                  name="ListName"
+                                  value={inputField.ListName}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-40 xl:w-[187px]"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="ชื่อรายการ"
-                                required
-                              />
-                            </div>
-                          </div>
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="ชื่อรายการ"
+                                  required
+                                />
+                              </div>
+                            
 
-                          <div className="md:ml-2">
-                            <div>
-                              <input
-                                type="number"
-                                name="price1"
-                                value={inputField.price1}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                            <div className="md:ml-2">
+                              <div>
+                                <input
+                                  type="number"
+                                  name="price1"
+                                  value={inputField.price1}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="อัตราที่ 1"
-                              />
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="อัตราที่ 1"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="md:ml-2">
-                            <div>
-                              <input
-                                type="number"
-                                name="price2"
-                                value={inputField.price2}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                            <div className="md:ml-2">
+                              <div>
+                                <input
+                                  type="number"
+                                  name="price2"
+                                  value={inputField.price2}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="อัตราที่ 2"
-                              />
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="อัตราที่ 2"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="md:ml-2">
-                            <div>
-                              <input
-                                type="number"
-                                name="price3"
-                                value={inputField.price3}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                            <div className="md:ml-2">
+                              <div>
+                                <input
+                                  type="number"
+                                  name="price3"
+                                  value={inputField.price3}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="อัตราที่ 3"
-                              />
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="อัตราที่ 3"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="md:ml-2">
-                            <div>
-                              <input
-                                type="number"
-                                name="price4"
-                                value={inputField.price4}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                            <div className="md:ml-2">
+                              <div>
+                                <input
+                                  type="number"
+                                  name="price4"
+                                  value={inputField.price4}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="อัตราที่ 4"
-                              />
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="อัตราที่ 4"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div className="md:ml-2">
-                            <div>
-                              <input
-                                type="number"
-                                name="price5"
-                                value={inputField.price5}
-                                className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
+                            <div className="md:ml-2">
+                              <div>
+                                <input
+                                  type="number"
+                                  name="price5"
+                                  value={inputField.price5}
+                                  className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 
                               text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500
                               block p-2.5 w-full md:w-20"
-                                onChange={(event) =>
-                                  handleChangeInput2(inputField.idx, event)
-                                }
-                                placeholder="อัตราที่ 5"
-                              />
+                                  onChange={(event) =>
+                                    handleChangeInput2(inputField.idx, event)
+                                  }
+                                  placeholder="อัตราที่ 5"
+                                />
+                              </div>
                             </div>
-                          </div>
 
-                          <div>
                             <button
                               className="w-full md:w-20 h-[41px] md:ml-3 rounded-sm bg-red-400 text-white "
                               disabled={inputFields.length === 1}
@@ -732,9 +730,15 @@ const ProductsManager = (props) => {
                               ลบช่อง
                             </button>
                           </div>
-                        </div>
-                      ))}
-
+                        ))}
+                        <p
+                          className="flex flex-row  text-white shadow-md  cursor-pointer no-underline px-3  rounded-md bg-green-500 py-2 w-full mt-5"
+                          onClick={handleAddFields}
+                        >
+                          <IoIosAddCircleOutline size={26} color="white" />
+                          เพิ่มช่อง
+                        </p>
+                      </div>
                       <label
                         htmlFor="countries"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400 "
@@ -827,38 +831,37 @@ const ProductsManager = (props) => {
                             <input
                               id="dropzone-file"
                               type="file"
-                              
                               onChange={handleUploadInputPDF}
                               accept="application/pdf"
                             />
                           </label>
                         </div>
                         <div className="row  mx-0">
-                        {pdf.map((img, index) => (
-                          <p
-                            href={img.url}
-                            key={index}
-                            className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200"
-                          >
-                            <a href={img.url ? img.url : "#"}>
-                              <img
-                                className="h-15 w-10"
-                                src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
-                              />
-                            </a>
-                            <p className="pl-2 pr-3">
-                              {false ? img.url : "Uploaded PDF"}
-                            </p>
-
-                            <span
-                              className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8"
-                              onClick={() => deletePDF(index)}
+                          {pdf.map((img, index) => (
+                            <p
+                              href={img.url}
+                              key={index}
+                              className="file_img my-1 rounded-xl shadow-sm flex flex-row px-3 py-2 mx-3    items-center bg-gray-200"
                             >
-                              X
-                            </span>
-                          </p>
-                        ))}
-                      </div>
+                              <a href={img.url ? img.url : "#"}>
+                                <img
+                                  className="h-15 w-10"
+                                  src="https://cdn-icons-png.flaticon.com/512/4726/4726010.png"
+                                />
+                              </a>
+                              <p className="pl-2 pr-3">
+                                {false ? img.url : "Uploaded PDF"}
+                              </p>
+
+                              <span
+                                className=" cursor-pointer bg-gray-800 text-white flex justify-center rounded-full items-center  self-center w-8 h-8"
+                                onClick={() => deletePDF(index)}
+                              >
+                                X
+                              </span>
+                            </p>
+                          ))}
+                        </div>
                       </div>
                       <button
                         type="submit"
@@ -868,13 +871,6 @@ const ProductsManager = (props) => {
                         {onEdit ? "อัพเดต" : "สร้าง"}
                       </button>
                     </form>
-
-                    <button
-                      className="btn btn-info w-full mt-5"
-                      onClick={handleAddFields}
-                    >
-                      เพิ่มช่อง
-                    </button>
                   </div>
                 </section>
               </div>
@@ -1014,9 +1010,7 @@ export async function getServerSideProps({ query }) {
   const search = query.search || "all";
 
   const res = await getData(
-    `product?limit=${
-      page * 100
-    }&category=${category}&sort=${sort}&en=${search}`
+    `product?limit=${page * 100}&category=${category}&sort=${sort}&en=${search}`
   );
   // server side rendering
   return {
