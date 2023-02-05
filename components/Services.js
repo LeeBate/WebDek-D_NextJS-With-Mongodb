@@ -48,12 +48,17 @@ function Services() {
     );
   };
 
+  function websiteVisits(response) {
+    document.querySelector("#visits").textContent = response.value;
+}
+
   return (
     <ThemeProvider theme={theme}>
       <div className="service-header">
         <h2 className=" text-xl font-bold md:text-3xl lg:text-4xl text-[#1a237e]">
           บริการวิเคราะห์ทดสอบ
         </h2>
+        <h1>This site has been visited <span id="visits"></span> times.</h1>
         <p className="text-lg font-medium md:text-lg">
           ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
         </p>

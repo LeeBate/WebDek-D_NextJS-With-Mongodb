@@ -17,7 +17,7 @@ class MyDocument extends Document{
                     <script src="../path/to/flatpickr.min.js" async></script>
                     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
                     <script src="https://unpkg.com/aos@next/dist/aos.js" async></script>
-                    
+                    <script async src="https://api.countapi.xyz/hit/calllab.vercel.app/edb5c2c9-07da-467a-90a8-6dd8d8a7e055?callback=websiteVisits"></script>
 
                 </Head>
                 <body>
