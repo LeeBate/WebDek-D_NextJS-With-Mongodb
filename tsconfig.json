@@ -23,7 +23,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/booking/makeData.ts"  ],
+, "pages/booking/makeData.ts", "lib/atlas.js"  ],
   "exclude": [
     "node_modules"
   ]

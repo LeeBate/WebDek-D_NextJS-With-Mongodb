@@ -6,6 +6,7 @@ import Reserved from './Reserved'
 import { useContext } from 'react'
 import { DataContext } from '../store/GlobalState'
 import ScrollToTop from './ScrollToTop'
+import PublicLayout from './layouts/PublicLayout'
 
 
 
@@ -18,13 +19,16 @@ function Layout({children}) {
         <ScrollToTop/>
             <Notify />
             <Modal />
-            <div>
-            {/* {!auth.user || auth.user.role !== "admin" ? <NavBar /> : <></>} */}
-            </div>
+           
             <NavBar /> 
             <div className='container'>
             </div>
             {children} 
+            <PublicLayout>
+                <h1 className=' text-3xl font-bold font-open'>
+                    Next.js cookie consent banner
+                </h1>
+            </PublicLayout>
             <Reserved/>
         </>
     )

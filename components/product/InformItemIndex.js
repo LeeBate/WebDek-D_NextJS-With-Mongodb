@@ -3,9 +3,8 @@ import { useContext } from "react";
 import { DataContext } from "../../store/GlobalState";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../src/theme/theme";
-import Box from "@mui/material/Box";
 
-const InformItem = ({ product, handleCheck }) => {
+const InformItem = ({ product}) => {
   const { state, dispatch } = useContext(DataContext);
   const { cart, auth } = state;
 

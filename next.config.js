@@ -6,6 +6,8 @@ module.exports = {
   env: {
       "BASE_URL": "http://localhost:3000",
       "MONGODB_URL": "mongodb+srv://AdminX:admin123@project.ljdx6ja.mongodb.net/?retryWrites=true&w=majority",
+      "ATCAS_DATA_KEY" : "4i3haN0YB1mqqALRFcVuQYzuUrs125Gviy8lpmzhNPS7E6c1DvGhRM5jKKuPboaJ",
+      "ATCAS_DATA_URL" : "https://data.mongodb-api.com/app/data-iianv/endpoint/data/v1",
       "ACCESS_TOKEN_SECRET": "project48615324896761524",
       "REFRESH_TOKEN_SECRET": "project77759664823511548226",
       "PAYPAL_CLIENT_ID": "AS5QhaJ6fnAQNiaJqrjUe9nBvEvTivhkK5vR2Gtg271vXVFUKDBMhiWGBLADB7AjskKHc2gWrcEudo01",

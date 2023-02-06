@@ -51,7 +51,7 @@ const updateProduct = async (req, res) => {
              detailRestrictions, category, images, nameRate,pdf,video
         })
 
-        res.json({msg: 'Success! Updated a product'})
+        res.json({msg: 'สำเร็จ! แก้ไขเรียบร้อย'})
     } catch (err) {
         return res.status(500).json({err: err.message})
         

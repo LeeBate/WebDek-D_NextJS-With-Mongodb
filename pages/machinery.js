@@ -55,6 +55,7 @@ const Machinery = (props) => {
       console.log("setslide newdata");
     }
   };
+  
   const [sort, setSort] = useState("");
   const [category, setCategory] = useState("");
   const handleCategory = (e) => {
@@ -142,7 +143,7 @@ const Machinery = (props) => {
         </div>
       </div>
 
-      <input />
+      
       <div className="px-4">
         <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
           {products.length === 0 ? (

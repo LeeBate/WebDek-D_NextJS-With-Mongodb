@@ -21,16 +21,18 @@ const Index = (props) => {
   const { state, dispatch } = useContext(DataContext);
   const { auth } = state;
 
-  useEffect(() => {
-    setProducts(props.products);
-    setInforms(props.Informs);
-  }, [props.products],[props.Informs]);
-
+  useEffect(
+    () => {
+      setProducts(props.products);
+      setInforms(props.Informs);
+    },
+    [props.products],
+    [props.Informs]
+  );
 
   // useEffect(() => {
   //   if (Object.keys(router.query).length === 0) setPage(1);
   // }, [router.query]);
-
 
   return (
     <div>
@@ -63,18 +65,16 @@ const Index = (props) => {
             ข่าวประชาสัมพันธ์
           </h2>
           <p className="text-lg font-medium md:text-lg whitespace-pre-line">
-            ฝ่ายวิเคราะห์ด้วยเครื่องมือ 
-            
-            ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
+            ฝ่ายวิเคราะห์ด้วยเครื่องมือ ศูนย์เครื่องมือวิทยาศาสตร์และเทคโนโลยี
           </p>
         </div>
-<div className=" grid md:grid-cols-2">
-        {Informs.slice(0, 4).map((product) => (
-          <div key={product._id} data-aos="fade-up">
-            <InformItemIndex product={product} />
-          </div>
-        ))}
-</div>
+        <div className=" grid md:grid-cols-2">
+          {Informs.slice(0, 4).map((product,key) => (
+            <div key={key} data-aos="fade-up">
+              <InformItemIndex product={product} />
+            </div>
+          ))}
+        </div>
         <div className="services-container ">
           <div className=" flex justify-center items-center">
             <Link href="/Inform">

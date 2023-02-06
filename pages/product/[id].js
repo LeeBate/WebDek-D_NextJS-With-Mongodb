@@ -460,7 +460,7 @@ const DetailProduct = (props, query) => {
           </a>
         </Link>
 
-        {product.video.length !==0 ? (
+        {product.video.length !==0 && product.video !== "-" ? (
           <Link href={product.video}>
           <a
             target="_blank"
