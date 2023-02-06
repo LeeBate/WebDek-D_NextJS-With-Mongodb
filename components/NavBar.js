@@ -412,11 +412,10 @@ function NavBar() {
                       </div>
                       <div className=" space-y-1 px-2 ">
                         
-                        {dropdownMenu.map((item) => (
-                          <Link href={item.href}>
-                            <div>
+                        {dropdownMenu.map((item,key) => (
+                          <Link key={key} href={item.href}>
+                            <div >
                               <Disclosure.Button
-                                key={item.name}
                                 as="a"
                                 className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-1   focus:outline-none hover:text-white"
                               >

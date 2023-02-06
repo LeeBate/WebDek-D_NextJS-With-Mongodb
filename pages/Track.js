@@ -452,8 +452,8 @@ const Tracking = (props) => {
                     founddata[0].procedure
                       .filter((item) => item.checkwork === true)
                       .map((procedure, ict) => (
-                        <div className="rounded-md ">
-                          <div key={ict} className="flex flex-row ">
+                        <div key={ict} className="rounded-md ">
+                          <div  className="flex flex-row ">
                             <div className="flex flex-col items-center">
                               {procedure.checkwork ? (
                                 <BsFillCheckCircleFill
@@ -579,8 +579,8 @@ const Tracking = (props) => {
                     founddata[0].labPrint
                       .filter((item) => item.checkwork === true)
                       .map((labPrint, ict) => (
-                        <div className=" rounded-md ">
-                          <div key={ict} className="flex flex-row ">
+                        <div key={ict} className=" rounded-md ">
+                          <div  className="flex flex-row ">
                             <div className="flex flex-col items-center">
                               {labPrint.checkwork ? (
                                 <BsFillCheckCircleFill
