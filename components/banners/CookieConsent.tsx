@@ -49,14 +49,14 @@ const CookieConsent = () => {
               เว็บไซต์ของเรามีการเก็บ cookies
               ซึ่งเก็บข้อมูลว่าคุณใช้งานเว็บไซต์ของเราอย่างไรและช่วยให้เราจดจำคุณได้
               เราใช้ข้อมูลนี้เพื่อทำให้ประสบการณ์การใช้เว็บไซต์ดียิ่งขึ้น
-              (อ่านข้อมูลเพิ่มเติมได้ที่หน้า)
               
-              <Link href="/privacy-policy">
+              
+              {/* <Link href="/privacy-policy">
                
                 <span className=" underline decoration-[#1a237e]">
                 Privace Policy
               </span>{" "}
-              </Link>
+              </Link> */}
               .
             </p>
           </div>
