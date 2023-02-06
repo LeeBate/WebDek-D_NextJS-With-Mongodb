@@ -4,7 +4,7 @@ module.exports = {
 
   
   env: {
-      "BASE_URL": "http://localhost:3000",
+      "BASE_URL": "https://calllab.vercel.app/",
       "MONGODB_URL": "mongodb+srv://AdminX:admin123@project.ljdx6ja.mongodb.net/?retryWrites=true&w=majority",
       "ATCAS_DATA_KEY" : "4i3haN0YB1mqqALRFcVuQYzuUrs125Gviy8lpmzhNPS7E6c1DvGhRM5jKKuPboaJ",
       "ATCAS_DATA_URL" : "https://data.mongodb-api.com/app/data-iianv/endpoint/data/v1",
