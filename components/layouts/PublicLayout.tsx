@@ -3,14 +3,14 @@ import { ReactNode } from 'react'
 import CookieConsent from '../banners/CookieConsent'
 
 export const Container = ({ children }: { children: ReactNode }) => (
-  <div className="w-full max-w-5xl px-2 mx-auto md:px-4">{children}</div>
+  <div >{children}</div>
 )
 
 const PublicLayout = ({ children }: { children: ReactNode }) => {
   
     return (
     <div className="flex flex-col min-h-screen">
-      <header className="flex items-center border-b border-gray-200 h-14">
+      {/* <header className="flex items-center border-b border-gray-200 h-14">
         <Container>
           <nav>
             <ul>
@@ -24,11 +24,11 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
             </ul>
           </nav>
         </Container>
-      </header>
+      </header> */}
       <main className="flex-grow">
         <Container>{children}</Container>
       </main>
-      <footer className="py-5 border-t border-gray-200">
+      {/* <footer className="py-5 border-t border-gray-200">
         <Container>
           <nav className="my-5">
             <ul>
@@ -47,7 +47,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
             copyright © {new Date().getFullYear()} all rights reserved
           </p>
         </Container>
-      </footer>
+      </footer> */}
       <CookieConsent />
     </div>
   )

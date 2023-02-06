@@ -6,7 +6,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from "react";
-
+import PublicLayout from '../components/layouts/PublicLayout'
 
 function MyApp({ Component, pageProps }) {
 
@@ -21,11 +21,15 @@ function MyApp({ Component, pageProps }) {
   return (
     <DataProvider>
       <ThemeProvider attribute="class">
-        <Layout>
+        <PublicLayout>
+          <Layout>
+        
+              
           <ChakraProvider>
             <Component {...pageProps} />
           </ChakraProvider>
-        </Layout>
+          
+        </Layout></PublicLayout>
       </ThemeProvider>
     </DataProvider>
   );
