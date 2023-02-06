@@ -23,7 +23,7 @@ function Layout({children}) {
             <NavBar /> 
             <div className='container'>
             </div>
-            {children} 
+            {/* {children}  */}
             <PublicLayout>
                 <h1 className=' text-3xl font-bold font-open'>
                     Next.js cookie consent banner
