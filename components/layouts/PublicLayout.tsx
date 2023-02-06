@@ -1,6 +1,11 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
 import CookieConsent from '../banners/CookieConsent'
+import ScrollToTop from '../ScrollToTop'
+import NavBar from '../NavBar'
+import Notify from '../Notify'
+import Modal from '../Modal'
+import Reserved from '../Reserved'
 
 export const Container = ({ children }: { children: ReactNode }) => (
   <div >{children}</div>
@@ -25,9 +30,13 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
           </nav>
         </Container>
       </header> */}
-      <main className="flex-grow">
+      <ScrollToTop/>
+            <Notify />
+            <Modal />
+           
+            <NavBar /> 
         <Container>{children}</Container>
-      </main>
+      
       {/* <footer className="py-5 border-t border-gray-200">
         <Container>
           <nav className="my-5">
@@ -49,6 +58,7 @@ const PublicLayout = ({ children }: { children: ReactNode }) => {
         </Container>
       </footer> */}
       <CookieConsent />
+      <Reserved/>
     </div>
   )
 }
