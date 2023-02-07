@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Cookies from "js-cookie";
 import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { Container } from "../layouts/PublicLayout";
@@ -25,20 +24,13 @@ const CookieConsent = () => {
       setCookieConsentIsTrue(true);
     }
   };
-  const onClick1 = (e: MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
 
-    if (!cookieConsentIsTrue) {
-      Cookies.set(USER_CONSENT_COOKIE_KEY, "true", {
-        expires: USER_CONSENT_COOKIE_EXPIRE_DATE,
-      });
-      setCookieConsentIsTrue(false);
-    }
-  };
 
   if (cookieConsentIsTrue) {
     return null;
   }
+
+  console.log("cookieConsentIsTrue", cookieConsentIsTrue);
 
   return (
     <section className="fixed bottom-0 left-0 w-full py-2 md:py-4">
@@ -62,17 +54,12 @@ const CookieConsent = () => {
           </div>
           <div className="flex items-center">
             <button
-              className="p-3 text-sm font-bold text-white uppercase bg-gray-700 whitespace-nowrap"
+              className="p-3 text-sm font-bold text-white uppercase bg-[#1a237e] whitespace-nowrap"
               onClick={onClick}
             >
               ยอมรับ
             </button>
-            <button
-              className="p-3 text-sm font-bold text-white uppercase bg-gray-700 whitespace-nowrap"
-              onClick={onClick1}
-            >
-              ไม่ยอมรับ
-            </button>
+          
           </div>
         </div>
       </Container>
