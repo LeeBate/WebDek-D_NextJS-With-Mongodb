@@ -154,16 +154,16 @@ const Tracking = (props) => {
         <title>CALLLAB</title>
       </Head>
       {isfound === false ? (
-        <section className="  h-screen bg-[#f1f1f1]">
-          <div className="container ">
-            <div className="row d-flex justify-center items-center">
-              <div className="col col-xl-9 col-lg-8 my-auto">
-                <div className="card rounded-[1rem] mt-5">
+        <section className=" h-screen bg-[#f1f1f1]">
+          <div className="container w-full h-full">
+            <div className="flex flex-row justify-center items-center">
+              <div className="col col-xl-12 col-lg-8 mt-14">
+                <div className="card rounded-[1rem] ">
                   <div className="row g-0 items-center py-4 px-5">
                     <div className="col-md-5 col-lg-5 d-none d-md-block">
                       <img
                         src={"/images/1_4.png"}
-                        className="transform transition duration-700 hover:scale-125 object-cover rounded-md "
+                        className="transform transition duration-700 scale-75 hover:scale-100 object-cover rounded-md "
                       />
                     </div>
                     <div className="col-md-6 col-lg-7 d-flex align-items-center ">
@@ -466,7 +466,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-80 md:h-40 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -522,7 +522,7 @@ const Tracking = (props) => {
                       <div className="flex flex-col items-center">
                         <BsFillCheckCircleFill size={40} color="#949494" />
 
-                        <div className="relative w-1 h-44 md:h-40 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-44 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -593,7 +593,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -628,7 +628,7 @@ const Tracking = (props) => {
                       <div className="flex flex-col items-center">
                         <BsFillCheckCircleFill size={40} color="#949494" />
 
-                        <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -676,7 +676,7 @@ const Tracking = (props) => {
                                 color="#949494"
                               />
                             )}
-                            <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                            <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                           </div>
                           <div className="flex-row">
                             <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -719,7 +719,7 @@ const Tracking = (props) => {
                         ) : (
                           <BsFillCheckCircleFill size={40} color="#949494" />
                         )}
-                        <div className="relative w-1 h-24 md:h-32  bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-24 md:h-44  bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -757,7 +757,7 @@ const Tracking = (props) => {
                         ) : (
                           <BsFillCheckCircleFill size={40} color="#949494" />
                         )}
-                        <div className="relative w-1 h-24 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-24  bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1  font-semibold flex flex-col md:flex-row">

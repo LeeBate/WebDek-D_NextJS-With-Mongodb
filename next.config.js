@@ -4,7 +4,7 @@ module.exports = {
 
   
   env: {
-      "BASE_URL": "https://calllab.vercel.app/",
+      "BASE_URL": "http://calllab.vercel.app/",
       "MONGODB_URL": "mongodb+srv://AdminX:admin123@project.ljdx6ja.mongodb.net/?retryWrites=true&w=majority",
       
       "ACCESS_TOKEN_SECRET": "project48615324896761524",
@@ -18,8 +18,8 @@ module.exports = {
       "GOOGLE_SHEET_ID":"1XcKOKflekVfWK0nczbaDi7OcF3TjEO4NkIhhDea_Xes",
     },
     images: {
-      domains: ['http://www.sut.ac.th/'],
-      domains: ['http://203.158.7.33/'],
+      domains: ['www.sut.ac.th/'],
+      domains: ['www.203.158.7.33/'],
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
       

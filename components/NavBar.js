@@ -372,7 +372,11 @@ function NavBar() {
                       <div>
                         <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                           <Link href="/machinery">
-                            <div>เครื่องมือวิเคราะห์</div>
+                            <div>
+                            <Disclosure.Button>
+                              <div>เครื่องมือวิเคราะห์</div>
+                            </Disclosure.Button>
+                            </div>
                           </Link>
                         </Menu.Button>
                       </div>
@@ -381,7 +385,11 @@ function NavBar() {
                       <div>
                         <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                           <Link href="/#services">
+                            <div>
+                          <Disclosure.Button>
                             <div>บริการวิเคราะห์ทดสอบ</div>
+                          </Disclosure.Button>
+                            </div>
                           </Link>
                         </Menu.Button>
                       </div>
@@ -391,7 +399,11 @@ function NavBar() {
                         <div>
                           <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                             <Link href="/Track">
-                              <div>การติดตามรายงานผลการทดสอบ</div>
+                              <div>
+                              <Disclosure.Button>
+                                <div>การติดตามรายงานผลการทดสอบ</div>
+                              </Disclosure.Button>
+                              </div>
                             </Link>
                           </Menu.Button>
                         </div>
