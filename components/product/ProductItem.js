@@ -26,7 +26,7 @@ const ProductItem = ({ product, handleCheck }) => {
           <button className="btn bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
             <div className="flex items-center justify-center px-auto ">
               <IoDocumentTextOutline></IoDocumentTextOutline>
-              <div className="mr-1"></div> ดูข้อมูล
+              <div className="mr-1"></div> ข้อมูลเพิ่มเติม
             </div>
           </button>
         </Link>

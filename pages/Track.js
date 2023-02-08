@@ -154,16 +154,16 @@ const Tracking = (props) => {
         <title>CALLLAB</title>
       </Head>
       {isfound === false ? (
-        <section className="  h-screen bg-[#f1f1f1]">
-          <div className="container ">
-            <div className="row d-flex justify-center items-center">
-              <div className="col col-xl-9 col-lg-8 my-auto">
-                <div className="card rounded-[1rem] mt-5">
+        <section className=" h-screen bg-[#f1f1f1]">
+          <div className="container w-full h-full">
+            <div className="flex flex-row justify-center items-center">
+              <div className="col col-xl-12 col-lg-8 mt-14">
+                <div className="card rounded-[1rem] ">
                   <div className="row g-0 items-center py-4 px-5">
                     <div className="col-md-5 col-lg-5 d-none d-md-block">
                       <img
                         src={"/images/1_4.png"}
-                        className="transform transition duration-700 hover:scale-125 object-cover rounded-md "
+                        className="transform transition duration-700 scale-75 hover:scale-100 object-cover rounded-md "
                       />
                     </div>
                     <div className="col-md-6 col-lg-7 d-flex align-items-center ">
@@ -466,7 +466,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-80 md:h-40 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -514,6 +514,71 @@ const Tracking = (props) => {
                               </p>
                             </div>
                           </div>
+                          {
+                            procedure.time1_2 || procedure.time2_2 || procedure.time3_2 || procedure.time4_2 || procedure.tool_2 || procedure.param_2 ? (
+                              <div  className="flex flex-row ">
+                            <div className="flex flex-col items-center">
+                              {procedure.checkwork ? (
+                                <BsFillCheckCircleFill
+                                  size={40}
+                                  color="#5F9B6F"
+                                />
+                              ) : (
+                                <BsFillCheckCircleFill
+                                  size={40}
+                                  color="#949494"
+                                />
+                              )}
+                              <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
+                            </div>
+                            <div className="flex-row">
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                ขั้นตอนการดำเนินการ :{" "}
+                                <p className="md:ml-1 font-normal">
+                                  {procedure.ListName}
+                                </p>
+                              </p>
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                วันที่เริ่มดำเนินการ :
+                                <p className="md:ml-1 font-normal">
+                                  {procedure.time1_2
+                                    ? ConvertDate(procedure.time1_2)
+                                    : "-"}
+                                </p>
+                              </p>
+
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                เวลาดำเนินการทั้งหมด :
+                                <p className="md:ml-1 font-normal">
+                                  {procedure.time3_2 ? procedure.time3_2 : "-"}
+                                  ชั่วโมง
+                                </p>
+                              </p>
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                วันที่ดำเนินการเสร็จ :
+                                <p className="md:ml-1 font-normal">
+                                  {" "}
+                                  {procedure.time4_2
+                                    ? ConvertDate(procedure.time4_2)
+                                    : "-"}
+                                </p>
+                              </p>
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                เครื่องมือ :
+                                <p className="md:ml-1 font-normal">
+                                  {procedure.tool_2 ? procedure.tool_2 : "-"}
+                                </p>
+                              </p>
+                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                พารามิเตอร์ :
+                                <p className="md:ml-1 font-normal">
+                                  {procedure.param_2 ? procedure.param_2 : "-"}
+                                </p>
+                              </p>
+                            </div>
+                          </div>
+                            ):(<></>) 
+                          }
                         </div>
                       ))
                   ) : (
@@ -522,52 +587,46 @@ const Tracking = (props) => {
                       <div className="flex flex-col items-center">
                         <BsFillCheckCircleFill size={40} color="#949494" />
 
-                        <div className="relative w-1 h-44 md:h-40 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-44 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           ขั้นตอนการดำเนินการ :
                           <p className="md:ml-1 font-normal">
-                            {procedure.ListName}
+                             -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           วันที่เริ่มดำเนินการ :
                           <p className="md:ml-1 font-normal">
-                            {procedure.time1
-                              ? ConvertDate(procedure.time1)
-                              : "-"}
+                            -
                           </p>
                         </p>
 
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           เวลาดำเนินการทั้งหมด :
                           <p className="md:ml-1 font-normal">
-                            {procedure.time3 ? procedure.time3 : "-"}
-                            ชั่วโมง
+                            -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           วันที่ดำเนินการเสร็จ :
                           <p className="md:ml-1 font-normal">
-                            {" "}
-                            {procedure.time4
-                              ? ConvertDate(procedure.time4)
-                              : "-"}
+                            -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold">
                           {" "}
                           เครื่องมือ :{" "}
                           <p className="md:ml-1 font-normal">
-                            {procedure.tool ? procedure.tool : "-"}
+                            -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold">
                           {" "}
                           พารามิเตอร์ :{" "}
                           <p className="md:ml-1 font-normal">
-                            {procedure.param ? procedure.param : "-"}
+                            -
                           </p>
                         </p>
                       </div>
@@ -593,7 +652,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -619,7 +678,52 @@ const Tracking = (props) => {
                                 </p>
                               </p>
                             </div>
+                            
                           </div>
+
+                          {labPrint.timelab1_2 || labPrint.timelab2_2 ? (
+                             <div  className="flex flex-row ">
+                             <div className="flex flex-col items-center">
+                               {labPrint.checkwork ? (
+                                 <BsFillCheckCircleFill
+                                   size={40}
+                                   color="#5F9B6F"
+                                 />
+                               ) : (
+                                 <BsFillCheckCircleFill
+                                   size={40}
+                                   color="#949494"
+                                 />
+                               )}
+                               <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
+                             </div>
+                             <div className="flex-row">
+                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                 Lab ส่งผลการทดสอบพิมพ์ :
+                                 <p className="md:ml-1 font-normal">
+                                   {labPrint.ListName}
+                                 </p>
+                               </p>
+                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                 ส่งพิมพ์วันที่ :{" "}
+                                 <p className="md:ml-1 font-normal">
+                                   {labPrint.timelab1_2
+                                     ? ConvertDate(labPrint.timelab1_2)
+                                     : "-"}
+                                 </p>
+                               </p>
+                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                                 พิมพ์เสร็จวันที่ :{" "}
+                                 <p className="md:ml-1 font-normal">
+                                   {labPrint.timelab2_2
+                                     ? ConvertDate(labPrint.timelab2_2)
+                                     : "-"}
+                                 </p>
+                               </p>
+                             </div>
+                             
+                           </div>
+                            ) : (<></>)}
                         </div>
                       ))
                   ) : (
@@ -628,29 +732,25 @@ const Tracking = (props) => {
                       <div className="flex flex-col items-center">
                         <BsFillCheckCircleFill size={40} color="#949494" />
 
-                        <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           Lab ส่งผลการทดสอบพิมพ์ :
                           <p className="md:ml-1 font-normal">
-                            {labPrint.ListName}
+                            -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           ส่งพิมพ์วันที่ :{" "}
                           <p className="md:ml-1 font-normal">
-                            {labPrint.timelab1
-                              ? ConvertDate(labPrint.timelab1)
-                              : "-"}
+                           -
                           </p>
                         </p>
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           พิมพ์เสร็จวันที่ :{" "}
                           <p className="md:ml-1 font-normal">
-                            {labPrint.timelab2
-                              ? ConvertDate(labPrint.timelab2)
-                              : "-"}
+                           -
                           </p>
                         </p>
                       </div>
@@ -658,7 +758,7 @@ const Tracking = (props) => {
                   )}{" "}
                 </div>
 
-                <div className=" rounded-md ">
+                {/* <div className=" rounded-md ">
                   {true ? (
                     founddata[0].labPrint
                       .filter((item) => item.checkwork === true)
@@ -676,7 +776,7 @@ const Tracking = (props) => {
                                 color="#949494"
                               />
                             )}
-                            <div className="relative w-1 h-36 md:h-20 bg-[#050505]/70"></div>
+                            <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                           </div>
                           <div className="flex-row">
                             <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -707,7 +807,7 @@ const Tracking = (props) => {
                   ) : (
                     <></>
                   )}{" "}
-                </div>
+                </div> */}
 
                 {true ? (
                   founddata[0].ensure.map((ensure, ict) => (
@@ -719,7 +819,7 @@ const Tracking = (props) => {
                         ) : (
                           <BsFillCheckCircleFill size={40} color="#949494" />
                         )}
-                        <div className="relative w-1 h-24 md:h-32  bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-32 md:h-32  bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -728,13 +828,13 @@ const Tracking = (props) => {
                         <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           {ensure.ListName}
                         </p>
-                        <p className="pl-2 mt-1 font-semibold">
+                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           เสนอ หน. ฝวค. วันที่ :{" "}
                           <p className="md:ml-1 font-normal">
                             {ensure.time1 ? ConvertDate(ensure.time1) : "-"}
                           </p>
                         </p>
-                        <p className="pl-2 mt-1 font-semibold">
+                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           หน. ฝวค. ลงนาม วันที่ :{" "}
                           <p className="md:ml-1 font-normal">
                             {ensure.time2 ? ConvertDate(ensure.time2) : "-"}
@@ -757,11 +857,11 @@ const Tracking = (props) => {
                         ) : (
                           <BsFillCheckCircleFill size={40} color="#949494" />
                         )}
-                        <div className="relative w-1 h-24 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-32 md:h-32 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1  font-semibold flex flex-col md:flex-row">
-                          หน. กลุ่ม ตรวจรายงานผลฯ :{" "}
+                          หน. กลุ่มงานฯ ตรวจรายงานผลฯ :{" "}
                         </p>
                         <p className="pl-2 mt-1  font-semibold flex flex-col md:flex-row">
                           {" "}
@@ -800,7 +900,7 @@ const Tracking = (props) => {
                         ) : (
                           <BsFillCheckCircleFill size={40} color="#949494" />
                         )}
-                        <div className="relative w-1 h-24 bg-[#050505]/70"></div>
+                        <div className="relative w-1 h-32 md:h-32 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
                         <p className="pl-2 mt-1  font-semibold flex flex-col md:flex-row">
