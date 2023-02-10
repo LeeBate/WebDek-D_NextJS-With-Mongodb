@@ -9,6 +9,8 @@ import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";
 import Footer from "./footer/Footer";
 
+
+
 const MainWrapper = experimentalStyled("div")(() => ({
   display: "flex",
   minHeight: "100vh",
@@ -40,7 +42,7 @@ const FullLayout = ({ children }) => {
         sx={{
           paddingLeft: isSidebarOpen && lgUp ? "265px" : "",
           backgroundColor: "#1a237e",
-          opacity: 0.5
+          
           
         }}
         toggleMobileSidebar={() => setMobileSidebarOpen(true)}

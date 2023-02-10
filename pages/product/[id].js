@@ -465,7 +465,7 @@ const DetailProduct = (props, query) => {
           <a
             target="_blank"
             rel="noopener noreferrer"
-            className=" hover:bg-[#FFA500] bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+            className="  bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
           >
             <button >
               วิดีโอการใช้งาน

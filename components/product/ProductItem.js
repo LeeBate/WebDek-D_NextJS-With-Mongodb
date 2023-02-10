@@ -59,32 +59,36 @@ const ProductItem = ({ product, handleCheck }) => {
   const adminLink = () => {
     return (
       <>
-        <Link href={`/Admin/createProduct/${product._id}`}>
-          <a className="btn btn-info" style={{ marginRight: "5px", flex: 1 }}>
-            แก้ไขข้อมูล
-          </a>
+        <Link href={`product/${product._id}`}>
+          <button className="btn bg-[#1a237e] hover:bg-[#FFA500] w-[136.83px] py-2 rounded-full text-white ">
+            <div className="flex items-center justify-center px-auto ">
+              <IoDocumentTextOutline></IoDocumentTextOutline>
+              <div className="mr-1"></div> ข้อมูลเพิ่มเติม
+            </div>
+          </button>
         </Link>
-        <button
-          className="btn btn-danger"
-          style={{ marginLeft: "5px", flex: 1 }}
-          data-toggle="modal"
-          data-target="#exampleModal"
-          onClick={() =>
-            dispatch({
-              type: "ADD_MODAL",
-              payload: [
-                {
-                  data: "",
-                  id: product._id,
-                  title: product.title,
-                  type: "DELETE_PRODUCT",
-                },
-              ],
-            })
-          }
-        >
-          ลบข้อมูล
-        </button>
+        {Object.keys(auth).length !== 0 ? (
+          <Link href={`booking/${product._id}`}>
+            <button className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white">
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        ) : (
+          <Link href="#">
+            <button
+              className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 rounded-full text-white"
+              onClick={alert}
+            >
+              <div className="flex items-center justify-center px-auto ">
+                <MdOutlineScience></MdOutlineScience>
+                <div className="mr-1"></div> จองเครื่องมือ
+              </div>
+            </button>
+          </Link>
+        )}
       </>
     );
   };

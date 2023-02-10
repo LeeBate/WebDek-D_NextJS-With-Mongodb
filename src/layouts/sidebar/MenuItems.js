@@ -12,17 +12,17 @@ const Menuitems = [
   },
   {
     title: "การจองเครื่องมือ",
-    icon: "sidebar",
+    icon: "book-open",
     href: "/Admin/dataBookings/[[...id]]",
   },
   {
     title: "ติดตามรายงานผลการทดสอบ",
-    icon: "sidebar",
+    icon: "map-pin",
     href: "/Admin/Tracking/[[...id]]",
   },
   {
     title: "ข่าวประชาสัมพันธ์",
-    icon: "plus-circle",
+    icon: "file-text",
     href: "/Admin/createInfo/[[...id]]",
   },
   {

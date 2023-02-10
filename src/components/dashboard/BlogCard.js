@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Card, CardContent, Typography, Button, Grid } from "@mui/material";
 import Image from "next/image";
 import user1 from "../../../assets/images/backgrounds/u2.jpg";
@@ -10,6 +10,8 @@ import { useContext } from "react";
 import { DataContext } from "../../../store/GlobalState";
 import { useEffect } from "react";
 import { getData } from "../../../utils/fetchData";
+
+import Chart from "chart.js/auto";
 
 const blogs = [
   {
@@ -46,12 +48,6 @@ const BlogCard = () => {
   const query = router.query;
   const [machincount, setmachincount] = useState();
   const [cat, setcat] = useState([]);
-  const [catname1, setCatname1] = useState();
-  const [catname2, setCatname2] = useState();
-  const [catname3, setCatname3] = useState();
-  const [catname4, setCatname4] = useState();
-  const [catname5, setCatname5] = useState();
-  const [catnameother, setCatnameother] = useState();
 
   const [resprod, setresprod] = useState([]);
 
@@ -60,6 +56,7 @@ const BlogCard = () => {
   const [admincount, setadmincount] = useState();
   let sum = 0;
   const [newscount, setnewscount] = useState();
+
   useEffect(() => {
     getdata(query);
     // checkCate()
@@ -83,6 +80,16 @@ const BlogCard = () => {
       }&category=${category}&sort=${sort}&title=${search}`
     );
     setmachincount(resprod.products.length);
+    console.log(resprod.products.length);
+    console.log("เครื่องมือ1", resprod.products.filter(checkCat1).length);
+
+    //ลองดู
+    setCatname1(resprod.products.filter(checkCat1).length);
+    setCatname2(resprod.products.filter(checkCat2).length);
+    setCatname3(resprod.products.filter(checkCat3).length);
+    setCatname4(resprod.products.filter(checkCat4).length);
+    setCatname5(resprod.products.filter(checkCat5).length);
+
     setresprod(resprod.products);
 
     setallusercount(state.users.length);
@@ -92,12 +99,6 @@ const BlogCard = () => {
     setnewscount(resnews.products.length);
 
     setcat(state.categories);
-
-    setCatname1(resprod.products.filter(checkCat1).length);
-    setCatname2(resprod.products.filter(checkCat2).length);
-    setCatname3(resprod.products.filter(checkCat3).length);
-    setCatname4(resprod.products.filter(checkCat4).length);
-    setCatname5(resprod.products.filter(checkCat5).length);
   }
   function checkUser(user) {
     return user.role == "user";
@@ -108,7 +109,6 @@ const BlogCard = () => {
 
   function checkCat1(cat) {
     //งานวิเคราะห์ด้วยกล้องจุลทรรศน์
-
     return cat.category == "6332c30fef36f259682ef9ca";
   }
   function checkCat2(cat) {
@@ -128,8 +128,82 @@ const BlogCard = () => {
     return cat.category == "633563020965da53b8325fc6";
   }
 
+  //pie chart
+  const canvas = useRef();
+  const nameAll = [];
+  const [catname1, setCatname1] = useState();
+  const [catname2, setCatname2] = useState();
+  const [catname3, setCatname3] = useState();
+  const [catname4, setCatname4] = useState();
+  const [catname5, setCatname5] = useState();
+  useEffect(() => {
+    nameAll.push(catname1);
+    nameAll.push(catname2);
+    nameAll.push(catname3);
+    nameAll.push(catname4);
+    nameAll.push(catname5);
+    const ctx = canvas.current;
+
+    let chartStatus = Chart.getChart("chart");
+    if (chartStatus !== undefined) {
+      chartStatus.destroy();
+    }
+    new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: [
+          "งานวิเคราะห์ด้วยกล้องจุลทรรศน์",
+          "งานวิเคราะห์ทางเคมีและชีวเคมี",
+          "งานวิเคราะห์ทางจุลชีววิทยา",
+          "งานทดสอบทางกายภาพ",
+          "งานวิเคราะห์น้ำ",
+        ],
+        datasets: [
+          {
+            
+            data: nameAll,
+
+            backgroundColor: [
+              "rgba(255, 99, 132, 0.2)",
+              "rgba(54, 162, 235, 0.2)",
+              "rgba(255, 206, 86, 0.2)",
+              "rgba(75, 192, 192, 0.2)",
+              "rgba(153, 102, 255, 0.2)",
+              "rgba(255, 159, 64, 0.2)",
+            ],
+            borderColor: [
+              "rgba(255, 99, 132, 1)",
+              "rgba(54, 162, 235, 1)",
+              "rgba(255, 206, 86, 1)",
+              "rgba(75, 192, 192, 1)",
+              "rgba(153, 102, 255, 1)",
+              "rgba(255, 159, 64, 1)",
+            ],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "เครื่องมือวิทยาศาสตร์",
+            font: {
+              size: 20,
+            },
+          },
+        },
+      },
+    });
+  }, [nameAll]);
+  
+
   return (
-    <BaseCard title="แดชบอร์ด">
+    <BaseCard >
       <Grid container>
         {blogs.map((index) => (
           <Grid
@@ -163,10 +237,10 @@ const BlogCard = () => {
                   sx={{
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
-                    color:"yellow"
+                    color: "yellow",
                   }}
                 >
-                  ผู้ใช้ทั้งหมด 
+                  ผู้ใช้ทั้งหมด
                 </Typography>
                 <Typography
                   align="center"
@@ -197,108 +271,6 @@ const BlogCard = () => {
                   }}
                 >
                   ผู้ใช้ {usercount} บัญชี
-                </Typography> */}
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-        {blogs1.map((index) => (
-          <Grid
-            key={index}
-            item
-            xs={12}
-            lg={4}
-            sx={{
-              display: "flex",
-              alignItems: "stretch",
-            }}
-          >
-            <Card
-              sx={{
-                p: 0,
-                width: "100%",
-                boxShadow: "0 2px 5px 1px #5c6bc0",
-                backgroundColor: "#1a237e",
-              }}
-            >
-              <CardContent
-                sx={{
-                  paddingLeft: "30px",
-                  paddingRight: "30px",
-                  color: "white",
-                }}
-              >
-                <Typography
-                  align="center"
-                  
-                  sx={{
-                    fontSize: "h1.fontSize",
-                    fontWeight: "500",
-                    placeItems: "center",
-                    color:"yellow"
-                  }}
-                >
-                  เครื่องมือวิเคราะห์
-                </Typography>
-                <Typography
-                  align="center"
-                  color="white"
-                  sx={{
-                    fontSize: "h1.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                   {machincount} เครื่อง
-                </Typography>
-                {/* <Typography
-                  align="left"
-                  color="white"
-                  sx={{
-                    fontSize: "h5.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                  งานวิเคราะห์ด้วยกล้องจุลทรรศน์ {catname1} ชิ้น
-                </Typography> */}
-                {/* <Typography
-                  align="left"
-                  color="white"
-                  sx={{
-                    fontSize: "h5.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                  งานวิเคราะห์ทางเคมีและชีวเคมี {catname2} ชิ้น
-                </Typography>
-                <Typography
-                  align="left"
-                  color="white"
-                  sx={{
-                    fontSize: "h5.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                  งานวิเคราะห์ทางจุลชีววิทยา {catname3} ชิ้น 
-                </Typography>
-                <Typography
-                  align="left"
-                  color="white"
-                  sx={{
-                    fontSize: "h5.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                  งานวิเคราะห์ทางกายภาพ {catname4} ชิ้น
-                </Typography>
-                <Typography
-                  align="left"
-                  color="white"
-                  sx={{
-                    fontSize: "h5.fontSize",
-                    fontWeight: "400",
-                  }}
-                >
-                  งานวิเคราะห์ทางน้ำ {catname5} ชิ้น
                 </Typography> */}
               </CardContent>
             </Card>
@@ -336,10 +308,10 @@ const BlogCard = () => {
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
                     placeItems: "center",
-                    color:"yellow"
+                    color: "yellow",
                   }}
                 >
-                   ข่าวประชาสัมพันธ์ 
+                  ข่าวประชาสัมพันธ์
                 </Typography>
                 <Typography
                   align="center"
@@ -349,14 +321,26 @@ const BlogCard = () => {
                     fontWeight: "400",
                   }}
                 >
-                 {newscount} รายการ
+                  {newscount} รายการ
                 </Typography>
-                
               </CardContent>
             </Card>
           </Grid>
         ))}
       </Grid>
+      <Grid container>
+        <Grid xs={6} lg={4}
+            sx={{
+              display: "flex",
+              alignItems: "stretch",
+            }}>
+          <canvas id="chart" ref={canvas}></canvas>
+        </Grid>
+        
+        
+      </Grid>
+      
+      
     </BaseCard>
   );
 };

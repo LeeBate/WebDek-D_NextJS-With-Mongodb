@@ -47,6 +47,9 @@ const bookingSchema = new mongoose.Schema({
     },
     price:{
         type:Number,
+    },
+    calendarData: {
+        type: Array,
     }
 },{
     timestamps: true

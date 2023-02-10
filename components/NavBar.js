@@ -33,7 +33,7 @@ function NavBar() {
     return (
       <>
         <Link href="/Admin">
-          <div className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+          <div className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 ">
             แดชบอร์ด
           </div>
         </Link>
@@ -56,7 +56,7 @@ function NavBar() {
       <>
         <Link href="/">
           <div
-            className="block px-4 py-2 cursor-pointer text-sm text-gray-700 hover:bg-red-500 hover:text-gray-50 "
+            className="block px-4 py-2 cursor-pointer text-md text-gray-700 hover:bg-red-500 hover:text-gray-50 "
             onClick={handleLogout}
           >
             ออกจากระบบ
@@ -118,7 +118,7 @@ function NavBar() {
       <>
         {userNavigation.map((item) => (
           <Link key={item.name} href={item.href}>
-            <div className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+            <div className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 ">
               {item.name}
             </div>
           </Link>
@@ -144,7 +144,7 @@ function NavBar() {
     return (
       <Menu as="div" className="relative ml-3 ">
         <div>
-          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none ">
+          <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-md focus:outline-none ">
             <span className="sr-only">Open user menu</span>
             <img
               className="h-12 w-12 rounded-full"
@@ -189,7 +189,7 @@ function NavBar() {
                 <div className="text-base font-medium leading-none text-white">
                   {auth.user.name}
                 </div>
-                <div className="text-sm font-medium leading-none text-gray-400">
+                <div className="text-md font-medium leading-none text-gray-400">
                   {auth.user.email}
                 </div>
               </div>
@@ -230,7 +230,7 @@ function NavBar() {
                         <div className="flex items-baseline space-x-4">
                           <Menu as="div" className="relative ml-3">
                             <div>
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md font-medium  focus:outline-none hover:text-white">
                                 <Link href="/machinery">
                                   <div>เครื่องมือวิเคราะห์</div>
                                 </Link>
@@ -239,7 +239,7 @@ function NavBar() {
                           </Menu>
                           <Menu as="div" className="relative ml-3">
                             <div>
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md font-medium  focus:outline-none hover:text-white">
                                 บริการวิเคราะห์ทดสอบ
                                 <ChevronDownIcon
                                   className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -263,7 +263,7 @@ function NavBar() {
                                       <a
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 "
+                                        className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 "
                                       >
                                         <button>{item.name}</button>
                                       </a>
@@ -274,7 +274,7 @@ function NavBar() {
                             </Transition>
                           </Menu>
                           <Menu as="div" className="relative ml-3">
-                            <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                            <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md font-medium  focus:outline-none hover:text-white">
                               <Link className="" href="/Track">
                                 <div>การติดตามรายงานผลการทดสอบ</div>
                               </Link>
@@ -283,7 +283,7 @@ function NavBar() {
 
                           <Menu as="div" className="relative ml-3">
                             <div>
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-sm font-medium  focus:outline-none hover:text-white">
+                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md font-medium  focus:outline-none hover:text-white">
                                 เกี่ยวกับเรา
                                 <ChevronDownIcon
                                   className="ml-2 -mr-1 h-5 w-5 text-violet-200 hover:text-violet-100"
@@ -304,7 +304,7 @@ function NavBar() {
                                 {dropdownMenu.map((item) => (
                                   <Menu.Item key={item.name}>
                                     <Link href={item.href}>
-                                      <a className="block px-4 py-2 text-sm cursor-pointer text-gray-700 hover:bg-gray-100 ">
+                                      <a className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 ">
                                         <button>{item.name}</button>
                                       </a>
                                     </Link>

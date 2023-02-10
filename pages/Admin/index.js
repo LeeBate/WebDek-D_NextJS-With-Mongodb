@@ -44,9 +44,9 @@ export default function Index() {
       <Grid item xs={12} lg={12}>
         <BlogCard />
       </Grid>
-      <Grid item xs={12} lg={12}>
+      {/* <Grid item xs={12} lg={12}>
         <SalesOverview />
-      </Grid>
+      </Grid> */}
       {/* <Grid item xs={12} lg={12}>
         <ReportAll />
       </Grid> */}

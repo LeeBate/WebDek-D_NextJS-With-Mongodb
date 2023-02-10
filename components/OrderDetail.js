@@ -81,7 +81,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                     <p>เบอร์โทรศัพท์: {item.phone}</p>
                     <p>
                       วันที่เริ่ม-สิ้นสุด:{" "}
-                      {new Date(item.dateBooking).toLocaleString()} - {" "}
+                      {new Date(item.dateBooking).toLocaleString()} -{" "}
                       {new Date(item.dateBookingEnd).toLocaleString()}
                     </p>
                   </div>
@@ -117,7 +117,10 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                 <h3>การชำระเงิน</h3>
                 {order.method && (
                   <h6>
-                    ชำระเงินด้วย: <em>{order.method}จำนวน {order.total} ฿</em>
+                    ชำระเงินด้วย:{" "}
+                    <em>
+                      {order.method}จำนวน {order.total} ฿
+                    </em>
                   </h6>
                 )}
 
@@ -140,7 +143,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                       ).toLocaleString()} น.`
                     : "ยังไม่ได้ชำระเงิน"}
                   {auth.user.role === "admin" && !order.paid && (
-                     <button
+                    <button
                       className="btn btn-dark text-uppercase"
                       onClick={() => handlePaid(order)}
                     >
@@ -151,17 +154,15 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
               </div>
             </div>
             <div>
-            {!order.paid && auth.user.role !== "admin" && (
-              <div className="p-4">
-                <h2 className="mb-4 text-uppercase">
-                  จำนวนเงิน: {order.total} ฿
-                </h2>
-                <PaypalBtn order={order} />
-              </div>
-            )}
+              {!order.paid && auth.user.role !== "admin" && (
+                <div className="p-4">
+                  <h2 className="mb-4 text-uppercase">
+                    จำนวนเงิน: {order.total} ฿
+                  </h2>
+                  <PaypalBtn order={order} />
+                </div>
+              )}
             </div>
-
-
           </div>
         ))}
       </div>

@@ -7,12 +7,20 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import CartItem from "../../components/CartItem";
 import { TempleBuddhist } from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import { useRef, } from "react";
+
 
 const BookingDetail = (props) => {
   const router = useRouter();
   let { id } = router.query;
   const { state, dispatch } = useContext(DataContext);
   const { auth, orders } = state;
+  console.log("orders", orders)
 
   const id2 = id;
   id = "";
@@ -30,7 +38,54 @@ const BookingDetail = (props) => {
     statusBooking: "รออนุมัติ",
     price: "",
   };
+  ///////////////////////////////Clalendar HEAD//////////////////////////////
 
+  const start = new Date();
+  const end = new Date(new Date().setMinutes(start.getMinutes() + 30));
+  const [calendarData, setcalendarData] = useState([]);
+  const [events, setEvents] = useState([]);
+  const calendarRef = useRef(null);
+
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
+  const [tempEvent, settempEvent] = useState([]);
+
+
+  useEffect(() => {
+    // console.log("oderrrr", orders[0].prodOrder)
+
+    const fetchData = async () => {
+      try {
+        let temp = [];
+        orders.filter((item) =>
+          item.prodOrder[0].prodid === id2
+        ).map((item, key) => {
+          
+          if (item.delivered === true) {
+            item.prodOrder[0].calendarData[0].backgroundColor = "green"
+            item.prodOrder[0].calendarData[0].title = `จองแล้ว ${item.prodOrder[0].calendarData[0].extendedProps.email}`
+          } else {
+            console.log("Nooooooooooooooo")
+          }
+
+          temp.push(...temp, item.prodOrder[0].calendarData[0])
+
+
+        })
+        console.log("temp = ", temp)
+
+        setEvents(temp)
+      } catch (error) {
+        setError(error);
+        console.log("this is ERROR", error)
+      }
+
+    };
+    fetchData();
+  }, [orders]);
+
+
+  ///////////////////////////////Clalendar Bottom//////////////////////////////
   const [product, setProduct] = useState(initialState);
   const {
     email,
@@ -55,26 +110,13 @@ const BookingDetail = (props) => {
 
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const getTotal = () => {
-  //     const res = showBooking.reduce((prev, item) => {
-  //       return prev + (item.price * 1);
-  //     },0)
-
-  //     setTotal(res)
-  //     console.log("res",res)
-  //   }
-
-  //   getTotal()
-  // },[showBooking])
-  // console.log("price",price)
-
   const [total, setTotal] = useState(0);
   const [address, setAddress] = useState("");
   const [mobile, setMobile] = useState("");
   const [title, setTitle] = useState("");
   const [images, setImage] = useState("");
   const [prodOrder, setProdOrder] = useState("");
+
 
   useEffect(
     () => {
@@ -91,19 +133,28 @@ const BookingDetail = (props) => {
       //   delay();
 
       // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
-
+      setcalendarData(data)
       setShowBooking(props.booking.filter((item) => item.prodid === id2));
       setTitle(product1.title);
       setImage(product1.images[0].url);
-      setProdOrder(
-        props.booking.filter((item) => item.userid === auth.user.email)
-      );
+      if (auth)
+        if (Object.keys(auth).length != 0) {
+          setProdOrder(
+            props.booking.filter((item) => item.userid === auth.user.email)
+          );
+        }
+        else {
+          setProdOrder(
+            props.booking
+          )
+        }
       delay();
     },
 
-    [props.booking],
-    [id2]
+
+    [id2, props.booking, auth]
   );
+
   console.log("images", images, "title", title, "prodOrder", prodOrder);
 
   useEffect(() => {
@@ -173,6 +224,7 @@ const BookingDetail = (props) => {
     pay();
   };
 
+
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -182,7 +234,7 @@ const BookingDetail = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { auth } = await state;
-
+    console.log("top of submit", calendarData)
     if (Object.keys(auth).length === 0)
       return dispatch({
         type: "NOTIFY",
@@ -205,15 +257,19 @@ const BookingDetail = (props) => {
 
     let res;
     if (onEdit) {
+      console.log("onedit", calendarData)
+
       res = await putData(
         `bookingApi/${id}`,
-        { ...product, ...showBooking },
+        { ...product, ...showBooking, ["calendarData"]: tempEvent },
         auth.token
       );
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     } else {
-      res = await postData("bookingApi", { ...product }, auth.token);
+      console.log("top of submit", calendarData)
+
+      res = await postData("bookingApi", { ...product, ["calendarData"]: tempEvent }, auth.token);
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     }
@@ -224,19 +280,165 @@ const BookingDetail = (props) => {
     //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
   };
 
-  //Function สำหรับแสดงข้อมูล
 
+  //Function สำหรับแสดงข้อมูล
   return (
     <section className="text-gray-700 body-font overflow-hidden bg-white">
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div className="container px-5  mx-auto ">
+      <div className="container px-5 py-24 mx-auto ">
         <center className=" py-3 mt-2">
           <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
             ข้อมูลการจอง {product1.title}
           </h1>
         </center>
+        <div style={{ padding: 20, margin: 20 }}>
+          <FullCalendar
+            nowIndicator={true}
+            eventClick={(pEvent) =>
+            //  console.log(info.event.extendedProps, info.event.title)
+            {
+              const r = window.confirm("Would you like to remove this event?");
+              if (r === true) {
+
+                // setEvents((x, props) => {
+                //   const events = [...x]
+                //   const idx = events.indexOf(pEvent)
+                //   events.splice(idx, 1);
+                //   return { events };
+                // });
+              }
+            }}
+            editable={true}
+            views={{
+              dayGrid: {
+                selectable: true,
+              },
+              timeGrid: {
+                selectable: true,
+              },
+              dayGridMonth: {
+                selectable: false,
+              },
+            }}
+            ref={calendarRef}
+            plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
+            initialView="timeGridWeek"
+            eventDrop={(info) => {
+              const eventFiltered = events.filter(
+                (event) => event.extendedProps.id !== info.event.extendedProps.id
+              );
+
+              setEvents([
+                ...eventFiltered,
+                {
+                  title: info.event.title,
+                  start: info.event.startStr,
+                  end: info.event.endStr,
+                  backgroundColor: info.event.backgroundColor,
+                  extendedProps: { id: info.event.extendedProps.id },
+                },
+              ]);
+              alert("วางแล้ว " + info.event.title);
+            }}
+
+            eventResize={(info) => {
+              const eventFiltered = events.filter(
+                (event) => event.extendedProps.id !== info.event.extendedProps.id
+              );
+              setEvents([
+                ...eventFiltered,
+                {
+                  title: info.event.title,
+                  start: info.event.startStr,
+                  end: info.event.endStr,
+                  backgroundColor: info.event.backgroundColor,
+                  extendedProps: { id: info.event.extendedProps.id },
+                },
+              ]);
+              alert("ปรับขนาดแล้ว " + info.event.title);
+            }}
+
+            select={(info) => {
+              setEvents((event) => {
+                // const newId = events[events.length - 1].extendedProps.id + 1;
+                const newId = auth.user.email
+                const name = auth.user.name
+                const prodid = id2;
+                let random_id = uuidv4()
+                settempEvent([
+                  ...tempEvent,
+                  {
+                    title: `รอการอนุมัติ ${newId}`,
+                    start: info.startStr,
+                    end: info.endStr,
+                    backgroundColor: "grey",
+                    extendedProps:
+                    {
+                      id: random_id,
+                      email: newId,
+                      name: name,
+                      prodid: prodid,
+                    },
+                  },
+                ])
+                return [
+                  ...event,
+                  {
+                    title: `รอการอนุมัติ ${newId}`,
+                    start: info.startStr,
+                    end: info.endStr,
+                    backgroundColor: "grey",
+                    extendedProps:
+                    {
+                      id: random_id,
+                      email: newId,
+                      name: name,
+                      prodid: prodid,
+                    },
+                  },
+                ];
+              });
+              alert("เลือกแล้ว " + info.startStr + " ถึง " + info.endStr);
+            }}
+
+            events={events}
+            locale={"th-th"}
+            timeZone={"UTF"}
+            titleFormat={{ year: "numeric", month: "long" }}
+            // allDayText={"24h"}
+            allDaySlot={false}
+            buttonText={{
+              today: "วันนี้",
+              month: "เดือน",
+              week: "สัปดาห์",
+              day: "วัน",
+              list: "รายการ",
+            }}
+            customButtons={{
+              custom1: {
+                text: "ปุ่ม 1",
+                click: function () {
+                  alert("clicked custom button 1!");
+                },
+              },
+              custom2: {
+                text: "เกี่ยวกับ",
+                click: function () {
+                  router.push("/about");
+                },
+              },
+            }}
+            headerToolbar={{
+              left: "dayGridMonth,timeGridWeek,timeGridDay custom1",
+              center: "title",
+              right: "custom2 today prevYear,prev,next,nextYear",
+            }}
+          // onSelectEvent={(event) => this.onSelectEvent(event)}
+          />
+          <style></style>
+        </div>
         <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
           <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400 ">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
@@ -271,7 +473,7 @@ const BookingDetail = (props) => {
               <center></center>
             ) : !loading ? (
               <tbody>
-                {showBooking.map((booking,key) => (
+                {showBooking.map((booking, key) => (
                   <tr
                     className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
                     key={key}
@@ -369,6 +571,8 @@ const BookingDetail = (props) => {
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {product1.title}
             </h1>
+
+
             <div className="mx-1 md:mx-14 xl:mx-24">
               <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -459,7 +663,7 @@ const BookingDetail = (props) => {
                     id="fullname"
                     value={fullname}
                     onChange={handleChangeInput}
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent  border-b-4 border-gray-500 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=" "
                     required
                   />
@@ -565,7 +769,7 @@ const BookingDetail = (props) => {
                 <div className="grid md:grid-cols-2 md:gap-6">
                   <div className="flex items-center">
                     <div className="relative">
-                      {product1.nameRate.map((item,i) => (
+                      {product1.nameRate.map((item, i) => (
                         <select
                           key={i}
                           id="price"
@@ -598,9 +802,9 @@ const BookingDetail = (props) => {
                 <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5"></div>
                 <div className="flex">
                   <span className="title-font font-medium text-2xl text-gray-900">
-                    เป็นจำนวนเงิน {price}฿
+                    เป็นจำนวนเงิน {price} ฿
                   </span>
-                  <button className="flex ml-auto text-white bg-[#1a237e] hover:bg-[#FFA500] border-0 py-2 px-6 focus:outline-none rounded">
+                  <button className="flex ml-auto text-white bg-[#1A237E] hover:bg-[#FFA500] border-0 py-2 px-6 focus:outline-none rounded">
                     {onEdit ? "อัพเดตเครื่องมือ" : "จองเครื่องมือ"}
                   </button>
                 </div>
@@ -622,8 +826,7 @@ export async function getServerSideProps({ query, params: { id } }) {
   const search = query.search || "all";
 
   const resfav = await getData(
-    `bookingApi?limit=${
-      page * 500
+    `bookingApi?limit=${page * 500
     }&category=${category}&sort=${sort}&title=${search}`
   );
 
