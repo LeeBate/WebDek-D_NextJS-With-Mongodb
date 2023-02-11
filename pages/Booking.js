@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../store/GlobalState";
-
+import React from "react";
 import { getData } from "../utils/fetchData";
 import FavoriteItem from "../components/product/BookingItem";
 import filterSearch from "../utils/filterSearch";
@@ -9,13 +9,24 @@ import { useRouter } from "next/router";
 import Filter from "../components/Filter";
 import Link from "next/link";
 
+import { ThemeProvider } from "@mui/material/styles";
+import theme from "../src/theme/theme";
+
+import Paper from "@mui/material/Paper";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TablePagination from "@mui/material/TablePagination";
+import TableRow from "@mui/material/TableRow";
+
 const Favorite = (props) => {
   const [products, setProducts] = useState(props.products);
   const [products1, setProducts1] = useState(props.booking);
 
   const [isCheck, setIsCheck] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(1);
   const router = useRouter();
   let filleredProd = [];
   const { state, dispatch } = useContext(DataContext);
@@ -45,169 +56,142 @@ const Favorite = (props) => {
 
   console.log("book", products1);
 
-  useEffect(() => {
-    console.log("fav", products);
-    if (Object.keys(router.query).length === 0) setPage(1);
-  }, [router.query]);
-
   const delay = async () => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
   };
 
-  const handleCheck = (id) => {
-    products1.forEach((product) => {
-      if (product._id === id) product.checked = !product.checked;
-    });
-    setProducts([...products1]);
+
+  const [page, setPage] = React.useState(0);
+  const [rowsPerPage, setRowsPerPage] = React.useState(20);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
   };
 
-  const handleCheckALL = () => {
-    products1.forEach((product) => (product.checked = !isCheck));
-    setProducts([...products1]);
-    setIsCheck(!isCheck);
-  };
-
-  const handleDeleteAll = () => {
-    let deleteArr = [];
-    products1.forEach((product) => {
-      if (product.checked) {
-        deleteArr.push({
-          data: "",
-          id: product._id,
-          title: "ลบทั้งหมด",
-          type: "DELETE_Booking",
-        });
-      }
-    });
-
-    dispatch({ type: "ADD_MODAL", payload: deleteArr });
-  };
-
-  const handleLoadmore = () => {
-    setPage(page + 1);
-    filterSearch({ router, page: page + 1 });
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(+event.target.value);
+    setPage(0);
   };
 
   return (
-    <section class="text-gray-700 body-font overflow-hidden bg-white">
+    <ThemeProvider theme={theme}>
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div class="container px-5 py-24 mx-auto">
-        {/* <div class="lg:w-5/5 mx-auto flex flex-wrap">
-          <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-          {products1.length === 0 ? (
-            <center>ไม่มีข้อมูลประวัติการจองเครื่องมือ</center>
-          ) : !loading ? (
-            products1.map((product) => (
-              <FavoriteItem
-                key={product._id}
-                product={product}
-                handleCheck={handleCheck}
-              />
-            ))
-          ) : (
-            <div
-              className="position-fixed w-100 h-100 text-center loading"
-              style={{
-                background: "#0008",
-                color: "white",
-                top: 0,
-                left: 0,
-                zIndex: 9,
-              }}
-            >
-              <svg width="205" height="250" viewBox="0 0 40 50">
-                <polygon
-                  strokeWidth="1"
-                  stroke="#fff"
-                  fill="none"
-                  points="20,1 40,40 1,40"
-                ></polygon>
-                <text fill="#fff" x="5" y="47">
-                  Loading
-                </text>
-              </svg>
-            </div>
-          )}
-          </div>
+      <div class="container px-5 mt-24 mb-48 mx-auto">
+       
 
-          
-        </div> */}
+        
+      <h1 className="text-gray-900 text-4xl title-font font-bold mb-1">
+                การชำระเงิน
+              </h1>
+         
+          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+          <TableContainer sx={{ maxHeight: 640 }}>
+            <Table stickyHeader aria-label="sticky table">
+              <TableHead>
+                <TableRow >
+                  <TableCell align="center">ID</TableCell>
+                  <TableCell align="center">เครื่องมือ</TableCell>
+                  <TableCell align="center">เครื่องมือ</TableCell>
+                  <TableCell align="center">ชื่อ-นามสกุล</TableCell>
+                  <TableCell align="center">รหัสนักศึกษา</TableCell>
+                  <TableCell align="center">วันที่เริ่ม-สิ้นสุด</TableCell>
+                  <TableCell align="center">จำนวนเงิน</TableCell>
+                  <TableCell align="center">การอนุมัติการจอง</TableCell>
+                  <TableCell align="center">การชำระเงิน</TableCell>
+                  <TableCell align="center">การจัดการ</TableCell>
+                </TableRow>
+              </TableHead>
+              {orders.length === 0 ? (
+                <div className="alert alert-warning my-auto">
+                  <div>
+                    <div className="swap-off">
+                      😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                orders
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map((product, ict) => (
+                    <TableBody key={product._id}>
+                      <TableRow hover role="checkbox" tabIndex={-1}>
+                        <TableCell align="center" key={product.id}>
+                          {ict + 1 + page * rowsPerPage}
+                        </TableCell>
+                        <Link href={`/order/${product._id}`}>
+                          <TableCell align="center" key={product.id}>
+                            <img
+                              className="rounded-full w-[60px] h-[60px] cursor-pointer  "
+                              src={product.images}
+                              alt={product.title}
+                            />
+                          </TableCell>
+                        </Link>
+                        <TableCell align="center" key={product.id}>
+                          {product.title}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                          {product.fullname}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                          {product.studentID}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                          {new Date( product.calendarData[0].start).toLocaleString()} -{" "}
+                          {new Date(product.calendarData[0].end).toLocaleString()}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>{product.price}฿</TableCell>
+                        <TableCell align="center" key={product.id}>
+                        {product.delivered ? (
+                        <i className="fas fa-check text-success"></i>
+                      ) : (
+                        <i className="fas fa-times text-danger"></i>
+                      )}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                        {product.paid ? (
+                        <i className="fas fa-check text-success"></i>
+                      ) : (
+                        <i className="fas fa-times text-danger"></i>
+                      )}
+                        </TableCell>
+                        {product.paid ? (
+                          <TableCell align="center">
+                            <Link href={`/order/${product._id}`}>
+                              <a className="btn btn-info">ชำระเงินเรียบร้อย</a>
+                            </Link>
+                          </TableCell>
+                        ) : (
+                          <TableCell align="center">
+                            <Link href={`/order/${product._id}`}>
+                              <a className="btn btn-danger">ชำระเงิน</a>
+                            </Link>
+                          </TableCell>
+                        )}
 
-        <div class="lg:w-2/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-            <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">
-            การชำระเงิน
-            </h1>
-            <div className="my-3 table-responsive">
-          <table
-            className="table-bordered table-hover w-100 text-uppercase"
-            style={{ minWidth: "600px", cursor: "pointer" }}
-          >
-            <thead className="bg-light font-weight-bold text-center">
-              <tr>
-                <td className="p-2">ID</td>
-                <td className="p-2">ชื่อเครื่องมือ</td>
-                
-                <td className="p-2">รหัสนักศึกษา</td>
-                <td className="p-2">วันที่เริ่ม-สิ้นสุด:</td>
-                <td className="p-2">วันที่ชำระเงิน</td>
-                <td className="p-2">จำนวนเงิน</td>
-                <td className="p-2">การอนุมัติการจอง</td>
-                <td className="p-2">การชำระเงิน</td>
-              </tr>
-            </thead>
-
-            <tbody className=" text-center">
-              {orders.map((order) => (
-                <tr key={order._id}>
-                  <td className="p-2 flex justify-center items-center">   
-                    <Link href={`/order/${order._id}`}>
-                    <img className=" rounded-full  w-[60px] h-[60px]" src={order.images}/>
-                    </Link>
-                  </td>
-                  <td className="p-2">{order.title}</td>
-                  
-                  <td className="p-2">{order.prodOrder[0].studentID}</td>
-                  <td className="p-2">{new Date(order.prodOrder[0].dateBooking).toLocaleString()} - {" "}
-                      {new Date(order.prodOrder[0].dateBookingEnd).toLocaleString()}</td>
-                  <td className="p-2">
-                    {new Date(order.createdAt).toLocaleString()}
-                  </td>
-                  <td className="p-2">{order.total}฿</td>
-                  <td className="p-2">
-                    {order.delivered ? (
-                      <i className="fas fa-check text-success"></i>
-                    ) : (
-                      <i className="fas fa-times text-danger"></i>
-                    )}
-                  </td>
-                  <td className="p-2">
-                    {order.paid ? (
-                      <i className="fas fa-check text-success"></i>
-                    ) : (
-                      <i className="fas fa-times text-danger"></i>
-                    )}
-                  </td>
-                  {order.paid ? (
-                    <td><a className="btn btn-success text-white disabled"> ชำระเงินเรียบร้อย </a></td>
-                  ) : (
-                    <td >
-                      <Link href={`/order/${order._id}`}>
-                        <a className="btn btn-warning">ยังไม่ชำระเงิน</a>
-                      </Link>
-                    </td>
-                  )}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+                      </TableRow>
+                    </TableBody>
+                  ))
+              )}
+            </Table>
+          </TableContainer>
+          <TablePagination
+            rowsPerPageOptions={[20, 50, 100]}
+            component="div"
+            count={orders.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </Paper>
         </div>
-        </div>
-      </div>
-    </section>
+     
+      </ThemeProvider>
   );
 };
 

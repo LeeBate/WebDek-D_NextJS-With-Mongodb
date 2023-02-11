@@ -15,7 +15,7 @@ const PaypalBtn = ({order}) => {
               return actions.order.create({
                 purchase_units: [{
                   amount: {
-                    value: order.total
+                    value: order.price
                   }
                 }]
               });

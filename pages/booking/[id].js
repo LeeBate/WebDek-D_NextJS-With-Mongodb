@@ -12,15 +12,14 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import { useRef, } from "react";
-
+import { useRef } from "react";
 
 const BookingDetail = (props) => {
   const router = useRouter();
   let { id } = router.query;
   const { state, dispatch } = useContext(DataContext);
   const { auth, orders } = state;
-  console.log("orders", orders)
+  console.log("orders", orders);
 
   const id2 = id;
   id = "";
@@ -50,40 +49,47 @@ const BookingDetail = (props) => {
   const [error, setError] = useState(null);
   const [tempEvent, settempEvent] = useState([]);
 
-
   useEffect(() => {
     // console.log("oderrrr", orders[0].prodOrder)
 
     const fetchData = async () => {
       try {
         let temp = [];
-        orders.filter((item) =>
-          item.prodOrder[0].prodid === id2
-        ).map((item, key) => {
-          
-          if (item.delivered === true) {
-            item.prodOrder[0].calendarData[0].backgroundColor = "green"
-            item.prodOrder[0].calendarData[0].title = `จองแล้ว ${item.prodOrder[0].calendarData[0].extendedProps.email}`
-          } else {
-            console.log("Nooooooooooooooo")
-          }
+        orders
+          .filter((item) => item.prodid === id2)
+          .map((item, key) => {
+            if (item.delivered === true) {
+              item.calendarData[0].backgroundColor = "green";
+              item.calendarData[0].title = `จองแล้ว ${item.calendarData[0].extendedProps.email}`;
+            } else {
+              console.log("Nooooooooooooooo");
+            }
 
-          temp.push(...temp, item.prodOrder[0].calendarData[0])
+            temp.push(...temp, item.calendarData[0]);
+          });
+        console.log("temp = ", temp);
 
-
-        })
-        console.log("temp = ", temp)
-
-        setEvents(temp)
+        setEvents(temp);
       } catch (error) {
         setError(error);
-        console.log("this is ERROR", error)
+        console.log("this is ERROR", error);
       }
-
     };
     fetchData();
   }, [orders]);
+  const [uniqueData, setUniqueData] = useState([]);
 
+  useEffect(() => {
+    const uni = [...new Set(events.map((item) => item.extendedProps.id))].map(
+      (id) => {
+        return events.find((item) => item.extendedProps.id === id);
+      }
+    );
+    setUniqueData(uni);
+
+    console.log("uniqueData=", uniqueData);
+    //  setUniqueData(uniqueData);
+  }, [events]);
 
   ///////////////////////////////Clalendar Bottom//////////////////////////////
   const [product, setProduct] = useState(initialState);
@@ -117,57 +123,51 @@ const BookingDetail = (props) => {
   const [images, setImage] = useState("");
   const [prodOrder, setProdOrder] = useState("");
 
+  useEffect(() => {
+    // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
+    // setProduct(props.product);
+    // if (Object.keys(auth).length !== 0) {
+    //   htmlFor (let i = 0; i < props.booking.length; i++) {
+    //     if (props.booking[i].userid === auth.user.email) {
+    //       filleredProd.push(props.booking[i]);
+    //     }
+    //   }
+    // โค้ดแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
+    // }setShowBooking(filleredProd.filter((item) => item.prodid === id2));
+    //   delay();
 
-  useEffect(
-    () => {
-      // โค้ดแสดงข้อมูลเฉพาะของผู้ใช้
-      // setProduct(props.product);
-      // if (Object.keys(auth).length !== 0) {
-      //   htmlFor (let i = 0; i < props.booking.length; i++) {
-      //     if (props.booking[i].userid === auth.user.email) {
-      //       filleredProd.push(props.booking[i]);
-      //     }
-      //   }
-      // โค้ดแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
-      // }setShowBooking(filleredProd.filter((item) => item.prodid === id2));
-      //   delay();
-
-      // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
-      setcalendarData(data)
-      setShowBooking(props.booking.filter((item) => item.prodid === id2));
-      setTitle(product1.title);
-      setImage(product1.images[0].url);
-      if (auth)
-        if (Object.keys(auth).length != 0) {
-          setProdOrder(
-            props.booking.filter((item) => item.userid === auth.user.email)
-          );
-        }
-        else {
-          setProdOrder(
-            props.booking
-          )
-        }
-      delay();
-    },
-
-
-    [id2, props.booking, auth]
-  );
+    // แสดงข้อมูลที่จองทั้งหมด และจะต้องแสดงข้อมูลเฉพาะเครื่องมือที่เลือก
+    setcalendarData(data);
+    // setShowBooking(props.booking.filter((item) => item.prodid === id2));
+    setTitle(product1.title);
+    setImage(product1.images[0].url);
+    // if (auth)
+    //   if (Object.keys(auth).length != 0) {
+    //     setProdOrder(
+    //       props.booking.filter((item) => item.userid === auth.user.email)
+    //     );
+    //   }
+    //   else {
+    //     setProdOrder(
+    //       props.booking
+    //     )
+    //   }
+    delay();
+  }, [id2, auth]);
 
   console.log("images", images, "title", title, "prodOrder", prodOrder);
 
-  useEffect(() => {
-    const getTotal = () => {
-      const res = props.booking.reduce((prev, item) => {
-        return price;
-      }, 0);
+  // useEffect(() => {
+  //   const getTotal = () => {
+  //     const res = props.booking.reduce((prev, item) => {
+  //       return price;
+  //     }, 0);
 
-      setTotal(res);
-    };
+  //     setTotal(res);
+  //   };
 
-    getTotal();
-  }, [price]);
+  //   getTotal();
+  // }, [price]);
   console.log("total", total);
 
   const delay = async () => {
@@ -224,7 +224,6 @@ const BookingDetail = (props) => {
     pay();
   };
 
-
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
     setProduct({ ...product, [name]: value });
@@ -234,21 +233,14 @@ const BookingDetail = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const { auth } = await state;
-    console.log("top of submit", calendarData)
+    console.log("top of submit", calendarData);
     if (Object.keys(auth).length === 0)
       return dispatch({
         type: "NOTIFY",
         payload: { error: "โปรดเข้าสู่ระบบ" },
       });
 
-    if (
-      !email ||
-      !fullname ||
-      !phone ||
-      !dateBooking ||
-      !dateBookingEnd ||
-      !studentID
-    )
+    if (!email || !fullname || !phone || !studentID)
       return dispatch({
         type: "NOTIFY",
         payload: { error: "โปรดกรอกข้อมูลให้ครบ." },
@@ -257,7 +249,7 @@ const BookingDetail = (props) => {
 
     let res;
     if (onEdit) {
-      console.log("onedit", calendarData)
+      console.log("onedit", calendarData);
 
       res = await putData(
         `bookingApi/${id}`,
@@ -267,19 +259,44 @@ const BookingDetail = (props) => {
       if (res.err)
         return dispatch({ type: "NOTIFY", payload: { error: res.err } });
     } else {
-      console.log("top of submit", calendarData)
+      console.log("top of submit", calendarData);
 
-      res = await postData("bookingApi", { ...product, ["calendarData"]: tempEvent }, auth.token);
-      if (res.err)
-        return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+      res = await postData(
+        "order",
+        {
+          ...product,
+          ["calendarData"]: tempEvent,
+          address,
+          mobile,
+          total,
+          title,
+          images,
+          prodOrder,
+        },
+        auth.token
+      ).then((res) => {
+        if (res.err)
+          return dispatch({ type: "NOTIFY", payload: { error: res.err } });
+
+        const newOrder = {
+          ...res.newOrder,
+          user: auth.user,
+        };
+        dispatch({ type: "ADD_ORDERS", payload: [...orders, newOrder] });
+        dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+        // return router.push(`/order/${res.newOrder._id}`);
+        console.log("temp", tempEvent);
+      });
     }
+
+    //
+
     setProduct(initialState);
     setProdOrder(product._id);
-    dispatch({ type: "NOTIFY", payload: { success: res.msg } });
+    // dispatch({ type: "NOTIFY", payload: { success: res.msg } });
     return router.replace(router.asPath);
     //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
   };
-
 
   //Function สำหรับแสดงข้อมูล
   return (
@@ -297,19 +314,21 @@ const BookingDetail = (props) => {
           <FullCalendar
             nowIndicator={true}
             eventClick={(pEvent) =>
-            //  console.log(info.event.extendedProps, info.event.title)
-            {
-              const r = window.confirm("Would you like to remove this event?");
-              if (r === true) {
-
-                // setEvents((x, props) => {
-                //   const events = [...x]
-                //   const idx = events.indexOf(pEvent)
-                //   events.splice(idx, 1);
-                //   return { events };
-                // });
+              //  console.log(info.event.extendedProps, info.event.title)
+              {
+                const r = window.confirm(
+                  "Would you like to remove this event?"
+                );
+                if (r === true) {
+                  // setEvents((x, props) => {
+                  //   const events = [...x]
+                  //   const idx = events.indexOf(pEvent)
+                  //   events.splice(idx, 1);
+                  //   return { events };
+                  // });
+                }
               }
-            }}
+            }
             editable={true}
             views={{
               dayGrid: {
@@ -327,7 +346,8 @@ const BookingDetail = (props) => {
             initialView="timeGridWeek"
             eventDrop={(info) => {
               const eventFiltered = events.filter(
-                (event) => event.extendedProps.id !== info.event.extendedProps.id
+                (event) =>
+                  event.extendedProps.id !== info.event.extendedProps.id
               );
 
               setEvents([
@@ -342,10 +362,10 @@ const BookingDetail = (props) => {
               ]);
               alert("วางแล้ว " + info.event.title);
             }}
-
             eventResize={(info) => {
               const eventFiltered = events.filter(
-                (event) => event.extendedProps.id !== info.event.extendedProps.id
+                (event) =>
+                  event.extendedProps.id !== info.event.extendedProps.id
               );
               setEvents([
                 ...eventFiltered,
@@ -359,14 +379,13 @@ const BookingDetail = (props) => {
               ]);
               alert("ปรับขนาดแล้ว " + info.event.title);
             }}
-
             select={(info) => {
               setEvents((event) => {
                 // const newId = events[events.length - 1].extendedProps.id + 1;
-                const newId = auth.user.email
-                const name = auth.user.name
+                const newId = auth.user.email;
+                const name = auth.user.name;
                 const prodid = id2;
-                let random_id = uuidv4()
+                let random_id = uuidv4();
                 settempEvent([
                   ...tempEvent,
                   {
@@ -374,15 +393,14 @@ const BookingDetail = (props) => {
                     start: info.startStr,
                     end: info.endStr,
                     backgroundColor: "grey",
-                    extendedProps:
-                    {
+                    extendedProps: {
                       id: random_id,
                       email: newId,
                       name: name,
                       prodid: prodid,
                     },
                   },
-                ])
+                ]);
                 return [
                   ...event,
                   {
@@ -390,8 +408,7 @@ const BookingDetail = (props) => {
                     start: info.startStr,
                     end: info.endStr,
                     backgroundColor: "grey",
-                    extendedProps:
-                    {
+                    extendedProps: {
                       id: random_id,
                       email: newId,
                       name: name,
@@ -402,8 +419,7 @@ const BookingDetail = (props) => {
               });
               alert("เลือกแล้ว " + info.startStr + " ถึง " + info.endStr);
             }}
-
-            events={events}
+            events={uniqueData}
             locale={"th-th"}
             timeZone={"UTF"}
             titleFormat={{ year: "numeric", month: "long" }}
@@ -435,129 +451,11 @@ const BookingDetail = (props) => {
               center: "title",
               right: "custom2 today prevYear,prev,next,nextYear",
             }}
-          // onSelectEvent={(event) => this.onSelectEvent(event)}
+            // onSelectEvent={(event) => this.onSelectEvent(event)}
           />
           <style></style>
         </div>
-        <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-          <table className="w-full text-sm text-center text-gray-500 dark:text-gray-400 ">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 text-center">
-              <tr>
-                <th scope="col" className="px-3 py-3">
-                  ชื่อ-นามสกุล
-                </th>
-                <th scope="col" className="px-3 py-3">
-                  รหัสนักศึกษา
-                </th>
-                <th scope="col" className="px-3 py-3">
-                  อีเมล
-                </th>
-                <th scope="col" className="px-3 py-3">
-                  วันที่เริ่มต้นการจอง
-                </th>
-                <th scope="col" className="px-3 py-3">
-                  วันที่สิ้นสุดการจอง
-                </th>{" "}
-                {/* <th scope="col" className="px-3 py-3 ">
-                  สถานะการจอง
-                </th> */}
-                <th scope="col" className="px-3 py-3 ">
-                  การแก้ไข
-                </th>
-                <th scope="col" className="px-3 py-3 ">
-                  ชำระเงิน
-                </th>
-              </tr>
-            </thead>
-            {showBooking.length === 0 ? (
-              <center></center>
-            ) : !loading ? (
-              <tbody>
-                {showBooking.map((booking, key) => (
-                  <tr
-                    className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    key={key}
-                  >
-                    {/* <th
-                              scope="row"
-                              className="px-3 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                            >
-                              {booking.fullname}
-                            </th> */}
-                    <td className="px-3 py-4">{booking.fullname}</td>
-                    <td className="px-3 py-4">{booking.studentID}</td>
-                    <td className="px-3 py-4">{booking.email}</td>
-                    <td className="px-3 py-4">
-                      {new Date(booking.dateBooking).toLocaleString()}
-                    </td>
 
-                    <td className="px-3 py-4">
-                      {new Date(booking.dateBookingEnd).toLocaleString()}
-                    </td>
-
-                    {/* <td className="px-3 py-4">{booking.statusBooking}</td> */}
-                    {Object.keys(auth).length !== 0 ? (
-                      booking.userid !== auth.user.email ? (
-                        <td className="px-3 py-4 ">-</td>
-                      ) : (
-                        <td className="px-2.5 py-4 ">
-                          <button
-                            className=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-3 border border-blue-700 rounded "
-                            style={{ marginLeft: "5px", flex: 1 }}
-                            data-toggle="modal"
-                            data-target="#exampleModal"
-                            onClick={() =>
-                              dispatch({
-                                type: "ADD_MODAL",
-                                payload: [
-                                  {
-                                    data: "",
-                                    id: booking._id,
-                                    title: booking.fullname,
-                                    type: "DELETE_Booking",
-                                  },
-                                ],
-                              })
-                            }
-                          >
-                            ลบข้อมูล
-                          </button>
-                        </td>
-                      )
-                    ) : (
-                      <div></div>
-                    )}
-
-                    {Object.keys(auth).length !== 0 ? (
-                      booking.userid !== auth.user.email ? (
-                        <td className="px-3 py-4 ">-</td>
-                      ) : (
-                        <td className="px-3 py-4 ">
-                          <button
-                            className=" hover:bg-[#1a237e] text-blue-700 font-semibold hover:text-white py-2 px-3 border border-blue-500 hover:border-transparent rounded"
-                            onClick={() => {
-                              let newOrder1 = props.booking.filter(
-                                (item) => booking._id === item._id
-                              );
-                              setProdOrder(newOrder1);
-                              handlePayment(booking._id, booking.price);
-                            }}
-                          >
-                            จ่ายเงิน
-                          </button>
-                        </td>
-                      )
-                    ) : (
-                      <div></div>
-                    )}
-                  </tr>
-                ))}
-              </tbody>
-            ) : (
-              <></>
-            )}
-          </table>
-        </div>
         <div className="lg:w-4/5 mx-auto flex flex-wrap mt-5">
           <img
             src={product1.images[tab].url}
@@ -571,7 +469,6 @@ const BookingDetail = (props) => {
             <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
               {product1.title}
             </h1>
-
 
             <div className="mx-1 md:mx-14 xl:mx-24">
               <div className="overflow-x-auto relative shadow-md sm:rounded-lg ">
@@ -728,7 +625,7 @@ const BookingDetail = (props) => {
                     เบอร์โทรศัพท์ :
                   </label>
                 </div>
-                <div className="grid md:grid-cols-2 md:gap-6">
+                {/* <div className="grid md:grid-cols-2 md:gap-6">
                   <div className="relative z-0 w-full mb-6 group">
                     <input
                       type="datetime-local"
@@ -765,7 +662,7 @@ const BookingDetail = (props) => {
                       วันที่สิ้นสุด :
                     </label>
                   </div>
-                </div>
+                </div> */}
                 <div className="grid md:grid-cols-2 md:gap-6">
                   <div className="flex items-center">
                     <div className="relative">
@@ -825,18 +722,18 @@ export async function getServerSideProps({ query, params: { id } }) {
   const sort = query.sort || "";
   const search = query.search || "all";
 
-  const resfav = await getData(
-    `bookingApi?limit=${page * 500
-    }&category=${category}&sort=${sort}&title=${search}`
-  );
+  // const resfav = await getData(
+  //   `order?limit=${page * 500
+  //   }&category=${category}&sort=${sort}&title=${search}`
+  // );
 
   // server side rendering
 
   return {
     props: {
       product: res.product,
-      result: resfav.result,
-      booking: resfav.booking,
+      // result: resfav.result,
+      // orders: resfav.orders,
     },
 
     // will be passed to the page component as props

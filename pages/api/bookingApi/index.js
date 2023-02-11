@@ -79,7 +79,7 @@ const createProduct = async (req, res) => {
 
         const { email, fullname, studentID, phone, dateBooking, dateBookingEnd, prodid, userid, statusBooking, price, calendarData } = req.body
 
-        if (!email || !fullname || !phone || !dateBooking || !dateBookingEnd || !studentID)
+        if (!email || !fullname || !phone || !studentID)
             return res.status(400).json({ err: 'กรอกข้อมูลให้ครบถ้วนทุกช่อง' })
 
 

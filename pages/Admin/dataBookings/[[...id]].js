@@ -112,12 +112,12 @@ export default function DataBookings() {
                           </TableCell>
                         </Link>
                         <TableCell align="center" key={product.id}>
-                          {product.prodOrder[0].fullname}
+                          {product.fullname}
                         </TableCell>
                         <TableCell align="center" key={product.id}>
                           {ConvertDate(product.updatedAt)}
                         </TableCell>
-                        <TableCell align="center" key={product.id}>{product.total}฿</TableCell>
+                        <TableCell align="center" key={product.id}>{product.price}฿</TableCell>
                         <TableCell align="center" key={product.id}>
                           {product.delivered ? (
                             <i className="fas fa-check text-success"></i>
@@ -135,7 +135,7 @@ export default function DataBookings() {
                         {product.delivered ?? product.paid ? (
                           <TableCell align="center">
                             <Link href={`/order/${product._id}`}>
-                              <a className="btn btn-info">ข้อมูลการจอง</a>
+                              <a className="btn btn-info">รายละเอียดเพิ่มเติม</a>
                             </Link>
                           </TableCell>
                         ) : (

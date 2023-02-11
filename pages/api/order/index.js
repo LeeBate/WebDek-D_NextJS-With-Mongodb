@@ -16,11 +16,15 @@ export default async (req, res) => {
     }
 }
 
+
 const getOrders = async (req, res) => {
     try {
+
+        
+
         const result = await auth(req, res)
 
-        let orders;
+        let orders
         if(result.role !== 'admin'){
             orders = await Orders.find().populate("user", "-password")
         }else{
@@ -36,10 +40,13 @@ const getOrders = async (req, res) => {
 const createOrder = async (req, res) => {
     try {
         const result = await auth(req, res)
-        const { address, mobile,  total,title,images,prodOrder } = req.body
+        const { address, mobile,  total,title,images,prodOrder,
+            email, fullname, studentID, phone, dateBooking, dateBookingEnd,
+             prodid, userid, statusBooking, price, calendarData } = req.body
 
         const newOrder = new Orders({
             user: result.id, address, mobile,  total,title,images,prodOrder
+            ,email, fullname, studentID, phone, dateBooking, dateBookingEnd, prodid, userid, statusBooking, price, calendarData
         })
 
         // cart.filter(item => {

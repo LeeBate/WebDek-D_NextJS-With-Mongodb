@@ -73,19 +73,19 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                 <h2 className=" text-black text-xl">ข้อมูลการจอง</h2>
 
                 <p>ชื่อเครื่องมือ: {order.title}</p>
-                {order.prodOrder.map((item) => (
-                  <div key={item._id}>
-                    <p>ชื่อ-นามสกุล: {item.fullname}</p>
-                    <p>รหัสนักศึกษา: {item.studentID}</p>
-                    <p>อีเมลมหาวิทยาลัย: {item.email}</p>
-                    <p>เบอร์โทรศัพท์: {item.phone}</p>
-                    <p>
-                      วันที่เริ่ม-สิ้นสุด:{" "}
-                      {new Date(item.dateBooking).toLocaleString()} -{" "}
-                      {new Date(item.dateBookingEnd).toLocaleString()}
-                    </p>
-                  </div>
-                ))}
+
+                <div key={order._id}>
+                  <p>ชื่อ-นามสกุล: {order.fullname}</p>
+                  <p>รหัสนักศึกษา: {order.studentID}</p>
+                  <p>อีเมลมหาวิทยาลัย: {order.email}</p>
+                  <p>เบอร์โทรศัพท์: {order.phone}</p>
+                </div>
+                
+
+                <p >
+                  วันที่เริ่ม-สิ้นสุด: {new Date(order.calendarData[0].start).toLocaleString()} น. -{" "}
+                  {new Date(order.calendarData[0].end).toLocaleString()} น.
+                </p>
 
                 <img
                   className="lg:w-1/2 xl:w-1/2 object-cover py-3 rounded h-[100%] max-h-[589px] w-full mx-auto "
@@ -119,7 +119,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
                   <h6>
                     ชำระเงินด้วย:{" "}
                     <em>
-                      {order.method}จำนวน {order.total} ฿
+                      {order.method}จำนวน {order.price} ฿
                     </em>
                   </h6>
                 )}
@@ -157,7 +157,7 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
               {!order.paid && auth.user.role !== "admin" && (
                 <div className="p-4">
                   <h2 className="mb-4 text-uppercase">
-                    จำนวนเงิน: {order.total} ฿
+                    จำนวนเงิน: {order.price} ฿
                   </h2>
                   <PaypalBtn order={order} />
                 </div>
