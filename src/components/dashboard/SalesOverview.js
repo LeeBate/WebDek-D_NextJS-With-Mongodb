@@ -5,6 +5,7 @@ import BaseCard from "../baseCard/BaseCard";
 
 import { useState, useContext, useEffect } from "react";
 import { DataContext } from "../../../store/GlobalState";
+import { Slide } from "react-slideshow-image";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
@@ -54,7 +55,8 @@ const SalesOverview = () => {
 
     console.log(datafinal);
 
-    
+    datafinal = datafinal.slice(0, 10);
+
     datafinal.map((item) => {
       name.push(item.title);
       tools.push(item.qty);
@@ -63,15 +65,90 @@ const SalesOverview = () => {
     console.log(tools);
 
     max = Math.max(...tools);
-    datafinal = datafinal.slice(0, 10);
 
+    setoptionssalesoverview({
+      grid: {
+        show: true,
+        borderColor: "transparent",
+        strokeDashArray: 2,
+        padding: {
+          left: 0,
+          right: 0,
+          bottom: 0,
+        },
+      },
+      plotOptions: {
+        bar: {
+          horizontal: false,
+          columnWidth: "42%",
+          endingShape: "rounded",
+          borderRadius: 5,
+        },
+      },
+
+      colors: ["#fb9678", "#03c9d7"],
+      fill: {
+        type: "solid",
+        opacity: 1,
+      },
+      chart: {
+        offsetX: -15,
+        toolbar: {
+          show: false,
+        },
+        foreColor: "#adb0bb",
+        fontFamily: "'DM Sans',sans-serif",
+        sparkline: {
+          enabled: false,
+        },
+      },
+      dataLabels: {
+        enabled: false,
+      },
+      markers: {
+        size: 0,
+      },
+      legend: {
+        show: false,
+      },
+      xaxis: {
+        type: "category",
+        categories: name,
+        labels: {
+          style: {
+            cssClass: "grey--text lighten-2--text fill-color",
+          },
+        },
+      },
+      yaxis: {
+        show: true,
+        min: 1,
+        max: 7,
+        tickAmount: 3,
+        labels: {
+          style: {
+            cssClass: "grey--text lighten-2--text fill-color",
+          },
+        },
+      },
+      stroke: {
+        show: true,
+        width: 5,
+        lineCap: "butt",
+        colors: ["transparent"],
+      },
+      tooltip: {
+        theme: "dark",
+      },
+    });
+    setseriessalesoverview([
+      {
+        name: "จำนวนเครื่องมือ",
+        data: tools,
+      },
+    ]);
   }, [orders]);
-
-  useEffect(() => {
-    console.log("max", max);
-  }, [max]);
-
-  const optionssalesoverview = {
+  const [optionssalesoverview, setoptionssalesoverview] = useState({
     grid: {
       show: true,
       borderColor: "transparent",
@@ -145,15 +222,16 @@ const SalesOverview = () => {
     tooltip: {
       theme: "dark",
     },
-  };
-  const seriessalesoverview = [
+  });
+  const [seriessalesoverview, setseriessalesoverview] = useState([
     {
       name: "จำนวนเครื่องมือ",
       data: tools,
     },
-  ];
+  ]);
+
   return (
-    <BaseCard title="10อันดับเครื่องมือที่ถูกจองมากที่สุด">
+    <BaseCard title="ภาพรวมการจองเครื่องมือ">
       <Chart
         options={optionssalesoverview}
         series={seriessalesoverview}

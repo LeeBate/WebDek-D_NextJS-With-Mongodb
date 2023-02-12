@@ -177,13 +177,13 @@ const Tracking = (props) => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form2Example17"
+                              
                             >
                               เลขใบขอรับบริการ
                             </label>
 
                             <input
-                              id="form2Example17"
+                              
                               type="text"
                               required
                               placeholder="เลขการติดตามผลจะต้องตรงกันกับใบขอรับบริการ เช่น ฝวคN...."
@@ -197,7 +197,7 @@ const Tracking = (props) => {
                           <div className="form-outline mb-4">
                             <label
                               className="form-label"
-                              htmlFor="form2Example27"
+                             
                             >
                               เบอร์โทรศัพท์
                             </label>
@@ -205,7 +205,7 @@ const Tracking = (props) => {
                               type={showPassword ? "text" : "password"}
                               placeholder="เบอร์โทรศัพท์ที่ใช้ในการขอรับบริการ"
                               autoComplete="off"
-                              id="form2Example27"
+                              
                               required
                               name="tel"
                               value={tel}
@@ -412,13 +412,13 @@ const Tracking = (props) => {
                       <div className="relative w-1 h-14 bg-[#050505]/70"></div>
                     </div>
 
-                    <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                    <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                       วันที่ LSU รับตัวอย่าง :
                       <p className="md:ml-1 font-normal">
                         {" "}
                         {ConvertDate(track.lsu)}
                       </p>
-                    </p>
+                    </label>
                   </div>
                 ) : (
                   <></>
@@ -435,12 +435,12 @@ const Tracking = (props) => {
                       <div className="relative   w-1 h-14 bg-[#050505]/70"></div>
                     </div>
 
-                    <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                    <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                       วันที่ห้องปฏิบัติการ รับตัวอย่าง :
                       <p className="md:ml-1 font-normal">
                         {track.lab ? ConvertDate(track.lab) : "-"}
                       </p>
-                    </p>
+                    </label>
                   </div>
                 ) : (
                   <></>
@@ -469,29 +469,29 @@ const Tracking = (props) => {
                               <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 ขั้นตอนการดำเนินการ :{" "}
                                 <p className="md:ml-1 font-normal">
                                   {procedure.ListName}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 วันที่เริ่มดำเนินการ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.time1
                                     ? ConvertDate(procedure.time1)
                                     : "-"}
                                 </p>
-                              </p>
+                              </label>
 
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 เวลาดำเนินการทั้งหมด :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.time3 ? procedure.time3 : "-"}
                                   ชั่วโมง
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 วันที่ดำเนินการเสร็จ :
                                 <p className="md:ml-1 font-normal">
                                   {" "}
@@ -499,19 +499,19 @@ const Tracking = (props) => {
                                     ? ConvertDate(procedure.time4)
                                     : "-"}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 เครื่องมือ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.tool ? procedure.tool : "-"}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 พารามิเตอร์ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.param ? procedure.param : "-"}
                                 </p>
-                              </p>
+                              </label>
                             </div>
                           </div>
                           {
@@ -532,29 +532,29 @@ const Tracking = (props) => {
                               <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 ขั้นตอนการดำเนินการ :{" "}
                                 <p className="md:ml-1 font-normal">
                                   {procedure.ListName}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 วันที่เริ่มดำเนินการ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.time1_2
                                     ? ConvertDate(procedure.time1_2)
                                     : "-"}
                                 </p>
-                              </p>
+                              </label>
 
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 เวลาดำเนินการทั้งหมด :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.time3_2 ? procedure.time3_2 : "-"}
                                   ชั่วโมง
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 วันที่ดำเนินการเสร็จ :
                                 <p className="md:ml-1 font-normal">
                                   {" "}
@@ -562,19 +562,19 @@ const Tracking = (props) => {
                                     ? ConvertDate(procedure.time4_2)
                                     : "-"}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 เครื่องมือ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.tool_2 ? procedure.tool_2 : "-"}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 พารามิเตอร์ :
                                 <p className="md:ml-1 font-normal">
                                   {procedure.param_2 ? procedure.param_2 : "-"}
                                 </p>
-                              </p>
+                              </label>
                             </div>
                           </div>
                             ):(<></>) 
@@ -590,45 +590,45 @@ const Tracking = (props) => {
                         <div className="relative w-1 h-44 md:h-48 lg:h-60 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           ขั้นตอนการดำเนินการ :
                           <p className="md:ml-1 font-normal">
                              -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           วันที่เริ่มดำเนินการ :
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
+                        </label>
 
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           เวลาดำเนินการทั้งหมด :
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           วันที่ดำเนินการเสร็จ :
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold">
                           {" "}
                           เครื่องมือ :{" "}
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold">
                           {" "}
                           พารามิเตอร์ :{" "}
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
+                        </label>
                       </div>
                     </div>
                   )}
@@ -655,28 +655,28 @@ const Tracking = (props) => {
                               <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 Lab ส่งผลการทดสอบพิมพ์ :
                                 <p className="md:ml-1 font-normal">
                                   {labPrint.ListName}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 ส่งพิมพ์วันที่ :{" "}
                                 <p className="md:ml-1 font-normal">
                                   {labPrint.timelab1
                                     ? ConvertDate(labPrint.timelab1)
                                     : "-"}
                                 </p>
-                              </p>
-                              <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                              </label>
+                              <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                 พิมพ์เสร็จวันที่ :{" "}
                                 <p className="md:ml-1 font-normal">
                                   {labPrint.timelab2
                                     ? ConvertDate(labPrint.timelab2)
                                     : "-"}
                                 </p>
-                              </p>
+                              </label>
                             </div>
                             
                           </div>
@@ -698,28 +698,28 @@ const Tracking = (props) => {
                                <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                              </div>
                              <div className="flex-row">
-                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                               <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                  Lab ส่งผลการทดสอบพิมพ์ :
                                  <p className="md:ml-1 font-normal">
                                    {labPrint.ListName}
                                  </p>
-                               </p>
-                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                               </label>
+                               <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                  ส่งพิมพ์วันที่ :{" "}
                                  <p className="md:ml-1 font-normal">
                                    {labPrint.timelab1_2
                                      ? ConvertDate(labPrint.timelab1_2)
                                      : "-"}
                                  </p>
-                               </p>
-                               <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                               </label>
+                               <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                                  พิมพ์เสร็จวันที่ :{" "}
                                  <p className="md:ml-1 font-normal">
                                    {labPrint.timelab2_2
                                      ? ConvertDate(labPrint.timelab2_2)
                                      : "-"}
                                  </p>
-                               </p>
+                               </label>
                              </div>
                              
                            </div>
@@ -735,24 +735,24 @@ const Tracking = (props) => {
                         <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
                       </div>
                       <div className="flex-row">
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           Lab ส่งผลการทดสอบพิมพ์ :
                           <p className="md:ml-1 font-normal">
                             -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           ส่งพิมพ์วันที่ :{" "}
                           <p className="md:ml-1 font-normal">
                            -
                           </p>
-                        </p>
-                        <p className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
+                        </label>
+                        <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
                           พิมพ์เสร็จวันที่ :{" "}
                           <p className="md:ml-1 font-normal">
                            -
                           </p>
-                        </p>
+                        </label>
                       </div>
                     </div>
                   )}{" "}
@@ -981,8 +981,8 @@ const Tracking = (props) => {
                 <div className=" mt-3">
                   {founddata.map((product, ict) =>
                     product.note ? (
-                      <div className="p-2 m-2 ">
-                        <p className="  text-black" key={ict}>
+                      <div className="p-2 m-2 "key={ict}>
+                        <p className="  text-black" >
                           หมายเหตุ : {product.note}
                         </p>
                       </div>

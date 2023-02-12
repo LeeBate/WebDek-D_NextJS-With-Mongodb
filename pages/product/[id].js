@@ -397,8 +397,7 @@ const DetailProduct = (props, query) => {
             
             <button >
               <div className="flex items-center justify-center px-auto ">
-                <MdOutlineScience></MdOutlineScience>
-                <div className="mr-1"></div> จองเครื่องมือ
+              จองเครื่องมือ<MdOutlineScience className="ml-2"></MdOutlineScience>
               </div>
             </button>
             </a>
@@ -410,8 +409,8 @@ const DetailProduct = (props, query) => {
               onClick={alert}
             >
               <div className="flex items-center justify-center px-auto ">
-                <MdOutlineScience></MdOutlineScience>
-                <div className="mr-1"></div> จองเครื่องมือ
+                จองเครื่องมือ<MdOutlineScience className="ml-2"></MdOutlineScience>
+                
               </div>
             </button>
           </Link>

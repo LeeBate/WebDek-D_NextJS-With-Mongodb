@@ -4,6 +4,7 @@ import { DataContext } from "../../store/GlobalState";
 import { addToCart } from "../../store/Actions";
 import { IoDocumentTextOutline } from "react-icons/io5";
 import { MdOutlineScience } from "react-icons/md";
+import Image from "next/image";
 
 const ProductItem = ({ product, handleCheck }) => {
   const { state, dispatch } = useContext(DataContext);
@@ -93,15 +94,18 @@ const ProductItem = ({ product, handleCheck }) => {
     );
   };
   return (
-    <div className="card shadow-md" style={{ width: "20rem" }}>
+    <div className="card shadow-md w-[20rem] md:w-[22rem] " >
       <Link href={`/product/${product._id}`}>
         <figure className="relative h-0 pb-[56.25%] md:pb-[75%] lg:pb-[70%] overflow-hidden transform group-hover:translate-x-0 group-hover:translate-y-0 transition duration-700 ease-out">
-          <img
+          <Image
             className="absolute inset-0 w-full h-full object-cover transform hover:scale-105 transition duration-700 ease-out"
             src={product.images[0].url}
             alt={product.images[0].url}
-            width="540"
-            height="303"
+            width={540}
+            height={440}
+            objectFit="cover"
+                            unoptimized={true}
+                            priority={true}
           />
         </figure>
       </Link>

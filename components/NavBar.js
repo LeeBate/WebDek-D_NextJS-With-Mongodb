@@ -7,6 +7,7 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import Image from "next/image";
 
 function NavBar() {
   const router = useRouter();
@@ -71,14 +72,16 @@ function NavBar() {
       <>
         <span className="sr-only">Open user menu</span>
         <Link href="/">
-          <Disclosure.Button>
-            <div
+          <div
               className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white"
               onClick={handleLogout}
             >
+          <Disclosure.Button>
+            
               ออกจากระบบ
-            </div>
+            
           </Disclosure.Button>
+          </div>
         </Link>
       </>
     );
@@ -146,10 +149,12 @@ function NavBar() {
         <div>
           <Menu.Button className="flex max-w-xs items-center rounded-full bg-gray-800 text-md focus:outline-none ">
             <span className="sr-only">Open user menu</span>
-            <img
+            <Image
               className="h-12 w-12 rounded-full"
               src={auth.user.avatar}
               alt={auth.user.avatar}
+              width={48}
+              height={48}
             />
           </Menu.Button>
         </div>
@@ -179,10 +184,12 @@ function NavBar() {
           <div className="border-t border-gray-700 pt-4 pb-3">
             <div className="flex items-center ml-4 mr-4">
               <div className="flex-shrink-0">
-                <img
+                <Image
                   className="h-10 w-10 rounded-full"
                   src={auth.user.avatar}
                   alt={auth.user.avatar}
+                  width={48}
+                  height={48}
                 />
               </div>
               <div className="ml-3">
@@ -217,24 +224,31 @@ function NavBar() {
                 <div className="mx-auto max-w-[1620px] px-4 sm:px-6 md:px-6 lg:px-8">
                   <div className="flex h-16 md:h-16 lg:h-24 items-center justify-between">
                     <div className="flex items-center">
-                      <div className="flex-shrink w-auto mr-10">
-                        <Link href="/">
-                          <img
-                            className="h-16 w-full md:h-16 lg:h-24 cursor-pointer aspect-square"
+                      <Link href="/">
+                        <div className="flex-shrink w-auto mr-10">
+                          <Image
+                            loader={() => "/images/LOGO.png"}
+                            className="cursor-pointer aspect-square object-cover"
                             src={"/images/LOGO.png"}
                             alt="logo"
+                            width={150}
+                            height={65}
+                            objectFit="cover"
+                            unoptimized={true}
+                            priority={true}
                           />
-                        </Link>
-                      </div>
+                        </div>
+                      </Link>
                       <div className="hidden lg:block">
                         <div className="flex items-baseline space-x-4">
                           <Menu as="div" className="relative ml-3">
-                            <div>
-                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md font-medium  focus:outline-none hover:text-white">
-                                <Link href="/machinery">
-                                  <div>เครื่องมือวิเคราะห์</div>
-                                </Link>
+                            <div> <Link href="/machinery">
+                              <Menu.Button className="inline-flex w-full justify-center text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-4 py-2  text-md  font-medium  focus:outline-none hover:text-white">
+                               
+                                  เครื่องมือวิเคราะห์
+                                
                               </Menu.Button>
+                              </Link>
                             </div>
                           </Menu>
                           <Menu as="div" className="relative ml-3">
@@ -259,14 +273,16 @@ function NavBar() {
                               <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                 {dropdownServices.map((item) => (
                                   <Menu.Item key={item.name}>
-                                    <Link href={item.href}>
-                                      <a
+                                    <Link href={item.href} 
+                                    legacyBehavior={true}
+                                    >
+                                      <div
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 "
                                       >
-                                        <button>{item.name}</button>
-                                      </a>
+                                        {item.name}
+                                      </div>
                                     </Link>
                                   </Menu.Item>
                                 ))}
@@ -304,9 +320,9 @@ function NavBar() {
                                 {dropdownMenu.map((item) => (
                                   <Menu.Item key={item.name}>
                                     <Link href={item.href}>
-                                      <a className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 ">
-                                        <button>{item.name}</button>
-                                      </a>
+                                      <div className="block px-4 py-2 text-md cursor-pointer text-gray-700 hover:bg-gray-100 ">
+                                        {item.name}
+                                      </div>
                                     </Link>
                                   </Menu.Item>
                                 ))}
@@ -325,9 +341,9 @@ function NavBar() {
                             <span className="sr-only">Open user menu</span>
                             {Object.keys(auth).length === 0 ? (
                               <Link href="/signin">
-                                <button className=" hover:bg-white hover:text-black text-gray-50 px-4 py-2 rounded-lg">
+                                <div className=" hover:bg-white hover:text-black text-gray-50 px-4 py-2 rounded-lg cursor-pointer">
                                   เข้าสู่ระบบ
-                                </button>
+                                </div>
                               </Link>
                             ) : (
                               loggedRouter()
@@ -373,9 +389,9 @@ function NavBar() {
                         <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                           <Link href="/machinery">
                             <div>
-                            <Disclosure.Button>
-                              <div>เครื่องมือวิเคราะห์</div>
-                            </Disclosure.Button>
+                              <Disclosure.Button>
+                                <div>เครื่องมือวิเคราะห์</div>
+                              </Disclosure.Button>
                             </div>
                           </Link>
                         </Menu.Button>
@@ -386,9 +402,9 @@ function NavBar() {
                         <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                           <Link href="/#services">
                             <div>
-                          <Disclosure.Button>
-                            <div>บริการวิเคราะห์ทดสอบ</div>
-                          </Disclosure.Button>
+                              <Disclosure.Button>
+                                <div>บริการวิเคราะห์ทดสอบ</div>
+                              </Disclosure.Button>
                             </div>
                           </Link>
                         </Menu.Button>
@@ -400,9 +416,9 @@ function NavBar() {
                           <Menu.Button className="inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-2   focus:outline-none hover:text-white">
                             <Link href="/Track">
                               <div>
-                              <Disclosure.Button>
-                                <div>การติดตามรายงานผลการทดสอบ</div>
-                              </Disclosure.Button>
+                                <Disclosure.Button>
+                                  การติดตามรายงานผลการทดสอบ
+                                </Disclosure.Button>
                               </div>
                             </Link>
                           </Menu.Button>
@@ -423,15 +439,14 @@ function NavBar() {
                         </Menu.Button>
                       </div>
                       <div className=" space-y-1 px-2 ">
-                        
-                        {dropdownMenu.map((item,key) => (
+                        {dropdownMenu.map((item, key) => (
                           <Link key={key} href={item.href}>
-                            <div >
+                            <div>
                               <Disclosure.Button
                                 as="a"
                                 className=" cursor-pointer inline-flex w-full text-base font-medium text-white border-2  border-[#1a237e]  hover:border-b-[#ffffff] hover:border-2   px-3 py-1   focus:outline-none hover:text-white"
                               >
-                                <button>{item.name}</button>
+                                <div>{item.name}</div>
                               </Disclosure.Button>
                             </div>
                           </Link>
@@ -446,9 +461,9 @@ function NavBar() {
                       <Link href="/signin">
                         <div className="pb-3 px-3">
                           <Disclosure.Button>
-                            <button className="hover:bg-white hover:text-black text-gray-50 px-1 py-2 rounded-lg">
+                            <div className="hover:bg-white hover:text-black text-gray-50 px-1 py-2 rounded-lg">
                               เข้าสู่ระบบ
-                            </button>
+                            </div>
                           </Disclosure.Button>
                         </div>
                       </Link>
