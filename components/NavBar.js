@@ -87,7 +87,7 @@ function NavBar() {
   const dropdownServices = [
     { name: "ขั้นตอนขอรับบริการ", href: "/images/21.png", current: false },
     {
-      name: "แบบฟอร์มขอรับบริการ",
+      name: "ใบคำขอรับบริการ",
       href: "https://drive.google.com/file/d/1gVu30s01a_tcPBb4F8TRt4fqwUcDhY8S/view?usp=sharing",
       current: false,
     },

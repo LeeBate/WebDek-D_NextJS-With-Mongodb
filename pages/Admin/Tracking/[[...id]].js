@@ -1968,13 +1968,13 @@ const Tracking = (props) => {
                         </TableRow>
                       </TableHead>
                       {Slides.length === 0 ? (
-                        <div className="alert alert-warning my-auto">
-                          <div>
-                            <div className="swap-off">
-                              😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
-                            </div>
-                          </div>
-                        </div>
+                        <TableBody className="alert alert-warning my-auto">
+                        <TableRow>
+                          <TableCell className="swap-off">
+                            😭 <span className=" underline decoration-red-800">กำลังโหลดข้อมูลโปรดรอสักครู่</span>
+                          </TableCell>
+                        </TableRow>
+                      </TableBody>
                       ) : (
                         Slides.slice(
                           page * rowsPerPage,

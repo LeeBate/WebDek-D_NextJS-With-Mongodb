@@ -32,6 +32,7 @@
     "daisyui": "^2.49.0",
     "emailjs": "^4.0.1",
     "feather-icons-react": "^0.5.0",
+    "flatpickr": "^4.6.13",
     "framer-motion": "^7.6.1",
     "fslightbox-react": "^1.6.2-2",
     "googleapis": "^109.0.1",

@@ -68,9 +68,7 @@ export default function DataBookings() {
       </Head>
       <FullLayout>
         
-        <h1 className="text-gray-900 text-4xl title-font font-bold mb-1">
-                การชำระเงิน
-              </h1>
+        
         <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <TableContainer sx={{ maxHeight: 640 }}>
             <Table stickyHeader aria-label="sticky table">
@@ -78,6 +76,7 @@ export default function DataBookings() {
                 <TableRow >
                   <TableCell align="center">ID</TableCell>
                   <TableCell align="center">เครื่องมือ</TableCell>
+                  <TableCell align="center">ชื่อเครื่องมือ</TableCell>
                   <TableCell align="center">ชื่อผู้ใช้</TableCell>
                   <TableCell align="center">วันที่ชำระเงิน</TableCell>
                   <TableCell align="center">จำนวนเงิน</TableCell>
@@ -87,13 +86,13 @@ export default function DataBookings() {
                 </TableRow>
               </TableHead>
               {orders.length === 0 ? (
-                <div className="alert alert-warning my-auto">
-                  <div>
-                    <div className="swap-off">
-                      😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
-                    </div>
-                  </div>
-                </div>
+               <TableBody className="alert alert-warning my-auto">
+               <TableRow>
+                 <TableCell className="swap-off">
+                   😭 <span className=" underline decoration-red-800">กำลังโหลดข้อมูลโปรดรอสักครู่</span>
+                 </TableCell>
+               </TableRow>
+             </TableBody>
               ) : (
                 orders
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -109,13 +108,17 @@ export default function DataBookings() {
                               className="rounded-full w-[60px] h-[60px] cursor-pointer"
                               src={product.images}
                             />
+                            
                           </TableCell>
                         </Link>
+                        <TableCell align="center" key={product.id}>
+                          {product.title}
+                        </TableCell>
                         <TableCell align="center" key={product.id}>
                           {product.fullname}
                         </TableCell>
                         <TableCell align="center" key={product.id}>
-                          {ConvertDate(product.updatedAt)}
+                          {product.dateOfPayment ? ConvertDate(product.dateOfPayment) : "ยังไม่ได้ชำระเงิน"}
                         </TableCell>
                         <TableCell align="center" key={product.id}>{product.price}฿</TableCell>
                         <TableCell align="center" key={product.id}>
@@ -135,13 +138,13 @@ export default function DataBookings() {
                         {product.delivered ?? product.paid ? (
                           <TableCell align="center">
                             <Link href={`/order/${product._id}`}>
-                              <a className="btn btn-info">รายละเอียดเพิ่มเติม</a>
+                              <p className="btn btn-info">รายละเอียดเพิ่มเติม</p>
                             </Link>
                           </TableCell>
                         ) : (
                           <TableCell align="center">
                             <Link href={`/order/${product._id}`}>
-                              <a className="btn btn-danger">อนุมัติการจอง</a>
+                              <p className="btn btn-danger">อนุมัติการจอง</p>
                             </Link>
                           </TableCell>
                         )}

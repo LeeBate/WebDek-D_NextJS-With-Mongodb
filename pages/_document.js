@@ -15,7 +15,7 @@ class MyDocument extends Document{
                     <script src="https://unpkg.com/@themesberg/flowbite@latest/dist/flowbite.bundle.js" async></script>
                     <link  href="https://cdnjs.cloudflare.com/ajax/lib/meyer-reset-2.0/reset.min.css"/>
                     <script src="https://unpkg.com/tailwindcss-jit-cdn" async></script>
-                    <script src="../path/to/flatpickr.min.js" async></script>
+                    <script src="https://cdn.jsdelivr.net/npm/flatpickr" async></script>
                     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
                     <script src="https://unpkg.com/aos@next/dist/aos.js" async></script>
                     

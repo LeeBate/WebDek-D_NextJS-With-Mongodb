@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Card, CardContent, Typography, Button, Grid } from "@mui/material";
+import { Card, CardContent, Typography, Button, Grid ,Box} from "@mui/material";
 import Image from "next/image";
 import user1 from "../../../assets/images/backgrounds/u2.jpg";
 import BaseCard from "../baseCard/BaseCard";
@@ -160,7 +160,6 @@ const BlogCard = () => {
         ],
         datasets: [
           {
-            
             data: nameAll,
 
             backgroundColor: [
@@ -200,15 +199,14 @@ const BlogCard = () => {
       },
     });
   }, [nameAll]);
-  
 
   return (
-    <BaseCard >
+    <BaseCard>
       <Grid container>
         {blogs.map((index) => (
-          <Grid
+          <Box
             key={index}
-            item
+            item="true"
             xs={12}
             lg={4}
             sx={{
@@ -237,7 +235,7 @@ const BlogCard = () => {
                   sx={{
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
-                    color: "yellow",
+                    color: "white",
                   }}
                 >
                   ผู้ใช้ทั้งหมด
@@ -274,12 +272,12 @@ const BlogCard = () => {
                 </Typography> */}
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
         {blogs2.map((index) => (
-          <Grid
+          <Box
             key={index}
-            item
+            item="true"
             xs={12}
             lg={4}
             sx={{
@@ -308,7 +306,7 @@ const BlogCard = () => {
                     fontSize: "h1.fontSize",
                     fontWeight: "500",
                     placeItems: "center",
-                    color: "yellow",
+                    color: "white",
                   }}
                 >
                   ข่าวประชาสัมพันธ์
@@ -325,22 +323,38 @@ const BlogCard = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid>
+          </Box>
         ))}
-      </Grid>
-      <Grid container>
-        <Grid xs={6} lg={4}
+        <Grid container>
+          <Box
+            xs={6}
+            lg={6}
             sx={{
               display: "flex",
               alignItems: "stretch",
-            }}>
-          <canvas id="chart" ref={canvas}></canvas>
+            }}
+          >
+            <Card
+              sx={{
+                p: 0,
+                width: "100%",
+                boxShadow: "0 2px 5px 1px #5c6bc0",
+                backgroundColor: "#ffff",
+              }}
+            >
+              <CardContent
+                sx={{
+                  paddingLeft: "30px",
+                  paddingRight: "30px",
+                  color: "white",
+                }}
+              >
+                <canvas id="chart" ref={canvas}></canvas>
+              </CardContent>
+            </Card>
+          </Box>
         </Grid>
-        
-        
       </Grid>
-      
-      
     </BaseCard>
   );
 };

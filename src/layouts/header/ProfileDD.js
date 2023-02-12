@@ -37,6 +37,7 @@ const ProfileDD = () => {
     dispatch({ type: "NOTIFY", payload: { success: "ออกจากระบบ!" } });
     return router.push("/");
   };
+  
   return (
     <>
       <Button
@@ -147,7 +148,7 @@ const ProfileDD = () => {
               </ListItemButton> */}
             </List>
           </Box>
-          <Divider />
+          {/* <Divider />
           <Box p={2}>
             <Button
               onClick={handleLogout}
@@ -158,7 +159,7 @@ const ProfileDD = () => {
             >
               ออกจากระบบ
             </Button>
-          </Box>
+          </Box> */}
         </Box>
       </Menu>
     </>

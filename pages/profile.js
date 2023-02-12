@@ -104,7 +104,7 @@ const Profile = () => {
 
   
   return (
-    <div className="profile_page pt-36">
+    <div className="profile_page ">
       <Head>
         <title>CALLLAB</title>
       </Head>

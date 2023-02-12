@@ -23,45 +23,22 @@ import TableRow from "@mui/material/TableRow";
 
 const Favorite = (props) => {
   const [products, setProducts] = useState(props.products);
-  const [products1, setProducts1] = useState(props.booking);
 
   const [isCheck, setIsCheck] = useState(false);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
   let filleredProd = [];
-  const { state, dispatch } = useContext(DataContext);
-  const { auth, notify, orders } = state;
+  const { state } = useContext(DataContext);
+  const { auth, orders } = state;
+  const [temp, setTemp] = useState([]);
 
   console.log("orders", orders);
   useEffect(() => {
-    if (Object.keys(auth).length !== 0) {
-      for (let i = 0; i < props.booking.length; i++) {
-        if (props.booking[i].userid === auth.user.email) {
-          filleredProd.push(props.booking[i]);
-        }
-      }
-      setProducts1(filleredProd);
-
-      delay();
-
-      //  console.log("filleredProd",filleredProd)
-      //  console.log("auth.user.email",auth.user.email)
-      //   console.log("products1.userid",products.userid)
-      //   console.log("props.products",props.products)
-    } else {
-      //setLoading(false)
-      setProducts1(props.booking);
+    if (Object.keys(auth).length != 0) {
+      orders.filter((x) => x.userid === auth.user.email);
+      setTemp(orders.filter((x) => x.userid === auth.user.email));
     }
-  }, [props.booking]);
-
-  console.log("book", products1);
-
-  const delay = async () => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  };
-
+  }, [orders, auth]);
 
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(20);
@@ -80,19 +57,21 @@ const Favorite = (props) => {
       <Head>
         <title>CALLLAB</title>
       </Head>
-      <div class="container px-5 mt-24 mb-48 mx-auto">
-       
+      <style jsx global>{`
+        footer {
+          display: none;
+        }
+      `}</style>
+      <div className="container px-5 my-10  mx-auto">
+        <h1 className="text-gray-900 text-4xl title-font font-bold mb-1">
+          ประวัติการจองเครื่องมือ
+        </h1>
 
-        
-      <h1 className="text-gray-900 text-4xl title-font font-bold mb-1">
-                การชำระเงิน
-              </h1>
-         
-          <Paper sx={{ width: "100%", overflow: "hidden" }}>
+        <Paper sx={{ width: "100%", overflow: "hidden" }}>
           <TableContainer sx={{ maxHeight: 640 }}>
             <Table stickyHeader aria-label="sticky table">
               <TableHead>
-                <TableRow >
+                <TableRow>
                   <TableCell align="center">ID</TableCell>
                   <TableCell align="center">เครื่องมือ</TableCell>
                   <TableCell align="center">เครื่องมือ</TableCell>
@@ -105,16 +84,19 @@ const Favorite = (props) => {
                   <TableCell align="center">การจัดการ</TableCell>
                 </TableRow>
               </TableHead>
-              {orders.length === 0 ? (
-                <div className="alert alert-warning my-auto">
-                  <div>
-                    <div className="swap-off">
-                      😭 <span>ไม่พบข้อมูล! โปรดค้นหาใหม่อีกครั้ง</span>
-                    </div>
-                  </div>
-                </div>
+              {temp.length === 0 ? (
+                <TableBody className="alert alert-warning my-auto">
+                  <TableRow>
+                    <TableCell className="swap-off">
+                      😭{" "}
+                      <span className=" underline decoration-red-800">
+                        กำลังโหลดข้อมูลโปรดรอสักครู่
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
               ) : (
-                orders
+                temp
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((product, ict) => (
                     <TableBody key={product._id}>
@@ -141,23 +123,30 @@ const Favorite = (props) => {
                           {product.studentID}
                         </TableCell>
                         <TableCell align="center" key={product.id}>
-                          {new Date( product.calendarData[0].start).toLocaleString()} -{" "}
-                          {new Date(product.calendarData[0].end).toLocaleString()}
-                        </TableCell>
-                        <TableCell align="center" key={product.id}>{product.price}฿</TableCell>
-                        <TableCell align="center" key={product.id}>
-                        {product.delivered ? (
-                        <i className="fas fa-check text-success"></i>
-                      ) : (
-                        <i className="fas fa-times text-danger"></i>
-                      )}
+                          {new Date(
+                            product.calendarData[0].start
+                          ).toLocaleString()}{" "}
+                          -{" "}
+                          {new Date(
+                            product.calendarData[0].end
+                          ).toLocaleString()}
                         </TableCell>
                         <TableCell align="center" key={product.id}>
-                        {product.paid ? (
-                        <i className="fas fa-check text-success"></i>
-                      ) : (
-                        <i className="fas fa-times text-danger"></i>
-                      )}
+                          {product.price}฿
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                          {product.delivered ? (
+                            <i className="fas fa-check text-success"></i>
+                          ) : (
+                            <i className="fas fa-times text-danger"></i>
+                          )}
+                        </TableCell>
+                        <TableCell align="center" key={product.id}>
+                          {product.paid ? (
+                            <i className="fas fa-check text-success"></i>
+                          ) : (
+                            <i className="fas fa-times text-danger"></i>
+                          )}
                         </TableCell>
                         {product.paid ? (
                           <TableCell align="center">
@@ -172,7 +161,6 @@ const Favorite = (props) => {
                             </Link>
                           </TableCell>
                         )}
-
                       </TableRow>
                     </TableBody>
                   ))
@@ -182,16 +170,15 @@ const Favorite = (props) => {
           <TablePagination
             rowsPerPageOptions={[20, 50, 100]}
             component="div"
-            count={orders.length}
+            count={temp.length}
             rowsPerPage={rowsPerPage}
             page={page}
             onPageChange={handleChangePage}
             onRowsPerPageChange={handleChangeRowsPerPage}
           />
         </Paper>
-        </div>
-     
-      </ThemeProvider>
+      </div>
+    </ThemeProvider>
   );
 };
 

@@ -17,9 +17,16 @@ import {
 import FeatherIcon from "feather-icons-react";
 import LogoIcon from "../logo/LogoIcon";
 import Menuitems from "./MenuItems";
+import { useState, useContext, useEffect } from "react";
+import { DataContext } from "../../../store/GlobalState";
+import Cookie from "js-cookie";
 import { useRouter } from "next/router";
+import { Icon } from "@chakra-ui/react";
 
 const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
+  const router = useRouter();
+  const { state, dispatch } = useContext(DataContext);
+  const { auth } = state;
   const [open, setOpen] = React.useState(true);
 
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
@@ -36,18 +43,18 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
 
   const [anchorEl4, setAnchorEl4] = React.useState(null);
 
-  const handleClick4 = (event) => {
-    setAnchorEl4(event.currentTarget);
-  };
-
-  const handleClose4 = () => {
-    setAnchorEl4(null);
+  const handleLogout = () => {
+    Cookie.remove("refreshtoken", { path: "api/auth/accessToken" });
+    localStorage.removeItem("firstLogin");
+    dispatch({ type: "AUTH", payload: {} });
+    dispatch({ type: "NOTIFY", payload: { success: "ออกจากระบบ!" } });
+    return router.push("/");
   };
 
   const SidebarContent = (
-    <Box p={2} height="100%" backgroundColor= "#1a237e">
+    <Box p={2} height="100%" backgroundColor="#1a237e">
       <LogoIcon />
-      <Box mt={2} >
+      <Box mt={2}>
         <List>
           {Menuitems.map((item, index) => (
             <List component="li" disablePadding key={item.title}>
@@ -57,7 +64,8 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                   button
                   selected={location === item.href}
                   sx={{
-                    mb: 1,color: "white",
+                    mb: 1,
+                    color: "white",
                     ...(location === item.href && {
                       color: "white",
                       backgroundColor: (theme) =>
@@ -79,13 +87,22 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen }) => {
                   <ListItemText onClick={onSidebarClose}>
                     {item.title}
                   </ListItemText>
+                  <Box p={2}></Box>
                 </ListItem>
               </NextLink>
             </List>
           ))}
         </List>
       </Box>
-
+      <Button
+        onClick={handleLogout}
+        className="btn bg-gray-100 hover:bg-white hover:shadow-xl  hover:text-[#1a237e] 
+              text-[#1a237e]"
+        fullWidth
+      >
+        <Icon as={FeatherIcon} icon="log-out" width="20" height="20" />
+        ออกจากระบบ
+      </Button>
     </Box>
   );
   if (lgUp) {

@@ -11,7 +11,7 @@ const Header = ({ sx, customClass, toggleMobileSidebar, position }) => {
   return (
     <AppBar sx={sx} position={position} elevation={0} className={customClass}>
       <Toolbar>
-        <IconButton
+        {/* <IconButton
           size="large"
           color="inherit"
           aria-label="menu"
@@ -24,7 +24,7 @@ const Header = ({ sx, customClass, toggleMobileSidebar, position }) => {
           }}
         >
           <FeatherIcon icon="menu" width="20" height="20" />
-        </IconButton>
+        </IconButton> */}
         {/* ------------------------------------------- */}
         {/* Search Dropdown */}
         {/* ------------------------------------------- */}

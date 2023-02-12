@@ -87,7 +87,7 @@ const Favorite = (props) => {
   };
 
   return (
-    <div className="lg:pt-24  pt-12 lg:mb-80">
+    <div>
       <Head>
         <title>CALLLAB</title>
       </Head>
@@ -96,74 +96,88 @@ const Favorite = (props) => {
           display: none;
         }
       `}</style>
-     
-        <Filter state={state} />
-        <div className="px-4">
-      {auth.user && auth.user.role === "admin" && (
-        <div
-          className="delete_all btn btn-danger mt-2"
-          style={{ marginBottom: "-10px" }}
-        >
-          <input
-            type="checkbox"
-            checked={isCheck}
-            onChange={handleCheckALL}
-            style={{
-              width: "25px",
-              height: "25px",
-              transform: "translateY(8px)",
-            }}
-          />
 
-          <button
-            className="btn btn-danger ml-2"
-            data-toggle="modal"
-            data-target="#exampleModal"
-            onClick={handleDeleteAll}
-          >
-            ลบข้อมูลทั้งหมด
-          </button>
-        </div>
-      )}
-
-<div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-        {products.length === 0 ? (
-          <center>ไม่มีข้อมูลข่าวประชาสัมพันธ์</center>
-        ) : !loading ? (
-          products.map((product) => (
-            <FavoriteItem
-              key={product._id}
-              product={product}
-              handleCheck={handleCheck}
-            />
-          ))
-        ) : (
+      <Filter state={state} />
+      <div className="px-4">
+        {auth.user && auth.user.role === "admin" && (
           <div
-            className="position-fixed w-100 h-100 text-center loading"
-            style={{
-              background: "#0008",
-              color: "white",
-              top: 0,
-              left: 0,
-              zIndex: 9,
-            }}
+            className="delete_all btn btn-danger mt-2"
+            style={{ marginBottom: "-10px" }}
           >
-            <svg width="205" height="250" viewBox="0 0 40 50">
-              <polygon
-                strokeWidth="1"
-                stroke="#fff"
-                fill="none"
-                points="20,1 40,40 1,40"
-              ></polygon>
-              <text fill="#fff" x="5" y="47">
-                Loading
-              </text>
-            </svg>
+            <input
+              type="checkbox"
+              checked={isCheck}
+              onChange={handleCheckALL}
+              style={{
+                width: "25px",
+                height: "25px",
+                transform: "translateY(8px)",
+              }}
+            />
+
+            <button
+              className="btn btn-danger ml-2"
+              data-toggle="modal"
+              data-target="#exampleModal"
+              onClick={handleDeleteAll}
+            >
+              ลบข้อมูลทั้งหมด
+            </button>
           </div>
         )}
-      </div>
 
-      {/* {props.result < page * 6 ? (
+        <h1 className="text-gray-900 text-4xl title-font font-bold mb-1 mt-5">
+          เครื่องมือโปรด
+        </h1>
+        <div className="px-4">
+        <div className=" grid-flow-row xl:px-50 mx-auto products lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-4">
+          {products.length === 0 ? (
+            <div className="alert alert-warning my-auto">
+              <div>
+                <div className="swap-off">
+                  😭{" "}
+                  <span>
+                    ไม่พบเครื่องมือที่ชอบ!
+                    โปรดเพิ่มเครื่องมือที่คุณใช้งานบ่อยเพื่อความสะดวกต่อการใช้งานของคุณ
+                  </span>
+                </div>
+              </div>
+            </div>
+          ) : !loading ? (
+            products.map((product) => (
+              <FavoriteItem
+                key={product._id}
+                product={product}
+                handleCheck={handleCheck}
+              />
+            ))
+          ) : (
+            <div
+              className="position-fixed w-100 h-100 text-center loading"
+              style={{
+                background: "#0008",
+                color: "white",
+                top: 0,
+                left: 0,
+                zIndex: 9,
+              }}
+            >
+              <svg width="205" height="250" viewBox="0 0 40 50">
+                <polygon
+                  strokeWidth="1"
+                  stroke="#fff"
+                  fill="none"
+                  points="20,1 40,40 1,40"
+                ></polygon>
+                <text fill="#fff" x="5" y="47">
+                  Loading
+                </text>
+              </svg>
+            </div>
+          )}
+        </div>
+
+        {/* {props.result < page * 6 ? (
         ""
       ) : (
         <button
@@ -173,6 +187,7 @@ const Favorite = (props) => {
           อ่านเพิ่มเติม
         </button>
       )} */}
+      </div>
     </div>
     </div>
   );

@@ -3,10 +3,74 @@ import { Card, CardContent, Typography, Box } from "@mui/material";
 import dynamic from "next/dynamic";
 import BaseCard from "../baseCard/BaseCard";
 
+import { useState, useContext, useEffect } from "react";
+import { DataContext } from "../../../store/GlobalState";
 
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 const SalesOverview = () => {
+  const { state, dispatch } = useContext(DataContext);
+  const { auth, orders } = state;
+
+  const tools = [];
+  const name = [];
+  const max = null;
+
+  useEffect(() => {
+    const data = [];
+
+    orders.map((item) => {
+      data.push({ [item.title]: item.title });
+    });
+
+    console.log(data);
+
+    let final = [];
+
+    const countTools = data.reduce((acc, current) => {
+      const tool = Object.keys(current)[0];
+
+      acc[tool] = (acc[tool] || 0) + 1;
+      final.push({ title: Object.keys(current)[0], qty: acc[tool] });
+      return acc;
+    }, {});
+
+    const result = final.reduce((acc, curr) => {
+      const item = acc.find((i) => i.title === curr.title);
+      if (item) {
+        console.log("item.qty", item.qty);
+        console.log("curr.qty", curr.qty);
+        item.qty += curr.qty;
+        item.qty = curr.qty;
+      } else {
+        acc.push(curr);
+      }
+      return acc;
+    }, []);
+
+    let datafinal = result.sort((a, b) => {
+      return b.qty - a.qty;
+    });
+
+    console.log(datafinal);
+
+    
+    datafinal.map((item) => {
+      name.push(item.title);
+      tools.push(item.qty);
+    });
+    console.log(name);
+    console.log(tools);
+
+    max = Math.max(...tools);
+    datafinal = datafinal.slice(0, 10);
+
+  }, [orders]);
+
+  useEffect(() => {
+    console.log("max", max);
+  }, [max]);
+
   const optionssalesoverview = {
     grid: {
       show: true,
@@ -54,20 +118,7 @@ const SalesOverview = () => {
     },
     xaxis: {
       type: "category",
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "July",
-        "Aug",
-        "Sept",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
+      categories: name,
       labels: {
         style: {
           cssClass: "grey--text lighten-2--text fill-color",
@@ -76,8 +127,8 @@ const SalesOverview = () => {
     },
     yaxis: {
       show: true,
-      min: 100,
-      max: 400,
+      min: 1,
+      max: 7,
       tickAmount: 3,
       labels: {
         style: {
@@ -97,16 +148,12 @@ const SalesOverview = () => {
   };
   const seriessalesoverview = [
     {
-      name: "Ample Admin",
-      data: [355, 390, 300, 350, 390, 180, 355, 390, 300, 350, 390, 180],
-    },
-    {
-      name: "Pixel Admin",
-      data: [280, 250, 325, 215, 250, 310, 280, 250, 325, 215, 250, 310],
+      name: "จำนวนเครื่องมือ",
+      data: tools,
     },
   ];
   return (
-    <BaseCard title="ภาพรวมการจองเครื่องมือ">
+    <BaseCard title="10อันดับเครื่องมือที่ถูกจองมากที่สุด">
       <Chart
         options={optionssalesoverview}
         series={seriessalesoverview}

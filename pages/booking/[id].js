@@ -298,6 +298,18 @@ const BookingDetail = (props) => {
     //  return router.query.id ? router.push(`/booking/${router.query.id}`) : router.push("/");
   };
 
+  function ConvertDate(date) {
+    const data = new Date(date).toLocaleString("th-GB", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+    return data;
+  }
+
   //Function สำหรับแสดงข้อมูล
   return (
     <section className="text-gray-700 body-font overflow-hidden bg-white">
@@ -306,7 +318,7 @@ const BookingDetail = (props) => {
       </Head>
       <div className="container px-5 py-24 mx-auto ">
         <center className=" py-3 mt-2">
-          <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">
+          <h1 className="text-gray-900 text-xl lg:text-5xl title-font font-medium mb-1">
             ข้อมูลการจอง {product1.title}
           </h1>
         </center>
@@ -417,7 +429,7 @@ const BookingDetail = (props) => {
                   },
                 ];
               });
-              alert("เลือกแล้ว " + info.startStr + " ถึง " + info.endStr);
+              alert("เลือกแล้ว " +(ConvertDate(info.startStr)) + " ถึง " + (ConvertDate(info.endStr)));
             }}
             events={uniqueData}
             locale={"th-th"}
@@ -432,20 +444,20 @@ const BookingDetail = (props) => {
               day: "วัน",
               list: "รายการ",
             }}
-            customButtons={{
-              custom1: {
-                text: "ปุ่ม 1",
-                click: function () {
-                  alert("clicked custom button 1!");
-                },
-              },
-              custom2: {
-                text: "เกี่ยวกับ",
-                click: function () {
-                  router.push("/about");
-                },
-              },
-            }}
+            // customButtons={{
+            //   custom1: {
+            //     text: "ปุ่ม 1",
+            //     click: function () {
+            //       alert("clicked custom button 1!");
+            //     },
+            //   },
+            //   custom2: {
+            //     text: "เกี่ยวกับ",
+            //     click: function () {
+            //       router.push("/about");
+            //     },
+            //   },
+            // }}
             headerToolbar={{
               left: "dayGridMonth,timeGridWeek,timeGridDay custom1",
               center: "title",
