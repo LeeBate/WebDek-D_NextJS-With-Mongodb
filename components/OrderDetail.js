@@ -64,10 +64,10 @@ const OrderDetail = ({ orderDetail, state, dispatch }) => {
 
   if (!auth.user) return null;
   return (
-    <section class="text-gray-700 body-font overflow-hidden bg-white">
-      <div class="container px-5 py-5 mx-auto ">
+    <section className="text-gray-700 body-font overflow-hidden bg-white">
+      <div className="container px-5 py-5 mx-auto ">
         {orderDetail.map((order) => (
-          <div key={order._id} className="row justify-content-around">
+          <div key={order._id} className="flex justify-center items-centerjustify-content-around">
             <div className="text-uppercase my-3 ">
               <div className=" text-secondary">
                 <h2 className=" text-black text-xl">ข้อมูลการจอง</h2>
