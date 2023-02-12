@@ -231,7 +231,7 @@ const SalesOverview = () => {
   ]);
 
   return (
-    <BaseCard title="ภาพรวมการจองเครื่องมือ">
+    <BaseCard title="10อันดับเครื่องมือที่ถูกจองมากที่สุด">
       <Chart
         options={optionssalesoverview}
         series={seriessalesoverview}
