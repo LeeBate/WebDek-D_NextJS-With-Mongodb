@@ -123,7 +123,7 @@ const SalesOverview = () => {
       yaxis: {
         show: true,
         min: 1,
-        max: 7,
+        max: 10,
         tickAmount: 3,
         labels: {
           style: {
@@ -205,7 +205,7 @@ const SalesOverview = () => {
     yaxis: {
       show: true,
       min: 1,
-      max: 7,
+      max: 10,
       tickAmount: 3,
       labels: {
         style: {
