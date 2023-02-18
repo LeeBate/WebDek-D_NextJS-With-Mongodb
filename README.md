@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 Installation
 
-1. Clone the repository from Github: git clone https://github.com/[username]/[repository-name].git
+1. Clone the repository from Github: git clone https://github.com/LeeBate/WebDek-D_NextJS-With-Mongodb.git
 
 2. Install the project dependencies using npm: npm install or npm i
 
