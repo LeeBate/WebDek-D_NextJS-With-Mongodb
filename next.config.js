@@ -19,7 +19,7 @@ module.exports = {
     },
     images: {
       domains: ['www.sut.ac.th/'],
-      domains: ['http://203.158.7.33.com'],
+      domains: ['203.158.7.33'],
       domains: ['www.borntodev.com'],
       domains: ['res.cloudinary.com'],
       imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
