@@ -22,6 +22,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TablePagination from "@mui/material/TablePagination";
 import TableRow from "@mui/material/TableRow";
+import sortBy from "sort-by";
 
 export default function DataBookings() {
   const router = useRouter();
@@ -95,6 +96,8 @@ export default function DataBookings() {
              </TableBody>
               ) : (
                 orders
+                  .sort(sortBy("-createdAt"))
+                  
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map((product, ict) => (
                     <TableBody key={product._id}>

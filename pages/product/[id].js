@@ -387,20 +387,33 @@ const DetailProduct = (props, query) => {
 
       
 
-      <div className="flex justify-start xl:justify-end md:justify-end mt-3 mb-8 px-8 ">
+      <div className="flex flex-col md:flex-row justify-start xl:justify-end md:justify-end mt-3 mb-8 px-8  space-y-2">
         {Object.keys(auth).length !== 0 ? (
           <Link href={`/booking/${product._id}`}>
-            <a
+            {/* <a
               rel="noopener noreferrer"
-            className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 mr-1.5 rounded-full text-white">
+            className="text-center rounded-full btn bg-[#FFA500] hover:bg-[#1a237e] text-white border-2  px-2 py-2  text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3">
 
             
             <button >
-              <div className="flex items-center justify-center px-auto ">
-              จองเครื่องมือ<MdOutlineScience className="ml-2"></MdOutlineScience>
+              <div className="flex items-center justify-center  ">
+              จองเครื่องมือ<MdOutlineScience className="inline ml-2"></MdOutlineScience>
               </div>
             </button>
-            </a>
+            </a> */}
+            <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className=" bg-[#FFA500] hover:bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
+            >
+          <button
+            type="button"
+            
+          >
+           จองเครื่องมือ
+           <MdOutlineScience className="inline ml-2"/>
+          </button>
+          </a>
           </Link>
         ) : (
           <Link href="#">
@@ -408,8 +421,8 @@ const DetailProduct = (props, query) => {
               className="btn bg-[#FFA500] hover:bg-[#1a237e] px-2 py-2 mr-1.5 rounded-full text-white"
               onClick={alert}
             >
-              <div className="flex items-center justify-center px-auto ">
-                จองเครื่องมือ<MdOutlineScience className="ml-2"></MdOutlineScience>
+              <div className="flex items-center justify-center ">
+                จองเครื่องมือ<MdOutlineScience className="inline ml-2"></MdOutlineScience>
                 
               </div>
             </button>
@@ -447,7 +460,7 @@ const DetailProduct = (props, query) => {
         <a
             target="_blank"
             rel="noopener noreferrer"
-            className=" rounded-full bg-[#1a237e] text-white border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            className=" bg-[#1a237e] shadow-md hover:shadow-lg text-white px-2 py-2 mr-1.5 rounded-full text-center no-underline"
             >
           <button
             type="button"
@@ -491,7 +504,7 @@ const DetailProduct = (props, query) => {
           <button
             type="button"
             onClick={handleSubmit}
-            className=" flex items-center rounded-full bg-[#f6f6f6] text-black border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            className=" flex justify-center items-center rounded-full bg-[#f6f6f6] text-black border-2 px-2 py-1.5 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
             {" "}
             เพิ่มรายการโปรด
@@ -502,10 +515,11 @@ const DetailProduct = (props, query) => {
             type="button"
             // data-toggle="modal" data-target="#exampleModal"
             onClick={handleRemove}
-            className=" flex items-center rounded-xl bg-[#ffffffd3] text-black border-2 px-2 py-1 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
+            className=" flex justify-center items-center rounded-xl bg-[#ffffffd3] text-black border-2 px-2 py-2 text-sm sm:text-sm md:text-base mr-1 md:mr-2 xl:mr-3"
           >
             {" "}
-            <BsHeartFill color="fe4141" className="" />
+            
+            <BsHeartFill color="fe4141" />
           </button>
         )}
       </div>

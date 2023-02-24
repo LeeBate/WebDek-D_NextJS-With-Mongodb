@@ -130,7 +130,7 @@ const BlogCard = () => {
             key={index}
             item="true"
             xs={12}
-            lg={4}
+            lg={12}
             sx={{
               display: "flex",
               alignItems: "stretch",

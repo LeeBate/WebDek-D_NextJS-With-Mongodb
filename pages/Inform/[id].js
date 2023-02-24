@@ -57,7 +57,7 @@ const DetailInform = (props) => {
         <title>{product.title}</title>
       </Head>
 
-      <div class="grid bg-[#e0e7ff] rounded-md grid-cols-1 gap-4 mx-8 md:mx-16  p-1  lg:p-3 xl:p-5 ">
+      <div className="grid bg-[#e0e7ff] rounded-md grid-cols-1 gap-4 mx-8 md:mx-16  p-1  lg:p-3 xl:p-5 ">
         <div className=' p-8 lg:p-8  xl:p-20 xl:px-36 mt-2 lg:mt-8 xl:mt-10 text-black'>
           {product.images.length > 1 ? (
             <Zoom {...zoomInProperties}>

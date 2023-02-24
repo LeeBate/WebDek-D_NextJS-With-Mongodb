@@ -40,16 +40,7 @@ export const DataProvider = ({children}) => {
         
     },[])
 
-    useEffect(() => {
-        const ShowAddCart = JSON.parse(localStorage.getItem('ShowAddCart'))
-
-        if(ShowAddCart) dispatch({ type: 'ADD_CART', payload: ShowAddCart })
-    }, [])
-
-    useEffect(() => {
-        localStorage.setItem('ShowAddCart', JSON.stringify(cart))
-    }, [cart])
-
+    
     useEffect(() => {
         if(auth.token){
             getData('order', auth.token)

@@ -466,7 +466,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-80 md:h-48 lg:h-60 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-[21rem] md:h-48 lg:h-60 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
@@ -652,7 +652,7 @@ const Tracking = (props) => {
                                   color="#949494"
                                 />
                               )}
-                              <div className="relative w-1 h-36 md:h-32 bg-[#050505]/70"></div>
+                              <div className="relative w-1 h-40 md:h-32 bg-[#050505]/70"></div>
                             </div>
                             <div className="flex-row">
                               <label className="pl-2 mt-1 font-semibold flex flex-col md:flex-row">
